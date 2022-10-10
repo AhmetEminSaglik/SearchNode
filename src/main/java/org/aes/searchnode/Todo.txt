@@ -1,0 +1,2 @@
+Employee'daki language gibi composite olanlar eger degerlendirmeye alinip root'an ilelernecekse
+o halde onlarda << IPriorityFields >>'i implement etmeli. Aksi halde hata verilmeli
