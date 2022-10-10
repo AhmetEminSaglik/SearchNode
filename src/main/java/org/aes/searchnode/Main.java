@@ -3,6 +3,7 @@ package org.aes.searchnode;
 //import org.aes.searchnode.objefield.ObjectField;
 //import org.aes.searchnode.objefield.PriorityObjectField;
 
+import org.aes.searchnode.dataaccess.concretes.PriorityField;
 import org.aes.searchnode.entities.concretes.Employee;
 import org.aes.searchnode.entities.concretes.Language;
 import org.aes.searchnode.entities.concretes.Student;
@@ -13,8 +14,23 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 public class Main {
-    public void getFieldInfo(Object object) throws Exception {
-        if (object instanceof IPriorityFields) {
+    public void getFieldInfo(Object object,String fieldName) throws Exception {
+//        System.out.println("A");
+
+//        System.out.println("B");
+//        IPriorityFields pf = (IPriorityFields) object;
+//        List<Object> list = pf.getPriorityFieldValue();
+//        System.out.println("C");
+        PriorityField priorityField = new PriorityField();
+//        System.out.println("D");
+
+        Object value=priorityField.getPriorityFieldValue(object,fieldName);
+//        System.out.println("Z");
+
+        System.out.println(object+" -----------> "  +value);
+
+
+        /*if (object instanceof IPriorityFields) {
             IPriorityFields pf = (IPriorityFields) object;
             List<Field> fieldList = pf.getPriorityFields();
             for (Field tmp : fieldList) {
@@ -39,7 +55,7 @@ public class Main {
             System.out.print(object + ", ");
         } else {
             throw new NotImplementedRequiredInterfaceError(object.getClass());
-        }
+        }*/
     }
 
     public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
@@ -61,25 +77,25 @@ public class Main {
         try {
             System.out.println("Integer : ");
             for (Integer tmp : numbers) {
-                main.getFieldInfo(tmp);
+                main.getFieldInfo(tmp,null);
             }
             System.out.println("\n----------------");
 
             System.out.println("String : ");
             for (String tmp : text) {
-                main.getFieldInfo(tmp);
+                main.getFieldInfo(tmp,null);
             }
             System.out.println("\n----------------");
 
             System.out.println("Student : ");
             for (Student tmp : students) {
-                main.getFieldInfo(tmp);
+                main.getFieldInfo(tmp,"no");
             }
             System.out.println("\n----------------");
 
             System.out.println("Employee");
             for (Employee tmp : employees) {
-                main.getFieldInfo(tmp);
+                main.getFieldInfo(tmp,"language");
             }
             System.out.println("\n----------------");
         } catch (Exception e) {

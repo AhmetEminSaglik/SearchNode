@@ -24,13 +24,25 @@ public interface IPriorityFields {
 
     }
 
-    default List<?> getPriorityFieldsValue(List<Field> fieldListObjects) {
-        List<?> valueList = new ArrayList<>();
+   /* default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) { // Student[10] geldi
+        List<Object> valueList = new ArrayList<>();
         for (Object tmpObject : fieldListObjects) {
             if (tmpObject instanceof IPriorityFields) {
                 IPriorityFields pf = (IPriorityFields) tmpObject;
                 List<Field> priorityFields = pf.getPriorityFields();
+
                 for (Field tmp : priorityFields) {
+                    if (tmp.getName().equals(fieldName)) {
+                        tmp.trySetAccessible();
+                        try {
+                            valueList.add(tmp.get((tmpObject)));
+                        } catch (IllegalAccessException e) {
+                            System.out.println("tmp.get() error : " + e.getMessage());
+                        }
+                    }
+                }
+
+             *//*   for (Field tmp : priorityFields) {
                     try {
                         tmp.trySetAccessible();
                         System.out.println(tmp.getName() + " : " + tmp.get(tmpObject));
@@ -39,7 +51,8 @@ public interface IPriorityFields {
                     } catch (IllegalAccessException e) {
                         System.out.println("tmp.get() error : " + e.getMessage());
                     }
-                }
+                }*//*
+
 
             } else if (tmpObject instanceof Byte ||
                     tmpObject instanceof Short ||
@@ -55,7 +68,8 @@ public interface IPriorityFields {
                 throw new NotImplementedRequiredInterfaceError(tmpObject.getClass());
             }
         }
-    }
+        return valueList;
+    }*/
 
 
 }
