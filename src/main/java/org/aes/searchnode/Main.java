@@ -4,6 +4,7 @@ package org.aes.searchnode;
 //import org.aes.searchnode.objefield.PriorityObjectField;
 
 import org.aes.searchnode.dataaccess.concretes.PriorityField;
+import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
 import org.aes.searchnode.entities.concretes.Employee;
 import org.aes.searchnode.entities.concretes.Language;
 import org.aes.searchnode.entities.concretes.Student;
@@ -90,11 +91,20 @@ public class Main {
             System.out.println("Student : ");
             for (Student tmp : students) {
 //                main.getFieldInfo(tmp,"no");
-                if(tmp.getPriorityFields().size()>0)
-                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
+//                if(tmp.getPriorityFields().size()>0)
+//                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
 
             }
+            PriorityFieldOrder pfStudent= new PriorityFieldOrder(Student.class);
+            List<Field> fieldList= pfStudent.getPriorityFields();
+            pfStudent.setPriorityFieldsInDefaultOrder();
+            System.out.println("List<Field> fieldList= pfStudent.getPriorityFields(); : ");
+            for(Field tmp : fieldList){
+                System.out.println(tmp.getName());
+            }
+
             System.out.println("\n----------------");
+            System.exit(0);
 
             System.out.println("Employee");
             for (Employee tmp : employees) {
