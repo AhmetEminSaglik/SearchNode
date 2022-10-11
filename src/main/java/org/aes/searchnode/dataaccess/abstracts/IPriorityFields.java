@@ -12,11 +12,14 @@ public interface IPriorityFields {
     List<Field> list = new ArrayList<>();
 
     default List<Field> getPriorityFields() {
-        if (getClass().getDeclaredFields().length > 0) {
-            List<Field> list = new ArrayList<>();
-            list.add(getClass().getDeclaredFields()[0]);
+        List<Field> list = new ArrayList<>();
+            for(int i=0;i<getClass().getDeclaredFields().length;i++){
+                list.add(getClass().getDeclaredFields()[i]);
+                System.out.println("Fields will be in use :  : "+list.get(i).getName());
+            }
+
+        if(list.size()>0)
             return list;
-        }
 //        throw new IllegalArgumentException()
         throw new NotFoundAnyDeclaredField(getClass());
 //        System.out.println("Have no declared fields");

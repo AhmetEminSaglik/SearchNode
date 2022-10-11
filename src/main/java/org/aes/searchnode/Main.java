@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 public class Main {
-    public void getFieldInfo(Object object,String fieldName) throws Exception {
+    public void getFieldInfo(Object object, String fieldName) throws Exception {
 //        System.out.println("A");
 
 //        System.out.println("B");
@@ -24,10 +24,10 @@ public class Main {
         PriorityField priorityField = new PriorityField();
 //        System.out.println("D");
 
-        Object value=priorityField.getPriorityFieldValue(object,fieldName);
+        Object value = priorityField.getPriorityFieldValue(object, fieldName);
 //        System.out.println("Z");
 
-        System.out.println(object+" -----------> "  +value);
+        System.out.println(object + " -----------> " + fieldName + " : " + value);
 
 
         /*if (object instanceof IPriorityFields) {
@@ -75,27 +75,27 @@ public class Main {
                 new Employee("IT", 333333333, languages)
         };
         try {
-            System.out.println("Integer : ");
+//            System.out.println("Integer : ");
             for (Integer tmp : numbers) {
-                main.getFieldInfo(tmp,null);
+//                main.getFieldInfo(tmp,null);
             }
             System.out.println("\n----------------");
 
-            System.out.println("String : ");
+//            System.out.println("String : ");
             for (String tmp : text) {
-                main.getFieldInfo(tmp,null);
+//                main.getFieldInfo(tmp,null);
             }
             System.out.println("\n----------------");
 
             System.out.println("Student : ");
             for (Student tmp : students) {
-                main.getFieldInfo(tmp,"no");
+//                main.getFieldInfo(tmp,"noo");
             }
             System.out.println("\n----------------");
 
             System.out.println("Employee");
             for (Employee tmp : employees) {
-                main.getFieldInfo(tmp,"language");
+                main.getFieldInfo(tmp, "language");
             }
             System.out.println("\n----------------");
         } catch (Exception e) {

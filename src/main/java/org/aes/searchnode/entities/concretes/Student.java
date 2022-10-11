@@ -75,7 +75,7 @@ public class Student implements IPriorityFields {
                 '}';
     }
 
-    @Override
+    /*@Override
     public List<Field> getPriorityFields() {
         List<Field> list = new ArrayList<>();
         try {
@@ -85,7 +85,7 @@ public class Student implements IPriorityFields {
             throw new RuntimeException(e);
         }
         return list;
-    }
+    }*/
 //    public Student getStudent(){
 //        return  new Student(name,lastName,age,no);
 //    }

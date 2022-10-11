@@ -11,11 +11,11 @@ import java.util.Objects;
 public class PriorityField {
     public Object getPriorityFieldValue(Object object, String fieldName) {
         /*TODO
-        * Student : age, no,  return null
-        * Employee : departman   return null
-        * integer, String  works perfect
-        *lanuage returns  toString() -> if need to get use composite fields, than it have to implements << IPriorityField >> interface
-        * */
+         * Student : age, no,  return null
+         * Employee : departman   return null
+         * integer, String  works perfect
+         *lanuage returns  toString() -> if need to get use composite fields, than it have to implements << IPriorityField >> interface
+         * */
 //        System.out.println("E");
 
         Object value = null;
@@ -49,7 +49,7 @@ public class PriorityField {
         } else {
             throw new NotImplementedRequiredInterfaceError(object.getClass());
         }
-
+        System.out.println("null burdan mi geciyor check et :" + value);
         return value;
        /* for (Field tmp : priorityFields) {
             if (tmp.getName().equals(fieldName)) {

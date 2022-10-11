@@ -9,12 +9,12 @@ import java.util.List;
 
 public class Employee implements IPriorityFields {
     private String departman;
-    private int Tc;
+    private int tc;
     private Language[] language;
 
     public Employee(String departman, int tc, Language[] language) {
         this.departman = departman;
-        Tc = tc;
+        this.tc = tc;
         this.language = language;
     }
 
@@ -32,14 +32,14 @@ public class Employee implements IPriorityFields {
     }
 
     public int getTc() {
-        return Tc;
+        return tc;
     }
 
     public void setTc(int tc) {
-        Tc = tc;
+        this.tc = tc;
     }
 
-    @Override
+   /* @Override
     public List<Field> getPriorityFields() {
         List<Field> fieldList = new ArrayList<>();
         try {
@@ -51,13 +51,13 @@ public class Employee implements IPriorityFields {
             throw new NotFoundAnyDeclaredField(getClass());
         }
 //        return IPriorityFields.super.getPriorityFields();
-    }
+    }*/
 
     @Override
     public String toString() {
         return "Employee{" +
                 "departman='" + departman + '\'' +
-                ", Tc=" + Tc +
+                ", tc=" + tc +
                 '}';
     }
 }
