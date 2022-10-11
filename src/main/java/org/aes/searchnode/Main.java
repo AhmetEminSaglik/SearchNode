@@ -89,13 +89,16 @@ public class Main {
 
             System.out.println("Student : ");
             for (Student tmp : students) {
-//                main.getFieldInfo(tmp,"noo");
+//                main.getFieldInfo(tmp,"no");
+                if(tmp.getPriorityFields().size()>0)
+                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
+
             }
             System.out.println("\n----------------");
 
             System.out.println("Employee");
             for (Employee tmp : employees) {
-                main.getFieldInfo(tmp, "language");
+//                main.getFieldInfo(tmp, "language");
             }
             System.out.println("\n----------------");
         } catch (Exception e) {

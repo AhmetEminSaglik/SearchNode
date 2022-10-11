@@ -75,17 +75,17 @@ public class Student implements IPriorityFields {
                 '}';
     }
 
-    /*@Override
+   @Override
     public List<Field> getPriorityFields() {
         List<Field> list = new ArrayList<>();
         try {
-            list.add(this.getClass().getDeclaredField("name"));
             list.add(this.getClass().getDeclaredField("lastName"));
+            list.add(this.getClass().getDeclaredField("no"));
         } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
         return list;
-    }*/
+    }
 //    public Student getStudent(){
 //        return  new Student(name,lastName,age,no);
 //    }
