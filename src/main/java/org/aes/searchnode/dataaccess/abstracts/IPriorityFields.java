@@ -27,7 +27,7 @@ public interface IPriorityFields {
 
     }
 
-   /* default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) { // Student[10] geldi
+default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) { // Student[10] geldi
         List<Object> valueList = new ArrayList<>();
         for (Object tmpObject : fieldListObjects) {
             if (tmpObject instanceof IPriorityFields) {
@@ -45,16 +45,16 @@ public interface IPriorityFields {
                     }
                 }
 
-             *//*   for (Field tmp : priorityFields) {
+            for (Field tmp : priorityFields) {
                     try {
                         tmp.trySetAccessible();
                         System.out.println(tmp.getName() + " : " + tmp.get(tmpObject));
                         System.out.println("field name ==>  : " + tmp.getName());
-                        valueList.add(tmp.get(tmpObject))
+                        valueList.add(tmp.get(tmpObject));
                     } catch (IllegalAccessException e) {
                         System.out.println("tmp.get() error : " + e.getMessage());
                     }
-                }*//*
+                }
 
 
             } else if (tmpObject instanceof Byte ||
@@ -72,7 +72,7 @@ public interface IPriorityFields {
             }
         }
         return valueList;
-    }*/
+    }
 
 
 }

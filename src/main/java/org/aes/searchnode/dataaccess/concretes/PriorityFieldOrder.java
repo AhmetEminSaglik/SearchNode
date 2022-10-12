@@ -2,10 +2,11 @@ package org.aes.searchnode.dataaccess.concretes;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PriorityFieldOrder {
-    List<String> fieldNameList = new ArrayList<>();
+    List<Field> fieldNameList = new ArrayList<>();
     Class clazz;
 
     public PriorityFieldOrder(Class clazz) {
@@ -19,15 +20,12 @@ public class PriorityFieldOrder {
 
     public void setPriorityFieldsInDefaultOrder() {
         //obje yerine clazz ile islemler yapilacak
-        System.out.println(clazz.getDeclaredFields().length);
-        for (Field tmp : clazz.getDeclaredFields()) {
-            fieldNameList.add(tmp.getName());
-        }
-//        System.out.println(clazz.getDeclaredFields()[1].getName());
+        fieldNameList.addAll(Arrays.asList(clazz.getDeclaredFields()));
+//        System.out.println(fieldNameList.size());
 
     }
 
-    public String getPriorityField() {
+    public Field getFirstField() {
         if (!fieldNameList.isEmpty()) {
             return fieldNameList.get(0);
         }
@@ -35,17 +33,17 @@ public class PriorityFieldOrder {
         return null;
     }
 
-    public String getPriorityFieldName(String fieldName) {
+    public Field getPriorityField(String fieldName) {
         //obje yerine clazz ile islemler yapilacak
-        for (String tmp : fieldNameList) {
-            if (tmp.equals(fieldName)) {
+        for (Field tmp : fieldNameList) {
+            if (tmp.getName().equals(fieldName)) {
                 return tmp;
             }
         }
         return null;
     }
 
-    public String getPriorityFieldName(int index) { // returns first index, this is for String,Integer...Byte
+    public Field getPriorityFieldName(int index) { // returns first index, this is for String,Integer...Byte
         //obje yerine clazz ile islemler yapilacak
         if (fieldNameList.size() > index) {
             return fieldNameList.get(index);
@@ -55,11 +53,9 @@ public class PriorityFieldOrder {
     }
 
 
-    public List<String> getPriorityFieldsName() {
+    public List<Field> getPriorityFieldsName() {
         //obje yerine clazz ile islemler yapilacak
         return fieldNameList;
-
-
     }
 /*
 Asagisi Field uzerinden islem yapmak icin

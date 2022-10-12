@@ -5,6 +5,7 @@ package org.aes.searchnode;
 
 import org.aes.searchnode.dataaccess.concretes.PriorityField;
 import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
+import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.Employee;
 import org.aes.searchnode.entities.concretes.Language;
 import org.aes.searchnode.entities.concretes.Student;
@@ -83,25 +84,46 @@ public class Main {
             System.out.println("\n----------------");
 
 //            System.out.println("String : ");
+            PriorityFieldOrder pfString = new PriorityFieldOrder(String.class);
+            pfString.setPriorityFieldsInDefaultOrder();
+            List<Field> fnStringList = pfString.getPriorityFieldsName();
+
+
+            PriorityFieldValue pfv = new PriorityFieldValue(fnStringList);
+
             for (String tmp : text) {
+//                pfv.getValueOfField(tmp);
+            }
+            for (Field tmp : fnStringList) {
 //                main.getFieldInfo(tmp,null);
+//                System.out.println(tmp.getName());
+//                pfv.getValueOfField(tmp,null);
+
             }
             System.out.println("\n----------------");
 
+//            System.exit(0);
+
             System.out.println("Student : ");
+            PriorityFieldOrder pfStudent = new PriorityFieldOrder(Student.class);
+            pfStudent.setPriorityFieldsInDefaultOrder();
+            List<Field> pfList = pfStudent.getPriorityFieldsName();
+            System.out.println(pfList.size());
+//            System.exit(0);
+            PriorityFieldValue priorityFieldValue = new PriorityFieldValue(pfList);
+            System.out.println("List<String> fieldNameList= pfStudent.getPriorityFieldsName(); : ");
             for (Student tmp : students) {
+                priorityFieldValue.getValueOfFieldByField(tmp, pfStudent.getPriorityFieldName(4));
 //                main.getFieldInfo(tmp,"no");
 //                if(tmp.getPriorityFields().size()>0)
 //                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
 
+
             }
-            PriorityFieldOrder pfStudent= new PriorityFieldOrder(Student.class);
-            List<Field> fieldList= pfStudent.getPriorityFields();
-            pfStudent.setPriorityFieldsInDefaultOrder();
-            System.out.println("List<Field> fieldList= pfStudent.getPriorityFields(); : ");
-            for(Field tmp : fieldList){
-                System.out.println(tmp.getName());
-            }
+            System.exit(0);
+//            for(Field tmp : pfList){
+//                System.out.println(tmp.getName());
+//            }
 
             System.out.println("\n----------------");
             System.exit(0);
