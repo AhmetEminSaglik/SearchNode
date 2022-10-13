@@ -8,14 +8,16 @@ public class SolutionMessage {
         String msg = prefixText + solutionAdvice + "Please implement << IPriorityFields >> interface to your " + clazz.getSimpleName() + " Object.";
         return msg;
     }
-
     public static String getSolutionNotFoundAnyDeclaredField(Class clazz) {
         String msg = prefixText + solutionAdvice + "Please add some variable fields to your " + clazz.getSimpleName() + " Object.";
         return msg;
     }
-
     public static String getSolutionInvalidFieldRequestException(Class clazz, int declaredFieldListSize) {
         String msg = prefixText + solutionAdvice + "Please enter index value lower than : " + declaredFieldListSize + " or enter field name as declared in your " + clazz.getSimpleName() + " Object.";
+        return msg;
+    }
+    public static String getSolutionInvalidFieldOrFieldNameException(Class clazz) {
+        String msg = prefixText + solutionAdvice + "Please enter a valid field or field name includes in " + clazz.getSimpleName() + " Object";
         return msg;
     }
 }

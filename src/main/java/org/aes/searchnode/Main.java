@@ -43,7 +43,7 @@ public class Main {
         try {
             System.out.println("Integer : ");
             for (Integer tmp : numbers) {
-                System.out.println("Okunan/Alinan deger : "+pfvInteger.getValueOfField(tmp));
+                System.out.println("Read Value : "+pfvInteger.getValueOfField(tmp));
             }
             System.out.println("\n----------------");
 
@@ -56,7 +56,7 @@ public class Main {
             PriorityFieldValue pfvString = new PriorityFieldValue(fnStringList);
 
             for (String tmp : text) {
-                System.out.println("Okunan/Alinan deger : "+pfvString.getValueOfField(tmp));
+                System.out.println("Read Value : "+pfvString.getValueOfField(tmp));
             }
 //            for (Field tmp : fnStringList) {
 //                main.getFieldInfo(tmp,null);
@@ -77,7 +77,7 @@ public class Main {
             PriorityFieldValue priorityFieldValue = new PriorityFieldValue(pfList);
             System.out.println("List<String> fieldNameList= pfStudent.getPriorityFieldsName(); : ");
             for (Student tmp : students) {
-                priorityFieldValue.getValueOfField(tmp, pfStudent.getPriorityFieldName(2));
+                priorityFieldValue.getValueOfField(tmp, pfStudent.getPriorityFieldName(3));
 //                main.getFieldInfo(tmp,"no");
 //                if(tmp.getPriorityFields().size()>0)
 //                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());

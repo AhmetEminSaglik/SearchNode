@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student /*implements IPriorityFields*/ {
+public class Student implements IPriorityFields {
     private String name;
     private String lastName;
 //    List<Student> studentDirectionList = new ArrayList<>();
