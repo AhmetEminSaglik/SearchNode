@@ -14,23 +14,17 @@ public class PriorityFieldValue {
         this.priorityFieldList = priorityFieldList;
     }
 
-//    public PriorityFieldValue() {
-//    }
-
-    public void getValueOfField(Object object) {
-        getValueOfFieldByFieldName(object, null);
-
+    public Object getValueOfField(Object object) {
+        return getValueOfField(object, "");
     }
 
-    public void getValueOfFieldByField(Object object, Field field) {
-        getValueOfFieldByFieldName(object, field.getName());
-
+    public Object getValueOfField/*ByField*/(Object object, Field field) {
+        return getValueOfField(object, field.getName());
     }
 
-    public void getValueOfFieldByFieldName(Object object, String fieldName) {
+    public Object getValueOfField/*ByFieldName*/(Object object, String fieldName) {
         System.out.println("gelen obje  : " + object);
-//        System.exit(0);
-        // Object object = field;
+
         if (object instanceof IPriorityFields) {
             System.out.println("AAAAAAAAAAAAAAAAA");
             if (fieldName == null) {
@@ -42,25 +36,15 @@ public class PriorityFieldValue {
                     tmp.trySetAccessible();
                     try {
                         System.out.println("requested value of object is : " + tmp.get(object));
-                        System.exit(0);
+                        return tmp.get(object);
+//                        System.exit(0);
                     } catch (IllegalAccessException e) {
                         System.out.println("cathc dusut");
                         throw new RuntimeException(e);
                     }
                 }
             }
-//            try {//Field field=((IPriorityFields) object).getPriorityFields();
-//                List<Field>  fieldList=((IPriorityFields) object).getPriorityFields();
 
-            /*System.out.println("object : "+object);
-            System.out.println("fieldList size : "+fieldList.size());
-            System.out.println("fieldList size : "+fieldList.get(0));
-            System.out.println("fieldList size : "+fieldList.get(1));
-            System.out.println("fieldList size : "+fieldList.get(2));
-            System.exit(0);*/
-//            System.out.println(fieldList.get(0));
-//            System.out.println(fieldList.get(1));
-//            System.exit(0);
             for (Field tmpField : priorityFieldList) {
 
                 tmpField.trySetAccessible();
@@ -72,27 +56,16 @@ public class PriorityFieldValue {
                 }
             }
 
-//                System.out.println(field.get(fieldName));
-//                System.out.println(((IPriorityFields) object).getPriorityFields().get(0).get(fieldName));
-//                System.out.println(object.getClass().getDeclaredField(fieldName));
-//            } catch (NoSuchFieldException e) {
-//                System.out.println("REQUEST FIELD NAME IS INVALID");
-//                throw new RuntimeException(e);
-//            } catch (IllegalAccessException e) {
-//                System.out.println("IllegalAccessException");
-//                throw new RuntimeException(e);
-//            }
         }
         if (primitiveWrapper.isPrimitive(object)) {
-            System.out.println(" TEST ::: " + object);
+//            System.out.println(" TEST ::: " + object);
+            return object;
         } else {
             System.out.println(object.getClass());
 //            System.out.println(object.getClass());
             System.out.println(" -------->  Hata firlatilacak");
 //            throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
+            return null;
         }
-
-
-//        return field.get(fieldName);
     }
 }

@@ -1,3 +1,6 @@
+/*
+
+Deger almak icin Bu Class yerine
 package org.aes.searchnode.dataaccess.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
@@ -10,12 +13,14 @@ import java.util.List;
 
 public class PriorityField {
     public Object getPriorityFieldValue(Object object, String fieldName) {
-        /*TODO
+        */
+/*TODO
          * Student : age, no,  return null
          * Employee : departman   return null
          * integer, String  works perfect
          *lanuage returns  toString() -> if need to get use composite fields, than it have to implements << IPriorityField >> interface
-         * */
+         * *//*
+
 //        System.out.println("E");
 
         Object value = null;
@@ -62,7 +67,8 @@ public class PriorityField {
         }
         System.out.println("null burdan mi geciyor check et :" + value);
         return value;
-       /* for (Field tmp : priorityFields) {
+       */
+/* for (Field tmp : priorityFields) {
             if (tmp.getName().equals(fieldName)) {
                 tmp.trySetAccessible();
                 try {
@@ -71,7 +77,8 @@ public class PriorityField {
                     System.out.println("tmp.get() error : " + e.getMessage());
                 }
             }
-        }*/
+        }*//*
+
 
 
     }
@@ -80,7 +87,8 @@ public class PriorityField {
         List<Object> valueList = new ArrayList<>();
         for (Object tmpObject : objectList) {
             valueList.add(getPriorityFieldValue(tmpObject, fieldName));
-          /*  if (tmpObject instanceof IPriorityFields) {
+          */
+/*  if (tmpObject instanceof IPriorityFields) {
                 IPriorityFields pf = (IPriorityFields) tmpObject;
                 List<Field> priorityFields = pf.getPriorityFields();
 
@@ -107,7 +115,9 @@ public class PriorityField {
                 }
 
 
-            } *//*else if (tmpObject instanceof Byte ||
+            } *//*
+*/
+/*else if (tmpObject instanceof Byte ||
                     tmpObject instanceof Short ||
                     tmpObject instanceof Integer ||
                     tmpObject instanceof Float ||
@@ -119,8 +129,10 @@ public class PriorityField {
                 System.out.print(tmpObject + ", ");
             } else {
                 throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
-            }*/
+            }*//*
+
         }
         return valueList;
     }
 }
+*/
