@@ -1,12 +1,14 @@
 package org.aes.searchnode.dataaccess.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
+import org.aes.searchnode.entities.concretes.PrimitiveWrapper;
 
 import java.lang.reflect.Field;
 import java.util.List;
 
 public class PriorityFieldValue {
-List<Field> priorityFieldList= null;
+    List<Field> priorityFieldList = null;
+    PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
 
     public PriorityFieldValue(List<Field> priorityFieldList) {
         this.priorityFieldList = priorityFieldList;
@@ -15,29 +17,31 @@ List<Field> priorityFieldList= null;
 //    public PriorityFieldValue() {
 //    }
 
-    public void getValueOfField(Object object){
-        getValueOfFieldByFieldName(object,null);
+    public void getValueOfField(Object object) {
+        getValueOfFieldByFieldName(object, null);
 
     }
-    public void getValueOfFieldByField(Object object,Field field){
-        getValueOfFieldByFieldName(object,field.getName());
+
+    public void getValueOfFieldByField(Object object, Field field) {
+        getValueOfFieldByFieldName(object, field.getName());
 
     }
-    public void getValueOfFieldByFieldName(Object object, String fieldName)  {
-        System.out.println("gelen obje  : "+object);
+
+    public void getValueOfFieldByFieldName(Object object, String fieldName) {
+        System.out.println("gelen obje  : " + object);
 //        System.exit(0);
-       // Object object = field;
+        // Object object = field;
         if (object instanceof IPriorityFields) {
             System.out.println("AAAAAAAAAAAAAAAAA");
-            if(fieldName==null){
+            if (fieldName == null) {
                 System.out.println("Please fill FieldName");
             }
-            for(Field tmp : priorityFieldList){
+            for (Field tmp : priorityFieldList) {
 
-                if(tmp.getName().equals(fieldName)){
+                if (tmp.getName().equals(fieldName)) {
                     tmp.trySetAccessible();
                     try {
-                        System.out.println("requested value of object is : "+tmp.get(object));
+                        System.out.println("requested value of object is : " + tmp.get(object));
                         System.exit(0);
                     } catch (IllegalAccessException e) {
                         System.out.println("cathc dusut");
@@ -57,16 +61,16 @@ List<Field> priorityFieldList= null;
 //            System.out.println(fieldList.get(0));
 //            System.out.println(fieldList.get(1));
 //            System.exit(0);
-                for(Field tmpField : priorityFieldList){
+            for (Field tmpField : priorityFieldList) {
 
-                    tmpField.trySetAccessible();
-                    System.out.println("----------->  tmpField.getName : "+tmpField.getName()+" / fieldName "+fieldName);
-                    if(tmpField.getName().equals(fieldName)){
-                        System.out.println("CCCCCCCCCC");
+                tmpField.trySetAccessible();
+                System.out.println("----------->  tmpField.getName : " + tmpField.getName() + " / fieldName " + fieldName);
+                if (tmpField.getName().equals(fieldName)) {
+                    System.out.println("CCCCCCCCCC");
 
-                        System.out.println("tmpField : "+tmpField+ " / fieldName : "+fieldName);
-                    }
+                    System.out.println("tmpField : " + tmpField + " / fieldName : " + fieldName);
                 }
+            }
 
 //                System.out.println(field.get(fieldName));
 //                System.out.println(((IPriorityFields) object).getPriorityFields().get(0).get(fieldName));
@@ -79,15 +83,7 @@ List<Field> priorityFieldList= null;
 //                throw new RuntimeException(e);
 //            }
         }
-        if (object instanceof Byte ||
-                object instanceof Short ||
-                object instanceof Integer ||
-                object instanceof Float ||
-                object instanceof Double ||
-                object instanceof Boolean ||
-                object instanceof Character ||
-                object instanceof String
-        ) {
+        if (primitiveWrapper.isPrimitive(object)) {
             System.out.println(" TEST ::: " + object);
         } else {
             System.out.println(object.getClass());
