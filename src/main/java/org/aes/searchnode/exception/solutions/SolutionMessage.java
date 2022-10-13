@@ -1,5 +1,8 @@
 package org.aes.searchnode.exception.solutions;
 
+import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
+import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
+
 public class SolutionMessage {
     private static final String prefixText = "\n";
     private static final String solutionAdvice = "SOLUTION ADVICE : ";
@@ -18,6 +21,12 @@ public class SolutionMessage {
     }
     public static String getSolutionInvalidFieldOrFieldNameException(Class clazz) {
         String msg = prefixText + solutionAdvice + "Please enter a valid field or field name includes in " + clazz.getSimpleName() + " Object";
+        return msg;
+    }
+
+    public static String getSolutionDifferentClassInFieldOrderAndFieldValueProcessObjectException() {
+        String msg = prefixText + solutionAdvice + PriorityFieldOrder.class.getSimpleName()+" and "+PriorityFieldValue.class.getSimpleName()+
+        " must be proceed on same Object";
         return msg;
     }
 }

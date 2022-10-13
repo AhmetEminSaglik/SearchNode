@@ -63,7 +63,7 @@ public class PriorityFieldOrder {
     }
 
 
-    public List<Field> getPriorityFieldsName() {
+    public List<Field> getAllPriorityFieldsName() {
         //obje yerine clazz ile islemler yapilacak
         return fieldNameList;
     }
