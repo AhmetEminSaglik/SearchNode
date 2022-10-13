@@ -1,12 +1,12 @@
 package org.aes.searchnode.dataaccess.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
-import org.aes.searchnode.exception.NotImplementedRequiredInterfaceError;
+import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
+import org.aes.searchnode.exception.NotImplementedRequiredInterfaceErrorException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PriorityField {
     public Object getPriorityFieldValue(Object object, String fieldName) {
@@ -21,7 +21,13 @@ public class PriorityField {
         Object value = null;
         if (object instanceof IPriorityFields) {
             IPriorityFields pf = (IPriorityFields) object;
-            List<Field> priorityFields = pf.getPriorityFields();
+            List<Field> priorityFields = null;
+            try {
+                priorityFields = pf.getPriorityFields();
+            } catch (NotFoundAnyDeclaredFieldException e) {
+                System.out.println(e.getMessage());
+                throw new RuntimeException(e);
+            }
 
             for (Field tmp : priorityFields) {
                 if (tmp.getName().equals(fieldName)) {
@@ -47,7 +53,12 @@ public class PriorityField {
         ) {
             value = object;
         } else {
-            throw new NotImplementedRequiredInterfaceError(object.getClass());
+            try {
+                throw new NotImplementedRequiredInterfaceErrorException(object.getClass());
+            } catch (NotImplementedRequiredInterfaceErrorException e) {
+                System.out.println(e.getMessage());
+                throw new RuntimeException(e);
+            }
         }
         System.out.println("null burdan mi geciyor check et :" + value);
         return value;
@@ -107,7 +118,7 @@ public class PriorityField {
             ) {
                 System.out.print(tmpObject + ", ");
             } else {
-                throw new NotImplementedRequiredInterfaceError(tmpObject.getClass());
+                throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
             }*/
         }
         return valueList;

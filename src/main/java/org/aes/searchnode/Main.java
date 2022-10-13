@@ -9,8 +9,6 @@ import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.Employee;
 import org.aes.searchnode.entities.concretes.Language;
 import org.aes.searchnode.entities.concretes.Student;
-import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
-import org.aes.searchnode.exception.NotImplementedRequiredInterfaceError;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -56,11 +54,13 @@ public class Main {
         ) {
             System.out.print(object + ", ");
         } else {
-            throw new NotImplementedRequiredInterfaceError(object.getClass());
+            throw new NotImplementedRequiredInterfaceErrorException(object.getClass());
         }*/
     }
 
     public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
+
+
         Main main = new Main();
         int[] numbers = {12, 3, 4};
         String[] text = {"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
@@ -113,7 +113,7 @@ public class Main {
             PriorityFieldValue priorityFieldValue = new PriorityFieldValue(pfList);
             System.out.println("List<String> fieldNameList= pfStudent.getPriorityFieldsName(); : ");
             for (Student tmp : students) {
-                priorityFieldValue.getValueOfFieldByField(tmp, pfStudent.getPriorityFieldName(4));
+                priorityFieldValue.getValueOfFieldByField(tmp, pfStudent.getPriorityFieldName(2));
 //                main.getFieldInfo(tmp,"no");
 //                if(tmp.getPriorityFields().size()>0)
 //                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
@@ -134,7 +134,8 @@ public class Main {
             }
             System.out.println("\n----------------");
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
+//            System.err.println(e.getMessage());
         }
 
         NodeSearch<Integer> nsInteger = new NodeSearch();

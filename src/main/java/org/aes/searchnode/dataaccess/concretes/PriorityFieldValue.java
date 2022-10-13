@@ -1,10 +1,8 @@
 package org.aes.searchnode.dataaccess.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
-import org.aes.searchnode.exception.NotImplementedRequiredInterfaceError;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PriorityFieldValue {
@@ -95,7 +93,7 @@ List<Field> priorityFieldList= null;
             System.out.println(object.getClass());
 //            System.out.println(object.getClass());
             System.out.println(" -------->  Hata firlatilacak");
-//            throw new NotImplementedRequiredInterfaceError(tmpObject.getClass());
+//            throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
         }
 
 

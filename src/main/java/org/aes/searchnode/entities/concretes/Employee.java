@@ -1,11 +1,6 @@
 package org.aes.searchnode.entities.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
-import org.aes.searchnode.exception.NotFoundAnyDeclaredField;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Employee implements IPriorityFields {
     private String departman;
@@ -48,7 +43,7 @@ public class Employee implements IPriorityFields {
             return fieldList;
         } catch (Exception e) {
 
-            throw new NotFoundAnyDeclaredField(getClass());
+            throw new NotFoundAnyDeclaredFieldException(getClass());
         }
 //        return IPriorityFields.super.getPriorityFields();
     }*/

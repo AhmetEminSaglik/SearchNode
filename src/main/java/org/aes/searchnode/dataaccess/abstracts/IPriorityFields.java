@@ -1,17 +1,16 @@
 package org.aes.searchnode.dataaccess.abstracts;
 
-import org.aes.searchnode.exception.NotFoundAnyDeclaredField;
-import org.aes.searchnode.exception.NotImplementedRequiredInterfaceError;
+import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
+import org.aes.searchnode.exception.NotImplementedRequiredInterfaceErrorException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public interface IPriorityFields {
     List<Field> list = new ArrayList<>();
 
-    default List<Field> getPriorityFields() {
+    default List<Field> getPriorityFields() throws NotFoundAnyDeclaredFieldException {
         List<Field> list = new ArrayList<>();
             for(int i=0;i<getClass().getDeclaredFields().length;i++){
                 list.add(getClass().getDeclaredFields()[i]);
@@ -21,13 +20,13 @@ public interface IPriorityFields {
         if(list.size()>0)
             return list;
 //        throw new IllegalArgumentException()
-        throw new NotFoundAnyDeclaredField(getClass());
+        throw new NotFoundAnyDeclaredFieldException(getClass());
 //        System.out.println("Have no declared fields");
 //        return null;
 
     }
 
-default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) { // Student[10] geldi
+default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) throws NotFoundAnyDeclaredFieldException, NotImplementedRequiredInterfaceErrorException { // Student[10] geldi
         List<Object> valueList = new ArrayList<>();
         for (Object tmpObject : fieldListObjects) {
             if (tmpObject instanceof IPriorityFields) {
@@ -68,7 +67,7 @@ default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String 
             ) {
                 System.out.print(tmpObject + ", ");
             } else {
-                throw new NotImplementedRequiredInterfaceError(tmpObject.getClass());
+                throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
             }
         }
         return valueList;

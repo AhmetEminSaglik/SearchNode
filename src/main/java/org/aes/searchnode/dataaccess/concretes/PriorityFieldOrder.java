@@ -1,5 +1,8 @@
 package org.aes.searchnode.dataaccess.concretes;
 
+import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
+import org.aes.searchnode.exception.NotFoundRequestedFieldException;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,14 +16,21 @@ public class PriorityFieldOrder {
         this.clazz = clazz;
     }
 
-    public void setPriorityFieldsInRequestOrder(List<Object> fieldList) {
+    public void setPriorityFieldsInRequestOrder(List<Object> fieldList) throws NotFoundAnyDeclaredFieldException {
+        if (fieldList.size() == 0) {
+            throw new NotFoundAnyDeclaredFieldException(clazz);
+        }
         //obje yerine clazz ile islemler yapilacak
 
     }
 
-    public void setPriorityFieldsInDefaultOrder() {
+    public void setPriorityFieldsInDefaultOrder() throws NotFoundAnyDeclaredFieldException {
         //obje yerine clazz ile islemler yapilacak
         fieldNameList.addAll(Arrays.asList(clazz.getDeclaredFields()));
+        if (fieldNameList.size() == 0) {
+            throw new NotFoundAnyDeclaredFieldException(clazz);
+        }
+
 //        System.out.println(fieldNameList.size());
 
     }
@@ -43,12 +53,12 @@ public class PriorityFieldOrder {
         return null;
     }
 
-    public Field getPriorityFieldName(int index) { // returns first index, this is for String,Integer...Byte
+    public Field getPriorityFieldName(int index) throws NotFoundRequestedFieldException { // returns first index, this is for String,Integer...Byte
         //obje yerine clazz ile islemler yapilacak
         if (fieldNameList.size() > index) {
             return fieldNameList.get(index);
         }
-        return null;
+        throw new NotFoundRequestedFieldException(clazz, fieldNameList.size());
 
     }
 
