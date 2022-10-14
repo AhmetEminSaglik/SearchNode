@@ -24,7 +24,7 @@ public class SolutionMessage {
         return msg;
     }
 
-    public static String getSolutionDifferentClassInFieldOrderAndFieldValueProcessObjectException() {
+    public static String getSolutionClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException() {
         String msg = prefixText + solutionAdvice + PriorityFieldOrder.class.getSimpleName()+" and "+PriorityFieldValue.class.getSimpleName()+
         " must be proceed on same Object";
         return msg;

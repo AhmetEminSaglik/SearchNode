@@ -2,7 +2,7 @@ package org.aes.searchnode.dataaccess.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
 import org.aes.searchnode.entities.concretes.PrimitiveWrapper;
-import org.aes.searchnode.exception.DifferentClassInFieldOrderAndFieldValueProcessObjectException;
+import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotImplementedRequiredInterfaceErrorException;
 
@@ -20,15 +20,15 @@ public class PriorityFieldValue {
         this.priorityFieldList = priorityFieldList;
     }
 
-    public Object getValueOfField(Object object) throws InvalidFieldOrFieldNameException, NotImplementedRequiredInterfaceErrorException, DifferentClassInFieldOrderAndFieldValueProcessObjectException {
+    public Object getValueOfField(Object object) throws InvalidFieldOrFieldNameException, NotImplementedRequiredInterfaceErrorException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException {
         return getValueOfField(object, "");
     }
 
-    public Object getValueOfField(Object object, Field field) throws InvalidFieldOrFieldNameException, NotImplementedRequiredInterfaceErrorException, DifferentClassInFieldOrderAndFieldValueProcessObjectException {
+    public Object getValueOfField(Object object, Field field) throws InvalidFieldOrFieldNameException, NotImplementedRequiredInterfaceErrorException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException {
         return getValueOfField(object, field.getName());
     }
 
-    public Object getValueOfField(Object object, String fieldName) throws InvalidFieldOrFieldNameException, NotImplementedRequiredInterfaceErrorException, DifferentClassInFieldOrderAndFieldValueProcessObjectException {
+    public Object getValueOfField(Object object, String fieldName) throws InvalidFieldOrFieldNameException, NotImplementedRequiredInterfaceErrorException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException {
 
         if (primitiveWrapper.isPrimitive(object)) {
             return object;
@@ -48,7 +48,7 @@ public class PriorityFieldValue {
                 }
             }
             if (!isFieldOrderClassEqualsToFieldValueClass(object)) {
-                throw new DifferentClassInFieldOrderAndFieldValueProcessObjectException(clazz,object.getClass());
+                throw new ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException(clazz,object.getClass());
             }
             throw new InvalidFieldOrFieldNameException(object.getClass(), fieldName);
         } else {

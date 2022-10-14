@@ -96,7 +96,7 @@ public class Main {
             List<Field> pfEmployeeList= pfOrderEmployee.getAllPriorityFieldsName();
             PriorityFieldValue pfValueEmployee= new PriorityFieldValue  (Employee.class,pfEmployeeList);
             for(Employee tmp : employees){
-                pfValueStudent.getValueOfField(tmp,/*pfOrderEmployee.getPriorityFieldName(0)*/"deparman");
+                pfValueEmployee.getValueOfField(tmp,/*pfOrderEmployee.getPriorityFieldName(0)*/"departman");
             }
             System.out.println("\n----------------");
         } catch (Exception e) {
