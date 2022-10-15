@@ -4,13 +4,12 @@ package org.aes.searchnode;
 import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
-import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
-import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
+
 import java.math.BigDecimal;
 import java.util.*;
 
 public class Main {
-    static PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
+//    static PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
 
     static void printList(Object[] objects, PriorityFieldValue priorityFieldValue, String fieldName) {
         System.out.println("----------------------------  ARRAY : ");
@@ -18,11 +17,9 @@ public class Main {
         try {
 
             for (Object tmp : objects) {
-                    System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp,fieldName));
+                System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
             }
-        } catch (InvalidFieldOrFieldNameException e) {
-            throw new RuntimeException(e);
-        } catch (ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -32,16 +29,14 @@ public class Main {
         System.out.println(objects.getClass().getSimpleName());
         try {
             for (Object tmp : objects) {
-                     System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp,fieldName));
+                System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
             }
-        } catch (InvalidFieldOrFieldNameException e) {
-            throw new RuntimeException(e);
-        } catch (ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
+    public static void main(String[] args)  {
 
         Integer[] numbers = {12, 3, 4};
         List<Integer> numberList = new ArrayList<>();
@@ -73,16 +68,17 @@ public class Main {
         SpecialString[] specialString = {new SpecialString("1"), new SpecialString("2"), new SpecialString("3"), new SpecialString("4")};
 
         try {
+
             PriorityFieldOrder pfoInteger = new PriorityFieldOrder(Integer.class);
             PriorityFieldValue pfvInteger = new PriorityFieldValue(pfoInteger);
-            printList(numbers, pfvInteger,"");
-            printList(numberList, pfvInteger,"");
+            printList(numbers, pfvInteger, "");
+            printList(numberList, pfvInteger, "");
 
             PriorityFieldOrder pfoStudent = new PriorityFieldOrder(Student.class);
             PriorityFieldValue pfvStudent = new PriorityFieldValue(pfoStudent);
-            String fieldName=pfoStudent.getPriorityFieldName(0).getName();
-            printList(students, pfvStudent,fieldName);
-            printList(studentList, pfvStudent,fieldName);
+            String fieldName = pfoStudent.getPriorityFieldName(0).getName();
+            printList(students, pfvStudent, fieldName);
+            printList(studentList, pfvStudent, fieldName);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -214,7 +210,7 @@ public class Main {
         } catch (NotFoundRequestedFieldException e) {
             throw new RuntimeException(e);
         }
-        NodeSearch<Integer> nsInteger = new NodeSearch();
+        SearchNode<Integer> nsInteger = new SearchNode();
 //        nsInteger.ad
         List<Field> fieldPriority = new ArrayList<Field>();
 //        fieldPriority.add(list.get(1)); //lastname
@@ -320,14 +316,14 @@ public class Main {
 
         System.out.println(bByte.getClass());
 
-        NodeSearch<String> nsString = new NodeSearch();
-        NodeSearch<Integer> nsInt = new NodeSearch();
-        NodeSearch<Student> nsStudent = new NodeSearch();
+        SearchNode<String> nsString = new SearchNode();
+        SearchNode<Integer> nsInt = new SearchNode();
+        SearchNode<Student> nsStudent = new SearchNode();
 
         System.exit(0);
-//        NodeSearch<Integer> nsInteger = new NodeSearch<>();
+//        SearchNode<Integer> nsInteger = new SearchNode<>();
 //        System.out.println(nsInteger.getPriorityFields());
-//        NodeSearch<Student> nsStudent = new NodeSearch<>();
+//        SearchNode<Student> nsStudent = new SearchNode<>();
 //        System.out.println("Student : " + nsStudent.getPriorityFields());
         List<? extends IPriorityFields> ipfList = new ArrayList<>();
         Student s = new Student();

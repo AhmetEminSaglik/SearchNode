@@ -1,9 +1,9 @@
 package org.aes.searchnode;
 
-import java.util.List;
-
-public class NodeSearch<T extends Object>/* implements IPriorityFields */ {
+public class SearchNode <T extends Object>/* implements IPriorityFields */ {
     private int deep;
+
+ /*   private int deep;
     T data;
 
     public void add(T t) {
@@ -31,7 +31,7 @@ public class NodeSearch<T extends Object>/* implements IPriorityFields */ {
 
     public void setData(T data) {
         this.data = data;
-    }
+    }*/
 
 //    @Override
 //    public List<Field> getPriorityFields() {
