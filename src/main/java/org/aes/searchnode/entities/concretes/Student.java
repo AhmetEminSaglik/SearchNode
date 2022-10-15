@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student /*implements IPriorityFields*/ {
+public class Student {
     private String name;
     private String lastName;
 //    List<Student> studentDirectionList = new ArrayList<>();
@@ -75,28 +75,4 @@ public class Student /*implements IPriorityFields*/ {
                 '}';
     }
 
-/*   @Override
-    public List<Field> getPriorityFields() {
-      *//*  List<Field> list = new ArrayList<>();
-        try {
-            list.add(this.getClass().getDeclaredField("lastName"));
-            list.add(this.getClass().getDeclaredField("no"));
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        }*//*
-        return list;
-    }*/
-//    public Student getStudent(){
-//        return  new Student(name,lastName,age,no);
-//    }
-
-//    public StudentDirection getStudentDirection() {
-//        if (studentDirection == null)
-//            studentDirection = new StudentConfiguration().getStudentDirection();
-//        return studentDirection;
-//    }
-//
-//    public void setStudentDirection(StudentDirection studentDirection) {
-//        this.studentDirection = studentDirection;
-//    }
 }

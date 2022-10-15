@@ -6,10 +6,6 @@ import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
-import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
-import org.aes.searchnode.exception.NotFoundRequestedFieldException;
-
-import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.*;
 
