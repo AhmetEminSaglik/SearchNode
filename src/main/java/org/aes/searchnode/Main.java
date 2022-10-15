@@ -3,25 +3,68 @@ package org.aes.searchnode;
 
 import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
-import org.aes.searchnode.entities.concretes.Employee;
-import org.aes.searchnode.entities.concretes.Language;
-import org.aes.searchnode.entities.concretes.Student;
+import org.aes.searchnode.entities.concretes.*;
+import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
+import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
+import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Main {
+    static PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
+
+    static void printList(Object[] objects, PriorityFieldValue priorityFieldValue, String fieldName) {
+        System.out.println("----------------------------  ARRAY : ");
+        System.out.println(objects.getClass().getSimpleName());
+        try {
+
+            for (Object tmp : objects) {
+                    System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp,fieldName));
+            }
+        } catch (InvalidFieldOrFieldNameException e) {
+            throw new RuntimeException(e);
+        } catch (ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static void printList(List<?> objects, PriorityFieldValue priorityFieldValue, String fieldName) {
+        System.out.println("++++++++++++++++++++++++++++  LISTE : ");
+        System.out.println(objects.getClass().getSimpleName());
+        try {
+            for (Object tmp : objects) {
+                     System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp,fieldName));
+            }
+        } catch (InvalidFieldOrFieldNameException e) {
+            throw new RuntimeException(e);
+        } catch (ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
 
-        int[] numbers = {12, 3, 4};
+        Integer[] numbers = {12, 3, 4};
+        List<Integer> numberList = new ArrayList<>();
+        numberList.add(101);
+        numberList.add(102);
+        numberList.add(103);
+
+        BigDecimal[] bigDecimals = {new BigDecimal("11.11"), new BigDecimal("12.999"), new BigDecimal("0.001")};
         String[] text = {"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+
         Student[] students = {
                 new Student("Ahmet", "SAGLIK", 24, 1001),
                 new Student("Omer", "Koramaz", 20, 1002),
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(new Student("Ahmet List", "SAGLIK", 24, 1001));
+        studentList.add(new Student("Omer List", "Koramaz", 20, 1002));
+        studentList.add(new Student("Aynur List", "YILDIRIM", 25, 1003));
 //        Employee[] employees = {new Employee(),new Employee(),new Employee()};
         Language[] languages = {new Language(1, "Turkish", 2), new Language(2, "English", 1), new Language(3, "Spanish", 3)};
         Employee[] employees = {
@@ -29,34 +72,57 @@ public class Main {
                 new Employee("Human Resources", 222222222, languages),
                 new Employee("IT", 333333333, languages)
         };
-        PriorityFieldOrder pfInteger = new PriorityFieldOrder(Integer.class);
+        Boolean[] booleans = {true, false, false, true, true, false};
+        Character[] characters = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r', 's'};
+        SpecialString[] specialString = {new SpecialString("1"), new SpecialString("2"), new SpecialString("3"), new SpecialString("4")};
+
         try {
-            pfInteger.setPriorityFieldsInDefaultOrder();
-        } catch (NotFoundAnyDeclaredFieldException e) {
-            throw new RuntimeException(e);
+            PriorityFieldOrder pfoInteger = new PriorityFieldOrder(Integer.class);
+            PriorityFieldValue pfvInteger = new PriorityFieldValue(pfoInteger);
+            printList(numbers, pfvInteger,"");
+            printList(numberList, pfvInteger,"");
+
+            PriorityFieldOrder pfoStudent = new PriorityFieldOrder(Student.class);
+            PriorityFieldValue pfvStudent = new PriorityFieldValue(pfoStudent);
+            String fieldName=pfoStudent.getPriorityFieldName(0).getName();
+            printList(students, pfvStudent,fieldName);
+            printList(studentList, pfvStudent,fieldName);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        List<Field> fnIntegerList = pfInteger.getAllPriorityFieldsName();
 
 
-        PriorityFieldValue pfvInteger = new PriorityFieldValue(Integer.class,fnIntegerList);
+      /*  try {
+//            AbstractPriorityFieldOrder pfooInteger = new WrapperObjectPriorityFieldOrder(Integer.class);
+//            IPriorityFieldValue pfvInteger= pfoInteger.getiPriorityFieldValue();
+//            pfvInteger.getValueOfField()
 
-        try {
+
+//            System.exit(0);
+
+            PriorityFieldOrder pfoInteger = new PriorityFieldOrder(Integer.class);
+//            pfoInteger.setPriorityFieldsInDefaultOrder();
+//            List<Field> fnIntegerList = pfoInteger.getAllPriorityFieldsName();
+            PriorityFieldValue pfvInteger = new PriorityFieldValue(pfoInteger*//*Integer.class, fnIntegerList*//*);
+
+
             System.out.println("Integer : ");
             for (Integer tmp : numbers) {
-                System.out.println("Read Value : "+pfvInteger.getValueOfField(tmp));
+                System.out.println("Read Value : " + pfvInteger.getValueOfField(tmp));
             }
             System.out.println("\n----------------");
 
             System.out.println("String : ");
-            PriorityFieldOrder pfString = new PriorityFieldOrder(String.class);
-            pfString.setPriorityFieldsInDefaultOrder();
-            List<Field> fnStringList = pfString.getAllPriorityFieldsName();
+            PriorityFieldOrder pfoString = new PriorityFieldOrder(String.class);
+            pfoString.setPriorityFieldsInDefaultOrder();
+            List<Field> fnStringList = pfoString.getAllPriorityFieldsName();
 
 
-            PriorityFieldValue pfvString = new PriorityFieldValue(String.class,fnStringList);
+            PriorityFieldValue pfvString = new PriorityFieldValue(*//*String.class, fnStringList*//*pfoString);
 
             for (String tmp : text) {
-                System.out.println("Read Value : "+pfvString.getValueOfField(tmp));
+                System.out.println("Read Value : " + pfvString.getValueOfField(tmp));
             }
 //            for (Field tmp : fnStringList) {
 //                main.getFieldInfo(tmp,null);
@@ -69,14 +135,14 @@ public class Main {
 //            System.exit(0);
 
             System.out.println("Student : ");
-            PriorityFieldOrder pfStudent = new PriorityFieldOrder(Student.class);
-            pfStudent.setPriorityFieldsInDefaultOrder();
-            List<Field> pfList = pfStudent.getAllPriorityFieldsName();
+            PriorityFieldOrder pfoStudent = new PriorityFieldOrder(Student.class);
+            pfoStudent.setPriorityFieldsInDefaultOrder();
+            List<Field> pfList = pfoStudent.getAllPriorityFieldsName();
 //            System.exit(0);
-            PriorityFieldValue pfValueStudent = new PriorityFieldValue(Student.class,pfList);
+            PriorityFieldValue pfValueStudent = new PriorityFieldValue(*//*Student.class, pfList*//*pfoStudent);
             System.out.println("List<String> fieldNameList= pfStudent.getAllPriorityFieldsName(); : ");
             for (Student tmp : students) {
-                pfValueStudent.getValueOfField(tmp, pfStudent.getPriorityFieldName(3));
+                pfValueStudent.getValueOfField(tmp, pfoStudent.getPriorityFieldName(3));
 //                main.getFieldInfo(tmp,"no");
 //                if(tmp.getPriorityFields().size()>0)
 //                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
@@ -91,25 +157,73 @@ public class Main {
             System.out.println("\n----------------");
 //            System.exit(0);
 
-            PriorityFieldOrder pfOrderEmployee =new PriorityFieldOrder(Employee.class);
-            pfOrderEmployee.setPriorityFieldsInDefaultOrder();
-            List<Field> pfEmployeeList= pfOrderEmployee.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueEmployee= new PriorityFieldValue  (Employee.class,pfEmployeeList);
-            for(Employee tmp : employees){
-                pfValueEmployee.getValueOfField(tmp,/*pfOrderEmployee.getPriorityFieldName(0)*/"departman");
+
+            *//*
+         * (Abstract)PriorityFieldOrder pfOrderEmployee = new PriorityFieldOrder(Employee.class);
+         * pfOrderEmployee.setPriorityFieldsInDefaultOrder();
+         * (Abstract) PriorityFieldValue pfValueEmployee = new PriorityFieldValue(Employee.class, null); // PriorityFieldOrder alsa
+         * *//*
+            PriorityFieldOrder pfOrderEmployee = new PriorityFieldOrder(Employee.class);
+//            pfOrderEmployee.setPriorityFieldsInDefaultOrder();
+            List<Field> pfEmployeeList = pfOrderEmployee.getAllPriorityFieldsName();
+            PriorityFieldValue pfValueEmployee = new PriorityFieldValue(*//*Employee.class, pfEmployeeList*//*pfOrderEmployee);
+            for (Employee tmp : employees) {
+                pfValueEmployee.getValueOfField(tmp, pfOrderEmployee.getPriorityFieldName(0));
             }
             System.out.println("\n----------------");
-        } catch (Exception e) {
+       *//* } catch (Exception e) {
             e.printStackTrace();
 //            System.err.println(e.getMessage());
         }
 
+        try {*//*
+            PriorityFieldOrder pfOBigDecimal = new PriorityFieldOrder(BigDecimal.class);
+            pfOBigDecimal.setPriorityFieldsInDefaultOrder();
+            List<Field> pfBigDecimalList = pfOBigDecimal.getAllPriorityFieldsName();
+            PriorityFieldValue pfValueBigDecimal = new PriorityFieldValue(pfOBigDecimal*//*BigDecimal.class, pfBigDecimalList*//*);
+            for (BigDecimal tmp : bigDecimals) {
+                System.out.println("big deciemal : " + pfValueBigDecimal.getValueOfField(tmp));
+            }
+            PriorityFieldOrder pfOBooleans = new PriorityFieldOrder(Boolean.class);
+            pfOBooleans.setPriorityFieldsInDefaultOrder();
+            List<Field> pfBooleansList = pfOBooleans.getAllPriorityFieldsName();
+            PriorityFieldValue pfValueBoolean = new PriorityFieldValue(pfOBooleans*//*Boolean.class, pfBooleansList*//*);
+            for (Boolean tmp : booleans) {
+                System.out.println("booleans : " + pfValueBoolean.getValueOfField(tmp));
+            }
+            System.out.println("-------------");
+            PriorityFieldOrder pfOCharacter = new PriorityFieldOrder(Character.class);
+            pfOCharacter.setPriorityFieldsInDefaultOrder();
+            List<Field> pfCharacterList = pfOCharacter.getAllPriorityFieldsName();
+            PriorityFieldValue pfValueCharacter = new PriorityFieldValue(pfOCharacter*//*Character.class, pfCharacterList*//*);
+            for (Character tmp : characters) {
+                System.out.println("Characters : " + pfValueCharacter.getValueOfField(tmp));
+            }
+
+            PriorityFieldOrder pfOSpecialString = new PriorityFieldOrder(SpecialString.class);
+            pfOSpecialString.setPriorityFieldsInDefaultOrder();
+            List<Field> pfSpecialStringList = pfOSpecialString.getAllPriorityFieldsName();
+            PriorityFieldValue pfValueSpecialString = new PriorityFieldValue(pfOSpecialString*//*SpecialString.class, null*//*);
+            for (SpecialString tmp : specialString) {
+                System.out.println("Special string : " + pfValueSpecialString.getValueOfField(tmp));
+            }
+
+
+        } catch (InvalidFieldOrFieldNameException e) {
+            throw new RuntimeException(e);
+        } catch (ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException e) {
+            throw new RuntimeException(e);
+        } catch (NotFoundAnyDeclaredFieldException e) {
+            throw new RuntimeException(e);
+        } catch (NotFoundRequestedFieldException e) {
+            throw new RuntimeException(e);
+        }
         NodeSearch<Integer> nsInteger = new NodeSearch();
 //        nsInteger.ad
         List<Field> fieldPriority = new ArrayList<Field>();
 //        fieldPriority.add(list.get(1)); //lastname
 //        fieldPriority.add(list.get(1));
-        /*
+        *//*
          *
          * business
          *   abstracts

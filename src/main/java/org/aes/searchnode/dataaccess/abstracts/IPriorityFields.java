@@ -1,7 +1,8 @@
+/*
 package org.aes.searchnode.dataaccess.abstracts;
 
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
-import org.aes.searchnode.exception.NotImplementedRequiredInterfaceErrorException;
+import org.aes.searchnode.exception.notinuse.NotImplementedRequiredInterfaceException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public interface IPriorityFields {
     List<Field> list = new ArrayList<>();
 
     default List<Field> getPriorityFields() throws NotFoundAnyDeclaredFieldException {
+        System.out.println("11111111111111111111111111111111111111111111111111111111111111111");
         List<Field> list = new ArrayList<>();
             for(int i=0;i<getClass().getDeclaredFields().length;i++){
                 list.add(getClass().getDeclaredFields()[i]);
@@ -26,7 +28,7 @@ public interface IPriorityFields {
 
     }
 
-default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) throws NotFoundAnyDeclaredFieldException, NotImplementedRequiredInterfaceErrorException { // Student[10] geldi
+default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String fieldName) throws NotFoundAnyDeclaredFieldException, NotImplementedRequiredInterfaceException { // Student[10] geldi
         List<Object> valueList = new ArrayList<>();
         for (Object tmpObject : fieldListObjects) {
             if (tmpObject instanceof IPriorityFields) {
@@ -67,7 +69,7 @@ default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String 
             ) {
                 System.out.print(tmpObject + ", ");
             } else {
-                throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
+                throw new NotImplementedRequiredInterfaceException(tmpObject.getClass());
             }
         }
         return valueList;
@@ -75,3 +77,4 @@ default List<Object> getPriorityFieldValue(List<Field> fieldListObjects, String 
 
 
 }
+*/

@@ -1,8 +1,8 @@
 package org.aes.searchnode.entities.concretes;
 
-import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
+//import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
 
-public class Employee implements IPriorityFields {
+public class Employee /*implements IPriorityFields*/ {
     private String departman;
     private int tc;
     private Language[] language;

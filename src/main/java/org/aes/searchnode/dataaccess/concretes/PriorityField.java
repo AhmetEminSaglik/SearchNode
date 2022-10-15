@@ -5,7 +5,7 @@ package org.aes.searchnode.dataaccess.concretes;
 
 import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
-import org.aes.searchnode.exception.NotImplementedRequiredInterfaceErrorException;
+import org.aes.searchnode.exception.notinuse.NotImplementedRequiredInterfaceException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -59,8 +59,8 @@ public class PriorityField {
             value = object;
         } else {
             try {
-                throw new NotImplementedRequiredInterfaceErrorException(object.getClass());
-            } catch (NotImplementedRequiredInterfaceErrorException e) {
+                throw new NotImplementedRequiredInterfaceException(object.getClass());
+            } catch (NotImplementedRequiredInterfaceException e) {
                 System.out.println(e.getMessage());
                 throw new RuntimeException(e);
             }
@@ -128,7 +128,7 @@ public class PriorityField {
             ) {
                 System.out.print(tmpObject + ", ");
             } else {
-                throw new NotImplementedRequiredInterfaceErrorException(tmpObject.getClass());
+                throw new NotImplementedRequiredInterfaceException(tmpObject.getClass());
             }*//*
 
         }

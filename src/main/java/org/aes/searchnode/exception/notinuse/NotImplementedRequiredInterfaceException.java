@@ -1,11 +1,10 @@
-package org.aes.searchnode.exception;
+package org.aes.searchnode.exception.notinuse;
 
 import org.aes.searchnode.exception.solutions.SolutionMessage;
 
-public class NotImplementedRequiredInterfaceErrorException extends Exception {
-    public NotImplementedRequiredInterfaceErrorException(Class clazz) {
+public class NotImplementedRequiredInterfaceException extends Exception {
+/*    public NotImplementedRequiredInterfaceException(Class clazz) {
         super("Have not implemented <IPriorityFields> interface to : " + clazz.getSimpleName() + " Object."
                 + SolutionMessage.getSolutionNotImplementedRequiredInterfaceError(clazz));
-//        printStackTrace();
-    }
+    }*/
 }

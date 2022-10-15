@@ -9,11 +9,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PriorityFieldOrder {
+    /*TODO
+     *  List ve clazz newlenerek dondurulecek*/
     List<Field> fieldNameList = new ArrayList<>();
     Class clazz;
 
-    public PriorityFieldOrder(Class clazz) {
+    public PriorityFieldOrder(Class clazz) throws NotFoundAnyDeclaredFieldException {
         this.clazz = clazz;
+        setPriorityFieldsInDefaultOrder();
     }
 
     public void setPriorityFieldsInRequestOrder(List<Object> fieldList) throws NotFoundAnyDeclaredFieldException {
@@ -26,6 +29,8 @@ public class PriorityFieldOrder {
 
     public void setPriorityFieldsInDefaultOrder() throws NotFoundAnyDeclaredFieldException {
         //obje yerine clazz ile islemler yapilacak
+
+
         fieldNameList.addAll(Arrays.asList(clazz.getDeclaredFields()));
         if (fieldNameList.size() == 0) {
             throw new NotFoundAnyDeclaredFieldException(clazz);
@@ -67,7 +72,16 @@ public class PriorityFieldOrder {
         //obje yerine clazz ile islemler yapilacak
         return fieldNameList;
     }
-/*
+
+    public List<Field> getFieldNameList() {
+//        Security precaution : In case of changing any element of list prevents changing original list
+        return new ArrayList(fieldNameList);
+    }
+
+    public Class getClazz() {
+        return clazz;
+    }
+    /*
 Asagisi Field uzerinden islem yapmak icin
 List<Object> tList = new ArrayList<>();
 
@@ -110,5 +124,6 @@ List<Object> tList = new ArrayList<>();
 
 
         }*/
+
 
 }

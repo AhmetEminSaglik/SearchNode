@@ -7,10 +7,10 @@ public class SolutionMessage {
     private static final String prefixText = "\n";
     private static final String solutionAdvice = "SOLUTION ADVICE : ";
 
-    public static String getSolutionNotImplementedRequiredInterfaceError(Class clazz) {
+   /* public static String getSolutionNotImplementedRequiredInterfaceError(Class clazz) {
         String msg = prefixText + solutionAdvice + "Please implement << IPriorityFields >> interface to your " + clazz.getSimpleName() + " Object.";
         return msg;
-    }
+    }*/
     public static String getSolutionNotFoundAnyDeclaredField(Class clazz) {
         String msg = prefixText + solutionAdvice + "Please add some variable fields to your " + clazz.getSimpleName() + " Object.";
         return msg;
