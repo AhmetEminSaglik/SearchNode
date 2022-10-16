@@ -27,4 +27,12 @@ public class PriorityChar {
     public void setValue(double value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "PriorityChar{" +
+                "c=" + c +
+                ", value=" + value +
+                '}';
+    }
 }

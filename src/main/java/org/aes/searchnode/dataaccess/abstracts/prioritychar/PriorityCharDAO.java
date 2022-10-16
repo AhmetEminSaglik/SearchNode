@@ -7,11 +7,11 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.List;
 
 public interface PriorityCharDAO {
-    DataResult get(char c);
+    DataResult<PriorityChar>  get(char c);
     Result add(char c,char nextToThisChar);
     Result add(List<Character> cList, char nextToThisChar);
     Result delete(char c);
-    Result update(char c);
+    DataResult<PriorityChar>  update(char c);
 
 
 }

@@ -5,7 +5,7 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 public class PriorityCharValueProcess {
     /// Burada PCV  hangi char'in sagina konacaksa o islem yapilacak.
     public PriorityChar addCharToNextChar(char c, char nextToChar) {
-        for()
+//        for()
         return null;
     }
 }

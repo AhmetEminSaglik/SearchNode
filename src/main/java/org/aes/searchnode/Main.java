@@ -1,6 +1,8 @@
 package org.aes.searchnode;
 
 
+import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
+import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
@@ -18,6 +20,7 @@ public class Main {
 
             for (Object tmp : objects) {
                 System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
+                printPriorityCharOfText(priorityFieldValue.getValueOfField(tmp, fieldName).toString());
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -30,14 +33,34 @@ public class Main {
         try {
             for (Object tmp : objects) {
                 System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
+                printPriorityCharOfText(priorityFieldValue.getValueOfField(tmp, fieldName).toString());
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void main(String[] args)  {
-        Double[] numDoubles = {12.2, 3.3, 4.0,-2.2};
+    static void printPriorityCharOfText(String text) {
+        PriorityCharManager priorityCharManager = new PriorityCharManager();
+        char[] chars = text.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            DataResult<PriorityChar>  dataResult = priorityCharManager.getPriorityChar(chars[i]);
+//            System.out.println(dataResult.toString());
+            System.out.println("PriorityChar : "+dataResult.getData()+" / message : "+dataResult.getMsg());
+//            System.exit(0);
+//            System.out.println("PriorityChar : "+);;
+
+        }
+    }
+
+    public static void main(String[] args) {
+
+//        Bu kismi arraylerden veri cekerek test edicem.
+
+//        System.exit(0);
+
+
+        Double[] numDoubles = {12.2, 3.3, 4.0, -2.2};
         Integer[] numbers = {12, 3, 4};
         List<Integer> numberList = new ArrayList<>();
         numberList.add(101);
@@ -54,9 +77,11 @@ public class Main {
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
         List<Student> studentList = new ArrayList<>();
-        studentList.add(new Student("Ahmet List", "SAGLIK", 24, 1001));
-        studentList.add(new Student("Omer List", "Koramaz", 20, 1002));
-        studentList.add(new Student("Aynur List", "YILDIRIM", 25, 1003));
+        studentList.add(new Student("ŞşİiIıÖöÜüÇç", "SAGLIK", 24, 1001));
+        studentList.add(new Student("niña", "Koramaz", 20, 1002));
+        studentList.add(new Student("诶 贼德", "YILDIRIM", 25, 1003));
+        studentList.add(new Student("あん", "YILDIRIM", 26, 1004));
+        studentList.add(new Student("شغظذخثتسرقضفعصنملكيطحزوهدجبا", "YILDIRIM", 26, 1005));
 //        Employee[] employees = {new Employee(),new Employee(),new Employee()};
         Language[] languages = {new Language(1, "Turkish", 2), new Language(2, "English", 1), new Language(3, "Spanish", 3)};
         Employee[] employees = {

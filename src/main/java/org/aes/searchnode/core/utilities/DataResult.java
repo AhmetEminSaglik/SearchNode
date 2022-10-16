@@ -7,6 +7,7 @@ public class DataResult<T> extends Result {
         super(success, msg);
         this.data = data;
     }
+
     public DataResult(T data, boolean success) {
         super(success);
         this.data = data;
@@ -15,5 +16,12 @@ public class DataResult<T> extends Result {
 
     public T getData() {
         return data;
+    }
+
+    @Override
+    public String toString() {
+        return "DataResult{" +
+                "data=" + data + super.toString() +
+                '}';
     }
 }

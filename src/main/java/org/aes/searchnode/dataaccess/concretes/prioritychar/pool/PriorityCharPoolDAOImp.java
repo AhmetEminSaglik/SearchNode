@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO {
-    List<PriorityChar> list = PriorityCharPool.getPcList();
+public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  provide a connection
+    List<PriorityChar> list = PriorityCharPool.getList();
 
     @Override
     public PriorityChar getPriorityChar(char c) {
@@ -24,5 +24,15 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO {
     @Override
     public void sort(Comparator<PriorityChar> comparator) {
         list.sort(comparator);
+    }
+
+    @Override
+    public void deletePriorityChar(char c) {
+
+    }
+
+    @Override
+    public void updatePriorityChar(char c) {
+
     }
 }
