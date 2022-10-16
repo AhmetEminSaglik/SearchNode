@@ -1,6 +1,6 @@
 package org.aes.searchnode;
 
-public class SearchNode <T extends Object>/* implements IPriorityFields */ {
+public class SearchNode/* implements IPriorityFields */ {
     private int deep;
 
  /*   private int deep;

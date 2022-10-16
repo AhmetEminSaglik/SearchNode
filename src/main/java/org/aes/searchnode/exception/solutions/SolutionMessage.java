@@ -1,7 +1,7 @@
 package org.aes.searchnode.exception.solutions;
 
-import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
-import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
+import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
+import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 
 public class SolutionMessage {
     private static final String prefixText = "\n";

@@ -1,7 +1,7 @@
 package org.aes.searchnode.exception;
 
-import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
-import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
+import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
+import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.exception.solutions.SolutionMessage;
 
 public class ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException extends  Exception {

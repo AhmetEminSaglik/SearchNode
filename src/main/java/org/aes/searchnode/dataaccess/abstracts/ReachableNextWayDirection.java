@@ -1,9 +1,11 @@
 package org.aes.searchnode.dataaccess.abstracts;
 
+import org.aes.searchnode.SearchNode;
+
 public interface ReachableNextWayDirection {
-     char get(char c);
+    SearchNode getNextWayOfChar(char c);
 
-
+    SearchNode createNextWayChar(char c);
 
 
 }

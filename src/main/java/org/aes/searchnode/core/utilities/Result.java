@@ -20,4 +20,12 @@ public class Result {
     public String getMsg() {
         return msg;
     }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "success=" + success +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }

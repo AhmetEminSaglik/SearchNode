@@ -1,8 +1,8 @@
 package org.aes.searchnode;
 
 
-import org.aes.searchnode.dataaccess.concretes.PriorityFieldOrder;
-import org.aes.searchnode.dataaccess.concretes.PriorityFieldValue;
+import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
+import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
 
 import java.math.BigDecimal;
@@ -37,12 +37,13 @@ public class Main {
     }
 
     public static void main(String[] args)  {
-
+        Double[] numDoubles = {12.2, 3.3, 4.0,-2.2};
         Integer[] numbers = {12, 3, 4};
         List<Integer> numberList = new ArrayList<>();
         numberList.add(101);
         numberList.add(102);
         numberList.add(103);
+
 
         BigDecimal[] bigDecimals = {new BigDecimal("11.11"), new BigDecimal("12.999"), new BigDecimal("0.001")};
         String[] text = {"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
@@ -65,7 +66,7 @@ public class Main {
         };
         Boolean[] booleans = {true, false, false, true, true, false};
         Character[] characters = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r', 's'};
-        SpecialString[] specialString = {new SpecialString("1"), new SpecialString("2"), new SpecialString("3"), new SpecialString("4")};
+        SpecialBigDecimal[] specialBigDecimal = {new SpecialBigDecimal("1"), new SpecialBigDecimal("2"), new SpecialBigDecimal("3"), new SpecialBigDecimal("4")};
 
         try {
 
@@ -192,11 +193,11 @@ public class Main {
                 System.out.println("Characters : " + pfValueCharacter.getValueOfField(tmp));
             }
 
-            PriorityFieldOrder pfOSpecialString = new PriorityFieldOrder(SpecialString.class);
+            PriorityFieldOrder pfOSpecialString = new PriorityFieldOrder(SpecialBigDecimal.class);
             pfOSpecialString.setPriorityFieldsInDefaultOrder();
             List<Field> pfSpecialStringList = pfOSpecialString.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueSpecialString = new PriorityFieldValue(pfOSpecialString*//*SpecialString.class, null*//*);
-            for (SpecialString tmp : specialString) {
+            PriorityFieldValue pfValueSpecialString = new PriorityFieldValue(pfOSpecialString*//*SpecialBigDecimal.class, null*//*);
+            for (SpecialBigDecimal tmp : specialBigDecimal) {
                 System.out.println("Special string : " + pfValueSpecialString.getValueOfField(tmp));
             }
 

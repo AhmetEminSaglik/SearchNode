@@ -1,6 +1,6 @@
-package org.aes.searchnode.dataaccess.concretes;
+package org.aes.searchnode.dataaccess.concretes.priorityfield;
 
-import org.aes.searchnode.entities.concretes.PrimitiveWrapper;
+import org.aes.searchnode.business.concretes.PrimitiveWrapper;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 

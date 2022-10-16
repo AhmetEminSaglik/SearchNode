@@ -1,4 +1,4 @@
-package org.aes.searchnode.dataaccess.concretes;
+package org.aes.searchnode.dataaccess.concretes.priorityfield;
 
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
