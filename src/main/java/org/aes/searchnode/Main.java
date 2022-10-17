@@ -6,6 +6,10 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
+import org.aes.searchnode.entities.example.Employee;
+import org.aes.searchnode.entities.example.Language;
+import org.aes.searchnode.entities.example.SpecialBigDecimal;
+import org.aes.searchnode.entities.example.Student;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -44,9 +48,9 @@ public class Main {
         PriorityCharManager priorityCharManager = new PriorityCharManager();
         char[] chars = text.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            DataResult<PriorityChar>  dataResult = priorityCharManager.getPriorityChar(chars[i]);
+            DataResult<PriorityChar> dataResult = priorityCharManager.getPriorityChar(chars[i]);
 //            System.out.println(dataResult.toString());
-            System.out.println("PriorityChar : "+dataResult.getData()+" / message : "+dataResult.getMsg());
+            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
 //            System.exit(0);
 //            System.out.println("PriorityChar : "+);;
 
@@ -54,7 +58,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("0 : "+(int)('0'));
+        System.out.println("1 : "+(int)('1'));
+        System.out.println("2 : "+(int)('2'));
+        System.out.println("3 : "+(int)('3'));
+        System.out.println("4 : "+(int)('4'));
+        System.out.println("5 : "+(int)('5'));
+        System.out.println("6 : "+(int)('6'));
+        System.out.println("7 : "+(int)('7'));
+        System.out.println("8 : "+(int)('8'));
+        System.out.println("9 : "+(int)('9'));
+        System.exit(0);
 //        Bu kismi arraylerden veri cekerek test edicem.
 
 //        System.exit(0);

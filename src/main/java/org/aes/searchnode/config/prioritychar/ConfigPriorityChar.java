@@ -6,7 +6,7 @@ import org.aes.searchnode.dataaccess.concretes.prioritychar.PriorityCharDAOImp;
 import org.aes.searchnode.dataaccess.concretes.prioritychar.pool.PriorityCharPoolDAOImp;
 
 public class ConfigPriorityChar {
-     public static PriorityCharDAO getPriorityCharDAO() {
+    public static PriorityCharDAO getPriorityCharDAO() {
         return new PriorityCharDAOImp(getPriorityCharPoolDAO());
     }
 

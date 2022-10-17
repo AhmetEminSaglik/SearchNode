@@ -1,7 +1,13 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
+import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
+import org.aes.searchnode.entities.concretes.NodeData;
+
 public class SearchNode/* implements IPriorityFields */ {
     private int deep;
+    ReachableNextWayDirection reachableNextWayDirection = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
+    NodeData nodeData;
 
  /*   private int deep;
     T data;

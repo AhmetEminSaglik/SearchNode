@@ -1,4 +1,4 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities.example;
 
 //import org.aes.searchnode.dataaccess.abstracts.IPriorityFields;
 
