@@ -16,16 +16,16 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     List<NextWayDirectionRequiredData> list = new ArrayList<>();
 
     @Override
-    public DataResult<SearchNode> getNextWayOfChar(char c) {
+    public DataResult<SearchNode> getNextWayOfChar(PriorityChar pc) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getPriorityChar().getChar() == c)
+            if (list.get(i).getPriorityChar().getChar() == pc.getChar())
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retreived");
         }
         return new ErrorDataResult<SearchNode>("Data is not found in " + getClass().getSimpleName());
     }
 
     @Override
-    public DataResult<SearchNode> createNextWayChar(char c) {
+    public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
         return null;
     }
 }

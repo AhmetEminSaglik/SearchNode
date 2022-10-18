@@ -56,22 +56,24 @@ public class Main {
 
         }
     }
+static void printIntegerAscii(){
 
+    System.out.println("0 : "+(int)('0'));
+    System.out.println("1 : "+(int)('1'));
+    System.out.println("2 : "+(int)('2'));
+    System.out.println("3 : "+(int)('3'));
+    System.out.println("4 : "+(int)('4'));
+    System.out.println("5 : "+(int)('5'));
+    System.out.println("6 : "+(int)('6'));
+    System.out.println("7 : "+(int)('7'));
+    System.out.println("8 : "+(int)('8'));
+    System.out.println("9 : "+(int)('9'));
+    System.exit(0);
+}
     public static void main(String[] args) {
-        System.out.println("0 : "+(int)('0'));
-        System.out.println("1 : "+(int)('1'));
-        System.out.println("2 : "+(int)('2'));
-        System.out.println("3 : "+(int)('3'));
-        System.out.println("4 : "+(int)('4'));
-        System.out.println("5 : "+(int)('5'));
-        System.out.println("6 : "+(int)('6'));
-        System.out.println("7 : "+(int)('7'));
-        System.out.println("8 : "+(int)('8'));
-        System.out.println("9 : "+(int)('9'));
-        System.exit(0);
 //        Bu kismi arraylerden veri cekerek test edicem.
+//        printIntegerAscii();
 
-//        System.exit(0);
 
 
         Double[] numDoubles = {12.2, 3.3, 4.0, -2.2};
