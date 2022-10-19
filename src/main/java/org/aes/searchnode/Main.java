@@ -10,6 +10,10 @@ import org.aes.searchnode.entities.example.Employee;
 import org.aes.searchnode.entities.example.Language;
 import org.aes.searchnode.entities.example.SpecialBigDecimal;
 import org.aes.searchnode.entities.example.Student;
+import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
+import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
+import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
+import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -56,24 +60,53 @@ public class Main {
 
         }
     }
-static void printIntegerAscii(){
 
-    System.out.println("0 : "+(int)('0'));
-    System.out.println("1 : "+(int)('1'));
-    System.out.println("2 : "+(int)('2'));
-    System.out.println("3 : "+(int)('3'));
-    System.out.println("4 : "+(int)('4'));
-    System.out.println("5 : "+(int)('5'));
-    System.out.println("6 : "+(int)('6'));
-    System.out.println("7 : "+(int)('7'));
-    System.out.println("8 : "+(int)('8'));
-    System.out.println("9 : "+(int)('9'));
-    System.exit(0);
-}
-    public static void main(String[] args) {
+    static void printIntegerAscii() {
+
+        System.out.println("0 : " + (int) ('0'));
+        System.out.println("1 : " + (int) ('1'));
+        System.out.println("2 : " + (int) ('2'));
+        System.out.println("3 : " + (int) ('3'));
+        System.out.println("4 : " + (int) ('4'));
+        System.out.println("5 : " + (int) ('5'));
+        System.out.println("6 : " + (int) ('6'));
+        System.out.println("7 : " + (int) ('7'));
+        System.out.println("8 : " + (int) ('8'));
+        System.out.println("9 : " + (int) ('9'));
+        System.exit(0);
+    }
+
+    public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+        /*System.out.println((int) ',');
+        System.out.println((int) '.');
+        System.out.println((int) '0');
+        System.out.println((char) 47);
+        System.out.println((int) '\\');
+        System.exit(0);*/
+        String[] text = {"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        Student[] students = {
+                new Student("Ahmet", "SAGLIK", 24, 1001),
+                new Student("Omer", "Koramaz", 20, 1002),
+                new Student("Aynur", "YILDIRIM", 25, 1003),
+        };
+        SearchNode searchNode = new SearchNode();
+        for (String tmp : text) {
+            searchNode.add(tmp.getClass(),tmp);
+        }
+        System.out.println("----------------------------------");
+        for (Student tmp : students) {
+            searchNode.add(tmp.getClass(),tmp);
+        }
+        System.out.println("----------------------------------");
+
+        System.exit(0);
 //        Bu kismi arraylerden veri cekerek test edicem.
 //        printIntegerAscii();
-
+        /*String a = "abc", b = "1,2,3";
+        StringBuilder sb= new StringBuilder();
+        sb.append(a).append(b);
+        System.out.println(sb);
+        System.exit(0);*/
 
 
         Double[] numDoubles = {12.2, 3.3, 4.0, -2.2};
@@ -85,13 +118,8 @@ static void printIntegerAscii(){
 
 
         BigDecimal[] bigDecimals = {new BigDecimal("11.11"), new BigDecimal("12.999"), new BigDecimal("0.001")};
-        String[] text = {"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
 
-        Student[] students = {
-                new Student("Ahmet", "SAGLIK", 24, 1001),
-                new Student("Omer", "Koramaz", 20, 1002),
-                new Student("Aynur", "YILDIRIM", 25, 1003),
-        };
+
         List<Student> studentList = new ArrayList<>();
         studentList.add(new Student("ŞşİiIıÖöÜüÇç", "SAGLIK", 24, 1001));
         studentList.add(new Student("niña", "Koramaz", 20, 1002));
