@@ -91,11 +91,11 @@ public class Main {
         };
         SearchNode searchNode = new SearchNode();
         for (String tmp : text) {
-            searchNode.add(tmp.getClass(),tmp);
+            searchNode.add(tmp,tmp.getClass());
         }
         System.out.println("----------------------------------");
         for (Student tmp : students) {
-            searchNode.add(tmp.getClass(),tmp);
+            searchNode.add(tmp,tmp.getClass());
         }
         System.out.println("----------------------------------");
 

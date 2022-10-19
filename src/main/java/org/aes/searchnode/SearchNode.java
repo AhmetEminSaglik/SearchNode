@@ -1,16 +1,16 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.business.abstracts.PriorityCharService;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.Result;
+import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirectionQueue;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-import org.aes.searchnode.entities.example.Student;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
@@ -22,18 +22,12 @@ public class SearchNode {
     private NodeData nodeData;
     private PossibilityNextWayDirectionQueue pNWDQueue;
 
-    public void add(Class clazz, Object o) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
-        System.out.println("gelen object : " + o);
+    public void add(Object object, Class clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+        System.out.println("gelen object : " + object);
+        Object value = getValueOfObjectToBeProcess(object, clazz);
+        addTheValueToReachableNWD(value);
 
-        PriorityFieldOrder pfOrder = new PriorityFieldOrder(clazz);
-        PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
-        String fieldName = pfOrder.getPriorityFieldName(0).getName();
-        Object value = pfValue.getValueOfField(o, fieldName);
-        System.out.println("Gelen object : " + o + " / value : " + value);
-
-        String text = value.toString();
-        PriorityCharManager priorityCharManager = new PriorityCharManager();
-        char[] chars = text.toCharArray();
+        /*char[] chars = stringOfValue.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             DataResult<PriorityChar> dataResult = priorityCharManager.getPriorityChar(chars[i]);
 //            System.out.println(dataResult.toString());
@@ -41,7 +35,57 @@ public class SearchNode {
 //            System.exit(0);
 //            System.out.println("PriorityChar : "+);;
 
+        }*/
+    }
+
+    void addTheValueToReachableNWD(Object value) {
+        StringBuilder stringValue = new StringBuilder(value.toString());
+//        stringOfValue = new StringBuilder(value.toString());
+        PriorityCharService pcService = new PriorityCharManager();
+
+        for (int i = 0; i < stringValue.length(); i++) {
+            DataResult<PriorityChar> drPriorityChar = pcService.getPriorityChar(stringValue.charAt(i));
+            PriorityChar pc = drPriorityChar.getData();
+//            reachableNWD.getNextWayOfChar(pc);
+//            reachableNWD.getNextWayOfChar(pc).isSuccess();
+            DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
+
+
+            if (!drReachablNWD.isSuccess()) {
+                System.out.println("ERROR : " + drReachablNWD.getMsg());
+
+
+            }
+
+//            System.exit(0);
+//            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
         }
+    }
+
+    DataResult<SearchNode> moveReachableNWD(PriorityChar pc) {
+        DataResult<SearchNode> dataResult = reachableNWD.getNextWayOfChar(pc);
+        System.out.println("moveReachableNWD MSG : " + dataResult.getMsg());
+//        System.exit(0);
+        if (dataResult.isSuccess()) {
+            return dataResult;
+        }
+        return new ErrorDataResult<>("Can not move in ReachableNWD. Because direction is not found.");
+
+    }
+
+    void workOnPossibilityNWDQueue(PriorityChar pc) {
+        
+
+    }
+
+    Object getValueOfObjectToBeProcess(Object o, Class clazz) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
+        PriorityFieldOrder pfOrder = new PriorityFieldOrder(clazz);
+        PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
+        String fieldName = pfOrder.getPriorityFieldName(0).getName();
+        Object value = pfValue.getValueOfField(o, fieldName);
+        System.out.println(" Returning Value Of Object : " + value);
+        return value;
+
     }
 
     public int getDeep() {
