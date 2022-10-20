@@ -7,9 +7,9 @@ import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 
 public class NextWayDirectionList implements ReachableNextWayDirection {
@@ -25,12 +25,28 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     }
 
     @Override
-    public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode, Queue<NextWayDirectionRequiredData> queue) {
+
         return null;
     }
 
+
+
+/*
     @Override
-    public DataResult<Integer> size() {
-        return new SuccessDataResult<>(list.size());
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc) {
+        return null;
+    }
+*/
+
+
+//    @Override
+//    public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
+//        return null;
+//    }
+
+    @Override
+    public int size() {
+        return list.size();
     }
 }

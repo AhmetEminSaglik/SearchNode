@@ -1,3 +1,4 @@
+/*
 package org.aes.searchnode.entities.concretes;
 
 import org.aes.searchnode.SearchNode;
@@ -27,3 +28,4 @@ public class DataSearchNodeWithChar {
         this.searchNode = searchNode;
     }
 }
+*/

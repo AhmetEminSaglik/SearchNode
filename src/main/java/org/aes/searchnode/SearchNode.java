@@ -5,10 +5,15 @@ import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
+import org.aes.searchnode.core.utilities.Result;
+import org.aes.searchnode.core.utilities.SuccessResult;
+import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirectionQueue;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
+import org.aes.searchnode.entities.concretes.DataSearchNodeWithChar;
+import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
@@ -16,11 +21,13 @@ import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 
+import java.util.Queue;
+
 public class SearchNode {
     private int deep;
     private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData nodeData = new NodeData();
-    private PossibilityNextWayDirectionQueue pNWDQueue = null;
+    private PossibilityNextWayDirectionQueue pNWDQueue = null; //PossibilityNextWayDirectionQueue
 
     public void add(Object object, Class<?> clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
         System.out.println("gelen object : " + object);
@@ -42,30 +49,48 @@ public class SearchNode {
 //        stringOfValue = new StringBuilder(value.toString());
         PriorityCharService pcService = new PriorityCharManager();
 
-        for (int i = 0; i < stringValue.length(); i++) {
-            DataResult<PriorityChar> drPriorityChar = pcService.getPriorityChar(stringValue.charAt(i));
-            PriorityChar pc = drPriorityChar.getData();
-            if (pNWDQueue == null) {
-                DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
-                if (!drReachablNWD.isSuccess()) {
-                    System.out.println("ERROR : " + drReachablNWD.getMsg());
-                    initializePossibilityNWD(nodeData);
-                    movePossibilityNWD(pc);
+        try {
+            for (int i = 0; i < stringValue.length(); i++) {
+                DataResult<PriorityChar> drPriorityChar = pcService.getPriorityChar(stringValue.charAt(i));
+                PriorityChar pc = drPriorityChar.getData();
+                if (pNWDQueue == null) {
+                    DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
+                    if (!drReachablNWD.isSuccess()) {
+                        System.out.println("ERROR : " + drReachablNWD.getMsg());
+                        initializePossibilityNWD(nodeData);
+                        movePossibilityNWD(pc);
 
+                    }
+                } else {
+                    movePossibilityNWD(pc);
                 }
-            } else {
-                movePossibilityNWD(pc);
-            }
 //            System.exit(0);
 //            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
+            }
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.exit(0);
         }
+        transferPossibilityNWDToReachableNWD();
         if (pNWDQueue != null) {
             clearPossibilityNWD();
         }
-        System.out.println("size of reachableNWD after add process : "+reachableNWD.size().getData());
+        System.out.println("size of reachableNWD after add process : " + reachableNWD.size());
     }
 
-    DataResult<SearchNode> moveReachableNWD(PriorityChar pc) {
+    private Result transferPossibilityNWDToReachableNWD() {
+//        System.out.println("islem yapilacak derinlik : "+deep);
+//        reachableNWD
+        Queue<NextWayDirectionRequiredData> queue = pNWDQueue.getQueueSearchNodeToAddReachableNWD();
+        reachableNWD.addPossibilityNWDNodeToReachableNWD(pNWDQueue.getSearchNodeConnectionStart(),queue);
+//        reachableNWD.addCreatedSearchNodeToReachableNWD() burdan devam edilecek
+
+
+        return new SuccessResult();
+    }
+
+    DataResult<SearchNode> moveReachableNWD(PriorityChar pc) throws Exception {
         DataResult<SearchNode> dataResult = reachableNWD.getNextWayOfChar(pc);
         System.out.println("moveReachableNWD MSG : " + dataResult.getMsg());
         if (dataResult.isSuccess()) {
@@ -74,7 +99,8 @@ public class SearchNode {
         return new ErrorDataResult<>("Can not move in ReachableNWD. Because direction is not found.");
 
     }
-    private void movePossibilityNWD(PriorityChar pc) {
+
+    private void movePossibilityNWD(PriorityChar pc) throws Exception {
         System.out.println("Burdan possibility;e gidecek");
         DataResult<SearchNode> dataResult = pNWDQueue.createNextWayChar(pc);
 //        System.out.println("Data Result : " +

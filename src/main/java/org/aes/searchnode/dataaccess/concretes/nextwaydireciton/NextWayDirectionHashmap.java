@@ -5,9 +5,10 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
+import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-
 import java.util.HashMap;
+import java.util.Queue;
 
 public class NextWayDirectionHashmap implements ReachableNextWayDirection {
     HashMap<Character, SearchNode> hashMap = new HashMap<>();
@@ -21,14 +22,30 @@ public class NextWayDirectionHashmap implements ReachableNextWayDirection {
     }
 
     @Override
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode, Queue<NextWayDirectionRequiredData> queue) {
+        return null;
+    }
+
+
+
+   /* @Override
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc) {
+        return null;
+    }*/
+
+
+
+/*
+    @Override
     public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
 //        SearchNode searchNode= new SearchNode();
 //        hashMap.put(c,searchNode);
         return null;
     }
+*/
 
     @Override
-    public DataResult<Integer> size() {
-        return new SuccessDataResult<>(hashMap.size());
+    public int size() {
+        return hashMap.size();
     }
 }

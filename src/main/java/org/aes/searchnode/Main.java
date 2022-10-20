@@ -83,13 +83,18 @@ public class Main {
         System.out.println((char) 47);
         System.out.println((int) '\\');
         System.exit(0);*/
-        String[] text = {"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        String[] text = {"K","Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        Character[] characters= {'a','b','c','K'};
+
         Student[] students = {
                 new Student("Ahmet", "SAGLIK", 24, 1001),
                 new Student("Omer", "Koramaz", 20, 1002),
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
         SearchNode searchNode = new SearchNode();
+        for (Character tmp : characters) {
+            searchNode.add(tmp,tmp.getClass());
+        }
         for (String tmp : text) {
             searchNode.add(tmp,tmp.getClass());
         }
@@ -134,7 +139,7 @@ public class Main {
                 new Employee("IT", 333333333, languages)
         };
         Boolean[] booleans = {true, false, false, true, true, false};
-        Character[] characters = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r', 's'};
+//        Character[] characters = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r', 's'};
         SpecialBigDecimal[] specialBigDecimal = {new SpecialBigDecimal("1"), new SpecialBigDecimal("2"), new SpecialBigDecimal("3"), new SpecialBigDecimal("4")};
 
         try {
