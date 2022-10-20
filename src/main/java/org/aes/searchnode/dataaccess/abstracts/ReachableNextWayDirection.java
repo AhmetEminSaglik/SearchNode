@@ -7,5 +7,8 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 public interface ReachableNextWayDirection {
     DataResult<SearchNode> getNextWayOfChar(PriorityChar pc);
     DataResult<SearchNode> createNextWayChar(PriorityChar pc);
+    DataResult<Integer> size();
+
+
 
 }

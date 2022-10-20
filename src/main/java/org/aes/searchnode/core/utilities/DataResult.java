@@ -21,7 +21,7 @@ public class DataResult<T> extends Result {
     @Override
     public String toString() {
         return "DataResult{" +
-                "data=" + data + super.toString() +
+                "data=" + data.toString() +", "+ super.toString() +
                 '}';
     }
 }

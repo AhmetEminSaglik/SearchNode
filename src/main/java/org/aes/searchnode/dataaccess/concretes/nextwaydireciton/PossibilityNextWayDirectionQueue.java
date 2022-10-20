@@ -11,6 +11,7 @@ import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -42,15 +43,26 @@ public class PossibilityNextWayDirectionQueue implements ReachableNextWayDirecti
     public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
         SearchNode searchNode = new SearchNode();
 
-        createCurrentLocationStringAddress(searchNode, pc);
+        createCurrentLocationStringAddress(pc);
+//        initializeSearchNodeFundamentals();
         setSearchNodeDeep(searchNode);
         fillNodeData(searchNode);
         queue.add(new DataSearchNodeWithChar(pc, searchNode));
         return new SuccessDataResult<SearchNode>(searchNode, "Searchnode is created in for " + getClass().getSimpleName());
     }
 
-    void createCurrentLocationStringAddress(SearchNode searchNode, PriorityChar pc) {
-        currentLocationStringAddress.append(searchNode.getNodeData().getLocationStringAddress()).append(pc.getChar());
+    @Override
+    public DataResult<Integer> size() {
+        return new SuccessDataResult<>(queue.size());
+    }
+
+    void initializeSearchNodeFundamentals(SearchNode searchNode) {
+        searchNode.setNodeData(new NodeData());
+    }
+
+    void createCurrentLocationStringAddress(PriorityChar pc) {
+//        JOptionPane.showMessageDialog(null,"aappendlenecek lcoation address :"+searchNodeConnectionStart.getNodeData().getLocationStringAddress());
+        currentLocationStringAddress.append(searchNodeConnectionStart.getNodeData().getLocationStringAddress()).append(pc.getChar());
     }
 
     void setSearchNodeDeep(SearchNode searchNode) {
@@ -68,7 +80,7 @@ public class PossibilityNextWayDirectionQueue implements ReachableNextWayDirecti
     }
 
     void addDataToDataNode(NodeData nodeData) {
-        JOptionPane.showMessageDialog(null, "data to string : " + data.toString());
+//        JOptionPane.showMessageDialog(null, "data to string : " + data.toString());
 
         if (nodeData.getLocationStringAddress().equals(data.toString())) {
             nodeData.setData(data);

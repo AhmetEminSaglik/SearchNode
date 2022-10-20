@@ -28,4 +28,9 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
         return null;
     }
+
+    @Override
+    public DataResult<Integer> size() {
+        return new SuccessDataResult<>(list.size());
+    }
 }

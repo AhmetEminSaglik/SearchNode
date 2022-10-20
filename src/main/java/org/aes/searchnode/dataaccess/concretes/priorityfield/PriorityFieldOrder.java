@@ -75,10 +75,10 @@ public class PriorityFieldOrder {
 
     public List<Field> getFieldNameList() {
 //        Security precaution : In case of changing any element of list prevents changing original list
-        return new ArrayList(fieldNameList);
+        return new ArrayList<>(fieldNameList);
     }
 
-    public Class getClazz() {
+    public Class<?> getClazz() {
         return clazz;
     }
     /*

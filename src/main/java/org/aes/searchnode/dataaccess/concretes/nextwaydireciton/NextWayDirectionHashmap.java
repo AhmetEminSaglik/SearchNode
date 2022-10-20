@@ -26,4 +26,9 @@ public class NextWayDirectionHashmap implements ReachableNextWayDirection {
 //        hashMap.put(c,searchNode);
         return null;
     }
+
+    @Override
+    public DataResult<Integer> size() {
+        return new SuccessDataResult<>(hashMap.size());
+    }
 }

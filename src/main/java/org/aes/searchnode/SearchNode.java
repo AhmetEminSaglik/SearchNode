@@ -19,10 +19,10 @@ import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 public class SearchNode {
     private int deep;
     private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
-    private NodeData nodeData;
-    private PossibilityNextWayDirectionQueue pNWDQueue;
+    private NodeData nodeData = new NodeData();
+    private PossibilityNextWayDirectionQueue pNWDQueue = null;
 
-    public void add(Object object, Class clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+    public void add(Object object, Class<?> clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
         System.out.println("gelen object : " + object);
         Object value = getValueOfObjectToBeProcess(object, clazz);
         addTheValueToReachableNWD(value);
@@ -34,7 +34,6 @@ public class SearchNode {
             System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
 //            System.exit(0);
 //            System.out.println("PriorityChar : "+);;
-
         }*/
     }
 
@@ -46,42 +45,61 @@ public class SearchNode {
         for (int i = 0; i < stringValue.length(); i++) {
             DataResult<PriorityChar> drPriorityChar = pcService.getPriorityChar(stringValue.charAt(i));
             PriorityChar pc = drPriorityChar.getData();
-//            reachableNWD.getNextWayOfChar(pc);
-//            reachableNWD.getNextWayOfChar(pc).isSuccess();
-            DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
+            if (pNWDQueue == null) {
+                DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
+                if (!drReachablNWD.isSuccess()) {
+                    System.out.println("ERROR : " + drReachablNWD.getMsg());
+                    initializePossibilityNWD(nodeData);
+                    movePossibilityNWD(pc);
 
-
-            if (!drReachablNWD.isSuccess()) {
-                System.out.println("ERROR : " + drReachablNWD.getMsg());
-
-
+                }
+            } else {
+                movePossibilityNWD(pc);
             }
-
 //            System.exit(0);
 //            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
         }
+        if (pNWDQueue != null) {
+            clearPossibilityNWD();
+        }
+        System.out.println("size of reachableNWD after add process : "+reachableNWD.size().getData());
     }
 
     DataResult<SearchNode> moveReachableNWD(PriorityChar pc) {
         DataResult<SearchNode> dataResult = reachableNWD.getNextWayOfChar(pc);
         System.out.println("moveReachableNWD MSG : " + dataResult.getMsg());
-//        System.exit(0);
         if (dataResult.isSuccess()) {
             return dataResult;
         }
         return new ErrorDataResult<>("Can not move in ReachableNWD. Because direction is not found.");
 
     }
-
-    void workOnPossibilityNWDQueue(PriorityChar pc) {
-        
-
+    private void movePossibilityNWD(PriorityChar pc) {
+        System.out.println("Burdan possibility;e gidecek");
+        DataResult<SearchNode> dataResult = pNWDQueue.createNextWayChar(pc);
+//        System.out.println("Data Result : " +
+//                "------> data : "+dataResult.getData()+
+//                "------> success : "+ dataResult.isSuccess()+
+//                "------> Msg : "+ dataResult.getMsg());
+        System.out.println("returning data locationStringaddress : " + dataResult.getData().getNodeData().getLocationStringAddress());
     }
 
-    Object getValueOfObjectToBeProcess(Object o, Class clazz) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
+    private void clearPossibilityNWD() {
+        pNWDQueue = null;
+    }
+
+    private void initializePossibilityNWD(Object data) {
+//        return
+        pNWDQueue = new PossibilityNextWayDirectionQueue(this, data);
+    }
+
+    Object getValueOfObjectToBeProcess(Object o, Class<?> clazz) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
+        /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
+         *  pfOrder.getPriorityFieldName(index).getName()
+         * */
         PriorityFieldOrder pfOrder = new PriorityFieldOrder(clazz);
         PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
-        String fieldName = pfOrder.getPriorityFieldName(0).getName();
+        String fieldName = pfOrder.getPriorityFieldName(1).getName();
         Object value = pfValue.getValueOfField(o, fieldName);
         System.out.println(" Returning Value Of Object : " + value);
         return value;

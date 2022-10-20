@@ -3,7 +3,7 @@ package org.aes.searchnode.entities.concretes;
 public class NodeData {
     private Object data;// destination'a varilmis ise data'ya veri eklenir
     private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
-    private String locationStringAddress;  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
+    private String locationStringAddress="";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public Object getData() {
         return data;
