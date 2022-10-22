@@ -25,7 +25,7 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     }
 
     @Override
-    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode, Queue<NextWayDirectionRequiredData> queue) {
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode, Queue<NextWayDirectionRequiredData> queue) { // second paramater will be a  SearchNode that has other RNWD searchNode items
 
         return null;
     }

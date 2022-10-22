@@ -83,7 +83,7 @@ public class Main {
         System.out.println((char) 47);
         System.out.println((int) '\\');
         System.exit(0);*/
-        String[] text = {"K","Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        String[] text = {/*"K",*/"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
         Character[] characters= {'a','b','c','K'};
 
         Student[] students = {
@@ -92,9 +92,9 @@ public class Main {
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
         SearchNode searchNode = new SearchNode();
-        for (Character tmp : characters) {
+        /*for (Character tmp : characters) {
             searchNode.add(tmp,tmp.getClass());
-        }
+        }*/
         for (String tmp : text) {
             searchNode.add(tmp,tmp.getClass());
         }

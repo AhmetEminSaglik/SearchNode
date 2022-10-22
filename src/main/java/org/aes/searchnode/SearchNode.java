@@ -7,12 +7,10 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessResult;
-import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirectionQueue;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
-import org.aes.searchnode.entities.concretes.DataSearchNodeWithChar;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
@@ -28,6 +26,7 @@ public class SearchNode {
     private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData nodeData = new NodeData();
     private PossibilityNextWayDirectionQueue pNWDQueue = null; //PossibilityNextWayDirectionQueue
+    PriorityCharService pcService = new PriorityCharManager();
 
     public void add(Object object, Class<?> clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
         System.out.println("gelen object : " + object);
@@ -44,26 +43,35 @@ public class SearchNode {
         }*/
     }
 
+    private PriorityChar getPriorityCharOfGivenChar(char c) {
+
+        DataResult<PriorityChar> drPriorityChar = pcService.getPriorityChar(c);
+        PriorityChar pc = drPriorityChar.getData();
+        return pc;
+    }
+
     void addTheValueToReachableNWD(Object value) {
         StringBuilder stringValue = new StringBuilder(value.toString());
 //        stringOfValue = new StringBuilder(value.toString());
-        PriorityCharService pcService = new PriorityCharManager();
+//        PriorityCharService pcService = new PriorityCharManager();
 
         try {
+    /*        stringValue=stringValue.delete(0,1);
+            System.out.println(stringValue);
+            System.exit(0);*/
             for (int i = 0; i < stringValue.length(); i++) {
-                DataResult<PriorityChar> drPriorityChar = pcService.getPriorityChar(stringValue.charAt(i));
-                PriorityChar pc = drPriorityChar.getData();
-                if (pNWDQueue == null) {
-                    DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
-                    if (!drReachablNWD.isSuccess()) {
-                        System.out.println("ERROR : " + drReachablNWD.getMsg());
-                        initializePossibilityNWD(nodeData);
-                        movePossibilityNWD(pc);
-
-                    }
-                } else {
-                    movePossibilityNWD(pc);
+                PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
+                DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
+                if (!drReachablNWD.isSuccess()) {
+                    System.out.println("ERROR : " + drReachablNWD.getMsg());
+                    initializePossibilityNWD(value);
+                    stringValue.delete(0, i);
+                    movePossibilityNWD(stringValue);
+                    break;
                 }
+//                } //else {
+//                    movePossibilityNWD(pc);
+//                }
 //            System.exit(0);
 //            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
             }
@@ -83,7 +91,7 @@ public class SearchNode {
 //        System.out.println("islem yapilacak derinlik : "+deep);
 //        reachableNWD
         Queue<NextWayDirectionRequiredData> queue = pNWDQueue.getQueueSearchNodeToAddReachableNWD();
-        reachableNWD.addPossibilityNWDNodeToReachableNWD(pNWDQueue.getSearchNodeConnectionStart(),queue);
+        reachableNWD.addPossibilityNWDNodeToReachableNWD(pNWDQueue.getSearchNodeConnectionStart(), queue);
 //        reachableNWD.addCreatedSearchNodeToReachableNWD() burdan devam edilecek
 
 
@@ -100,14 +108,22 @@ public class SearchNode {
 
     }
 
-    private void movePossibilityNWD(PriorityChar pc) throws Exception {
+    private void movePossibilityNWD(StringBuilder stringBuilder/*PriorityChar pc*/) throws Exception {
+        System.out.println("gelen String Builder : " + stringBuilder);
         System.out.println("Burdan possibility;e gidecek");
-        DataResult<SearchNode> dataResult = pNWDQueue.createNextWayChar(pc);
+        for (int i = 0; i < stringBuilder.length(); i++) {
+            PriorityChar pc = getPriorityCharOfGivenChar(stringBuilder.charAt(i));
+            DataResult<SearchNode> dataResult = pNWDQueue.createNextWayChar(pc);
+            System.out.println("dataResult : "+dataResult.toString());
+//            System.out.println("dataResult : "+dataResult.getData().getNodeData().toString());
+
+        }
+        System.exit(0);
 //        System.out.println("Data Result : " +
 //                "------> data : "+dataResult.getData()+
 //                "------> success : "+ dataResult.isSuccess()+
 //                "------> Msg : "+ dataResult.getMsg());
-        System.out.println("returning data locationStringaddress : " + dataResult.getData().getNodeData().getLocationStringAddress());
+//        System.out.println("returning data locationStringaddress : " + dataResult.getData().getNodeData().getLocationStringAddress());
     }
 
     private void clearPossibilityNWD() {
@@ -163,7 +179,15 @@ public class SearchNode {
     public void setpNWDQueue(PossibilityNextWayDirectionQueue pNWDQueue) {
         this.pNWDQueue = pNWDQueue;
     }
-/*   private int deep;
+
+    @Override
+    public String toString() {
+        return "SearchNode{" +
+                "deep=" + deep +
+                ", nodeData=" + nodeData +
+                '}';
+    }
+    /*   private int deep;
     T data;
 
     public void add(T t) {

@@ -2,13 +2,13 @@ package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
 import org.aes.searchnode.SearchNode;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
-import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
+import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -76,20 +76,24 @@ public class PossibilityNextWayDirectionQueue implements IPreProcessesToCreateRe
     void fillNodeData(SearchNode searchNode) throws Exception {
         NodeData nodeData = searchNode.getNodeData();
         nodeData.setLocationStringAddress(currentLocationStringAddress.toString());
-        nodeData.increaseNextDirectionsExistingTotalDataNumber();
-        addDataToDataNode(nodeData);
+        Result result = addDataToDataNode(nodeData);
+        if (!result.isSuccess()) {
+            nodeData.increaseNextDirectionsExistingTotalDataNumber();
+        }
 //        nodeData.set
     }
 
-    void addDataToDataNode(NodeData nodeData) throws Exception {
+    Result addDataToDataNode(NodeData nodeData) throws Exception {
 //        JOptionPane.showMessageDialog(null, "data to string : " + data.toString());
 
         if (nodeData.getLocationStringAddress().equals(data.toString())) {
             if (nodeData.getData() == null) {
                 nodeData.setData(data);
+                return new SuccessResult();
             }
             throw new Exception("Data is not null\n --> given data : " + data + "\n -->  registered data : " + nodeData.getData());
         }
+        return new ErrorResult("Data is not added");
     }
 
     public SearchNode getSearchNodeConnectionStart() {

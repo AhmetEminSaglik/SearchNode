@@ -34,4 +34,13 @@ public class NodeData {
     public void setLocationStringAddress(String locationStringAddress) {
         this.locationStringAddress = locationStringAddress;
     }
+
+    @Override
+    public String toString() {
+        return "NodeData{" +
+                "data=" + data +
+                ", nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
+                ", locationStringAddress='" + locationStringAddress + '\'' +
+                '}';
+    }
 }
