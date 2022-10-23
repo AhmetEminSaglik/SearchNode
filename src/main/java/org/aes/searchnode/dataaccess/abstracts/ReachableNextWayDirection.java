@@ -9,9 +9,11 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.Queue;
 
 public interface ReachableNextWayDirection {
-    DataResult<SearchNode> getNextWayOfChar(PriorityChar pc) throws Exception;
+    DataResult<SearchNode> getNextWayOfChar(PriorityChar pc);
 
-    DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode,Queue<NextWayDirectionRequiredData> queue);
+    DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc,/*SearchNode connectionStartSearchNode,*/ SearchNode searchNode);
+
+    void printAllDataOfSearchNode();
 
     int size();
 

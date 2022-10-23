@@ -7,6 +7,7 @@ import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+
 import java.util.HashMap;
 import java.util.Queue;
 
@@ -15,15 +16,30 @@ public class NextWayDirectionHashmap implements ReachableNextWayDirection {
 
     @Override
     public DataResult<SearchNode> getNextWayOfChar(PriorityChar pc) {
+        System.out.println("Pc : "+pc.getChar());
         SearchNode searchNode = hashMap.get(pc.getChar());
         if (searchNode != null)
             return new SuccessDataResult<>(searchNode, "Data is retreived");
+//        System.out.println("BBBBBBBBB");
         return new ErrorDataResult<SearchNode>("Data is not found in " + getClass().getSimpleName());
     }
 
     @Override
-    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode, Queue<NextWayDirectionRequiredData> queue) {
-        return null;
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode searchNode) {
+        hashMap.put(pc.getChar(), searchNode);
+        return new SuccessDataResult<>("SearchNode is added to hashmap");
+//        return null;
+    }
+
+
+    @Override
+    public void printAllDataOfSearchNode() {
+
+        for (Character tmp : hashMap.keySet()) {
+            System.out.println(tmp + " : " + hashMap.keySet());
+        }
+        System.out.println("Hashmap is over");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++");
     }
 
 

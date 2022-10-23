@@ -8,7 +8,7 @@ import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
-import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirectionQueue;
+import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
@@ -19,17 +19,22 @@ import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 
-import java.util.Queue;
-
 public class SearchNode {
     private int deep;
     private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData nodeData = new NodeData();
-    private PossibilityNextWayDirectionQueue pNWDQueue = null; //PossibilityNextWayDirectionQueue
+    private PossibilityNextWayDirection pNWDQueue = null; //PossibilityNextWayDirection
     PriorityCharService pcService = new PriorityCharManager();
+    //    NextWayDirectionRequiredData lastReachableNWDRequiredData = new NextWayDirectionRequiredData(null, this);
+
+    //    PriorityChar firstPcOfPossibilityRNWD = null;
+//    NextWayDirectionRequiredData connectionSearchNodeForPossibilityNWD;
+    SearchNode movedLastSearchNodeConnection = null;
+//    PriorityChar pcForNextSearchNodeConnection = null;
+
 
     public void add(Object object, Class<?> clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
-        System.out.println("gelen object : " + object);
+//        System.out.println("gelen object : " + object);
         Object value = getValueOfObjectToBeProcess(object, clazz);
         addTheValueToReachableNWD(value);
 
@@ -51,7 +56,10 @@ public class SearchNode {
     }
 
     void addTheValueToReachableNWD(Object value) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Yeni value ekleme >>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         StringBuilder stringValue = new StringBuilder(value.toString());
+//        SearchNode lastReachableSearchNode = this;
+        movedLastSearchNodeConnection = this;
 //        stringOfValue = new StringBuilder(value.toString());
 //        PriorityCharService pcService = new PriorityCharManager();
 
@@ -61,14 +69,17 @@ public class SearchNode {
             System.exit(0);*/
             for (int i = 0; i < stringValue.length(); i++) {
                 PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
-                DataResult<SearchNode> drReachablNWD = moveReachableNWD(pc);
+                DataResult<SearchNode> drReachablNWD = movedLastSearchNodeConnection.moveReachableNWD(pc);
                 if (!drReachablNWD.isSuccess()) {
-                    System.out.println("ERROR : " + drReachablNWD.getMsg());
-                    initializePossibilityNWD(value);
+                    System.out.println("!!! ERROR : " + drReachablNWD.getMsg());
+//                    connectionSearchNodeForPossibilityNWD = new NextWayDirectionRequiredData(pc, lastReachableSearchNode);
                     stringValue.delete(0, i);
-                    movePossibilityNWD(stringValue);
+                    movePossibilityNWD(value, stringValue);
                     break;
                 }
+//                drReachablNWD.getData().getReachableNWD().printAllDataOfSearchNode();
+//                System.out.println(">>>>>>>drReachablNWD.getData() : " + drReachablNWD.getData());
+                movedLastSearchNodeConnection = drReachablNWD.getData();
 //                } //else {
 //                    movePossibilityNWD(pc);
 //                }
@@ -88,37 +99,82 @@ public class SearchNode {
     }
 
     private Result transferPossibilityNWDToReachableNWD() {
+        if (pNWDQueue != null)
+//            reachableNWD.addPossibilityNWDNodeToReachableNWD(firstPcOfPossibilityRNWD,moveReachableNWD());
+//            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< BURDA SORUN OLABILIRRRRRRRRRRRRRR ");
+//        System.out.println("pcForNextSearchNodeConnection : "+pcForNextSearchNodeConnection);
+//        System.out.println("movedLastSearchNodeConnection() : " + movedLastSearchNodeConnection);
+//        System.out.println("pNWDQueue.getFirstSearchNodeOfPossibilityNWDConnection() : " + pNWDQueue.getPcForFirstSNToConnectRootSN());
+//        System.out.println("pNWDQueue.getFirstSearchNodeOfPossibilityNWDConnection() : " + pNWDQueue.getFirstSearchNodeToConnectRootSearchNode());
+        movedLastSearchNodeConnection.getReachableNWD().addPossibilityNWDNodeToReachableNWD(pNWDQueue.getPcForFirstSNToConnectRootSN()
+                , pNWDQueue.getFirstSearchNodeToConnectRootSearchNode());
+//        System.exit(0);
+/*        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+        System.out.println("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+        System.out.println("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+        System.out.println();
+        System.out.println();
+        System.out.println();*/
+//        System.out.println("K degerini alma denemesi : "+reachableNWD.getNextWayOfChar(getPriorityCharOfGivenChar('K')));
+        //Kayseri
+   /*     System.out.println("K degerini alma denemesi : "+moveReachableNWD(getPriorityCharOfGivenChar('K')));
+        DataResult<SearchNode> dataResult=moveReachableNWD(getPriorityCharOfGivenChar('K'));
+        SearchNode sc1=dataResult.getData();
+        System.out.println("-------");
+        System.out.println("A degerini alma denemesi : "+sc1.moveReachableNWD(getPriorityCharOfGivenChar('a')).getData().getNodeData().getLocationStringAddress());
+        SearchNode sc2=sc1.moveReachableNWD(getPriorityCharOfGivenChar('a')).getData();
+        System.out.println("-------");
+        System.out.println("Y degerini alma denemesi : "+sc2.moveReachableNWD(getPriorityCharOfGivenChar('y')).getData().getNodeData().getLocationStringAddress());
+*/
+
+//        System.exit(0);
+//        movedLastSearchNode.getReachableNWD().addPossibilityNWDNodeToReachableNWD(pNWDQueue.getFirstSearchNodeOfPossibilityNWDConnection());
 //        System.out.println("islem yapilacak derinlik : "+deep);
 //        reachableNWD
-        Queue<NextWayDirectionRequiredData> queue = pNWDQueue.getQueueSearchNodeToAddReachableNWD();
-        reachableNWD.addPossibilityNWDNodeToReachableNWD(pNWDQueue.getSearchNodeConnectionStart(), queue);
+//        Queue<NextWayDirectionRequiredData> queue = pNWDQueue.getQueueSearchNodeToAddReachableNWD();
+
+//        reachableNWD.addPossibilityNWDNodeToReachableNWD(pNWDQueue.getRootSearchNodeToAddNewConnection()/*, queue*/);
 //        reachableNWD.addCreatedSearchNodeToReachableNWD() burdan devam edilecek
 
 
         return new SuccessResult();
     }
 
-    DataResult<SearchNode> moveReachableNWD(PriorityChar pc) throws Exception {
+    DataResult<SearchNode> moveReachableNWD(PriorityChar pc) {
         DataResult<SearchNode> dataResult = reachableNWD.getNextWayOfChar(pc);
-        System.out.println("moveReachableNWD MSG : " + dataResult.getMsg());
+        System.out.println("moveReachableNWD MSG : " + dataResult);
         if (dataResult.isSuccess()) {
+            System.out.println(">>>>>>>>>>???????????? " + dataResult.getData());
+            movedLastSearchNodeConnection = dataResult.getData();
+//            lastReachableNWDRequiredData.setSearchNode(dataResult.getData());
+//            lastReachableNWDRequiredData.setPriorityChar(pc);
             return dataResult;
         }
         return new ErrorDataResult<>("Can not move in ReachableNWD. Because direction is not found.");
 
     }
 
-    private void movePossibilityNWD(StringBuilder stringBuilder/*PriorityChar pc*/) throws Exception {
+    private void movePossibilityNWD(Object value, StringBuilder stringBuilder/*PriorityChar pc*/) throws Exception {
         System.out.println("gelen String Builder : " + stringBuilder);
         System.out.println("Burdan possibility;e gidecek");
+//        setFirstPcOfPossibilityRNWD(stringBuilder.charAt(0));
+        initializePossibilityNWD(value/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
+
+
         for (int i = 0; i < stringBuilder.length(); i++) {
             PriorityChar pc = getPriorityCharOfGivenChar(stringBuilder.charAt(i));
             DataResult<SearchNode> dataResult = pNWDQueue.createNextWayChar(pc);
-            System.out.println("dataResult : "+dataResult.toString());
+            System.out.println("dataResult : " + dataResult.toString());
 //            System.out.println("dataResult : "+dataResult.getData().getNodeData().toString());
 
         }
-        System.exit(0);
+//        System.exit(0);
+
+//        transferPossibilityNWDToReachableNWD();
+//        System.exit(0);
 //        System.out.println("Data Result : " +
 //                "------> data : "+dataResult.getData()+
 //                "------> success : "+ dataResult.isSuccess()+
@@ -126,13 +182,18 @@ public class SearchNode {
 //        System.out.println("returning data locationStringaddress : " + dataResult.getData().getNodeData().getLocationStringAddress());
     }
 
+//    private void setFirstPcOfPossibilityRNWD(char c) {
+//        PriorityChar pc = getPriorityCharOfGivenChar(c);
+//        pcForNextSearchNodeConnection = pc;
+//    }
+
     private void clearPossibilityNWD() {
         pNWDQueue = null;
     }
 
-    private void initializePossibilityNWD(Object data) {
+    private void initializePossibilityNWD(Object data/*,PriorityChar pc*/) {
 //        return
-        pNWDQueue = new PossibilityNextWayDirectionQueue(this, data);
+        pNWDQueue = new PossibilityNextWayDirection(data, movedLastSearchNodeConnection/*,pc*//*, movedLastSearchNodeConnection*/);
     }
 
     Object getValueOfObjectToBeProcess(Object o, Class<?> clazz) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
@@ -172,11 +233,11 @@ public class SearchNode {
         this.nodeData = nodeData;
     }
 
-    public PossibilityNextWayDirectionQueue getpNWDQueue() {
+    public PossibilityNextWayDirection getpNWDQueue() {
         return pNWDQueue;
     }
 
-    public void setpNWDQueue(PossibilityNextWayDirectionQueue pNWDQueue) {
+    public void setpNWDQueue(PossibilityNextWayDirection pNWDQueue) {
         this.pNWDQueue = pNWDQueue;
     }
 

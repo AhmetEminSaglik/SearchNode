@@ -77,13 +77,15 @@ public class Main {
     }
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+
+
         /*System.out.println((int) ',');
         System.out.println((int) '.');
         System.out.println((int) '0');
         System.out.println((char) 47);
         System.out.println((int) '\\');
         System.exit(0);*/
-        String[] text = {/*"K",*/"Kayseri", "Zeynep", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        String[] text = {/*"K",*/"Kayseri", "Kayseri","Kayseri", "Yemek", "Kalem", "Ulke", "Ingilizce"};
         Character[] characters= {'a','b','c','K'};
 
         Student[] students = {

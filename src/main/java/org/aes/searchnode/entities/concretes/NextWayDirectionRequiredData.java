@@ -26,4 +26,12 @@ public class NextWayDirectionRequiredData {
     public void setSearchNode(SearchNode searchNode) {
         this.searchNode = searchNode;
     }
+
+    @Override
+    public String toString() {
+        return "NextWayDirectionRequiredData{" +
+                "priorityChar=" + priorityChar +
+                ", searchNode=" + searchNode +
+                '}';
+    }
 }

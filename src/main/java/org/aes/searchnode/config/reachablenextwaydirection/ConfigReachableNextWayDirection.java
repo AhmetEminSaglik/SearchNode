@@ -7,7 +7,7 @@ import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.NextWayDirection
 public class ConfigReachableNextWayDirection {
 
     public static ReachableNextWayDirection getReachableNextWayDirectionObject() {
-        return new NextWayDirectionHashmap();
+        return new NextWayDirectionList();
 //        return new NextWayDirectionList();
     }
 

@@ -10,6 +10,6 @@ import java.util.Queue;
 public interface IPreProcessesToCreateReachableNWD {
     DataResult<SearchNode> createNextWayChar(PriorityChar pc) throws Exception;
 
-    Queue<NextWayDirectionRequiredData> getQueueSearchNodeToAddReachableNWD();
+//    Queue<NextWayDirectionRequiredData> getQueueSearchNodeToAddReachableNWD();
 
 }

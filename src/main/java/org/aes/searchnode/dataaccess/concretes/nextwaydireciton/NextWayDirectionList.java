@@ -7,6 +7,7 @@ import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -18,16 +19,35 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     @Override
     public DataResult<SearchNode> getNextWayOfChar(PriorityChar pc) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getPriorityChar().getChar() == pc.getChar())
+            if (list.get(i).getPriorityChar().getChar() == pc.getChar()){
+//                System.out.println("LISTEDEN VERI CEKILIYOR : "+list.get(i));
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retreived");
+            }else{
+
+//                System.out.println("Gelen char : "+pc.getChar()+" /// Listeden cekilen char : "+list.get(i).getPriorityChar().getChar());
+            }
         }
-        return new ErrorDataResult<SearchNode>("Data is not found in " + getClass().getSimpleName());
+        return new ErrorDataResult<>("Data is not found in " + getClass().getSimpleName());
     }
 
     @Override
-    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(SearchNode connectionStartSearchNode, Queue<NextWayDirectionRequiredData> queue) { // second paramater will be a  SearchNode that has other RNWD searchNode items
+    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode searchNode) {
+//        System.out.println("!!!!! listee Veri ekleniyor : "+pc+"  /  "+searchNode);
+        list.add(new NextWayDirectionRequiredData(pc, searchNode));
+        return new SuccessDataResult<>("--> SearchNode is added to List");
+    }
 
-        return null;
+
+    @Override
+    public void printAllDataOfSearchNode() {
+//        System.out.println("List  Datas : ");
+        for (int i = 0; i < list.size(); i++) {
+            char c = list.get(i).getPriorityChar().getChar();
+            SearchNode sn = list.get(i).getSearchNode();
+            System.out.println(c + " : " + sn);
+        }
+//        System.out.println("List is over");
+//        System.out.println("+++++++++++++++++++++++++++++++++++++++");
     }
 
 

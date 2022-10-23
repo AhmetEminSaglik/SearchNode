@@ -20,8 +20,14 @@ public class DataResult<T> extends Result {
 
     @Override
     public String toString() {
+        String dataToString;
+        if (data != null) {
+            dataToString = data.toString();
+        } else {
+            dataToString = null;
+        }
         return "DataResult{" +
-                "data=" + data.toString() +", "+ super.toString() +
+                "data=" + dataToString + ", " + super.toString() +
                 '}';
     }
 }
