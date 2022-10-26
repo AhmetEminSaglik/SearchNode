@@ -14,7 +14,7 @@ public class PriorityFieldOrder {
     List<Field> fieldNameList = new ArrayList<>();
     Class clazz;
 
-    public PriorityFieldOrder(Class clazz) throws NotFoundAnyDeclaredFieldException {
+    public PriorityFieldOrder(Class<?> clazz) throws NotFoundAnyDeclaredFieldException {
         this.clazz = clazz;
         setPriorityFieldsInDefaultOrder();
     }

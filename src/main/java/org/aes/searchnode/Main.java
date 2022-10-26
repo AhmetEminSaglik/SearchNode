@@ -85,27 +85,32 @@ public class Main {
         System.out.println((char) 47);
         System.out.println((int) '\\');
         System.exit(0);*/
-        String[] text = {/*"K",*/"Kayseri", "Kayseri","Kayseri", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        String[] text = {/*"K",*/"Kayseri", "Kayseri","Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
         Character[] characters= {'a','b','c','K'};
-
+Integer[] integers={1,111,11,2,-2,-0, 2};
         Student[] students = {
                 new Student("Ahmet", "SAGLIK", 24, 1001),
                 new Student("Omer", "Koramaz", 20, 1002),
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
         SearchNode searchNode = new SearchNode();
-        /*for (Character tmp : characters) {
+        for (Integer tmp : integers) {
             searchNode.add(tmp,tmp.getClass());
-        }*/
+        }
+        for (Character tmp : characters) {
+            searchNode.add(tmp,tmp.getClass());
+        }
         for (String tmp : text) {
             searchNode.add(tmp,tmp.getClass());
         }
-        System.out.println("----------------------------------");
+        /*System.out.println("----------------------------------");
         for (Student tmp : students) {
+            System.out.println("tmp : "+tmp);
             searchNode.add(tmp,tmp.getClass());
+            System.exit(0);
         }
         System.out.println("----------------------------------");
-
+*/
         System.exit(0);
 //        Bu kismi arraylerden veri cekerek test edicem.
 //        printIntegerAscii();
