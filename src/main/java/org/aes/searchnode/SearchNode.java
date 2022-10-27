@@ -30,7 +30,7 @@ public class SearchNode {
     public void add(Object object, Class<?> clazz) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
         Object value = getValueOfObjectToBeProcess(object, clazz);
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Yeni value ekleme >>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println("type : " +clazz.getSimpleName()+" -->  gelen object : "+value);
+        System.out.println("type : " + clazz.getSimpleName() + " -->  gelen object : " + value);
         StringBuilder stringValue = new StringBuilder(value.toString());
         movedLastSearchNodeConnection = this;
         try {
@@ -46,6 +46,7 @@ public class SearchNode {
                     movePossibilityNWD(value, stringValue);
                     break;
                 }
+                /*Eger NWD'de deger bulunur ve datamiz stringLocationAddress ile ayni olursa o halde datamizi  datanode'a datasina ekleyebiliriz*/
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             }
 
@@ -53,8 +54,8 @@ public class SearchNode {
             System.err.println(e.getMessage());
             System.exit(0);
         }
-        transferPossibilityNWDToReachableNWD();
         if (pNWDQueue != null) {
+            transferPossibilityNWDToReachableNWD();
             clearPossibilityNWD();
         }
         System.out.println("size of reachableNWD after add process : " + reachableNWD.size());
@@ -113,10 +114,11 @@ public class SearchNode {
 
     private Result transferPossibilityNWDToReachableNWD() {
         if (pNWDQueue != null)
-        movedLastSearchNodeConnection.getReachableNWD().addPossibilityNWDNodeToReachableNWD(pNWDQueue.getPcForFirstSNToConnectRootSN()
-                , pNWDQueue.getFirstSearchNodeToConnectRootSearchNode());
+            movedLastSearchNodeConnection.getReachableNWD().addPossibilityNWDNodeToReachableNWD(pNWDQueue.getPcForFirstSNToConnectRootSN()
+                    , pNWDQueue.getFirstSearchNodeToConnectRootSearchNode());
         return new SuccessResult();
     }
+
     DataResult<SearchNode> moveReachableNWD(PriorityChar pc) {
         DataResult<SearchNode> dataResult = reachableNWD.getNextWayOfChar(pc);
         System.out.println("moveReachableNWD MSG : " + dataResult);
@@ -139,13 +141,17 @@ public class SearchNode {
 
         }
     }
+
     private void clearPossibilityNWD() {
+
         pNWDQueue = null;
+
     }
 
     private void initializePossibilityNWD(Object data/*,PriorityChar pc*/) {
         pNWDQueue = new PossibilityNextWayDirection(data, movedLastSearchNodeConnection/*,pc*//*, movedLastSearchNodeConnection*/);
     }
+
     Object getValueOfObjectToBeProcess(Object o, Class<?> clazz) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
         /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
          *  pfOrder.getPriorityFieldName(index).getName()
@@ -198,4 +204,4 @@ public class SearchNode {
                 ", nodeData=" + nodeData +
                 '}';
     }
-   }
+}
