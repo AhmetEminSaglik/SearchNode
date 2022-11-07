@@ -28,9 +28,10 @@ public class SearchNode<T> {
     private List<SearchNode> sNListToIncreaseNWDTV = new ArrayList<>();
 
     public void add(T t /*Object object, Class<?> clazz*/) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+
         clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
-        StringBuilder stringValue = new StringBuilder(value.toString());
+        StringBuilder stringValue = new StringBuilder(value.toString().trim());
         stringValue = trimObject(stringValue.toString());
         if (stringValue.toString().equals("")) {
             System.err.println("empty or space can not added to SearchNode");
@@ -85,7 +86,7 @@ public class SearchNode<T> {
         return pc;
     }
 
-    public DataResult<String> search(String text) {
+    public DataResult<DataInfo> search(String text) {
         movedLastSearchNodeConnection = this;
         StringBuilder stringValue = new StringBuilder(text);
 //        System.out.println("gelen arama degerleri text : "+text);
@@ -100,8 +101,8 @@ public class SearchNode<T> {
 //                System.out.println("drDataInfo : "+drDataInfo.toString());
 //                System.out.println("LSA:  : "+movedLastSearchNodeConnection.getNodeData().getLocationStringAddress());
                 if (drDataInfo.isSuccess()) {
-                    System.out.println("AES : drDataInfo.getData()  :" + drDataInfo.getData());
-                    return new SuccessDataResult(drDataInfo.getData().getValue(), "Data is found :" + drDataInfo.getData().getValue());
+//                    System.out.println("AES : drDataInfo.getData()  :" + drDataInfo.getData());
+                    return new SuccessDataResult<>(drDataInfo.getData(), "Data is found :" + drDataInfo.getData().getValue());
                 }
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             } else {

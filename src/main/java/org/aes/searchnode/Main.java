@@ -92,17 +92,31 @@ public class Main {
 
 //        List<String> objectList = (List<String>) Arrays.asList(set.toArray());
 //        System.out.println("objectList size :" + objectList.size());
-        SearchNode<String> SNStringTest = new SearchNode();
+        SearchNode<String> SNStringTest = new SearchNode<>();
         for (String tmp : wordList) {
             SNStringTest.add(tmp);
         }
-        System.out.println(SNStringTest.search("testing"));
-        System.out.println(SNStringTest.search("tost"));
-        System.out.println(SNStringTest.search("tos"));
-        System.out.println(SNStringTest.search("tost3"));
-        System.out.println(SNStringTest.search("tosted"));
-        System.out.println(SNStringTest.search("tosted2"));
-        System.out.println(SNStringTest);
+
+        System.out.println( "wordList : "+wordList.size());
+        for (String tmp : wordList) {
+            DataResult<DataInfo> dataResult = SNStringTest.search(tmp);
+//            if (dataResult.getData() != null && dataResult.getData().getNumberOfhowManyTimesAddedThisValue() > 10) {
+//                a++;
+            System.out.println("Aranacak kelime :" +tmp);
+            if(/*tmp.trim().length()>0&&*/dataResult.getData()!=null){
+            System.out.println("Data search : "+tmp+" : --> "+dataResult.getData().getValue() + " : " + dataResult.getData().getNumberOfhowManyTimesAddedThisValue());
+            }
+//            }
+
+        }
+
+//        System.out.println(SNStringTest.search("testing"));
+//        System.out.println(SNStringTest.search("tost"));
+//        System.out.println(SNStringTest.search("tos"));
+//        System.out.println(SNStringTest.search("tost3"));
+//        System.out.println(SNStringTest.search("tosted"));
+//        System.out.println(SNStringTest.search("tosted2"));
+//        System.out.println(SNStringTest);
 //        System.out.println(SNStringTest.search("package"));
 //        System.out.println(SNStringTest.search("response"));
 //        System.out.println(SNStringTest.search("gorselini"));
@@ -126,23 +140,23 @@ public class Main {
             if (objectList.get(i).equals("Chart")) {
                 System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
             }*/
-        }
+    }
 
-//        System.exit(0);
+    //        System.exit(0);
         /*System.out.println((int) ',');
         System.out.println((int) '.');
         System.out.println((int) '0');
         System.out.println((char) 47);
         System.out.println((int) '\\');
         System.exit(0);*/
-        String[] text = {/*"K",*/"Kayseri", "Kayseri", "Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
-        Character[] characters = {'a', 'b', 'c', 'K'};
-        Integer[] integers = {1, 111, 11, 2, -2, -0, 2};
-        Student[] students = {
-                new Student("Ahmet", "SAGLIK", 24, 1001),
-                new Student("Omer", "Koramaz", 20, 1002),
-                new Student("Aynur", "YILDIRIM", 25, 1003),
-        };
+    String[] text = {/*"K",*/"Kayseri", "Kayseri", "Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+    Character[] characters = {'a', 'b', 'c', 'K'};
+    Integer[] integers = {1, 111, 11, 2, -2, -0, 2};
+    Student[] students = {
+            new Student("Ahmet", "SAGLIK", 24, 1001),
+            new Student("Omer", "Koramaz", 20, 1002),
+            new Student("Aynur", "YILDIRIM", 25, 1003),
+    };
        /* SearchNode searchNode = new SearchNode();
         for (Integer tmp : integers) {
             searchNode.add(tmp, tmp.getClass());
