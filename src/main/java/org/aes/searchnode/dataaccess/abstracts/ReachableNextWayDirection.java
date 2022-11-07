@@ -15,6 +15,9 @@ public interface ReachableNextWayDirection {
 
     void printAllDataOfSearchNode();
 
+    /**
+     * return SearchNode Available Next Way Directions size in stored .
+     * */
     int size();
 
 

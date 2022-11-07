@@ -14,6 +14,7 @@ import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAnd
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
+import org.aes.searchnode.fakedata.StringText;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -77,32 +78,81 @@ public class Main {
     }
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+//        new OxfordAPITest();
+//        System.exit(0);
+        StringText textData = new StringText();
+        List<String> wordList = new ArrayList<>();
+        for (String tmp : textData.textList) {
+            wordList.addAll(Arrays.asList(tmp.split(" ")));
 
+        }
+        System.out.println("wordList size : " + wordList.size());
+//        HashSet<String> set = new HashSet<>(wordList);
+//        System.out.println("uniqe word/set size : " + set.size());
 
+//        List<String> objectList = (List<String>) Arrays.asList(set.toArray());
+//        System.out.println("objectList size :" + objectList.size());
+        SearchNode<String> SNStringTest = new SearchNode();
+        for (String tmp : wordList) {
+            SNStringTest.add(tmp);
+        }
+        System.out.println(SNStringTest.search("testing"));
+        System.out.println(SNStringTest.search("tost"));
+        System.out.println(SNStringTest.search("tos"));
+        System.out.println(SNStringTest.search("tost3"));
+        System.out.println(SNStringTest.search("tosted"));
+        System.out.println(SNStringTest.search("tosted2"));
+        System.out.println(SNStringTest);
+//        System.out.println(SNStringTest.search("package"));
+//        System.out.println(SNStringTest.search("response"));
+//        System.out.println(SNStringTest.search("gorselini"));
+//        System.out.println(SNStringTest.search("Chart"));
+       /* for (int i = 0; i < objectList.size(); i++) {
+            if (objectList.get(i).equals("package")) {
+                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
+            }
+        }
+        for (int i = 0; i < objectList.size(); i++) {
+            if (objectList.get(i).equals("response")) {
+                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
+            }
+        }
+        for (int i = 0; i < objectList.size(); i++) {
+            if (objectList.get(i).equals("gorselini")) {
+                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
+            }
+        }
+        for (int i = 0; i < objectList.size(); i++) {
+            if (objectList.get(i).equals("Chart")) {
+                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
+            }*/
+        }
+
+//        System.exit(0);
         /*System.out.println((int) ',');
         System.out.println((int) '.');
         System.out.println((int) '0');
         System.out.println((char) 47);
         System.out.println((int) '\\');
         System.exit(0);*/
-        String[] text = {/*"K",*/"Kayseri", "Kayseri","Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
-        Character[] characters= {'a','b','c','K'};
-Integer[] integers={1,111,11,2,-2,-0, 2};
+        String[] text = {/*"K",*/"Kayseri", "Kayseri", "Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        Character[] characters = {'a', 'b', 'c', 'K'};
+        Integer[] integers = {1, 111, 11, 2, -2, -0, 2};
         Student[] students = {
                 new Student("Ahmet", "SAGLIK", 24, 1001),
                 new Student("Omer", "Koramaz", 20, 1002),
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
-        SearchNode searchNode = new SearchNode();
+       /* SearchNode searchNode = new SearchNode();
         for (Integer tmp : integers) {
-            searchNode.add(tmp,tmp.getClass());
+            searchNode.add(tmp, tmp.getClass());
         }
         for (Character tmp : characters) {
-            searchNode.add(tmp,tmp.getClass());
+            searchNode.add(tmp, tmp.getClass());
         }
         for (String tmp : text) {
-            searchNode.add(tmp,tmp.getClass());
-        }
+            searchNode.add(tmp, tmp.getClass());
+        }*/
         /*System.out.println("----------------------------------");
         for (Student tmp : students) {
             System.out.println("tmp : "+tmp);
@@ -111,7 +161,7 @@ Integer[] integers={1,111,11,2,-2,-0, 2};
         }
         System.out.println("----------------------------------");
 */
-        System.exit(0);
+//        System.exit(0);
 //        Bu kismi arraylerden veri cekerek test edicem.
 //        printIntegerAscii();
         /*String a = "abc", b = "1,2,3";
@@ -120,15 +170,15 @@ Integer[] integers={1,111,11,2,-2,-0, 2};
         System.out.println(sb);
         System.exit(0);*/
 
-
+/*
         Double[] numDoubles = {12.2, 3.3, 4.0, -2.2};
         Integer[] numbers = {12, 3, 4};
         List<Integer> numberList = new ArrayList<>();
         numberList.add(101);
         numberList.add(102);
-        numberList.add(103);
+        numberList.add(103);*/
 
-
+/*
         BigDecimal[] bigDecimals = {new BigDecimal("11.11"), new BigDecimal("12.999"), new BigDecimal("0.001")};
 
 
@@ -165,305 +215,5 @@ Integer[] integers={1,111,11,2,-2,-0, 2};
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-      /*  try {
-//            AbstractPriorityFieldOrder pfooInteger = new WrapperObjectPriorityFieldOrder(Integer.class);
-//            IPriorityFieldValue pfvInteger= pfoInteger.getiPriorityFieldValue();
-//            pfvInteger.getValueOfField()
-
-
-//            System.exit(0);
-
-            PriorityFieldOrder pfoInteger = new PriorityFieldOrder(Integer.class);
-//            pfoInteger.setPriorityFieldsInDefaultOrder();
-//            List<Field> fnIntegerList = pfoInteger.getAllPriorityFieldsName();
-            PriorityFieldValue pfvInteger = new PriorityFieldValue(pfoInteger*//*Integer.class, fnIntegerList*//*);
-
-
-            System.out.println("Integer : ");
-            for (Integer tmp : numbers) {
-                System.out.println("Read Value : " + pfvInteger.getValueOfField(tmp));
-            }
-            System.out.println("\n----------------");
-
-            System.out.println("String : ");
-            PriorityFieldOrder pfoString = new PriorityFieldOrder(String.class);
-            pfoString.setPriorityFieldsInDefaultOrder();
-            List<Field> fnStringList = pfoString.getAllPriorityFieldsName();
-
-
-            PriorityFieldValue pfvString = new PriorityFieldValue(*//*String.class, fnStringList*//*pfoString);
-
-            for (String tmp : text) {
-                System.out.println("Read Value : " + pfvString.getValueOfField(tmp));
-            }
-//            for (Field tmp : fnStringList) {
-//                main.getFieldInfo(tmp,null);
-//                System.out.println(tmp.getName());
-//                pfv.getValueOfField(tmp,null);
-
-//            }
-            System.out.println("\n----------------");
-
-//            System.exit(0);
-
-            System.out.println("Student : ");
-            PriorityFieldOrder pfoStudent = new PriorityFieldOrder(Student.class);
-            pfoStudent.setPriorityFieldsInDefaultOrder();
-            List<Field> pfList = pfoStudent.getAllPriorityFieldsName();
-//            System.exit(0);
-            PriorityFieldValue pfValueStudent = new PriorityFieldValue(*//*Student.class, pfList*//*pfoStudent);
-            System.out.println("List<String> fieldNameList= pfStudent.getAllPriorityFieldsName(); : ");
-            for (Student tmp : students) {
-                pfValueStudent.getValueOfField(tmp, pfoStudent.getPriorityFieldName(3));
-//                main.getFieldInfo(tmp,"no");
-//                if(tmp.getPriorityFields().size()>0)
-//                main.getFieldInfo(tmp, tmp.getPriorityFields().get(0).getName());
-
-
-            }
-//            System.exit(0);
-//            for(Field tmp : pfList){
-//                System.out.println(tmp.getName());
-//            }
-
-            System.out.println("\n----------------");
-//            System.exit(0);
-
-
-            *//*
-         * (Abstract)PriorityFieldOrder pfOrderEmployee = new PriorityFieldOrder(Employee.class);
-         * pfOrderEmployee.setPriorityFieldsInDefaultOrder();
-         * (Abstract) PriorityFieldValue pfValueEmployee = new PriorityFieldValue(Employee.class, null); // PriorityFieldOrder alsa
-         * *//*
-            PriorityFieldOrder pfOrderEmployee = new PriorityFieldOrder(Employee.class);
-//            pfOrderEmployee.setPriorityFieldsInDefaultOrder();
-            List<Field> pfEmployeeList = pfOrderEmployee.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueEmployee = new PriorityFieldValue(*//*Employee.class, pfEmployeeList*//*pfOrderEmployee);
-            for (Employee tmp : employees) {
-                pfValueEmployee.getValueOfField(tmp, pfOrderEmployee.getPriorityFieldName(0));
-            }
-            System.out.println("\n----------------");
-       *//* } catch (Exception e) {
-            e.printStackTrace();
-//            System.err.println(e.getMessage());
-        }
-
-        try {*//*
-            PriorityFieldOrder pfOBigDecimal = new PriorityFieldOrder(BigDecimal.class);
-            pfOBigDecimal.setPriorityFieldsInDefaultOrder();
-            List<Field> pfBigDecimalList = pfOBigDecimal.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueBigDecimal = new PriorityFieldValue(pfOBigDecimal*//*BigDecimal.class, pfBigDecimalList*//*);
-            for (BigDecimal tmp : bigDecimals) {
-                System.out.println("big deciemal : " + pfValueBigDecimal.getValueOfField(tmp));
-            }
-            PriorityFieldOrder pfOBooleans = new PriorityFieldOrder(Boolean.class);
-            pfOBooleans.setPriorityFieldsInDefaultOrder();
-            List<Field> pfBooleansList = pfOBooleans.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueBoolean = new PriorityFieldValue(pfOBooleans*//*Boolean.class, pfBooleansList*//*);
-            for (Boolean tmp : booleans) {
-                System.out.println("booleans : " + pfValueBoolean.getValueOfField(tmp));
-            }
-            System.out.println("-------------");
-            PriorityFieldOrder pfOCharacter = new PriorityFieldOrder(Character.class);
-            pfOCharacter.setPriorityFieldsInDefaultOrder();
-            List<Field> pfCharacterList = pfOCharacter.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueCharacter = new PriorityFieldValue(pfOCharacter*//*Character.class, pfCharacterList*//*);
-            for (Character tmp : characters) {
-                System.out.println("Characters : " + pfValueCharacter.getValueOfField(tmp));
-            }
-
-            PriorityFieldOrder pfOSpecialString = new PriorityFieldOrder(SpecialBigDecimal.class);
-            pfOSpecialString.setPriorityFieldsInDefaultOrder();
-            List<Field> pfSpecialStringList = pfOSpecialString.getAllPriorityFieldsName();
-            PriorityFieldValue pfValueSpecialString = new PriorityFieldValue(pfOSpecialString*//*SpecialBigDecimal.class, null*//*);
-            for (SpecialBigDecimal tmp : specialBigDecimal) {
-                System.out.println("Special string : " + pfValueSpecialString.getValueOfField(tmp));
-            }
-
-
-        } catch (InvalidFieldOrFieldNameException e) {
-            throw new RuntimeException(e);
-        } catch (ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException e) {
-            throw new RuntimeException(e);
-        } catch (NotFoundAnyDeclaredFieldException e) {
-            throw new RuntimeException(e);
-        } catch (NotFoundRequestedFieldException e) {
-            throw new RuntimeException(e);
-        }
-        SearchNode<Integer> nsInteger = new SearchNode();
-//        nsInteger.ad
-        List<Field> fieldPriority = new ArrayList<Field>();
-//        fieldPriority.add(list.get(1)); //lastname
-//        fieldPriority.add(list.get(1));
-        *//*
-         *
-         * business
-         *   abstracts
-         *   concretes
-         * core
-         *   utilities
-         * dataAccess
-         *   abstracts
-         *   concretes
-         * entities
-         *   abstracts
-         *   concretes
-         * */
-    }
-
+    }*/
 }
-
-/*  Integer i = 1998;
-        Main main = new Main();
-        main.getFieldInfo(i);
-
-        Character ccc = 'c';
-        main.getFieldInfo(ccc);
-        Float f = 222.2f;
-        main.getFieldInfo(f);
-        String sss = "STRING TEST";
-        System.out.println("sss : " + sss);
-        main.getFieldInfo(sss);
-
-        Student student = new Student("Ahmet","SAGLIK",24,1998);
-        main.getFieldInfo(student);
-
-        System.exit(0);
-        Double ddd = 2.2;
-        Character character = 'c';
-        Field cField = character.getClass().getDeclaredField("value");
-        cField.trySetAccessible();
-//        System.out.println(cField.getName());
-//        System.out.println(cField+ " : "+cField.get(cField));
-        System.out.println("------");
-//        Integer i = 1998;
-        Field field = i.getClass().getDeclaredField("value");
-        field.setAccessible(true);
-//        field.set(null,null);
-//        System.out.println(field.trySetAccessible());
-//        field.setBoolean(field,Boolean.TRUE);
-        System.out.println(field.getName());
-        System.out.println(field + " : " + field.get(i));
-        System.out.println("referance :" + i);
-
-        i = 1997;
-        System.out.println("referance :" + i.getClass());
-//        System.out.println(i.getClass().getDeclaredField("value").get(i));
-
-//        System.exit(0);
-        System.out.println("++++++++++++++++++++++++++++");
-        System.out.println("cField : " + cField.getClass().getDeclaredFields().length);
-        for (Field tmp : cField.getClass().getDeclaredFields()) {
-            try {
-                tmp.setAccessible(true);
-                Object value = tmp.get(cField);
-                System.out.println(tmp + "  : " + value);
-            } catch (Exception e) {
-                System.out.println(" error : " + e.getMessage());
-            }
-        }
-        System.out.println("bitti");
-        System.exit(0);
-//        Student student = new Student();
-        System.out.println(student);
-        List<Field> list = student.getPriorityFields();
-        for (Field tmp : list) {
-            System.out.println(tmp);
-        }
-        int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-        char b[] = {'a', 'b', 'c', 'd'};
-        String c[] = {"aa", "bb", "cc", "dd"};
-        List<Integer> intList = new ArrayList();
-        List<Character> charList = new ArrayList<>();
-        List<String> stringList = new ArrayList<>();
-        int val = 111;
-        Integer iInt = val;
-        System.out.println(iInt);
-        System.out.println(iInt.getClass());
-        char ch = 'c';
-//        Character character = ch;
-//        System.out.println(character);
-
-        System.out.println(character.getClass());
-        double dob = 22.22;
-        Double dDob = dob;
-        System.out.println(dDob);
-
-        System.out.println(dDob.getClass());
-        byte bytee = 22;
-        Byte bByte = bytee;
-        System.out.println(bByte);
-
-        System.out.println(bByte.getClass());
-
-        SearchNode<String> nsString = new SearchNode();
-        SearchNode<Integer> nsInt = new SearchNode();
-        SearchNode<Student> nsStudent = new SearchNode();
-
-        System.exit(0);
-//        SearchNode<Integer> nsInteger = new SearchNode<>();
-//        System.out.println(nsInteger.getPriorityFields());
-//        SearchNode<Student> nsStudent = new SearchNode<>();
-//        System.out.println("Student : " + nsStudent.getPriorityFields());
-        List<? extends IPriorityFields> ipfList = new ArrayList<>();
-        Student s = new Student();
-//        ipfList.add(s);
-
-        IPriorityFields pf = new IPriorityFields() {
-            @Override
-            public List<Field> getPriorityFields() {
-                return IPriorityFields.super.getPriorityFields();
-            }
-        };
-        //nodeSearch.
-//        St
-
-//        ObjectField objectField = new ObjectField();
-
-/*
-       List<Integer> priorityListOrder = new ArrayList<>();
-        priorityListOrder.add(1);
-        priorityListOrder.add(0);
-        priorityListOrder.add(2);
-
-        PriorityObjectField priorityObjectField = new PriorityObjectField();
-        List priorityFieldOrder =  priorityObjectField.getFieldsInPriorityOrder(Student.class, priorityListOrder);
-
-
-
-        List<Field> fieldListOfObject = objectField.getFieldListOfObject(Student.class);
-
-
-        objectField.getNameOfDeclaredFieldIndex(Student.class, priorityListOrder);
-
-        priorityList.add(objectField.getNameOfDeclaredFieldIndex(Student.class, 1));
-        priorityList.add(objectField.getNameOfDeclaredFieldIndex(Student.class, 0));
-
-        PriorityObjectField priorityObjectField = new PriorityObjectField();*/
-
-//        List<String> priorityList = new ArrayList<>();
-//        priorityList.add(new Student().getClass().getDeclaredField())
-//        System.out.println(new Student().getClass().getDeclaredField("name"));
-//        System.out.println(new Student().getClass().getDeclaredFields()[0]);
-//        System.out.println(new Student().getClass().getDeclaredFields()[0].getName());
-//        System.out.println(Student.class.getDeclaredFields()[0].getName());
-//        objectField.getNameOfDeclaredFieldIndex(Student.class, 1);
-//        System.out.println("--");
-
-//        objectField.getNameOfDeclaredFieldIndex(Student.class.getDeclaredFields()[0],)
-//        System.exit(0);
-//        priorityObjectField.setPriorityField();
-//        priorityList.add(fieldList)
-//        HashMap<String, Field> hashMap = objectField.getFieldMapOfObject(new Student());
-//        Student student = new Student("Ahmet", "SAGLIK", 24, 100);
-//        for(Map.Entry<String,Field> set : hashMap.entrySet()){
-//            System.out.println("hashmap : "+set.getKey()+ " : " +set.getValue().get);
-//        }
-//        System.out.println("name : "+hashMap.get("name").getName());
-//        for (Field tmp : list) {
-//            System.out.println(tmp.getName() + " : " + tmp.get(student));
-//        }
-
-// lastname, name, no ya gore listelemek istiyorum*/

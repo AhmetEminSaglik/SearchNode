@@ -15,6 +15,8 @@ public class PriorityFieldOrder {
     Class clazz;
 
     public PriorityFieldOrder(Class<?> clazz) throws NotFoundAnyDeclaredFieldException {
+        System.out.println("GELEN COMPONENT TYPE : "+clazz);
+
         this.clazz = clazz;
         setPriorityFieldsInDefaultOrder();
     }

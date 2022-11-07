@@ -65,8 +65,10 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
 //        return null;
 //    }
 
+
     @Override
     public int size() {
+        System.out.println(list.size());
         return list.size();
     }
 }
