@@ -18,7 +18,7 @@ public class NodeData {
 
     private List<DataInfo> listDataInfo = new ArrayList<>();
     //    private DataInfo dataInfo;
-    private int nextWayDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
+    private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
     private String locationStringAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public int getDeep() {
@@ -83,7 +83,17 @@ public class NodeData {
         this.data = data;
     }*/
 
+    public int getNextDirectionsTotalValueNumber() {
+        return nextDirectionsTotalValueNumber;
+    }
 
+    public void increaseNextDirectionsExistingTotalDataNumber() {
+        nextDirectionsTotalValueNumber++;
+    }
+
+    public void decreaseNextDirectionsExistingTotalDataNumber() {
+        nextDirectionsTotalValueNumber--;
+    }
 //    public void setNextDirectionsTotalValueNumber(int nextDirectionsTotalValueNumber) {
 //        this.nextDirectionsTotalValueNumber = nextDirectionsTotalValueNumber;
 //    }
@@ -103,7 +113,7 @@ public class NodeData {
      * @return int This returns how many data is existed in next way directions.
      */
     public int getNextWayDirectionTotalValue() {
-        return nextWayDirectionsTotalValueNumber;
+        return nextDirectionsTotalValueNumber;
     }
 
     /**
@@ -111,11 +121,11 @@ public class NodeData {
      * if added any new item goes through this location then increases NWDTV
      */
     public void increaseNextWayDirectionTotalValue() {
-        nextWayDirectionsTotalValueNumber++;
+        nextDirectionsTotalValueNumber++;
     }
 
     public void decreaseNextWayDirectionTotalValue() {
-        nextWayDirectionsTotalValueNumber--;
+        nextDirectionsTotalValueNumber--;
     }
 
     @Override
@@ -123,7 +133,7 @@ public class NodeData {
         return "NodeData{" +
                 "deep=" + deep +
                 ", data={" + getDataInfoListItems() + '}' +
-                ", nextWayDirectionsTotalValueNumber=" + nextWayDirectionsTotalValueNumber +
+                ", nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
                 ", locationStringAddress='" + locationStringAddress + '\'' +
                 '}';
     }

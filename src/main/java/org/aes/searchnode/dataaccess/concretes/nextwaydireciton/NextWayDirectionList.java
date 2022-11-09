@@ -23,7 +23,6 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
 //                System.out.println("LISTEDEN VERI CEKILIYOR : "+list.get(i));
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retreived");
             }else{
-
 //                System.out.println("Gelen char : "+pc.getChar()+" /// Listeden cekilen char : "+list.get(i).getPriorityChar().getChar());
             }
         }

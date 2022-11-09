@@ -131,7 +131,7 @@ public class Main {
 //for(String tmp : wordList){
 //        fakeDataCreation.clearDataInFile();
         fakeDataCreation.clearDataInFile();
-//        System.out.println("list data size : " + fakeDataCreation.getListData().size());
+        System.out.println("list data size : " + fakeDataCreation.getListData().size());
 
 //}
         System.exit(0);

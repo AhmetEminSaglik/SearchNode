@@ -106,15 +106,10 @@ public class SearchNode<T> {
                 }
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             } else {
-                return new ErrorDataResult<>("Requested Data : " + text + " -> Data Path is not inserted before");
+                return new ErrorDataResult<>("Requested Data : " + text + " /1/ Data is not found");
             }
         }
-        return new ErrorDataResult<>("Requested Data : " + text + " -> Data is not  added");
-    }
-
-    public Boolean contains(String text) {
-        DataResult<DataInfo> dataResult = search(text);
-        return dataResult.isSuccess();
+        return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
     }
 
     private Result transferPossibilityNWDToReachableNWD() {
