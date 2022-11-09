@@ -1,32 +1,31 @@
 package org.aes.searchnode.dataaccess.concretes.fileoperation;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import org.aes.searchnode.entities.concretes.FileFundamental;
+import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractWriteFile;
 
-public class WriteFileImpl {
-    public static void main(String[] args) {
-        try {
-            File myObj = new File("filename.txt");
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+public class WriteFileImpl extends AbstractWriteFile {
+    public WriteFileImpl(FileFundamental fileFundamental) {
+        super(fileFundamental);
+    }
 
-        try {
-            FileWriter myWriter = new FileWriter("filename.txt");
-            myWriter.write("Files in Java might be tricky, but it is fun enough!");
-            myWriter.close();
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+    @Override
+    public void write(String text) {
+        setAppendEnable(false);
+        doProcess(text);
+    }
+
+    @Override
+    public void append(String text) {
+        setAppendEnable(true);
+        doProcess(text);
+    }
+
+    @Override
+    public void appendNextLine(String text) {
+        text="\n"+text;
+        append(text);
+
 
     }
+
 }

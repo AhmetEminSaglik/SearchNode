@@ -1,3 +1,4 @@
+/*
 package org.aes.searchnode.fakedata;
 
 import java.lang.reflect.Field;
@@ -15,7 +16,7 @@ public class StringText {
         fieldList.remove(0);
         fieldList.remove(0);
         try {
-            for (int i = 0; i < 1/*fieldList.size()*/; i++) {
+            for (int i = 0; i < fieldList.size(); i++) {
                 fieldList.get(i).trySetAccessible();
                 textList.add((String) fieldList.get(i).get(this));
             }
@@ -27,22 +28,21 @@ public class StringText {
 
     }
 
-    String text0 = "ali at veli kan";
 
     String text1 = "Apex " +
             " testing frame triggers onLightning Platform high quality for let meet requirements deploying " +
-            "Testing iskey successful long term development critical ofdevelopment frame easy code only written sandbox environment " +
+            "Testing is key successful long term development critical of development frame easy code only written sandbox environment " +
             " Developer production deployed production org from sandbox as can distribute ers their to uploading packages Platform AppExchange addition being critical quality assurance requirements deploying distributing " + "These arebenefits " + "Ensuring triggers expected " +
             " Having suite regression every triggers updated future updates don’t break existing functionality " +
-            "Meetingcode requirements deploying production distributing via packages " +
+            "Meeting code requirements deploying production distributing via packages " +
             "High quality apps delivered toproduction production rs productive " +
             "High quality apps delivered package subscribers increase trust " +
 
-            "Before major service upgrade behalf through of process called incurrent version and next release comparestest " +
-            " thatbehavior hasn’t altered found result service upgradesHammer picks results selectively doesn’t Issues " +
+            "Before major service upgrade behalf through of process called in current version and next release compare stest " +
+            " that behavior hasn’t altered found result service upgradesHammer picks results selectively doesn’t Issues " +
             "triaged based certain criteria strives fix issues release ";
     String text2 =
-            "Maintainingsecurity highest priority dont view modify data is copy that secure center " +
+            "Maintaining security highest priority dont view modify data is copy that secure center " +
                     "Code Requirement Deployment " +
                     "Before deploy package forLightning Platform AppExchange least must covered those must pass addition trigger must though" +
                     "code requirement deployment don’t meet requirement sure testcommon cases including positive negative cases bulk single processing " +
@@ -1182,3 +1182,4 @@ public class StringText {
                     "sadece toplam sayisini bulmak istiyorsak   hesaplanmasi carpilmasi bize zaman kazandiracaktir Yani toplamda kareyi hesaplamak yerine karedeki cozumu hesaplamamiz yeterli olucaktir ";
 }
 
+*/

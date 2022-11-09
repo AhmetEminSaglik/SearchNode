@@ -1,24 +1,47 @@
 package org.aes.searchnode.dataaccess.concretes.fileoperation;
 
+import org.aes.searchnode.entities.concretes.FileFundamental;
+import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractReadFile;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
 
-public class ReadFileImpl {
-    public static void main(String[] args) {
+public class ReadFileImpl extends AbstractReadFile {
+    public ReadFileImpl(FileFundamental fileFund) {
+        super(fileFund);
+    }
+
+    @Override
+    public void read() {
+        clearList();
         try {
-            File myObj = new File("src/main/java/org/aes/searchnode/fakedata/worddata.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println("string data.length() : "+data.length());
-                System.out.println(data);
-
+            prepareFile();
+            while (reader.hasNextLine()) {
+                String data = reader.nextLine();
+                readDataList.add(data);
             }
-            myReader.close();
+            reader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            /*TODO
+             * if a file is not found then this this error will be added to a error list and after all files' read, the errors will be append to something like errorFile.txt
+             * */
+        /*    System.err.println("File could not found : " + e.getMessage());
+            File file = new File(fileFund.getCompletePath());
+            try {
+                file.createNewFile();
+                System.err.println("File was not found but now it is created and empty");
+
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }*/
+            System.err.println("FILE IS NOT FOUND : " + fileFund.getCompletePath() + " : " + e.getMessage());
+
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
         }
     }
+
 }

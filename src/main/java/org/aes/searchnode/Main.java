@@ -2,21 +2,21 @@ package org.aes.searchnode;
 
 
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
+import org.aes.searchnode.entities.concretes.FileFundamental;
 import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
+import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractReadFile;
+import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractWriteFile;
+import org.aes.searchnode.dataaccess.concretes.fileoperation.*;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
-import org.aes.searchnode.entities.example.Employee;
-import org.aes.searchnode.entities.example.Language;
-import org.aes.searchnode.entities.example.SpecialBigDecimal;
 import org.aes.searchnode.entities.example.Student;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
-import org.aes.searchnode.fakedata.StringText;
+import org.aes.searchnode.fakedata.FakeDataCreation;
+//import org.aes.searchnode.fakedata.StringText;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 public class Main {
@@ -78,31 +78,75 @@ public class Main {
     }
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+        /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
+
+
+        //FileFundamental fileFundWrite = new FileFundamental();
+   /*
+        fileFundWrite.setPath("src/main/java/org/aes/searchnode/fakedata/")
+                .setFileName("demoWordData")
+                .setFileExtension(".txt");
+        AbstractWriteFile writeFile = new WriteFileImpl(fileFundWrite);
+        writeFile.appendNextLine("try append1");
+
+        FileFundamental fileFundRead = new FileFundamental();
+        fileFundRead.setPath("src/main/java/org/aes/searchnode/fakedata/")
+                .setFileName("demoWordData")
+                .setFileExtension(".txt");
+        AbstractReadFile readFile = new ReadFileImpl(fileFundRead);
+        readFile.read();
+        List<String> list = readFile.getReadDataList();
+        System.out.println("read list : ");
+
+        for(String tmp : list){
+            System.out.println("data from list : " +tmp);
+        }
+*/
+
+
+     /*   FakeDataCreation fakeData = new FakeDataCreation();
+        fakeData.createData();
+        FileFundamental readFileFund= new FileFundamental();
+        readFileFund.setPath();
+//        FileFundamental writeFileFund= new FileFundamental();
+        fakeData.read(readFileFund);
+        fakeData.writeReadData();
+//        fakeData.setReadFileFund(readFileFund);
+//        fakeData.setWriteFileFund(writeFileFund);*/
+
+
+//        System.exit(0);
         /*TODO search kismi tamam gibi. diger fonksiyonlar eklenecek. ondan Sonrasina bakariz.*/
 //        new OxfordAPITest();
 //        System.exit(0);
         long memListStart = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
-        StringText textData = new StringText();
+      /*  StringText textData = new StringText();
         List<String> wordList = new ArrayList<>();
         for (String tmp : textData.textList) {
             wordList.addAll(Arrays.asList(tmp.split(" ")));
 
-        }
-        long memJustListefinish = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        }*/
+        FakeDataCreation fakeDataCreation = new FakeDataCreation();
+//for(String tmp : wordList){
+//        fakeDataCreation.clearDataInFile();
+        fakeDataCreation.clearDataInFile();
+//        System.out.println("list data size : " + fakeDataCreation.getListData().size());
 
-        System.out.println("wordList size : " + wordList.size());
+//}
+        System.exit(0);
 //        HashSet<String> set = new HashSet<>(wordList);
 //        System.out.println("uniqe word/set size : " + set.size());
 
 //        List<String> objectList = (List<String>) Arrays.asList(set.toArray());
 //        System.out.println("objectList size :" + objectList.size());
         SearchNode<String> SNStringTest = new SearchNode<>();
-        for (String tmp : wordList) {
+
+ /*       for (String tmp : wordList) {
             SNStringTest.add(tmp);
-        }
-        System.out.println("SNStringTest.getNodeData().getNextWayDirectionTotalValue() : "+SNStringTest.getNodeData().getNextWayDirectionTotalValue());
-        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a',(int)'a')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('l',(int)'l')).getData().getNodeData().getNextWayDirectionTotalValue());
+        }*/
+        System.out.println("SNStringTest.getNodeData().getNextWayDirectionTotalValue() : " + SNStringTest.getNodeData().getNextWayDirectionTotalValue());
+        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a', (int) 'a')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('l', (int) 'l')).getData().getNodeData().getNextWayDirectionTotalValue());
         /*System.out.println("wordList : " + wordList.size());
         for (String tmp : wordList) {
             DataResult<DataInfo> dataResult = SNStringTest.search(tmp);
