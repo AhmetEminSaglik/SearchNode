@@ -15,7 +15,7 @@ public class StringText {
         fieldList.remove(0);
         fieldList.remove(0);
         try {
-            for (int i = 0; i < fieldList.size(); i++) {
+            for (int i = 0; i < 1/*fieldList.size()*/; i++) {
                 fieldList.get(i).trySetAccessible();
                 textList.add((String) fieldList.get(i).get(this));
             }
@@ -27,7 +27,7 @@ public class StringText {
 
     }
 
-    String text0 = "testing tost3 tost3 tost3 tost3 tos ";
+    String text0 = "ali at veli kan";
 
     String text1 = "Apex " +
             " testing frame triggers onLightning Platform high quality for let meet requirements deploying " +
@@ -884,14 +884,11 @@ public class StringText {
                     "Up now we’ve ed XML style markup nowonly ’s put change change markup now n’t react input now haven’t written JavaScript " + "That changes " + "To started let’s very simple imagine needs able simple behavior " + " ofday nice today button Today going great day button " +
                     " hello Interactive it’s hard imagine simpler “does something ” It’s bit text currently blank buttons Here’scode " + " aura " +
                     " aura type String " +
-                    " p ofday p " +
                     " div " + " familiar we’ve really added button hello button ofday updated " + "Well quite yet ’ve already enteredcode tried rself ’ve noticed ofbuttons error " + "There problem " +
                     "We’ll befirst admit every error ’ll see helpful might hope says there’s controller" +
                     " named “ Click” Where does “ Click” come comes expression assigned n oftwo button tags " + "Given button probably guess thaton assign behavior tobutton it’s clicked assigned expression c that’s be bit mysterious " + "It’s actually pretty simple expression earlier c value prov er c property c isvalue prov er for’s client defined c reference in’s " + "c c value prov er for property defined " +
-                    "Uh ’s " +
                     "Whoops basically collection defines app’s behavior “things happen ” whereby “things” mean input other updates “Model View Controller” number sites ’ll various definitions purposes resource bundle holdsaction JavaScript functions particular signature " + "BeyondBasics " +
                     " talk lot controllers know that itself view menti dMVC Model View design pattern that’s common web frame built onMVC pattern " + "In similarities sure would correct say View Controller Model perhaps View Controller Database " + "Why “controller” doubled pattern interacting server addition toclient we’ve ed dual design iskey difference between MVC " + " ’sdistinction between “model” “database” traditional MVCmodel programmatic abstraction usually betweenunderlying storage usually relational andrest ofapplication there’s directly stands between @AuraEnabled operations again already abstraction between andunderlying storage layer calculation val ation logic fully programmatic behavior inform triggers model say po TAY tow it’s totally cool want go po TAH tow " + "Conf Excited We’ll sorted ondetails server controllers later " + "Let’s athello Interactive detail explanation bit concrete " +
-
                     " let btnClicked getSourcebutton " +
                     " let btn btnClicked labelbuttons label " +
                     " btn update ";
@@ -960,7 +957,7 @@ public class StringText {
                     "Set callback esponse " +
                     "Fireaction sendingrequest toserver " +
                     "Whenresponse comes andcallback updateexpenses " +
-                    "Um event markup again singular Hmmm right single item There’s xpensesList …but that’s comp nt even“real” expensesreal p level Hmmm " + "Is parent would parent parent —something would let us reference parent’s parent " + "Stop Right " + " reach other values There’s say “Hey grandparent I’m gonna update ” keep their hands selves wants ancestor change something asks Nicely sending " + "Here’scool part Sending almostsame handlingupdate directly Here’scode forclickReimbursed " +
+                    "Um event markup again singular Hmmm right single item There’s xpensesList …but that’s comp nt even“real” expensesreallevel Hmmm " + "Is parent would parent parent —something would let us reference parent’s parent " + "Stop Right " + " reach other values There’s say “Hey grandparent I’m gonna update ” keep their hands selves wants ancestor change something asks Nicely sending " + "Here’scool part Sending almostsame handlingupdate directly Here’scode forclickReimbursed " +
                     " clickReimbursed " +
                     " let " +
                     " let update updateExpense " +
@@ -1151,9 +1148,9 @@ public class StringText {
                     " Yani sayede kareye hic sekilde erisim ol acaksa o halde atarak gereksiz calismasin atsin mantigiyla calismaktadir Bunun cok basit islemi ekledim Islemi Algoritmanin " +
                     "ileri m atma islemine karar vermesi gerekiyor karari hesaplayacak fonksiyonun adina DeadlyPoint ismini verdim Boylece fonksiyon olumcul varsa atma komudu aksi halde atma komudu verecektir" +
                     " fonksiyonda degisken kullanilmaktadir Bunlar g ilebilecek yonler degiskenler ir kavrami demek Located gorselinde uygun kareler kirmizi cerceveli beyaz " +
-                    "karelerde gosterilmistir Sol ustteki beyaz karenin uygun karenin kareye ilerlenilirse ol acaktir Ancak kareye ilerlenilmedigi takdirde degiskende degisikli olusur Degisen degisken " +
+                    "karelerde gosterilmistir Sol ustteki beyaz kare uygun   kareye ilerlenilirse ol acaktir Ancak kareye ilerlenilmedigi takdirde degiskende degisikli olusur Degisen degisken " +
                     "ise cikis deger ir Son atacagi belirlendigi da belirlenmis oluyor olarak belirlenen ilerlenilecek son olmal ir belirlendikten sonra tekrardan " +
-                    " nin belirlenmesi soz konusu oldugunda kare atilmasi gerekmektedir Available Squares Available Squares gorselinde sol ust beyaz karenin Bunlardan tanesine da doldurulmus Di da" +
+                    " nin belirlenmesi soz konusu oldugunda kare atilmasi gerekmektedir Available Squares Available Squares gorselinde sol ust beyaz   Bunlardan tanesine da doldurulmus Di da" +
                     " doldurulmus ye kareye ulasilabilecek kaliyor O kareyi de da doldurulmus Burada algoritma yonlerin yonlerini hesaplar yonlerin yonlerini";
     String text53 =
             " kavrami demek ilerleyebilecegi yonlerinden tanesinin hesaplanmis u bulunmus Onceden halini Forward available squares calculation gorselinde cizimlerle anlattim Neden hesapla i yapiyoruz Iki nedeni " +
@@ -1175,13 +1172,13 @@ public class StringText {
                     "Chart Speed Comparison gorselini inceleyelim onceki tabloda inceledigimiz gibi sol birinci algoritmasinin ikinci algoritmasinin rapo u icermektedir kisa surede cozmustur Saniye" +
                     " esas alinmistir while dongusune girmistir BUNUN BIRINCI ALGORITMAIN COZULMESI BEKLENIYOR cozemeyecegi yonlere dogru atmistir Coordinate Representation Coordinate Representation gorseli Squares " +
                     "Number gorselini Squares Number gorselini inceleyip her karede toplam sayisini gorebilirsiniz gorsellerden oyun modu hesaplanmis koordinat ni secip inceleyelim Coordinate Representation gorselinde " +
-                    "gosterildigi uzere sol alt kareye ilk atildiktan sonra islemler gerceklestirilmistir Bulunulan toplam tanedir karenin her biri bunlar hesaplanmistir adet toplam koordinatlarda sekilde dagilmistir" +
+                    "gosterildigi uzere sol alt kareye ilk atildiktan sonra islemler gerceklestirilmistir Bulunulan toplam tanedir   her biri bunlar hesaplanmistir adet toplam koordinatlarda sekilde dagilmistir" +
                     " Squares Number Number Lik deneme likIkinci algoritmanin birinci algorit gore cok hizli oldugunu kanitladik Peki hiz yeterince iyi olup olmadigini nasil edicegiz Bunun oyun modunu ust " +
                     "sayiya cikarip daha de ettim Malesef ve kareleri cozmesi bekleyemedim koordinattaki sayisini bulabildim lari inceleyelim milyon saatte cozdu Milyardan fazla dongusune girdi Algoritma skor ala acagi halde halde" +
                     " atip sonra attigi zaman kaybi yasaniyor u ortadan kaldirdigim vakit belk saat oyun modundaki cozumleri bulabilecegim Aklimda algoritma takim fikirlerim Ancak universite " +
                     "ogrencisi oldugum derslerim sinavlarim cok vaktimi aliyor Yeterince odaklanamiyorum harika algoritmasi yazmak sabirsizlaniyorum Calcuate Minimum Different Squares Squares Number s" +
                     "Solution Number gorselinde seyin dikkatinizi cektigini umuyorum tane farkli karede de sayilardan olusuyor Calcuate Minimum need Different Squares gorselinde anlatildigi " +
-                    "uzere aslinda tane karedeki sayilari hesaplanirsa moddaki toplam hesaplanabilir Mesela mavi reng eki karenin de hesaplandigini varsayalim karenin simetrileri olucak sekilde tane ayni cozumu " +
-                    "sadece toplam sayisini bulmak istiyorsak karenin hesaplanmasi carpilmasi bize zaman kazandiracaktir Yani toplamda kareyi hesaplamak yerine karedeki cozumu hesaplamamiz yeterli olucaktir ";
+                    "uzere aslinda tane karedeki sayilari hesaplanirsa moddaki toplam hesaplanabilir Mesela mavi reng eki   de hesaplandigini varsayalim   simetrileri olucak sekilde tane ayni cozumu " +
+                    "sadece toplam sayisini bulmak istiyorsak   hesaplanmasi carpilmasi bize zaman kazandiracaktir Yani toplamda kareyi hesaplamak yerine karedeki cozumu hesaplamamiz yeterli olucaktir ";
 }
 

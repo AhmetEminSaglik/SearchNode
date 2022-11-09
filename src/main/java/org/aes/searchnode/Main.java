@@ -78,14 +78,19 @@ public class Main {
     }
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+        /*TODO search kismi tamam gibi. diger fonksiyonlar eklenecek. ondan Sonrasina bakariz.*/
 //        new OxfordAPITest();
 //        System.exit(0);
+        long memListStart = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
         StringText textData = new StringText();
         List<String> wordList = new ArrayList<>();
         for (String tmp : textData.textList) {
             wordList.addAll(Arrays.asList(tmp.split(" ")));
 
         }
+        long memJustListefinish = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
         System.out.println("wordList size : " + wordList.size());
 //        HashSet<String> set = new HashSet<>(wordList);
 //        System.out.println("uniqe word/set size : " + set.size());
@@ -96,20 +101,38 @@ public class Main {
         for (String tmp : wordList) {
             SNStringTest.add(tmp);
         }
-
-        System.out.println( "wordList : "+wordList.size());
+        System.out.println("SNStringTest.getNodeData().getNextWayDirectionTotalValue() : "+SNStringTest.getNodeData().getNextWayDirectionTotalValue());
+        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a',(int)'a')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('l',(int)'l')).getData().getNodeData().getNextWayDirectionTotalValue());
+        /*System.out.println("wordList : " + wordList.size());
         for (String tmp : wordList) {
             DataResult<DataInfo> dataResult = SNStringTest.search(tmp);
 //            if (dataResult.getData() != null && dataResult.getData().getNumberOfhowManyTimesAddedThisValue() > 10) {
 //                a++;
-            System.out.println("Aranacak kelime :" +tmp);
-            if(/*tmp.trim().length()>0&&*/dataResult.getData()!=null){
-            System.out.println("Data search : "+tmp+" : --> "+dataResult.getData().getValue() + " : " + dataResult.getData().getNumberOfhowManyTimesAddedThisValue());
+            System.out.println("Aranacak kelime :" + tmp);
+            if (*//*tmp.trim().length()>0&&*//*dataResult.getData() != null) {
+                System.out.println("Data search : " + tmp + " : --> " + dataResult.getData().getValue() + " : " + dataResult.getData().getNumberOfhowManyTimesAddedThisValue());
             }
+            System.out.println("toplam obje sayisi : " + CreatedNWDSNNumberCalculation.getNodeNumber());
 //            }
 
-        }
-
+        }*/
+       /* long memListfinish = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        System.out.println("memListStart : " + memListStart);
+        System.out.println("memListfinish : " + memListfinish);
+        System.out.println("memJustListefinish : " + memJustListefinish);
+        System.out.println("memListfinish - memListStart " + ((memListfinish - memListStart)/1024));
+        System.out.println("memJustListefinish - memListStart " + ((memJustListefinish - memListStart)/1024));
+        double ratio=(double) (memListfinish - memListStart)/ (double) (memJustListefinish - memListStart);
+        System.out.println("benim algoritma /sadece liste degeri  : " +ratio);
+        System.out.println("benim algoritma suan icin "+ratio + " kat daha fazla memory yiyor (byte bazinda hesapladim yanlis bilmiyorsam)");
+        System.out.println("test : contains(demoRandom) : "+SNStringTest.contains("demoRandom"));
+        System.out.println("test : contains(say) : "+SNStringTest.contains("kavrami"));
+        System.out.println("test : contains(say) : "+SNStringTest.search("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+        System.out.println("test : contains(say) : "+SNStringTest.search("kavra"));
+        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a',(int)'a')).getData().getNodeData().getNextWayDirectionTotalValue());
+//        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('X',(int)'X')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('M',(int)'M')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('L',(int)'L')).getData().getNodeData().getLocationStringAddress());
+//        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('X',(int)'X')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('M',(int)'M')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('L',(int)'L')).getData().getNodeData().getListDataInfo().get(0).getValue());
+        System.out.println(SNStringTest.getNodeData().getNextWayDirectionTotalValue());*/
 //        System.out.println(SNStringTest.search("testing"));
 //        System.out.println(SNStringTest.search("tost"));
 //        System.out.println(SNStringTest.search("tos"));

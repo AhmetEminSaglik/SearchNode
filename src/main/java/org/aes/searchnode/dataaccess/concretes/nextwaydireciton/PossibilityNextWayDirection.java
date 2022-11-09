@@ -1,5 +1,6 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
+import org.aes.searchnode.CreatedNWDSNNumberCalculation;
 import org.aes.searchnode.SearchNode;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.*;
@@ -25,6 +26,7 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
     }
     @Override
     public DataResult<SearchNode> createNextWayChar(PriorityChar pc) throws Exception /*throws Exception*/ {
+        CreatedNWDSNNumberCalculation.increaseNodeNumber();
         if (pcForFirstSNToConnectRootSN == null) {
             pcForFirstSNToConnectRootSN = pc;
         }
@@ -66,12 +68,12 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
         nodeData.setLocationStringAddress(currentLocationStringAddress.toString());
         Result result = addDataToDataNode(nodeData);
         if (!result.isSuccess()) {
-            nodeData.increaseNextDirectionsExistingTotalDataNumber();
+            nodeData.increaseNextWayDirectionTotalValue();
         }
+
     }
 
     Result addDataToDataNode(NodeData nodeData) throws Exception {
-
         if (nodeData.getLocationStringAddress().equals(data.toString())) {
 
           /*  if (nodeData.getData() == null) {
@@ -79,6 +81,7 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
                 return new SuccessResult();
             }*/
             nodeData.addData(data);
+            return  new SuccessResult("data is added");
 //            throw new Exception("Data is not null\n --> given data : " + data + "\n -->  registered data : " + nodeData.getData());
         }
         return new ErrorResult("Data is not added");
