@@ -81,14 +81,10 @@ public class Main {
 
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
-//        Logger logger=Logger.getLogger(Main.class.getName());
-//        logger.info("log test");
-//        Logger logger= Logger.getLogger("STRING VALLLLLL ");
-//        logger.info("info");
-//        logger.warning("warning");
-//        logger.fine("fine");
-//        logger.severe("severe");
-//        System.exit(0);
+FakeDataCreation fakeDataCreation= new FakeDataCreation();
+fakeDataCreation.createData();
+System.exit(0);
+//fakeDataCreation.createData();
 
         /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
         /*TODO
@@ -142,7 +138,7 @@ public class Main {
 
         }*/
 
-        FakeDataCreation fakeDataCreation = new FakeDataCreation();
+//        FakeDataCreation fakeDataCreation = new FakeDataCreation();
 
 //for(String tmp : wordList){
 //        fakeDataCreation.clearDataInFile();

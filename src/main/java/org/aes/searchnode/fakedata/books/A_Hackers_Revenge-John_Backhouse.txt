@@ -1,0 +1,508 @@
+	CHAPTER ONE
+
+	The New Computer System
+
+	At exactly 8.20 Mr Henry Williams walked through the doors of the bank. He was the manager and had worked there for twenty years. He wasn't always calm and relaxed when he arrived at work but yesterday something had happened to make his life much easier. He looked around the bank. There were beautiful new computers on every desk.
+
+	Some were connected to printers, others to scanners. The CPUs were hidden under the desks and the keyboards waited to be used. On each mouse pad was a mouse with a small red light, which lit up when the computer was switched on. The VDUs shone as the sun came through the window. Mr Williams smiled. When he entered his office, he saw that his secretary had already arrived.
+
+	"Morning, Mr Williams," she said happily. She was a very nice girl with long, blonde hair and a big smile but she wasn't the most efficient secretary in the world.
+
+	"Good morning, Belinda. Are you looking forward to discovering the wonderful things that your new computer can do?"
+
+	She looked worried. "Yes, but I hope I don't make too many mistakes. Yesterday I nearly lost some important information because I pressed the wrong key."
+
+	"Don't worry. I know you've only been here for six months. Mike has assured me that we now have the most up-to-date computer hardware and software are the most secure system money can buy."
+
+	Mike Black was the bank's network manager and head of technology. He had organized and set up the new system.
+
+	At that moment someone knocked on the door and Mike came in.
+
+	"Morning, Mr Williams. How are you?" he said.
+
+	"Very well, thank you, Mike. Now, are you sure the system is functioning properly? Can I go on holiday next week to the Caribbean without worrying about things back here?"
+
+	Mike smiled. "Things couldn't be better. Our LAN is working perfectly. It is now connected to the bank's WAN and the security access rights are..."
+
+	"Mike, you know that my knowledge of computers is very limited. I'm afraid I belong to another generation - which is why I pay you to solve our IT problems."
+
+	IT terms were a foreign language to Henry Williams. His son Robbie was only 15 but he was already a computer genius and sat in front of his monitor for hours every day. He had no problem logging on and off, surfing the net or downloading files. His father was an excellent bank manager but unfortunately he had no idea what these terms meant. He was grateful for experts like Mike who could decipher these mysteries for him.
+
+	"Don't worry. You can have a wonderful time in the Caribbean. Things couldn't be better here," replied Mike.
+
+	He left the office and Mr Williams sat down at his desk on which there was no computer at all, either new or old.
+
+	He was dreaming of blue seas and white beaches when a cry from Belinda's desk brought him back to reality. "Mr Williams, my computer has crashed!" As soon as she had said the words, they heard similar cries of alarm coming from the bank's main area downstairs.
+
+	One by one the computers were crashing...
+
+
+
+	CHAPTER TWO
+
+	A Problem
+
+	Mr Williams ran down the escalator and into the main office area. What was happening? All the computers were down. Everyone was trying to reboot but it was impossible. Henry Williams tried not to panic. He asked Belinda to call Mike and tell him to come immediately. Then he said to his staff, "Don't worry, everyone. I'm sure it's a minor problem that Mike will soon resolve." A young bank teller whispered to a colleague, "He said that last week when that virus destroyed most of our files. Remember?"
+
+	His friend smiled. Someone had sent an e-mail to all the staff which promised to show photos of Belinda's new boyfriend. Belinda was very popular with the staff in the bank so naturally everyone opened it. But there was no photo, just a virus which corrupted the entire system. Mike, who still didn't know about the problem, arrived in the lift just as strange things began to happen. First the lights went off, leaving the bank in darkness. Then a client came in to complain to a cashier that he couldn't access his account from the ATM outside the bank. Then the lights came on again but the doors closed automatically, locking everyone in the bank. Mr Williams said sarcastically, "As you can see, Mike, our new system is working perfectly. Nobody can do any work, the clients are angry, and we are all prisoners in the bank!"
+
+	Mike smiled nervously. "I'm sure it's nothing. I'll take a look at the server and see what the problem is." Mike was the only person with total security access rights for the system and he had the only copy of the password list. He was very good at his job so he wasn't too worried about these "hiccups." He went to the main computer and put in his password. A message appeared on the screen:
+
+	Access Denied
+
+	Password Invalid
+
+	Everyone in the bank was watching him. Mike took his password list from his wallet. He typed in his password again, slowly and carefully. Every time he tried the same message appeared on the screen. "That's impossible," he cried. His face was white with tension. Mr Williams was waiting for an explanation. "Is everything OK?" he asked. Mike prepared to give his boss the bad news.
+
+	"It seems that... someone has obtained the passwords for the new system and... has changed them."
+
+	"And what exactly does that mean?" asked his boss angrily. Mike took a deep breath.
+
+	"It means that this person now has total control of the bank."
+
+	At that moment the doors of the bank miraculously opened again. No one spoke. The silence was broken only by the noise of the clock on the wall. All the staff were waiting for Mr Williams' reaction.
+
+	"And tell me, how did this person get the passwords?" asked Mr Williams quietly.
+
+	"I have no idea," replied Mike. "I always keep the password list in my wallet. No one else has ever seen it. It's a complete mystery."
+
+	"No!" shouted Mr Williams. "The mystery is why I gave you a job. First the virus and now this. Well, you can start looking for a new job. You're sacked!"
+
+	Mike left the bank without a word. He didn't look at anyone. He knew that it was his fault. Belinda's voice broke the silence. "Oh, Mr Williams, what are we going to do?" Before he could answer, the computer displayed a new message:
+
+	E-mail arriving for Henry Williams
+
+
+
+	CHAPTER THREE
+
+	Are You Ready to Play, Henry?
+
+	Mr Williams turned to the bank staff and said, "Please, continue to work as normal. There is nothing to worry about."
+
+	Everyone looked surprised. How could they work without computers? It would be impossible. No one moved and no one spoke. Mr Williams repeated his message: "Back to work now, please. Our clients will arrive soon and we must be ready." As his staff slowly began to return to work, the bank manager sat down in front of the server. Belinda stood next to him. Mr Williams looked at the screen. He was now extremely worried. He hesitated for a moment. Belinda thought he was in difficulty and she wanted to help. "You have to click on the e-mail icon in the comer of the screen," she said. "I know, I know. I'm not completely stupid!" her boss shouted. Some members of staff looked at one another and smiled. Belinda knew Mr Williams well. She knew that when he was angry, as he was now, it was better to say nothing. She watched silently as he clicked on the icon. The mailbox appeared and revealed the subject of the new message:
+
+	Are you ready to play, Henry Williams?
+
+	Yes, he was ready. He had no idea who had sent the e-mail but he wanted an explanation and an end to this situation. He opened the message and the screen filled with words.
+
+	Hello Henry!
+
+	How are you today? Happy? Or maybe worried? Or even angry! I haven't seen you for a long time but I can tell you that I am very, very annoyed with you. You are not my favorite person. How many enemies do you have? AT least one - me! I am going to make you pay for what you did to me before. As you know, I have entered your new and secure (ha! ha!) computer system and guess what? It's MY system now. It was so easy to discover the passwords. You should be more careful, Henry. You don't mind if I call you Henry, do you?
+
+	Mr Williams was definitely angry now, and confused. He asked Belinda, "Who is this person? What does he want? Or maybe it's a woman? Why is he (or she) angry? I'm an honest and respectable man and people like me - well, most people. Isn't that true, Belinda?" He turned to look at Belinda, hoping that she would give him the answer he wanted to hear, but she wasn't listening. She was reading the rest of the message as it appeared...
+
+	 I have changed all the passwords so now I control everything in your bank. Be nice to me or I will lock the door again - or perhaps I'll do something much worse! But don't be afraid; I know that you're an intelligent (ha! ha!) man, Henry, so I am going to give you a chance to save your precious bank. We are going to play a game. If you win, the bank will be saved. If you lose... the bank will be destroyed! Do you like my idea? I think it's great! It means that the fate of the bank, your bank, is in your own hands.
+
+	So, Henry, my friend... are you ready to play?
+
+
+
+	CHAPTER FOUR
+
+	Don't Call the Police!
+
+	It was very noisy in the bank. Clients were arriving and the staff had to tell them that there was a problem with the computers. Some clients left immediately, some were angry and began to shout, others wanted to see the manager. But Mr Williams had no time to speak to anyone. He had a problem too. A big problem. Two members of his staff had moved the server to his office. It was much quieter in there and he could think without anyone disturbing him.
+
+	Belinda was sitting next to him. She was beginning to panic and when she felt like that she couldn't stop talking.
+
+	"What a horrible man. I'm sure it's a man. He's so evil. What are you going to do, Mr Williams? What a terrible situation! I want to help you but I just don't know what to do. Shall we call the police? I'm sure..."
+
+	Mr Williams couldn't concentrate. His secretary was talking faster and faster.
+
+	"Belinda, why don't you go and make me a nice cup of tea?"
+
+	Belinda smiled brightly and went out of the office. A nice cup of tea was the solution to all problems in her opinion.
+
+	So, undisturbed, Mr Williams was able to read the final part of the mysterious e-mail.
+
+	This is the game: I will send you three puzzles, one at a time. You must solve these puzzles in just 24 hours.
+
+	That's plenty of time for an intelligent man like you, Henry. You'll probably need to be a computer expert to solve them, but you use computers every day, don't you? (Ha! ha!) If you fail to solve all three puzzles, I will empty every bank account in your bank from the smallest to the largest. all the money will disappear and your bank will be destroyed.
+
+	One final thing - DON'T call the police. That would be very stupid. If you call the police, I will know.
+
+	Remember that I can destroy your bank in a few seconds. Don't risk it, Henry.
+
+	Do you think this is all a joke? I want to show you that I am very serious. Henry, do you know how much money you have in your bank account? Are you sure?
+
+	Why don't you check? I think you'll be surprised!
+
+	Now I am going to give your staff access to the computers so the bank can function as normal. You see, I'm not so evil, but remember that I can switch off the computers or change anything at any time.
+
+	Bye for now, but don't worry... I'll be back soon.
+
+	Mr Williams sat back in his chair. He had a bad headache. Things were not improving. He was thinking about what to do when he heard shouts of joy coming from the bank staff downstairs. The door opened and Belinda came in with the tea. "The computers are working again, Mr Williams. Isn't that wonderful? Everything is back to normal. Maybe the e-mail was just a joke."
+
+	"Well, we'll know in a moment, Belinda," he replied. There were two things that Mr Williams could do on a computer - use e-mail and access his own bank account. Why did the mystery hacker tell him to check his account? He put in his password and then his account number and waited. After a few seconds the information he wanted appeared on the screen...
+
+
+
+	CHAPTER FIVE
+
+	Puzzle Number One
+
+	Mr Williams stared at the computer screen, horrified. His hank account was empty! The bank manager quickly closed the page but Belinda had already seen it. She dropped her cup of tea and began to cry. Before Henry Williams could say a word, another message appeared on the screen.
+
+	E-mail arriving for Henry Williams Puzzle Number One
+
+	Mr Williams clicked to open the message and looked at the first puzzle. There were just a few words and lots of strange symbols and abbreviations.
+
+	It's 9.15 and time to play!
+
+	WU Henry? I C that UR : - ( Y?
+
+	U can't C me U R : - ( but I am >-(
+
+	IMO U R >:-C OR PRHPS <:-O
+
+	TAFN I'll BBL
+
+	EOM HAND (LOL)
+
+	Henry, do you like the first puzzle? Isn't it cool? Cool and wicked. The clock has started to tick. Hurry, hurry, hurry! BFN :-)
+
+	Mr Williams didn't understand anything. He looked at Belinda, who was still crying. "Belinda, please, stop crying for just one minute and call Mike. Tell him to come here at once. We need his help."
+
+	She looked at him in amazement and replied, "But Mr Williams, you sacked Mike about an hour ago. Don't you remember?"
+
+	Yes, now he did remember. There was no one to help him.
+
+	His headache was getting worse. He couldn't think. Then Belinda's voice came from behind his chair. "Why don't you call your son, Robbie? He's very good with computers, isn't he?"
+
+	Mr Williams got up and hugged her. "Yes! Belinda, you're fantastic. Why didn't I think of that?" It was a school holiday so Robbie would be in his bedroom, playing on the computer and listening to music but definitely not studying. It was rare to see an open textbook in that bedroom. There were two things Mr Williams always associated with his son - his mobile phone and his baseball cap. Mr Williams picked up the phone and dialled his home number.
+
+	"Robbie? This is your father. Listen, I have a problem with the computers at the bank. Can you come and help me? I don't care if you're fighting Lara Croft. This is really important. Come as soon as possible please. Thank you."
+
+	Mr Williams put down the phone and smiled. "That was a great idea of yours, Belinda. Robbie's a teenager so I'm sure he'll understand all the strange symbols and abbreviations in the puzzle."
+
+	Belinda blushed. "If I could make another suggestion, Mr Williams? I think you can see where the e-mail came from. Look at the top of the page."
+
+	She was right. "Well done again, Belinda! It was sent from the local library. So, our mystery hacker thinks he's clever, does he?"
+
+	Mr Williams picked up the phone again. This time he called the security office.
+
+	He explained the situation and told the head of security to send two guards to the library to find and arrest the hacker.
+
+	He was feeling a little bit better and Belinda had stopped crying. Then he noticed something appear on the computer screen. It was a clock icon and an hourglass. Fifteen minutes had already passed and the sand was falling.
+
+	The countdown had begun...
+
+
+
+	CHAPTER SIX
+
+	Trouble in the Library
+
+	It was only 9.30 but there were already a lot of people inside the library; some were looking for a bestseller on the bookshelves, others were reading the newspapers or books in the study area and a few were using the photocopying machine and the computers. A man was reading the messages on a big notice-board. A mother and her child were going upstairs to the children's section.
+
+	A librarian was pushing a trolley of books. It was very quiet.
+
+	In the library anyone who had to speak, spoke quietly. The librarians were there to help anyone who had a problem.
+
+	This was the scene when Bill and Ben, the two security guards from the bank, arrived to investigate. They walked to the desk where a librarian was helping an old lady.
+
+	"We believe that a criminal has sent an e-mail message from a computer in this library and we want to see the list of people who have used the Internet this morning," said Bill.
+
+	The librarian calmly replied, "I'm sorry but I'm busy now. If you would like to wait, I'll be happy to help you as soon as I can."
+
+	Ben was not a patient man. "I don't think you understand, madam. We are here to arrest a criminal and we want to do it now!" he shouted.
+
+	The old lady, who was in front of Ben, was angry and she hit both guards with her handbag. "Hey, I was here first! You are very rude men!" she said. The librarian tried to calm everyone down. She said to the men, "Please don't shout. This is a library. I'm afraid we can only give information about the people who use our library to the police. Are you policemen?" Bill replied, "No, we're security guards from the bank on London Road and we..."
+
+	The librarian interrupted him, "Then I can't help you. Now, will you please leave the library?" But the men didn't want to leave. Bill had an idea. "Hey, Ben, maybe the hacker is still using the computer. Let's go and see."
+
+	They ran to the computer area and began to question the four people who were using the computers. Now everyone in the library, including the librarians, came to watch.
+
+	The guards were shouting and the people at the computers were frightened.
+
+	Mr Page, the head librarian, came out of his office to see why there was all this noise in his usually quiet library. The scene he saw shocked him. He walked to the computer area and demanded to know what was happening.
+
+	About twenty people answered him at the same time so it was impossible to understand. But he soon realized that the two men dressed in blue uniforms were causing the problem and were disturbing everyone.
+
+	He shouted, "You two, get out of my library now!" And with the help of some people in the library, he pushed them to the door and then out of the library and into the street.
+
+	"And don't come back!" yelled the old lady, furiously. All the people in the library were talking about what had just happened.
+
+	Nobody noticed a man who was hiding behind the shelves. He was laughing...
+
+
+
+	CHAPTER SEVEN
+
+	Robbie the Hero
+
+	- Robbie Williams arrived at the bank a few minutes after the phone conversation with his father. He wasn't very happy. It was the school holidays and he wanted to go out with his friends but his mother told him at least ten times a day to open a textbook and study. Today he had wanted to buy a new football scarf and a computer game but instead he had to help his father at the bank! He went inside and up the stairs to the office.
+
+	"Hey, Dad, what's up? I have to meet my friends at the shopping centre at lunchtime. I'm going to buy a new computer game. It's wicked. It's called..." Mr Williams interrupted his son. "Robbie, please, take those headphones off and listen to me." He quickly explained the problem of the hacker. Robbie couldn't believe it.
+
+	"Bad luck, Dad. How can I help?"
+
+	Mr Williams showed him the first puzzle. Robbie gave his father a big smile.
+
+	"Relax, Dad. This is so easy I can do it with my eyes shut! I use these abbreviations every day when I'm in a chat room or when I text my friends on my mobile phone. I'll show you. WU stands for 'What's up?' I C stands for 'I see.' And these symbols are called 'emoticons.' They look like a face and they express the way you feel. I can easily decode this message for you." Robbie sat down, clicked on the reply icon and wrote out the message:
+
+	What's up Henry? I see you are sad. Why? You can't see me. You are sad but I am angry. In my opinion you are surprised or perhaps afraid. That's all for now. I'll be back later. End Of Message Have a nice day (laughing out loud) Bye for now!
+
+	"See? I told you it was easy. Now I'll click on 'Send' and the message will go back to the sender." Mr Williams thanked his son and slowly he began to relax... but for how long?
+
+	It was now 10.15. Only one hour had passed. Belinda came into the office and said to her boss,
+
+	"The ATM is working again..." Mr Williams smiled. "But," she added quickly, "it's giving the customers too much money..."
+
+	Mr Williams tell back into his chair. Why was life so difficult?
+
+	The security guards Bill and Ben knocked at the door and came into his office. Did they have some good news for him?
+
+	"Well?" he asked hopefully. "Did you find him?"
+
+	Bill answered, "Not exactly, Mr Williams. We tried but the people at the library were very unfriendly."
+
+	"Yes," added Ben. "They didn't want to help us and in the end they asked us to leave. There was an old lady who..." Mr Williams was angry.
+
+	"I'm not interested in the old lady. You obviously didn't catch the hacker. You are both completely incompetent. Now go back to your office before I sack you."
+
+	His headache had returned, worse than ever. Then his son said, "Dad, look. There's another message from the hacker." He looked at Robbie and then at Belinda. Then they all looked at the screen...
+
+
+
+	CHAPTER EIGHT
+
+	My Name is Trentine
+
+	Hello Henry,
+
+	Well, that was an easy puzzle. I imagine someone helped you - your son Robbie perhaps? He's intelligent but your security guards are really stupid.
+
+	They didn't see me at the library but I saw them! Never mind! Maybe they'll have better luck next time... Here's your second puzzle - impossible, I think. Have fun! BFN
+
+	Puzzle Number Two
+
+	My name is TRENTINE - I am power and knowledge. These are my friends:
+
+	Berrows limea rodlw ediw bew thac moro frus
+
+	Henry Williams wasn't very worried. He had his secret weapon - Robbie!
+
+	"You can solve this puzzle too, can't you, Robbie?" he asked. Then he saw his son's face.
+
+	"Dad, I'm really sorry but I don't understand it. But, look - the hacker sent it from the Internet Cafe in the city centre."
+
+	Belinda was crying again. Mr Williams phoned the security office for the second time that day and told Bill and Ben to go to the Internet Cafe to find the hacker. As soon as he put down the phone, a bank teller came into his office with more bad news.
+
+	"A customer has just told me that the bank's website is advertising a special offer - a credit card with 0% interest. Is it true?" he asked.
+
+	"Of course it isn't!" yelled Mr Williams. "Don't give any new credit cards to any of our customers! Now go back to work!"
+
+	The teller disappeared. The minutes became hours and Mr Williams became more and more agitated. Robbie continued to look at the puzzle perplexed, and Belinda continued to cry. Suddenly Robbie had an idea. "I know what to do!" he shouted.
+
+	His father jumped up. "Have you solved the puzzle?'" he asked.
+
+	"No, but I bet my friend Joe can help us. I'll send him a text message on his mobile." Mr Williams sat down again while Robbie sent the message.
+
+	Come to Bank Now. Rob
+
+	When Joe arrived it was already 5 o'clock.
+
+	"What's up, Robbie?" he asked. Then he saw Belinda, who smiled at him. He smiled back. Wow! She was beautiful! He immediately fell in love with her.
+
+	"Joe, listen to me," said Robbie. He explained about the hacker and showed Joe the second puzzle. Joe didn't want to take his eyes off Belinda but he had to look at the computer screen. Mr Williams was beginning to panic.
+
+	"Hurry, boys. There isn't much time left."
+
+	"Take it easy, Mr W. We can solve this. Come on, Robbie. Let's do it."
+
+	After four long hours they solved the puzzle. "So, who is Trentine?" asked Mr Williams.
+
+	"The Internet," replied Joe.
+
+	"Of course," said Robbie. "And the friends are all words connected with the Internet - browser, e-mail, world wide web, chat room and..."
+
+	"Surf," said Belinda happily.
+
+	Joe looked at her. "Belinda, you are so cool. You're the perfect girl tor me," he said as he clicked on the "Send" icon.
+
+	Mr Williams looked at them and said to himself: "What are they talking about? I think I'm getting old."
+
+	It was nine o'clock. The hourglass was half-empty but they had solved the puzzle in time. Mr Williams was very relieved. The situation was improving at last. At that moment the telephone rang. When Mr Williams answered he heard a voice say: "Good evening. This is the police..."
+
+
+
+	CHAPTER NINE
+
+	A Surprise for Henry
+
+	Mr Williams put down the phone. He said, "That was the police. It seems that Bill and Ben created a disturbance at the Internet Cafe and they have been arrested. They didn't catch the hacker, of course. Why doesn't that surprise me? Well, they can stay at the police station until we find the hacker." There was no reply from the others. Robbie was sending a text message on his mobile phone to his friends to say why he hadn't met them that afternoon. Joe was talking to Belinda.
+
+	"Will you go out with me tonight, Belinda? There's a great hamburger place near here." Belinda smiled at him.
+
+	"But you're only 15, Joe. I'm too old for you."
+
+	"I'm very mature for my age," he replied quickly. "Come on! We'll have a fantastic time. I'll pay and..." Their conversation was interrupted by the hacker.
+
+	Congratulations, Henry. You've solved the second Puzzle. I suppose Robbie helped you again. It's a pity those security guards aren't as intelligent as your son. They failed again, didn't they? Henry, there's still another puzzle to solve. If you solve it, you will discover my identity. I'll send the Message later. First, you need to relax and... cool down. Are you ready for a surprise?
+
+	BFN
+
+	"A surprise. What does that mean, Mr Williams'" asked Belinda.
+
+	"I have no idea but I'm sure we'll soon find out," replied her boss.
+
+	All the staff had gone home at 5 o'clock as usual. The offices were silent. He was suddenly very tired. His eyes began to close...
+
+	He was on holiday in the Caribbean. He was on the beach. It was hot and sunny. There were no clouds in the sky. It was too hot so he went swimming in the sea to cool down. He was wet, very wet... Mr Williams woke up. He was wet! Was it raining in his office? He heard Belinda's voice:
+
+	"Mr Williams, what's happening? I'm all wet. Where is the water coming from? My hair and clothes are ruined!"
+
+	Mr Williams answered, "This is our surprise, Belinda. Our friend the hacker has started the sprinkler system. Very funny. Let's get out of here."
+
+	They all ran out of the office and went downstairs. Joe tried to console Belinda, and Robbie wanted to know if he could go home.
+
+	"Please, Dad. It's late and I want to watch TV tonight."
+
+	"Not yet," replied his father. "We still have another puzzle to solve."
+
+	"What do you mean 'we,' Dad? You haven't done anything yet," replied his son sarcastically. Mr Williams looked at his son but he knew that Robbie was right. The boys had solved the first two puzzles.
+
+	In the distance they heard a siren. Was it the police? Mr Williams and Robbie went to the doors of the bank. Slowly Mr Williams opened the door...
+
+
+
+	CHAPTER TEN
+
+	Where's the Fire?
+
+	Mr Williams opened the door and three firemen ran into the hank.
+
+	"OK, where's the fire?" they said. Mr Williams was very confused.
+
+	"What do you mean, 'fire'? There's no fire here. I think you've made a mistake."
+
+	The firemen were not convinced. "Mr Williams, have you forgotten that the bank's sprinkler system is connected to the alarm at the tire station? The sprinklers started, the alarm sounded and we came here to put out the fire. Now, where is it?" This time Robbie spoke.
+
+	"There is no fire. The sprinklers started because there must be a problem with the system."
+
+	"Yes," added Mr Williams. "I'm so sorry that you've come here for nothing."
+
+	"Well, I must say I can't see any fire. We'll come back tomorrow morning to check if there's some kind of problem with the sprinklers," the fireman replied. "You're working very late tonight, Mr Williams," he added.
+
+	"Yes, we have a lot to do," came the tired reply. When they had gone, Mr Williams told Belinda that she could go home. He opened the door for her and Robbie tried to go out at the same time. His father pulled him back.
+
+	"I need you here," he said. "Let's go back to the office."
+
+	"Oh, Dad," Robbie protested but he followed his father upstairs.
+
+	It was four o'clock in the morning when the final puzzle arrived. Robbie and Joe were sleeping on the floor. They had been too tired to stay awake. Henry Williams forced himself to look at the computer screen.
+
+	 Hi, Henry. Here's the final puzzle.
+
+	You have to read these sentences about a famous person and find the four words.
+
+	Puzzle Number Three
+
+	The first word is his first but it's your second. The second word is a barrier but also a way to enter. The third word is the baby, or is it a monster? The fourth word is where it all began.
+
+	Now take the first letter of each word, then add the letters I and A. You now have six letters and in these letters you will find my name.
+
+	BFN
+
+	It was incredible. A few hours ago everything was fine. Now someone wanted to destroy his bank and his life. Why? He touched Robbie gently and said, "Robbie, wake up! The last puzzle has arrived. We've only got a few hours to solve it." There was no response from his son, who continued to sleep. Mr Williams tried to wake Joe, but Joe simply mumbled in his sleep, "Belinda, do you want a hamburger or a cheeseburger?" Mr Williams sat with his head in his hands. The boys were sleeping and he couldn't wake them. What was he going to do? He looked at the clock again - it was already four thirty! Then another e-mail arrived.
+
+	Come on, Henry. Admit it. You've lost.
+
+	Soon I will start to empty the bank accounts. Who shall I choose first? Perhaps the police station? OR maybe I'll choose Mrs Miller, the poor old lady from the library. No, I think I'll start with the Town Council - it's the end of the month and wages must be paid.
+
+	Was the hacker right? Was this the end...?
+
+
+
+	CHAPTER ELEVEN
+
+	Is It the End?
+
+	At 8.30 Mr Williams opened his eyes. For a moment he didn't remember the events of the previous day. Then slowly his mind formed a picture of a computer hacker and some strange puzzles. He wondered if he had dreamt it all. Then he saw Robbie and Joe, who were still asleep on the floor and he saw the computer screen. The final puzzle was still there and the hourglass was almost empty. It wasn't a nightmare; it was real!
+
+	The door of the office opened and Belinda came in. "Oh, Mr Williams. Have you been here all night? And poor Robbie and Joe too. Did you find the solution to the last puzzle?"
+
+	She saw his expression and already knew the answer. "I'll make you a nice cup of tea and you'll soon feel better," she said.
+
+	There were only thirty minutes left. Mr Williams was angry with himself. He felt responsible for everything. His bank was in danger and he couldn't save it. He tried to wake Robbie again but it was difficult to wake his teenage son before midday! Belinda returned with the tea. Mr Williams drank three cups.
+
+	He looked out of his window. The bank teller were arriving for another day's work - maybe the last day. What could he tell them? In desperation he sat down in front of the computer again. "Belinda, if we win, I promise that I will learn about computers and become an expert. My son is only 15 and he knows much more than me. I'm living in the past and I have to change."
+
+	"That's a wonderful idea, Mr Williams. And of course, I'll help you as much as possible. I know a lot of things now and..."
+
+	She didn't finish her sentence because Mr Williams shouted so loudly that Robbie and Joe woke up. "That's it! I've found the solution! I know the answer to the puzzle!"
+
+	Robbie and Joe got up right away. They looked at one another and then at Mr Williams. Robbie said hesitantly, "Are you sure Dad? It looks impossible to me."
+
+	"Yes, of course I'm sure. I've done it. Now, first I click on the reply icon, right? And then I write the answers. The first word is Bill - it's the man's first name and the abbreviation of my second name, Williams. The second word is gate. It's a barrier and a way to enter."
+
+	"So the man is Bill Gates," said Joe.
+
+	"Exactly," replied Mr Williams. "The third word is Microsoft - his baby, his creation, but also a monster in the opinion of some people. And the last word is Seattle. That's where Bill Gates lives and where he started Microsoft, the beginning."
+
+	"That's brilliant Dad. Well done!" said Robbie.
+
+	"Now," continued Mr Williams, "if we take the first letter of each word we have B, G, M, and S. We have to add two more letters - I and A - and these six letters should spell the name of the hacker." Everyone looked at the six letters:
+
+	B G M S I A
+
+	They tried to see a name but they could only see words like big and bags but no names. Then suddenly Mr Williams jumped up and yelled, "Yes! Yes! I know the name of the hacker..."
+
+
+
+	CHAPTER TWELVE
+
+	A Holiday for Someone
+
+	"Sam Gib," said Mr Williams. "I don't believe it. But why does he hate me?"
+
+	"Maybe because you sacked him two weeks ago," suggested Belinda. Robbie asked, "Who's Sam Gib?" Mr Williams explained, "He used to work here at the bank. In the beginning he was a good bank teller. Then he started to arrive late for work every day. Instead of working he used to surf the net and log on to chat rooms. He spent hours talking to people all over the world. So I sacked him. But wait a minute. If he left two weeks ago, how did he know the new computer passwords?"
+
+	Belinda had the answer to his question.
+
+	"He came back to the bank a few days ago to empty his desk. I think you were in a meeting. I remember that he went to Mike's office and stayed there for a long time. I thought he was talking to Mike, but now I think about it Mike wasn't there all the time. Anyway, Mr Williams, you're a hero. You've saved the bank!"
+
+	"Yes, and there are only two minutes left. Look, it's 9.13," said Joe.
+
+	They all looked at the computer screen. Suddenly Robbie said, "Dad, did you remember to click on the 'send' icon to return the message to the hacker, I mean, Sam Gib?"
+
+	"Oh, no! Quickly, click, CLICK before it's too late!" shouted Mr Williams. Four hands tried to operate the mouse but in the confusion it fell on the floor. Finally Robbie picked up the mouse, clicked and the message disappeared. For a moment nobody spoke. Then they all began laughing and hugging each another.
+
+	"We've won! We've won, you've won, Dad," said Robbie while Joe hugged Belinda again. Mr Williams went downstairs to give the good news to the staff, who also laughed and applauded their boss. When Mr Williams returned to his office he picked up the phone.
+
+	"Now I can call the police and tell them everything and they can go to Sam's house and arrest him." But before he could do it, another e-mail arrived.
+
+	Hello Henry
+
+	Now you know who I am. Congratulations!
+
+	Did you enjoy playing my game?
+
+	When you sacked me I wanted my revenge so I sent the virus that infected the bank's computers. But it wasn't enough. You installed a new computer system so I came to visit Mike and saw the new passwords on his desk. It was so easy. You really need to improve security at the bank. Maybe I can help you?
+
+	But Henry, I still have a surprise for you...
+
+	This time Mr Williams went white.
+
+	"Oh please no! Not another puzzle!" he cried.
+
+	I think I need a holiday. As you booked your holiday to the Caribbean on the net, I changed the address and the tickets arrived at my house instead of your house yesterday. I also changed the date of the holiday and I'm leaving at 10.00 today. I'm sending this message from the airport on my new laptop. To show you that I am a kind person, I have returned all the money to your bank account.
+
+	Thanks for the holiday. Maybe we can play another game when I come back...
+
+
+
+
+
+	- THE END -
+
+	Hope you have enjoyed the reading!
+
+	Come back to http://english-e-books.net/ to find more fascinating and exciting stories!
+
+
+
+
+

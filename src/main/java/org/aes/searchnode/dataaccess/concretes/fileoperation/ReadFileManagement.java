@@ -13,6 +13,8 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
 
     @Override
     public void read(FileFundamental fileFund) {
+        System.out.println("gelen file : "+fileFund.getCompletePath());
+
         try {
             readFileImp.prepareFileToRead(fileFund);
             readFileImp.read();
