@@ -1,10 +1,8 @@
 package org.aes.searchnode.business.concretes;
 
-import org.aes.searchnode.business.abstracts.FileOperationService;
-import org.aes.searchnode.business.abstracts.ReadFileService;
-import org.aes.searchnode.business.abstracts.WriteFileService;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
+import org.aes.searchnode.business.abstracts.fileoperation.FileOperationService;
+import org.aes.searchnode.business.abstracts.fileoperation.ReadFileService;
+import org.aes.searchnode.business.abstracts.fileoperation.WriteFileService;
 import org.aes.searchnode.entities.concretes.FileFundamental;
 
 import java.util.List;
@@ -13,13 +11,11 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
     FileOperationService fileOperationService;
     WriteFileService writeFileService;
     ReadFileService readFileService;
-//    private List<String> listData;
 
     public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
         fileOperationService = new FileOperationManagement(writeFileService, readFileService);
         this.writeFileService = writeFileService;
         this.readFileService = readFileService;
-//        listData = readFileService.getReadDataList();
     }
 
     public FileOperationFacade(FileOperationService fileOperationService) {
@@ -29,13 +25,11 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
     @Override
     public void read(FileFundamental fileFund) {
         readFileService.read(fileFund);
-//        return null;
     }
 
     @Override
-    public void read() { /* burayi facade yapip fakeDataCreation'i kaldircam. orada sadece bu facade functionlarini kullanacam.*/
+    public void read() {
         readFileService.read();
-//        return getReadDataList();
     }
 
     @Override

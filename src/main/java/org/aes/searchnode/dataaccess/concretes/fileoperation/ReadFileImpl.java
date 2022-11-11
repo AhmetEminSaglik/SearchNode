@@ -8,39 +8,32 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ReadFileImpl extends AbstractReadFile {
-    public ReadFileImpl(FileFundamental fileFund) {
+  /*  public ReadFileImpl(FileFundamental fileFund) {
         super(fileFund);
-    }
+    }*/
 
     @Override
     public void read() {
-        clearList();
         try {
-            prepareFile();
+//            prepareFile();
             while (reader.hasNextLine()) {
                 String data = reader.nextLine();
                 readDataList.add(data);
             }
             reader.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             /*TODO
-             * if a file is not found then this this error will be added to a error list and after all files' read, the errors will be append to something like errorFile.txt
+             * if a file is not found then this this error will be added to a error list and after all files'
+             *  read, the errors will be append to something like errorFile.txt
              * */
-        /*    System.err.println("File could not found : " + e.getMessage());
-            File file = new File(fileFund.getCompletePath());
-            try {
-                file.createNewFile();
-                System.err.println("File was not found but now it is created and empty");
 
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }*/
-            System.err.println("FILE IS NOT FOUND : " + fileFund.getCompletePath() + " : " + e.getMessage());
+            System.err.println("Exception :  " +getClass().getSimpleName()+ " : Error Message : " + e.getMessage());
 
         } finally {
             if (reader != null) {
                 reader.close();
             }
+//            clearList();
         }
     }
 

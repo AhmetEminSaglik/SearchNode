@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This abstract class reads file and keeps data in list. Every file will be read needs an initialization (which is <b> ReadFileImp </b>) of this abstract class. */
 public abstract class AbstractReadFile {
     protected File file;
     protected Scanner reader;
-    protected List<String> readDataList = new ArrayList<>();
+    protected List<String> readDataList = new ArrayList<>(); // keeps read data only destination file
     protected FileFundamental fileFund;
 
-    public AbstractReadFile(FileFundamental fileFund) {
+  /*  public AbstractReadFile(FileFundamental fileFund) {
         this.fileFund = fileFund;
-    }
+    }*/
 
     public abstract void read();
 
@@ -24,7 +26,7 @@ public abstract class AbstractReadFile {
         return readDataList;
     }
 
-    protected void prepareFile() throws FileNotFoundException {
+    public void prepareFileToRead(FileFundamental fileFund) throws FileNotFoundException {
         file = new File(fileFund.getCompletePath());
         reader = new Scanner(file);
     }
@@ -36,7 +38,10 @@ public abstract class AbstractReadFile {
     public void setFileFund(FileFundamental fileFund) {
         this.fileFund = fileFund;
     }
-    protected void clearList() {
+    /**
+     * This functions clear AbstractReadfile datList. Because this abstract's implementation
+     * keeps data in one list even if it reads from different files*/
+    public void clearList() {
         readDataList.clear();
     }
 }

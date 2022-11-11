@@ -1,29 +1,32 @@
 package org.aes.searchnode.dataaccess.concretes.fileoperation;
 
-import org.aes.searchnode.business.abstracts.ReadFileService;
+import org.aes.searchnode.business.abstracts.fileoperation.ReadFileService;
 import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractReadFile;
 import org.aes.searchnode.entities.concretes.FileFundamental;
-
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFileManagement extends FileOperation implements ReadFileService {
-    List<String> listData = new ArrayList<>();
+    List<String> listData = new ArrayList<>(); // keeps all read data even if they are in different files.
+    AbstractReadFile readFileImp = new ReadFileImpl();
 
     @Override
     public void read(FileFundamental fileFund) {
-        AbstractReadFile readFile = new ReadFileImpl(fileFund);
-        readFile.read();
-        listData.addAll(readFile.getReadDataList());
-        System.out.println("OKUNAN DEGER SONRASI SIZE : "+listData.size());
-//        return listData;
-
+        try {
+            readFileImp.prepareFileToRead(fileFund);
+            readFileImp.read();
+            listData.addAll(readFileImp.getReadDataList());
+            readFileImp.clearList();
+        } catch (FileNotFoundException e) {
+            /** TODO an error and solutioun should be add here*/
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void read() {
         read(defaultFileFund);
-//        return read(defaultFileFund);
     }
 
     @Override
@@ -31,7 +34,6 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
         for (FileFundamental fileFund : files) {
             read(fileFund);
         }
-//        return listData;
     }
 
     @Override
@@ -43,5 +45,4 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
     public void clearList() {
         listData.clear();
     }
-
 }

@@ -1,14 +1,11 @@
 package org.aes.searchnode.fakedata;
 
-import org.aes.searchnode.business.abstracts.FileOperationService;
-import org.aes.searchnode.business.abstracts.ReadFileService;
-import org.aes.searchnode.business.abstracts.WriteFileService;
+import org.aes.searchnode.business.abstracts.fileoperation.ReadFileService;
+import org.aes.searchnode.business.abstracts.fileoperation.WriteFileService;
 import org.aes.searchnode.business.concretes.DataCleariation;
 import org.aes.searchnode.business.concretes.FileOperationFacade;
-import org.aes.searchnode.business.concretes.FileOperationManagement;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
-import org.aes.searchnode.entities.concretes.FileFundamental;
 
 import java.util.*;
 

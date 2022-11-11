@@ -1,4 +1,4 @@
-package org.aes.searchnode.business.abstracts;
+package org.aes.searchnode.business.abstracts.fileoperation;
 
 import org.aes.searchnode.entities.concretes.FileFundamental;
 

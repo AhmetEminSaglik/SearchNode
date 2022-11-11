@@ -1,11 +1,11 @@
-package org.aes.searchnode.business.abstracts;
+package org.aes.searchnode.business.abstracts.fileoperation;
 
 public abstract class FileOperationService {
 
     protected WriteFileService writeFileService;
     protected ReadFileService readFileService;
 
-    
+
 
     public FileOperationService(WriteFileService writeFileService, ReadFileService readFileService) {
         this.writeFileService = writeFileService;
