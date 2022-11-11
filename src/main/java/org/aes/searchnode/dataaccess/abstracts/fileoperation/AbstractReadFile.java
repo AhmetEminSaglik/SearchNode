@@ -16,10 +16,6 @@ public abstract class AbstractReadFile {
     protected List<String> readDataList = new ArrayList<>(); // keeps read data only destination file
     protected FileFundamental fileFund;
 
-  /*  public AbstractReadFile(FileFundamental fileFund) {
-        this.fileFund = fileFund;
-    }*/
-
     public abstract void read();
 
     public List<String> getReadDataList() {

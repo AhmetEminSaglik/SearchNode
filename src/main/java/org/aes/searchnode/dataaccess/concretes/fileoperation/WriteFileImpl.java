@@ -24,8 +24,5 @@ public class WriteFileImpl extends AbstractWriteFile {
     public void appendNextLine(String text) {
         text="\n"+text;
         append(text);
-
-
     }
-
 }

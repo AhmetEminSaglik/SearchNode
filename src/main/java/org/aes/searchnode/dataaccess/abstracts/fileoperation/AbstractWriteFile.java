@@ -10,7 +10,7 @@ public abstract class AbstractWriteFile {
     protected FileFundamental fileFundamental;
     private boolean appendEnable;
 
-    public AbstractWriteFile(FileFundamental fileFundamental) {
+    protected AbstractWriteFile(FileFundamental fileFundamental) {
         this.fileFundamental = fileFundamental;
     }
 
@@ -25,17 +25,12 @@ public abstract class AbstractWriteFile {
     }
 
     protected final void doProcess(String text) {
-        try {
-//            String path = fileFundamental.getPath();//"src/main/java/org/aes/searchnode/fakedata/";
-            String filename = fileFundamental.getCompletePath();//path+"word-data.js";
-            FileWriter fw = new FileWriter(filename, isAppendEnable()); //the true will append the new data otherwise false overwrites data
-
+        String filename = fileFundamental.getCompletePath();
+        try (FileWriter fw = new FileWriter(filename, isAppendEnable());) {//the true will append the new data otherwise false overwrites data
             fw.write(text);
-            fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
         }
-
     }
 
     public void setFileConfiguration(FileFundamental fileFundamental) {

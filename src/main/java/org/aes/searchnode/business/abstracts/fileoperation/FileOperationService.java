@@ -5,9 +5,7 @@ public abstract class FileOperationService {
     protected WriteFileService writeFileService;
     protected ReadFileService readFileService;
 
-
-
-    public FileOperationService(WriteFileService writeFileService, ReadFileService readFileService) {
+    protected FileOperationService(WriteFileService writeFileService, ReadFileService readFileService) {
         this.writeFileService = writeFileService;
         this.readFileService = readFileService;
     }

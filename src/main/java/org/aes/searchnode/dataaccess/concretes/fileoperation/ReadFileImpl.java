@@ -1,21 +1,12 @@
 package org.aes.searchnode.dataaccess.concretes.fileoperation;
 
-import org.aes.searchnode.entities.concretes.FileFundamental;
 import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractReadFile;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class ReadFileImpl extends AbstractReadFile {
-  /*  public ReadFileImpl(FileFundamental fileFund) {
-        super(fileFund);
-    }*/
 
     @Override
     public void read() {
         try {
-//            prepareFile();
             while (reader.hasNextLine()) {
                 String data = reader.nextLine();
                 readDataList.add(data);
@@ -33,7 +24,6 @@ public class ReadFileImpl extends AbstractReadFile {
             if (reader != null) {
                 reader.close();
             }
-//            clearList();
         }
     }
 

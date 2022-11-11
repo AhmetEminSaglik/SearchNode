@@ -24,7 +24,7 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
         this.searchNodeAddingProcess = movedLastSearchNodeConnection;
     }
     @Override
-    public DataResult<SearchNode> createNextWayChar(PriorityChar pc) throws Exception /*throws Exception*/ {
+    public DataResult<SearchNode<Object>> createNextWayChar(PriorityChar pc) throws Exception /*throws Exception*/ {
         if (pcForFirstSNToConnectRootSN == null) {
             pcForFirstSNToConnectRootSN = pc;
         }

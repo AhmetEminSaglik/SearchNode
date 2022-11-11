@@ -7,6 +7,9 @@ import org.aes.searchnode.entities.concretes.FileFundamental;
 
 import java.util.List;
 
+
+/**
+ * A library to process read and write functions */
 public class FileOperationFacade implements ReadFileService, WriteFileService {
     FileOperationService fileOperationService;
     WriteFileService writeFileService;

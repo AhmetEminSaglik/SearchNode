@@ -1,27 +1,23 @@
 package org.aes.searchnode.fakedata;
 
-import org.aes.searchnode.business.abstracts.fileoperation.ReadFileService;
-import org.aes.searchnode.business.abstracts.fileoperation.WriteFileService;
 import org.aes.searchnode.business.concretes.DataCleariation;
 import org.aes.searchnode.business.concretes.FileOperationFacade;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
-
+import org.aes.searchnode.entities.concretes.FileFundamental;
 import java.util.*;
 
 public class FakeDataCreation {
     /*TODO buradaki read&write functionlar service olarak degistirilebilir/*/
 
-    ReadFileService readFileService = new ReadFileManagement();
-//    List<String> listData = readFileService.getReadDataList();//new ArrayList<>();// readFileService.getReadDataList();
 
-    WriteFileService writeFileService = new WriteFileManagement();
-    public FileOperationFacade fileOpsFacade = new FileOperationFacade(writeFileService, readFileService);
+    public FileOperationFacade fileOpsFacade = new FileOperationFacade(
+            new WriteFileManagement(), new ReadFileManagement());
 
     public void clearDataInFile() {
         DataCleariation dataCleariation = new DataCleariation();
         fileOpsFacade.read();
-        System.out.println("Read data : console check : ");
+        System.out.println(getClass().getSimpleName() + " > Read data : console check : ");
         Set<String> hashSet = new HashSet<>();
         for (String tmp : fileOpsFacade.getReadDataList()) {
             tmp = dataCleariation.clearData(tmp);
@@ -41,75 +37,32 @@ public class FakeDataCreation {
 
         List<String> cleanList = new ArrayList<>(hashSet);
         fileOpsFacade.write(cleanList);
-        System.out.println("hashset size : " + hashSet.size());
+//        System.out.println("hashset size : " + hashSet.size());
 
-    }
-  /*  public void read() {
-        readFileService.read();
     }
 
     public void read(FileFundamental fileFund) {
-        readFileService.read(fileFund);
+        fileOpsFacade.read(fileFund);
     }
 
-    public void read(List<FileFundamental> fileFund) {
-        readFileService.read(fileFund);
-    }
-
-    public void writeReadData() {
-        writeFileService.write(listData);
-    }
-
-    public void writeReadData(FileFundamental fileFund) {
-        writeFileService.write(fileFund, listData);
-    }
-
-    public void write(String text) {
-        writeFileService.write(text);
+    public void read(List<FileFundamental> fileFundList) {
+        fileOpsFacade.read(fileFundList);
     }
 
     public void write(FileFundamental fileFund, String text) {
-        writeFileService.write(fileFund, text);
-    }
-
-    public void write(List<String> textList) {
-        writeFileService.write(textList.get(0));
-        textList.remove(0);
-        writeFileService.append(textList);
+        fileOpsFacade.write(fileFund, text);
     }
 
     public void write(FileFundamental fileFund, List<String> textList) {
-
-        writeFileService.write(fileFund,textList.get(0));
-        textList.remove(0);
-        writeFileService.append(fileFund, textList);
-    }
-
-    public void append(String text) {
-        writeFileService.append(text);
+        fileOpsFacade.write(fileFund, textList);
     }
 
     public void append(FileFundamental fileFund, String text) {
-        writeFileService.append(fileFund, text);
-    }
-
-    public void append(List<String> textList) {
-        writeFileService.append(textList);
+        fileOpsFacade.append(fileFund, text);
     }
 
     public void append(FileFundamental fileFund, List<String> textList) {
-        writeFileService.append(fileFund, textList);
-    }*/
-
-
-
-/*
-    public List<String> getListData() {
-        return listData;
+        fileOpsFacade.append(fileFund, textList);
     }
-
-    public void setListData(List<String> listData) {
-        this.listData = listData;
-    }*/
 
 }

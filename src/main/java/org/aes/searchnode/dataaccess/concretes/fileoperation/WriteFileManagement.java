@@ -59,10 +59,11 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
     }
 
     private void writeFirstIndex(FileFundamental fileFund, List<String> textList) {
-        if (textList.size() > 0) {
+        if (!textList.isEmpty()) {
             write(fileFund, textList.get(0));
         }else{
-            /*TODO Could not write anything to file because TEXTLIST is empty. kind of error message should be show up*/
+            /**TODO
+             * Could not write anything to file because TEXTLIST is empty. kind of error message should be show up*/
             System.err.println("Could not write anything to file because TEXTLIST is empty");
         }
     }

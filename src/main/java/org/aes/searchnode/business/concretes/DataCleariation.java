@@ -5,7 +5,7 @@ public class DataCleariation {
         return text.trim();
     }
 
-    private final String specialCharacter = "!@#$%^&*()_+{}|\\\"'`~;:/?<>,.-=-`’”“—1234567890[]‘";
+    private static final String specialCharacter = "!@#$%^&*()_+{}|\\\"'`~;:/?<>,.-=-`’”“—1234567890[]‘";
 
     public String removeWildCards(String text) {
         for (int i = 0; i < specialCharacter.length(); i++) {
@@ -17,9 +17,7 @@ public class DataCleariation {
     }
 
     public boolean hasMultipleWords(String text) {
-        if (text.indexOf(" ") > 0)
-            return true;
-        return false;
+        return text.contains(" ");
     }
 
     public String removeWordsIfNotBelongsToEnglish(String text) {

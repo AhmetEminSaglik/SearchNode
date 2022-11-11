@@ -3,9 +3,6 @@ package org.aes.searchnode.entities.concretes;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
-
-import javax.print.DocFlavor;
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +11,6 @@ public class NodeData {
     public static int NUMBER_OF_VALUE_IS_INCREASED = 2;
     private int deep;
 
-    //    private Object data;// destination'a varilmis ise data'ya veri eklenir
 
     private List<DataInfo> listDataInfo = new ArrayList<>();
     //    private DataInfo dataInfo;

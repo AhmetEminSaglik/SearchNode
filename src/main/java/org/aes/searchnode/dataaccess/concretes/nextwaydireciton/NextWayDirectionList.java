@@ -7,10 +7,8 @@ import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 
 public class NextWayDirectionList implements ReachableNextWayDirection {

@@ -5,10 +5,7 @@ import org.aes.searchnode.entities.concretes.FileFundamental;
 
 public abstract class FileOperation {
     protected FileFundamental defaultFileFund;
-
-    public FileOperation() {
+    protected FileOperation() {
         this.defaultFileFund = ConfigFileFundamental.getFileFundamental();
     }
-
-
 }

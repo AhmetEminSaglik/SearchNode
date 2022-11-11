@@ -19,7 +19,9 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
             listData.addAll(readFileImp.getReadDataList());
             readFileImp.clearList();
         } catch (FileNotFoundException e) {
-            /** TODO an error and solutioun should be add here*/
+            /** TODO
+             *  an error and solutioun should be add here
+             *  and remove throw error here*/
             throw new RuntimeException(e);
         }
     }
