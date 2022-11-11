@@ -1,6 +1,7 @@
 package org.aes.searchnode;
 
 
+import org.aes.searchnode.business.concretes.FileOperationFacade;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.entities.concretes.FileFundamental;
 import org.aes.searchnode.core.utilities.DataResult;
@@ -77,9 +78,13 @@ public class Main {
         System.exit(0);
     }
 
-    public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
-        /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
 
+    public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+
+        /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
+        /*TODO
+         *  test edilecek senaryo : bu karmasik listeyi hem search node ile random 100 kelime arama yapicaz, hem de liste ile arama yapicaz
+         *  hem listeyi hem searchnode'u bastan sonra sirali yazdircaz.*/
 
         //FileFundamental fileFundWrite = new FileFundamental();
    /*
@@ -127,102 +132,46 @@ public class Main {
             wordList.addAll(Arrays.asList(tmp.split(" ")));
 
         }*/
+
         FakeDataCreation fakeDataCreation = new FakeDataCreation();
 //for(String tmp : wordList){
 //        fakeDataCreation.clearDataInFile();
-        fakeDataCreation.clearDataInFile();
-        System.out.println("list data size : " + fakeDataCreation.getListData().size());
+        List<FileFundamental> fileList = new ArrayList<>();
+        for (int i = 1; i <= 3; i++) {
+            fileList.add(new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/")
+                    .setFileName("demo" + i)
+                    .setFileExtension(".txt"));
+
+        }
+        FileOperationFacade fileOpsFacade = fakeDataCreation.fileOpsFacade;
+//        fakeDataCreation.clearDataInFile();
+        fileOpsFacade.read(fileList);
+        List<String> dataList = fileOpsFacade.getReadDataList();
+        System.out.println("list data size facade :  " + fileOpsFacade.getReadDataList().size());
+        FileFundamental fileToWrite = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/")
+                .setFileName("demo-result")
+                .setFileExtension(".txt");
+
+        fileOpsFacade.write(fileToWrite, dataList);
+        System.out.println("list data size facade :  " + fileOpsFacade.getReadDataList().size());
+
 
 //}
         System.exit(0);
-//        HashSet<String> set = new HashSet<>(wordList);
-//        System.out.println("uniqe word/set size : " + set.size());
+//     SearchNode<String> SNStringTest = new SearchNode<>();
 
-//        List<String> objectList = (List<String>) Arrays.asList(set.toArray());
-//        System.out.println("objectList size :" + objectList.size());
-        SearchNode<String> SNStringTest = new SearchNode<>();
 
- /*       for (String tmp : wordList) {
-            SNStringTest.add(tmp);
-        }*/
-        System.out.println("SNStringTest.getNodeData().getNextWayDirectionTotalValue() : " + SNStringTest.getNodeData().getNextWayDirectionTotalValue());
-        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a', (int) 'a')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('l', (int) 'l')).getData().getNodeData().getNextWayDirectionTotalValue());
-        /*System.out.println("wordList : " + wordList.size());
-        for (String tmp : wordList) {
-            DataResult<DataInfo> dataResult = SNStringTest.search(tmp);
-//            if (dataResult.getData() != null && dataResult.getData().getNumberOfhowManyTimesAddedThisValue() > 10) {
-//                a++;
-            System.out.println("Aranacak kelime :" + tmp);
-            if (*//*tmp.trim().length()>0&&*//*dataResult.getData() != null) {
-                System.out.println("Data search : " + tmp + " : --> " + dataResult.getData().getValue() + " : " + dataResult.getData().getNumberOfhowManyTimesAddedThisValue());
-            }
-            System.out.println("toplam obje sayisi : " + CreatedNWDSNNumberCalculation.getNodeNumber());
-//            }
+//        System.out.println("SNStringTest.getNodeData().getNextWayDirectionTotalValue() : " + SNStringTest.getNodeData().getNextWayDirectionTotalValue());
+//        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a', (int) 'a')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('l', (int) 'l')).getData().getNodeData().getNextWayDirectionTotalValue());
 
-        }*/
-       /* long memListfinish = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        System.out.println("memListStart : " + memListStart);
-        System.out.println("memListfinish : " + memListfinish);
-        System.out.println("memJustListefinish : " + memJustListefinish);
-        System.out.println("memListfinish - memListStart " + ((memListfinish - memListStart)/1024));
-        System.out.println("memJustListefinish - memListStart " + ((memJustListefinish - memListStart)/1024));
-        double ratio=(double) (memListfinish - memListStart)/ (double) (memJustListefinish - memListStart);
-        System.out.println("benim algoritma /sadece liste degeri  : " +ratio);
-        System.out.println("benim algoritma suan icin "+ratio + " kat daha fazla memory yiyor (byte bazinda hesapladim yanlis bilmiyorsam)");
-        System.out.println("test : contains(demoRandom) : "+SNStringTest.contains("demoRandom"));
-        System.out.println("test : contains(say) : "+SNStringTest.contains("kavrami"));
-        System.out.println("test : contains(say) : "+SNStringTest.search("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
-        System.out.println("test : contains(say) : "+SNStringTest.search("kavra"));
-        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('a',(int)'a')).getData().getNodeData().getNextWayDirectionTotalValue());
-//        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('X',(int)'X')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('M',(int)'M')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('L',(int)'L')).getData().getNodeData().getLocationStringAddress());
-//        System.out.println(SNStringTest.getReachableNWD().getNextWayOfChar(new PriorityChar('X',(int)'X')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('M',(int)'M')).getData().getReachableNWD().getNextWayOfChar(new PriorityChar('L',(int)'L')).getData().getNodeData().getListDataInfo().get(0).getValue());
-        System.out.println(SNStringTest.getNodeData().getNextWayDirectionTotalValue());*/
-//        System.out.println(SNStringTest.search("testing"));
-//        System.out.println(SNStringTest.search("tost"));
-//        System.out.println(SNStringTest.search("tos"));
-//        System.out.println(SNStringTest.search("tost3"));
-//        System.out.println(SNStringTest.search("tosted"));
-//        System.out.println(SNStringTest.search("tosted2"));
-//        System.out.println(SNStringTest);
-//        System.out.println(SNStringTest.search("package"));
-//        System.out.println(SNStringTest.search("response"));
-//        System.out.println(SNStringTest.search("gorselini"));
-//        System.out.println(SNStringTest.search("Chart"));
-       /* for (int i = 0; i < objectList.size(); i++) {
-            if (objectList.get(i).equals("package")) {
-                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
-            }
-        }
-        for (int i = 0; i < objectList.size(); i++) {
-            if (objectList.get(i).equals("response")) {
-                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
-            }
-        }
-        for (int i = 0; i < objectList.size(); i++) {
-            if (objectList.get(i).equals("gorselini")) {
-                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
-            }
-        }
-        for (int i = 0; i < objectList.size(); i++) {
-            if (objectList.get(i).equals("Chart")) {
-                System.out.println("Data is found : (" + i + ") : " + objectList.get(i));
-            }*/
+        String[] text = {/*"K",*/"Kayseri", "Kayseri", "Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
+        Character[] characters = {'a', 'b', 'c', 'K'};
+        Integer[] integers = {1, 111, 11, 2, -2, -0, 2};
+        Student[] students = {
+                new Student("Ahmet", "SAGLIK", 24, 1001),
+                new Student("Omer", "Koramaz", 20, 1002),
+                new Student("Aynur", "YILDIRIM", 25, 1003),
+        };
+
     }
-
-    //        System.exit(0);
-        /*System.out.println((int) ',');
-        System.out.println((int) '.');
-        System.out.println((int) '0');
-        System.out.println((char) 47);
-        System.out.println((int) '\\');
-        System.exit(0);*/
-    String[] text = {/*"K",*/"Kayseri", "Kayseri", "Çözüm", "Yemek", "Kalem", "Ulke", "Ingilizce"};
-    Character[] characters = {'a', 'b', 'c', 'K'};
-    Integer[] integers = {1, 111, 11, 2, -2, -0, 2};
-    Student[] students = {
-            new Student("Ahmet", "SAGLIK", 24, 1001),
-            new Student("Omer", "Koramaz", 20, 1002),
-            new Student("Aynur", "YILDIRIM", 25, 1003),
-    };
-
 }
