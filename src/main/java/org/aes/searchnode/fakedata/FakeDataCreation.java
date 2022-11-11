@@ -24,7 +24,8 @@ public class FakeDataCreation {
 
     public List<FileFundamental> getBookFileFundementalList() {
         List<FileFundamental> filePaths = new ArrayList<>();
-        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\";
+//        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\";
+        String directory="src\\main\\java\\org\\aes\\searchnode\\fakedata\\old books\\words\\";
         try {
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(FileSystems.getDefault().getPath(directory));
             for (Path path : directoryStream) {
@@ -106,9 +107,6 @@ public class FakeDataCreation {
         }
 
         System.out.println("hashset : " + hashSet.size());
-        System.out.println("hashset contain space : " + hashSet.contains(""));
-        System.out.println("hashset contain space : " + hashSet.contains(" "));
-        System.out.println("hashset contain space : " + hashSet.contains("\n"));
         System.out.println("totalWords: " + totalWords.size());
 //        System.out.println("------------------------------------");
 //        System.out.println("hashset data : ");
