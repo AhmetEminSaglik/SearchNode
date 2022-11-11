@@ -5,7 +5,7 @@ public class DataCleariation {
         return text.trim();
     }
 
-    private static final String specialCharacter = "!@#$%^&*()_+{}|\\\"'`~;:/?<>,.-=-`’”“—1234567890[]‘";
+    private static final String specialCharacter = "!@#$%^&*()_+{}|\\\"'`~;:/?<>,.-=-`’”“—1234567890[]";
 
     public String removeWildCards(String text) {
         for (int i = 0; i < specialCharacter.length(); i++) {

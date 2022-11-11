@@ -13,6 +13,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FakeDataCreation {
     /*TODO buradaki read&write functionlar service olarak degistirilebilir/*/
@@ -35,10 +36,6 @@ public class FakeDataCreation {
                 fileFundamental.setPath(directory);
                 fileFundamental.setFileName(fileName);
                 fileFundamental.setFileExtension(extension);
-                /*System.out.println("getPath : "+fileFundamental.getPath());
-                System.out.println("getFileName : "+fileFundamental.getFileName());
-                System.out.println("getExtension : "+fileFundamental.getExtension());
-                System.out.println("getCompletePath  : "+fileFundamental.getCompletePath());*/
                 filePaths.add(fileFundamental);
 
             }
@@ -49,47 +46,77 @@ public class FakeDataCreation {
     }
 
     public void createData() {
+        /**
+         * get files
+         *
+         * read files
+         * clear files
+         * write files
+         *
+         * read files
+         * clear files
+         * write files
+         * */
+
+        FileFundamental newFileFund = ConfigFileFundamental.getFileFundamental();
+        newFileFund.setFileName("Words-From-Books-English-Readers");
+
         List<FileFundamental> pathList = getBookFileFundementalList();
-        ConfigFileFundamental.getFileFundamental().setFileName("Words-From-Books-English-Readers");
         for (FileFundamental tmpFileFund : pathList) {
-//            System.out.println("gelen fileFund : "+tmpFileFund.getCompletePath());
-            /*StringBuilder stringBuilder = new StringBuilder(tmpPath);
-            int pathEndIndex = stringBuilder.lastIndexOf("\\");
-            int fileNameEndIndex = stringBuilder.lastIndexOf(".");
-            System.out.println(tmpPath);*/
-//            fileOpsFacade.read(new FileFundamental().setCompletePath(tmpPath));
-            fileOpsFacade.read(tmpFileFund);
-            fileOpsFacade.clearList();
-
+            read(tmpFileFund);
         }
-        fileOpsFacade.write(fileOpsFacade.getReadDataList());
+        List<String> cleanReadDataList = clearReadDataList(fileOpsFacade.getReadDataList());
+        write(newFileFund, cleanReadDataList);
 
+//        read(newFileFund);
+//        cleanReadDataList = clearReadDataList(fileOpsFacade.getReadDataList());
+//        write(newFileFund, cleanReadDataList);
 
     }
 
-    public void clearDataInFile() {
+    public List<String> clearReadDataList(List<String> readDataList) {
         DataCleariation dataCleariation = new DataCleariation();
 //        fileOpsFacade.read();
 //        System.out.println(getClass().getSimpleName() + " > Read data : console check : ");
         Set<String> hashSet = new HashSet<>();
-        for (String tmp : fileOpsFacade.getReadDataList()) {
+        System.out.println("data line  size : " + readDataList.size());
+        List<String> totalWords = new ArrayList<>();
+        for (String tmp : readDataList) {
             tmp = dataCleariation.clearData(tmp);
-            if (tmp.length() > 3) {
-                tmp = tmp.toLowerCase();
-                tmp = dataCleariation.removeWildCards(tmp);
-                tmp = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
-                if (dataCleariation.hasMultipleWords(tmp)) {
-                    hashSet.addAll(Arrays.asList(tmp.split(" ")));
-                } else {
+//            if (tmp.length() > 3) {
+            tmp = tmp.toLowerCase();
+            tmp = dataCleariation.removeWildCards(tmp);
+//            tmp = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
+            if (dataCleariation.hasMultipleWords(tmp)) {
+                System.out.println("gelen data : "+tmp);
+                List<String> newList = Arrays.stream(tmp.split(" ")).
+                        filter(text -> !text.equals("")).
+                        collect(Collectors.toList());
+
+                hashSet.addAll(newList);
+                totalWords.addAll(newList);
+            } else {
+                if (!tmp.trim().equals("")) {
                     hashSet.add(tmp);
+                    totalWords.add(tmp);
                 }
             }
+
+//            }
         }
+
+        System.out.println("hashset : " + hashSet.size());
+        System.out.println("hashset contain space : " + hashSet.contains(""));
+        System.out.println("hashset contain space : " + hashSet.contains(" "));
+        System.out.println("hashset contain space : " + hashSet.contains("\n"));
+        System.out.println("totalWords: " + totalWords.size());
+//        System.out.println("------------------------------------");
 //        System.out.println("hashset data : ");
 //        hashSet.forEach(System.out::println);
 
-        List<String> cleanList = new ArrayList<>(hashSet);
-        fileOpsFacade.write(cleanList);
+
+        return new ArrayList<>(hashSet);
+//        fileOpsFacade.write(cleanList);
 //        System.out.println("hashset size : " + hashSet.size());
 
     }
