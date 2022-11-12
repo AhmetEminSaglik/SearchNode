@@ -22,8 +22,9 @@ public class DataCleariation {
 
     public String removeWordsIfNotBelongsToEnglish(String text) {
         for (int i = 0; i < text.length(); i++) {
-            if (!(text.charAt(i) >= 'a' && text.charAt(i) <= 'z')) {
-                return "";
+            if (!(text.charAt(i) < 'a' && ((int)text.charAt(i) > 170))) {
+//                return "";
+                text.replace(text.charAt(i), ' ');
 
             }
         }

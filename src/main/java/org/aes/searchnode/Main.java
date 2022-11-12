@@ -15,9 +15,17 @@ import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAnd
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
+import org.aes.searchnode.fakedata.DownloadBookTxt;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 //import org.aes.searchnode.fakedata.StringText;
 
+import java.io.BufferedInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -79,11 +87,73 @@ public class Main {
         System.exit(0);
     }
 
+    /* private static void downloadUsingStream(String urlStr, String file) throws IOException {
+         URL url = new URL(urlStr);
+         BufferedInputStream bis = new BufferedInputStream(url.openStream());
+         FileOutputStream fis = new FileOutputStream(file);
+         byte[] buffer = new byte[1024];
+         int count=0;
+         while((count = bis.read(buffer,0,1024)) != -1)
+         {
+             fis.write(buffer, 0, count);
+         }
+         fis.close();
+         bis.close();
+     }
 
-    public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
-FakeDataCreation fakeDataCreation= new FakeDataCreation();
-fakeDataCreation.createData();
-System.exit(0);
+     private static void downloadUsingNIO(String urlStr, String file) throws IOException {
+         URL url = new URL(urlStr);
+         ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+         FileOutputStream fos = new FileOutputStream(file);
+         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+         fos.close();
+         rbc.close();
+     }
+ */
+    static void downloadFile() {
+        FileFundamental fileFund = new FileFundamental();
+        int errCounter = 0;
+        int i = 790; //790 te kaldim
+        DownloadBookTxt downloadBookTxt = new DownloadBookTxt();
+        while (true) {
+            fileFund.setPath("src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\");
+            fileFund.setFileName(i + "");
+            fileFund.setFileExtension(".txt");
+            try {
+                downloadBookTxt.download(fileFund);
+                System.out.println("file is Downloaded " + fileFund.getFileName());
+                errCounter = 0;
+            } catch (Exception e) {
+                errCounter++;
+                System.out.println("error occured : errCounter : " + errCounter + " Could not find any more data. Download is finished .");
+            }
+            if (errCounter == 10_000) {
+                System.out.println("errCounter : " + errCounter + " Could not find any more data. Download is finished .");
+                break;
+            }
+            if (i > 10_000) {
+                System.out.println("Downloaded 10_000 files. It is enough for now.");
+                break;
+            }
+            i++;
+
+        }
+    }
+
+    public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, InterruptedException {
+//        downloadFile();
+//        shutdownComputer();
+//        System.exit(0);
+
+
+//        System.exit(0);
+        // https://www.gutenberg.org/ebooks/{1} --> suslu parantez kitap numarasi
+        //https://www.gutenberg.org/cache/epub/1/pg1.txt  --> indirilecek olan sayfanin txt hali
+        FakeDataCreation fakeDataCreation = new FakeDataCreation();
+//        fakeDataCreation.createData();
+        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList());
+        fakeDataCreation.fixValueInReadDataList(fakeDataCreation.getReadDataList());
+        System.exit(0);
 //fakeDataCreation.createData();
 
         /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
@@ -143,9 +213,9 @@ System.exit(0);
 //for(String tmp : wordList){
 //        fakeDataCreation.clearDataInFile();
         List<FileFundamental> fileList = new ArrayList<>();
-        for (int i = 1; i <= 3; i++) {
+        for (int j = 1; j <= 3; j++) {
             fileList.add(new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/")
-                    .setFileName("demo" + i)
+                    .setFileName("demo" + j)
                     .setFileExtension(".txt"));
 
         }
@@ -179,5 +249,15 @@ System.exit(0);
                 new Student("Aynur", "YILDIRIM", 25, 1003),
         };
 
+    }
+
+    static void shutdownComputer() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            runtime.exec("shutdown -s -t 5");
+        } catch (IOException e) {
+
+            throw new RuntimeException(e);
+        }
     }
 }

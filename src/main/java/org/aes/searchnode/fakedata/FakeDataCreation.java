@@ -7,6 +7,7 @@ import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
 import org.aes.searchnode.entities.concretes.FileFundamental;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystems;
@@ -22,10 +23,29 @@ public class FakeDataCreation {
     public FileOperationFacade fileOpsFacade = new FileOperationFacade(
             new WriteFileManagement(), new ReadFileManagement());
 
+    static String getReadableValueIntToString(int num) {
+        String text = "";
+        int j = 0;
+        while (num > 0) {
+            text = num % 10 + text;
+            num /= 10;
+            j++;
+            if (j % 3 == 0 && num > 0) {
+                text = "_" + text;
+            }
+
+        }
+        return text;
+
+    }
+
     public List<FileFundamental> getBookFileFundementalList() {
         List<FileFundamental> filePaths = new ArrayList<>();
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\";
-        String directory="src\\main\\java\\org\\aes\\searchnode\\fakedata\\old books\\words\\";
+//        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\newWords\\"; //directoryForCreatedWords
+        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\DataToTest\\"; //directory For String Data
+
+
         try {
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(FileSystems.getDefault().getPath(directory));
             for (Path path : directoryStream) {
@@ -46,7 +66,17 @@ public class FakeDataCreation {
         return filePaths;
     }
 
+    static int hashsetSize = 0;
+    static int listSize = 0;
+
     public void createData() {
+
+//        System.out.println(getReadableValueIntToString(123));
+//        System.out.println(getReadableValueIntToString(1234));
+//        System.out.println(getReadableValueIntToString(123456));
+//        System.out.println(getReadableValueIntToString(1234567));
+//        System.exit(0);
+
         /**
          * get files
          *
@@ -60,55 +90,110 @@ public class FakeDataCreation {
          * */
 
         FileFundamental newFileFund = ConfigFileFundamental.getFileFundamental();
-        newFileFund.setFileName("Words-From-Books-English-Readers");
+//        newFileFund.setFileName("Words-From-Books-English-Readers");
 
+        int newFileIndex = 0;
         List<FileFundamental> pathList = getBookFileFundementalList();
-        for (FileFundamental tmpFileFund : pathList) {
-            read(tmpFileFund);
-        }
-        List<String> cleanReadDataList = clearReadDataList(fileOpsFacade.getReadDataList());
-        write(newFileFund, cleanReadDataList);
+        int modFile = 500;
+        int lastMovedFolderIndex = 0;
+        for (int i = 0; i < pathList.size(); i++) {
+            System.out.println("file index : " + i);
 
+            read(pathList.get(i));
+            if ((i > 0 && i % modFile == 0) || i == (pathList.size() - 1)) {
+                System.out.println("i : " + i + " pathsize : " + pathList.size());
+                System.out.println("listedeki data sayisi : " + getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+                newFileIndex++;
+                newFileFund.setFileName("Words-From-Books-English-Readers-" + newFileIndex + "-" + getReadableValueIntToString(hashsetSize) + "-" + getReadableValueIntToString(listSize));
+                if (i > 0 || pathList.size() < modFile) {
+                    List<String> cleanReadDataList = fixValueInReadDataList(fileOpsFacade.getReadDataList());
+                    write(newFileFund, cleanReadDataList);
+                 /*   for (int j = lastMovedFolderIndex; j <= i; j++) {
+                        String destinationPath = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\old books\\";
+                        moveFile(pathList.get(j), destinationPath);
+                    }*/
+                    lastMovedFolderIndex = i;
+
+                    fileOpsFacade.clearList();
+                    try {
+                        System.out.println("Temizlendikten sonraki listedeki data sayisi : " + fileOpsFacade.getReadDataList().size());
+                        System.out.println(i + " out of  " + (pathList.size() - 1) + " is read remaining files number : " + (pathList.size() - i));
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+
+                        throw new RuntimeException(e);
+                    }
+                }
+
+            }
+
+           /* for (FileFundamental tmpFileFund : pathList) {
+                read(tmpFileFund);
+            }*/
+
+
+        }
 //        read(newFileFund);
 //        cleanReadDataList = clearReadDataList(fileOpsFacade.getReadDataList());
 //        write(newFileFund, cleanReadDataList);
 
     }
 
-    public List<String> clearReadDataList(List<String> readDataList) {
+    private void moveFile(FileFundamental fileFund, String destinationPath) {
+        File file = new File(fileFund.getCompletePath());
+        fileFund.setPath(destinationPath);
+        boolean result = file.renameTo(new File(fileFund.getCompletePath()));
+        if (!result) {
+            System.err.println("### FILE  MOVE ERROR : " + result);
+        } else {
+            System.out.println(fileFund.getFileName() + "   >>>  MOVED SUCCESSFUL : " + result);
+        }
+
+    }
+
+    public List<String> fixValueInReadDataList(List<String> readDataList) {
         DataCleariation dataCleariation = new DataCleariation();
 //        fileOpsFacade.read();
 //        System.out.println(getClass().getSimpleName() + " > Read data : console check : ");
         Set<String> hashSet = new HashSet<>();
-        System.out.println("data line  size : " + readDataList.size());
+        System.out.println("data line  size : " + getReadableValueIntToString(readDataList.size()));
         List<String> totalWords = new ArrayList<>();
         for (String tmp : readDataList) {
+//            System.out.println("======================================");
+//            System.out.println("islem yapiacak data : " + tmp);
             tmp = dataCleariation.clearData(tmp);
-//            if (tmp.length() > 3) {
-            tmp = tmp.toLowerCase();
-            tmp = dataCleariation.removeWildCards(tmp);
-//            tmp = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
-            if (dataCleariation.hasMultipleWords(tmp)) {
-                System.out.println("gelen data : "+tmp);
-                List<String> newList = Arrays.stream(tmp.split(" ")).
-                        filter(text -> !text.equals("")).
-                        collect(Collectors.toList());
+//            System.out.println("islem yapiacak data : "+tmp);
+            if (tmp.length() > 3) {
+                tmp = tmp.toLowerCase();
+//            System.out.println("islem yapiacak data : "+tmp);
+                tmp = dataCleariation.removeWildCards(tmp);
+//            System.out.println("islem yapiacak data : "+tmp);
+                tmp = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
+//                System.out.println("islem yapiacak data : " + tmp);
+                if (dataCleariation.hasMultipleWords(tmp)) {
+//                System.out.println("gelen data : "+tmp);
+                    List<String> newList = Arrays.stream(tmp.split(" ")).
+                            filter(text -> !text.equals("")).
+                            collect(Collectors.toList());
 
-                hashSet.addAll(newList);
-                totalWords.addAll(newList);
-            } else {
-                if (!tmp.trim().equals("")) {
-                    hashSet.add(tmp);
-                    totalWords.add(tmp);
+
+                    hashSet.addAll(newList);
+//                    System.out.println("patlamadan onceki totalWords : " + totalWords.size() + " eklencek olan size : " + newList.size());
+                    totalWords.addAll(newList);
+                } else {
+                    if (!tmp.trim().equals("")) {
+                        hashSet.add(tmp);
+                        totalWords.add(tmp);
+                    }
                 }
-            }
 
-//            }
+            }
         }
 
-        System.out.println("hashset : " + hashSet.size());
-        System.out.println("totalWords: " + totalWords.size());
-//        System.out.println("------------------------------------");
+        System.out.println("hashset : " + getReadableValueIntToString(hashSet.size()));
+        System.out.println("totalWords: " + getReadableValueIntToString(totalWords.size()));
+        hashsetSize = hashSet.size();
+        listSize = totalWords.size();
 //        System.out.println("hashset data : ");
 //        hashSet.forEach(System.out::println);
 
@@ -141,6 +226,10 @@ public class FakeDataCreation {
 
     public void append(FileFundamental fileFund, List<String> textList) {
         fileOpsFacade.append(fileFund, textList);
+    }
+
+    public List<String> getReadDataList() {
+        return fileOpsFacade.getReadDataList();
     }
 
 }
