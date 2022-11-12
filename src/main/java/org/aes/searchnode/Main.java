@@ -145,15 +145,11 @@ public class Main {
 //        shutdownComputer();
 //        System.exit(0);
 
-
-//        System.exit(0);
-        // https://www.gutenberg.org/ebooks/{1} --> suslu parantez kitap numarasi
-        //https://www.gutenberg.org/cache/epub/1/pg1.txt  --> indirilecek olan sayfanin txt hali
-        FakeDataCreation fakeDataCreation = new FakeDataCreation();
+//        FakeDataCreation fakeDataCreation = new FakeDataCreation();
 //        fakeDataCreation.createData();
-        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList());
-        fakeDataCreation.fixValueInReadDataList(fakeDataCreation.getReadDataList());
-        System.exit(0);
+//        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList());
+//        fakeDataCreation.fixValueInReadDataList(fakeDataCreation.getReadDataList());
+//        System.exit(0);
 //fakeDataCreation.createData();
 
         /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
@@ -219,17 +215,17 @@ public class Main {
                     .setFileExtension(".txt"));
 
         }
-        FileOperationFacade fileOpsFacade = fakeDataCreation.fileOpsFacade;
+//        FileOperationFacade fileOpsFacade = fakeDataCreation.fileOpsFacade;
 //        fakeDataCreation.clearDataInFile();
-        fileOpsFacade.read(fileList);
-        List<String> dataList = fileOpsFacade.getReadDataList();
-        System.out.println("list data size facade :  " + fileOpsFacade.getReadDataList().size());
-        FileFundamental fileToWrite = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/")
-                .setFileName("demo-result")
-                .setFileExtension(".txt");
-
-        fileOpsFacade.write(fileToWrite, dataList);
-        System.out.println("list data size facade :  " + fileOpsFacade.getReadDataList().size());
+//        fileOpsFacade.read(fileList);
+//        List<String> dataList = fileOpsFacade.getReadDataList();
+//        System.out.println("list data size facade :  " + fileOpsFacade.getReadDataList().size());
+//        FileFundamental fileToWrite = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/")
+//                .setFileName("demo-result")
+//                .setFileExtension(".txt");
+//
+//        fileOpsFacade.write(fileToWrite, dataList);
+//        System.out.println("list data size facade :  " + fileOpsFacade.getReadDataList().size());
 
 
 //}

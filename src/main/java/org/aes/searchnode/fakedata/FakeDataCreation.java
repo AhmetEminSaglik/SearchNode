@@ -3,6 +3,7 @@ package org.aes.searchnode.fakedata;
 import org.aes.searchnode.business.concretes.DataCleariation;
 import org.aes.searchnode.business.concretes.FileOperationFacade;
 import org.aes.searchnode.config.file.ConfigFileFundamental;
+import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
 import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
 import org.aes.searchnode.entities.concretes.FileFundamental;
@@ -23,21 +24,6 @@ public class FakeDataCreation {
     public FileOperationFacade fileOpsFacade = new FileOperationFacade(
             new WriteFileManagement(), new ReadFileManagement());
 
-    static String getReadableValueIntToString(int num) {
-        String text = "";
-        int j = 0;
-        while (num > 0) {
-            text = num % 10 + text;
-            num /= 10;
-            j++;
-            if (j % 3 == 0 && num > 0) {
-                text = "_" + text;
-            }
-
-        }
-        return text;
-
-    }
 
     public List<FileFundamental> getBookFileFundementalList() {
         List<FileFundamental> filePaths = new ArrayList<>();
@@ -102,9 +88,9 @@ public class FakeDataCreation {
             read(pathList.get(i));
             if ((i > 0 && i % modFile == 0) || i == (pathList.size() - 1)) {
                 System.out.println("i : " + i + " pathsize : " + pathList.size());
-                System.out.println("listedeki data sayisi : " + getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+                System.out.println("listedeki data sayisi : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
                 newFileIndex++;
-                newFileFund.setFileName("Words-From-Books-English-Readers-" + newFileIndex + "-" + getReadableValueIntToString(hashsetSize) + "-" + getReadableValueIntToString(listSize));
+                newFileFund.setFileName("Words-From-Books-English-Readers-" + newFileIndex + "-" + ReadableStringFormat.getReadableValueIntToString(hashsetSize) + "-" + ReadableStringFormat.getReadableValueIntToString(listSize));
                 if (i > 0 || pathList.size() < modFile) {
                     List<String> cleanReadDataList = fixValueInReadDataList(fileOpsFacade.getReadDataList());
                     write(newFileFund, cleanReadDataList);
@@ -156,7 +142,7 @@ public class FakeDataCreation {
 //        fileOpsFacade.read();
 //        System.out.println(getClass().getSimpleName() + " > Read data : console check : ");
         Set<String> hashSet = new HashSet<>();
-        System.out.println("data line  size : " + getReadableValueIntToString(readDataList.size()));
+        System.out.println("data line  size : " + ReadableStringFormat.getReadableValueIntToString(readDataList.size()));
         List<String> totalWords = new ArrayList<>();
         for (String tmp : readDataList) {
 //            System.out.println("======================================");
@@ -190,8 +176,8 @@ public class FakeDataCreation {
             }
         }
 
-        System.out.println("hashset : " + getReadableValueIntToString(hashSet.size()));
-        System.out.println("totalWords: " + getReadableValueIntToString(totalWords.size()));
+        System.out.println("hashset : " + ReadableStringFormat.getReadableValueIntToString(hashSet.size()));
+        System.out.println("totalWords: " + ReadableStringFormat.getReadableValueIntToString(totalWords.size()));
         hashsetSize = hashSet.size();
         listSize = totalWords.size();
 //        System.out.println("hashset data : ");
