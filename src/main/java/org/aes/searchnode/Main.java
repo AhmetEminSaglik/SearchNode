@@ -19,6 +19,7 @@ import org.aes.searchnode.fakedata.DownloadBookTxt;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 //import org.aes.searchnode.fakedata.StringText;
 
+import javax.swing.*;
 import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -87,7 +88,7 @@ public class Main {
         System.exit(0);
     }
 
-    /* private static void downloadUsingStream(String urlStr, String file) throws IOException {
+     private static void downloadUsingStream(String urlStr, String file) throws IOException {
          URL url = new URL(urlStr);
          BufferedInputStream bis = new BufferedInputStream(url.openStream());
          FileOutputStream fis = new FileOutputStream(file);
@@ -109,17 +110,18 @@ public class Main {
          fos.close();
          rbc.close();
      }
- */
     static void downloadFile() {
         FileFundamental fileFund = new FileFundamental();
         int errCounter = 0;
-        int i = 790; //790 te kaldim
+        int i = 70_000; //70_000 te kaldim
         DownloadBookTxt downloadBookTxt = new DownloadBookTxt();
         while (true) {
-            fileFund.setPath("src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\");
+//            fileFund.setPath("src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\");
+            fileFund.setPath("F:\\searchNodeData\\books\\");
             fileFund.setFileName(i + "");
             fileFund.setFileExtension(".txt");
             try {
+
                 downloadBookTxt.download(fileFund);
                 System.out.println("file is Downloaded " + fileFund.getFileName());
                 errCounter = 0;
@@ -131,7 +133,7 @@ public class Main {
                 System.out.println("errCounter : " + errCounter + " Could not find any more data. Download is finished .");
                 break;
             }
-            if (i > 10_000) {
+            if (i > 80_000) {
                 System.out.println("Downloaded 10_000 files. It is enough for now.");
                 break;
             }
@@ -141,7 +143,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, InterruptedException {
-//        downloadFile();
+        downloadFile();
+        JOptionPane.showMessageDialog(null,"indirme tamamlandi");
 //        shutdownComputer();
 //        System.exit(0);
 
