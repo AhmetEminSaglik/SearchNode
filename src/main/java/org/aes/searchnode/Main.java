@@ -1,13 +1,7 @@
 package org.aes.searchnode;
 
-
-import org.aes.searchnode.business.concretes.FileOperationFacade;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
-import org.aes.searchnode.entities.concretes.FileFundamental;
 import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractReadFile;
-import org.aes.searchnode.dataaccess.abstracts.fileoperation.AbstractWriteFile;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.*;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.*;
 import org.aes.searchnode.entities.example.Student;
@@ -16,19 +10,19 @@ import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 import org.aes.searchnode.fakedata.DownloadBookTxt;
-import org.aes.searchnode.fakedata.FakeDataCreation;
-//import org.aes.searchnode.fakedata.StringText;
+import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
+import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
 import javax.swing.*;
 import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.*;
-import java.util.logging.Logger;
 
 public class Main {
 //    static PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
@@ -88,36 +82,36 @@ public class Main {
         System.exit(0);
     }
 
-     private static void downloadUsingStream(String urlStr, String file) throws IOException {
-         URL url = new URL(urlStr);
-         BufferedInputStream bis = new BufferedInputStream(url.openStream());
-         FileOutputStream fis = new FileOutputStream(file);
-         byte[] buffer = new byte[1024];
-         int count=0;
-         while((count = bis.read(buffer,0,1024)) != -1)
-         {
-             fis.write(buffer, 0, count);
-         }
-         fis.close();
-         bis.close();
-     }
+    private static void downloadUsingStream(String urlStr, String file) throws IOException {
+        URL url = new URL(urlStr);
+        BufferedInputStream bis = new BufferedInputStream(url.openStream());
+        FileOutputStream fis = new FileOutputStream(file);
+        byte[] buffer = new byte[1024];
+        int count = 0;
+        while ((count = bis.read(buffer, 0, 1024)) != -1) {
+            fis.write(buffer, 0, count);
+        }
+        fis.close();
+        bis.close();
+    }
 
-     private static void downloadUsingNIO(String urlStr, String file) throws IOException {
-         URL url = new URL(urlStr);
-         ReadableByteChannel rbc = Channels.newChannel(url.openStream());
-         FileOutputStream fos = new FileOutputStream(file);
-         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-         fos.close();
-         rbc.close();
-     }
+    private static void downloadUsingNIO(String urlStr, String file) throws IOException {
+        URL url = new URL(urlStr);
+        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        fos.close();
+        rbc.close();
+    }
+
     static void downloadFile() {
         FileFundamental fileFund = new FileFundamental();
         int errCounter = 0;
-        int i = 70_000; //70_000 te kaldim
+        int i = 1; //70_000 te kaldim
         DownloadBookTxt downloadBookTxt = new DownloadBookTxt();
         while (true) {
 //            fileFund.setPath("src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\");
-            fileFund.setPath("F:\\searchNodeData\\books\\");
+            fileFund.setPath("src/main/resources/");
             fileFund.setFileName(i + "");
             fileFund.setFileExtension(".txt");
             try {
@@ -138,13 +132,19 @@ public class Main {
                 break;
             }
             i++;
-
+//            System.exit(0);
         }
     }
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, InterruptedException {
+
+        new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement());
+
+        System.exit(0);
+
+
         downloadFile();
-        JOptionPane.showMessageDialog(null,"indirme tamamlandi");
+        JOptionPane.showMessageDialog(null, "indirme tamamlandi");
 //        shutdownComputer();
 //        System.exit(0);
 

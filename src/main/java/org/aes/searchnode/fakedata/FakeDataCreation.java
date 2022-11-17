@@ -1,12 +1,13 @@
 package org.aes.searchnode.fakedata;
 
 import org.aes.searchnode.business.concretes.DataCleariation;
-import org.aes.searchnode.business.concretes.FileOperationFacade;
-import org.aes.searchnode.config.file.ConfigFileFundamental;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
-import org.aes.searchnode.entities.concretes.FileFundamental;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.WriteFileService;
+import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
+import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,9 +23,17 @@ public class FakeDataCreation {
     /*TODO buradaki read&write functionlar service olarak degistirilebilir/*/
 
 
-    public FileOperationFacade fileOpsFacade = new FileOperationFacade(
-            new WriteFileManagement(), new ReadFileManagement());
+//    public FileOperationFacade fileOpsFacade = new FileOperationFacade(
+//            new WriteFileManagement(), new ReadFileManagement());
 
+    FileOperationFacade fileOpsFacade;
+
+    public FakeDataCreation() {
+
+        WriteFileService writeFileService = new WriteFileManagement();
+        ReadFileService readFileService = new ReadFileManagement();
+        fileOpsFacade = new FileOperationFacade(writeFileService, readFileService);
+    }
 
     public List<FileFundamental> getBookFileFundementalList() {
         List<FileFundamental> filePaths = new ArrayList<>();
@@ -75,8 +85,14 @@ public class FakeDataCreation {
          * write files
          * */
 
-        FileFundamental newFileFund = ConfigFileFundamental.getFileFundamental();
+//        FileFundamental newFileFund = ConfigFileFundamental.getFileFundamental();
 //        newFileFund.setFileName("Words-From-Books-English-Readers");
+
+        FileFundamental newFileFund = new FileFundamental();
+        newFileFund.setPath("src/main/java/org/aes/searchnode/fakedata/");
+        newFileFund.setFileName("Words-From-Books-English-Readers");
+        newFileFund.setFileExtension(".txt");
+
 
         int newFileIndex = 0;
         List<FileFundamental> pathList = getBookFileFundementalList();

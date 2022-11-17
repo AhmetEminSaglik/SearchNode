@@ -1,3 +1,4 @@
+/*
 package org.aes.searchnode.entities.concretes;
 
 public class FileFundamental {
@@ -40,3 +41,4 @@ public class FileFundamental {
 
 
 }
+*/

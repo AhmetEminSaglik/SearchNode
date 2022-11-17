@@ -1,6 +1,7 @@
 package org.aes.searchnode.fakedata;
 
-import org.aes.searchnode.entities.concretes.FileFundamental;
+
+import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
