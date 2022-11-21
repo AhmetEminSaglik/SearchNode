@@ -1,12 +1,13 @@
 package org.aes.searchnode.fakedata;
 
 import org.aes.searchnode.business.concretes.DataCleariation;
-import org.aes.searchnode.business.concretes.FileOperationFacade;
-import org.aes.searchnode.config.file.ConfigFileFundamental;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.ReadFileManagement;
-import org.aes.searchnode.dataaccess.concretes.fileoperation.WriteFileManagement;
-import org.aes.searchnode.entities.concretes.FileFundamental;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.WriteFileService;
+import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
+import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,15 +23,23 @@ public class FakeDataCreation {
     /*TODO buradaki read&write functionlar service olarak degistirilebilir/*/
 
 
-    public FileOperationFacade fileOpsFacade = new FileOperationFacade(
-            new WriteFileManagement(), new ReadFileManagement());
+//    public FileOperationFacade fileOpsFacade = new FileOperationFacade(
+//            new WriteFileManagement(), new ReadFileManagement());
 
+    FileOperationFacade fileOpsFacade;
+
+    public FakeDataCreation() {
+
+        WriteFileService writeFileService = new WriteFileManagement();
+        ReadFileService readFileService = new ReadFileManagement();
+        fileOpsFacade = new FileOperationFacade(writeFileService, readFileService);
+    }
 
     public List<FileFundamental> getBookFileFundementalList() {
         List<FileFundamental> filePaths = new ArrayList<>();
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\";
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\newWords\\"; //directoryForCreatedWords
-        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\DataToTest\\"; //directory For String Data
+        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\word\\"; //directory For String Data
 
 
         try {
@@ -44,7 +54,7 @@ public class FakeDataCreation {
                 fileFundamental.setFileName(fileName);
                 fileFundamental.setFileExtension(extension);
                 filePaths.add(fileFundamental);
-
+                System.out.println("processed file :"+fileFundamental.getCompletePath());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -75,8 +85,14 @@ public class FakeDataCreation {
          * write files
          * */
 
-        FileFundamental newFileFund = ConfigFileFundamental.getFileFundamental();
+//        FileFundamental newFileFund = ConfigFileFundamental.getFileFundamental();
 //        newFileFund.setFileName("Words-From-Books-English-Readers");
+
+        FileFundamental newFileFund = new FileFundamental();
+        newFileFund.setPath("C:\\Users\\USER\\Desktop\\SearchNodeGithub\\SearchNode\\src\\main\\java\\org\\aes\\searchnode\\fakedata\\");
+        newFileFund.setFileName("clear-data");
+        newFileFund.setFileExtension(".txt");
+
 
         int newFileIndex = 0;
         List<FileFundamental> pathList = getBookFileFundementalList();
@@ -90,10 +106,15 @@ public class FakeDataCreation {
                 System.out.println("i : " + i + " pathsize : " + pathList.size());
                 System.out.println("listedeki data sayisi : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
                 newFileIndex++;
-                newFileFund.setFileName("Words-From-Books-English-Readers-" + newFileIndex + "-" + ReadableStringFormat.getReadableValueIntToString(hashsetSize) + "-" + ReadableStringFormat.getReadableValueIntToString(listSize));
+                newFileFund.setFileName("Processed-test-data");
                 if (i > 0 || pathList.size() < modFile) {
+                    System.out.println("temizlik oncesi data size : "+ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
                     List<String> cleanReadDataList = fixValueInReadDataList(fileOpsFacade.getReadDataList());
-                    write(newFileFund, cleanReadDataList);
+                    System.out.println("temizlik Sonrasi data size : "+ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+
+                    List<String> cleanReadDataList2 = fixValueInReadDataList(cleanReadDataList);
+                    System.out.println("2. temizlik Sonrasi data size : "+ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+                    write(newFileFund, cleanReadDataList2);
                  /*   for (int j = lastMovedFolderIndex; j <= i; j++) {
                         String destinationPath = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\old books\\";
                         moveFile(pathList.get(j), destinationPath);

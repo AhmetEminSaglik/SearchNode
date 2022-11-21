@@ -6,11 +6,20 @@
 
     <groupId>org.aes.searchnode</groupId>
     <artifactId>SearchNode</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
+    <version>1.0</version>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <model.proje>1.0</model.proje>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.ahmeteminsaglik.fileoperation</groupId>
+            <artifactId>FileOperation</artifactId>
+            <version>${model.proje}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

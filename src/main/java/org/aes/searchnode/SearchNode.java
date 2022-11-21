@@ -27,7 +27,7 @@ public class SearchNode<T> {
     SearchNode<T> movedLastSearchNodeConnection = null;
     private List<SearchNode> sNListToIncreaseNWDTV = new ArrayList<>();
 
-    public void add(T t /*Object object, Class<?> clazz*/) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+    public void add(T t /*Object object, Class<?> clazz*/) {
 
         clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
@@ -61,17 +61,17 @@ public class SearchNode<T> {
                 Result result = transferPossibilityNWDToReachableNWD();
                 if (result.isSuccess()) {
                     increaseNewAddedItemLocationsNWDTV();
-                    printSizeOfAddedItems();
+                    //printSizeOfAddedItems();
                 }
                 clearPossibilityNWD();
             }
             if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationStringAddress())) {
-                System.out.println("daha once eklenmis olan bir kelime tekrar ekleneecek :" + t);
+//                System.out.println("daha once eklenmis olan bir kelime tekrar ekleneecek :" + t);
                 DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t);
                 if (drNodeDataAddProgress.getData().equals(NodeData.NEW_VALUE_IS_ADDED)) {
                     increaseNewAddedItemLocationsNWDTV();
                 }
-                printSizeOfAddedItems();
+                //printSizeOfAddedItems();
             }
         }
     }
@@ -146,16 +146,25 @@ public class SearchNode<T> {
         pNWDQueue = new PossibilityNextWayDirection(data, movedLastSearchNodeConnection/*,pc*//*, movedLastSearchNodeConnection*/);
     }
 
-    Object getValueOfObjectToBeProcess(T t/*Object o, Class<?> clazz*/) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
+    Object getValueOfObjectToBeProcess(T t/*Object o, Class<?> clazz*/) {
         /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
          *  pfOrder.getPriorityFieldName(index).getName()
          * */
-        PriorityFieldOrder pfOrder = new PriorityFieldOrder(t.getClass());
-        PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
-        String fieldName = pfOrder.getPriorityFieldName(1).getName();
-        Object value = pfValue.getValueOfField(t, fieldName);
-        System.out.println(" Returning Value Of Object : " + value);
-        return value;
+        PriorityFieldOrder pfOrder = null;
+        try {
+            pfOrder = new PriorityFieldOrder(t.getClass());
+
+            PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
+            String fieldName = pfOrder.getPriorityFieldName(1).getName();
+            Object value = pfValue.getValueOfField(t, fieldName);
+            //System.out.println(" Returning Value Of Object : " + value);
+            return value;
+
+        } catch (NotFoundAnyDeclaredFieldException |
+                 ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException |
+                 NotFoundRequestedFieldException | InvalidFieldOrFieldNameException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ReachableNextWayDirection getReachableNWD() {
@@ -199,7 +208,7 @@ public class SearchNode<T> {
     }
 
     public void printSizeOfAddedItems() {
-        System.out.println("Total Added Items : " + getNodeData().getNextWayDirectionTotalValue());
+        System.out.println("Total Added Items : " + ReadableStringFormat.getReadableValueIntToString(getNodeData().getNextWayDirectionTotalValue()));
     }
 
     @Override

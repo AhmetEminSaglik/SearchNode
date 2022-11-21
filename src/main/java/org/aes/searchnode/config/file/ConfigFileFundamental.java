@@ -1,3 +1,4 @@
+/*
 package org.aes.searchnode.config.file;
 
 import org.aes.searchnode.entities.concretes.FileFundamental;
@@ -16,3 +17,4 @@ public class ConfigFileFundamental {
     }
 
 }
+*/
