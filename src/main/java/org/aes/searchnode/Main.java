@@ -1,5 +1,6 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.business.concretes.DataCleariation;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
@@ -10,6 +11,7 @@ import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
 import org.aes.searchnode.fakedata.DownloadBookTxt;
+import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
@@ -25,62 +27,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.*;
 
 public class Main {
-//    static PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
 
-    static void printList(Object[] objects, PriorityFieldValue priorityFieldValue, String fieldName) {
-        System.out.println("----------------------------  ARRAY : ");
-        System.out.println(objects.getClass().getSimpleName());
-        try {
-
-            for (Object tmp : objects) {
-                System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
-                printPriorityCharOfText(priorityFieldValue.getValueOfField(tmp, fieldName).toString());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    static void printList(List<?> objects, PriorityFieldValue priorityFieldValue, String fieldName) {
-        System.out.println("++++++++++++++++++++++++++++  LISTE : ");
-        System.out.println(objects.getClass().getSimpleName());
-        try {
-            for (Object tmp : objects) {
-                System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
-                printPriorityCharOfText(priorityFieldValue.getValueOfField(tmp, fieldName).toString());
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    static void printPriorityCharOfText(String text) {
-        PriorityCharManager priorityCharManager = new PriorityCharManager();
-        char[] chars = text.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            DataResult<PriorityChar> dataResult = priorityCharManager.getPriorityChar(chars[i]);
-//            System.out.println(dataResult.toString());
-            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
-//            System.exit(0);
-//            System.out.println("PriorityChar : "+);;
-
-        }
-    }
-
-    static void printIntegerAscii() {
-
-        System.out.println("0 : " + (int) ('0'));
-        System.out.println("1 : " + (int) ('1'));
-        System.out.println("2 : " + (int) ('2'));
-        System.out.println("3 : " + (int) ('3'));
-        System.out.println("4 : " + (int) ('4'));
-        System.out.println("5 : " + (int) ('5'));
-        System.out.println("6 : " + (int) ('6'));
-        System.out.println("7 : " + (int) ('7'));
-        System.out.println("8 : " + (int) ('8'));
-        System.out.println("9 : " + (int) ('9'));
-        System.exit(0);
-    }
 
     private static void downloadUsingStream(String urlStr, String file) throws IOException {
         URL url = new URL(urlStr);
@@ -138,13 +85,13 @@ public class Main {
 
     public static void main(String[] args) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, InterruptedException {
 
-        new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement());
-
-        System.exit(0);
-
-
-        downloadFile();
-        JOptionPane.showMessageDialog(null, "indirme tamamlandi");
+//        new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement());
+//
+//        System.exit(0);
+//
+//
+//        downloadFile();
+//        JOptionPane.showMessageDialog(null, "indirme tamamlandi");
 //        shutdownComputer();
 //        System.exit(0);
 
@@ -153,6 +100,23 @@ public class Main {
 //        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList());
 //        fakeDataCreation.fixValueInReadDataList(fakeDataCreation.getReadDataList());
 //        System.exit(0);
+FileFundamental fileFund= new FileFundamental().setPath("C:\\Users\\USER\\Desktop\\SearchNodeGithub\\SearchNode\\src\\main\\java\\org\\aes\\searchnode\\fakedata\\").setFileName("Word-Data-1_398_449").setFileExtension(".txt");
+
+//        FileFundamental fileFund= new FileFundamental().setPath("C:\\Users\\USER\\Desktop\\SearchNodeGithub\\SearchNode\\src\\main\\java\\org\\aes\\searchnode\\fakedata\\")
+//                .setFileName("Word-Data-1_398_449").setFileExtension(".txt");
+
+        FileOperationFacade fof= new FileOperationFacade(new WriteFileManagement(fileFund), new ReadFileManagement(fileFund));
+        fof.read();
+
+//FakeDataCreation fakeDataCreation= new FakeDataCreation();
+//fakeDataCreation.createData();
+        SearchNode<String> searchNode = new SearchNode<>();
+        for (String tmpTxt : fof.getReadDataList()) {
+            searchNode.add(tmpTxt);
+        }
+        System.out.print("All Data in SearchNode : "); searchNode.printSizeOfAddedItems();
+
+        System.exit(0);
 //fakeDataCreation.createData();
 
         /*TODO suan yaklasik 83.500 veri var simdilik yeterli. searchNode'a bu verileri aktarip sirasiyla alip txt'ye yazdirmak istiyorum. */
@@ -206,9 +170,9 @@ public class Main {
             wordList.addAll(Arrays.asList(tmp.split(" ")));
 
         }*/
-
+//        FileFundamental fileFund= new FileFundamental();
 //        FakeDataCreation fakeDataCreation = new FakeDataCreation();
-
+//fakeDataCreation.
 //for(String tmp : wordList){
 //        fakeDataCreation.clearDataInFile();
         List<FileFundamental> fileList = new ArrayList<>();
@@ -259,4 +223,60 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+    //    static PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
+
+   /* static void printList(Object[] objects, PriorityFieldValue priorityFieldValue, String fieldName) {
+        System.out.println("----------------------------  ARRAY : ");
+        System.out.println(objects.getClass().getSimpleName());
+        try {
+
+            for (Object tmp : objects) {
+                System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
+                printPriorityCharOfText(priorityFieldValue.getValueOfField(tmp, fieldName).toString());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static void printList(List<?> objects, PriorityFieldValue priorityFieldValue, String fieldName) {
+        System.out.println("++++++++++++++++++++++++++++  LISTE : ");
+        System.out.println(objects.getClass().getSimpleName());
+        try {
+            for (Object tmp : objects) {
+                System.out.println("Read value : " + priorityFieldValue.getValueOfField(tmp, fieldName));
+                printPriorityCharOfText(priorityFieldValue.getValueOfField(tmp, fieldName).toString());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static void printPriorityCharOfText(String text) {
+        PriorityCharManager priorityCharManager = new PriorityCharManager();
+        char[] chars = text.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            DataResult<PriorityChar> dataResult = priorityCharManager.getPriorityChar(chars[i]);
+//            System.out.println(dataResult.toString());
+            System.out.println("PriorityChar : " + dataResult.getData() + " / message : " + dataResult.getMsg());
+//            System.exit(0);
+//            System.out.println("PriorityChar : "+);;
+
+        }
+    }*/
+
+/*    static void printIntegerAscii() {
+
+        System.out.println("0 : " + (int) ('0'));
+        System.out.println("1 : " + (int) ('1'));
+        System.out.println("2 : " + (int) ('2'));
+        System.out.println("3 : " + (int) ('3'));
+        System.out.println("4 : " + (int) ('4'));
+        System.out.println("5 : " + (int) ('5'));
+        System.out.println("6 : " + (int) ('6'));
+        System.out.println("7 : " + (int) ('7'));
+        System.out.println("8 : " + (int) ('8'));
+        System.out.println("9 : " + (int) ('9'));
+        System.exit(0);
+    }*/
 }
