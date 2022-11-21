@@ -27,7 +27,7 @@ public class SearchNode<T> {
     SearchNode<T> movedLastSearchNodeConnection = null;
     private List<SearchNode> sNListToIncreaseNWDTV = new ArrayList<>();
 
-    public void add(T t /*Object object, Class<?> clazz*/) throws NotFoundAnyDeclaredFieldException, NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException {
+    public void add(T t /*Object object, Class<?> clazz*/) {
 
         clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
@@ -146,16 +146,25 @@ public class SearchNode<T> {
         pNWDQueue = new PossibilityNextWayDirection(data, movedLastSearchNodeConnection/*,pc*//*, movedLastSearchNodeConnection*/);
     }
 
-    Object getValueOfObjectToBeProcess(T t/*Object o, Class<?> clazz*/) throws NotFoundRequestedFieldException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException, InvalidFieldOrFieldNameException, NotFoundAnyDeclaredFieldException {
+    Object getValueOfObjectToBeProcess(T t/*Object o, Class<?> clazz*/) {
         /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
          *  pfOrder.getPriorityFieldName(index).getName()
          * */
-        PriorityFieldOrder pfOrder = new PriorityFieldOrder(t.getClass());
-        PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
-        String fieldName = pfOrder.getPriorityFieldName(1).getName();
-        Object value = pfValue.getValueOfField(t, fieldName);
-        //System.out.println(" Returning Value Of Object : " + value);
-        return value;
+        PriorityFieldOrder pfOrder = null;
+        try {
+            pfOrder = new PriorityFieldOrder(t.getClass());
+
+            PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
+            String fieldName = pfOrder.getPriorityFieldName(1).getName();
+            Object value = pfValue.getValueOfField(t, fieldName);
+            //System.out.println(" Returning Value Of Object : " + value);
+            return value;
+
+        } catch (NotFoundAnyDeclaredFieldException |
+                 ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException |
+                 NotFoundRequestedFieldException | InvalidFieldOrFieldNameException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ReachableNextWayDirection getReachableNWD() {
