@@ -4,6 +4,7 @@ import com.sun.source.tree.LiteralTree;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
+import org.aes.searchnode.testing.TimeCalculation;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
@@ -22,16 +23,35 @@ public class Main {
 
     public static void main(String[] args) {
 
+        SearchNode<String > searchNodeTest = new SearchNode();
+        searchNodeTest.add("Ahmet");
+        searchNodeTest.add("ahmetemin");
+        searchNodeTest.add("emin");
+        searchNodeTest.add("emine");
+        searchNodeTest.getReachableNWD().printAllDataOfSearchNode();
+
+        System.exit(0);
+//        TimeCalculation timeCalculation = new TimeCalculation();
+//        timeCalculation.start();
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        timeCalculation.stop();
+//        timeCalculation.printElapsedTime();
+//        System.exit(0);
+
         FileOperationFacade fofAllData = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement(exampleDataFile));
         fofAllData.read();
         System.out.print("read data size : ");
         printNumberReadableFormat(fofAllData.getReadDataList().size());
 
         List<String> listToSearch = new ArrayList<>();
-        FileFundamental fileFundSearchDataList = new FileFundamental().setPath("src\\main\\java\\org\\aes\\searchnode\\fakedata\\mod-test-data\\").setFileName("test-data-mod-100").setFileExtension(".txt");
+        FileFundamental fileFundSearchDataList = new FileFundamental().setPath("src\\main\\java\\org\\aes\\searchnode\\fakedata\\mod-test-data\\").setFileName("test-data-mod-20").setFileExtension(".txt");
         FileOperationFacade fofSearchData = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement(fileFundSearchDataList));
         fofSearchData.read();
-        new Main().testArraylist(fofAllData, fofSearchData.getReadDataList());
+//        new Main().testArraylist(fofAllData, fofSearchData.getReadDataList());
         new Main().testSearchNode(fofAllData, fofSearchData.getReadDataList());
 
 

@@ -7,20 +7,21 @@ import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class NextWayDirectionList implements ReachableNextWayDirection {
-    List<NextWayDirectionRequiredData> list = new ArrayList<>();
+public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
+    private List<NextWayDirectionRequiredData> list = new ArrayList<>();
 
     @Override
-    public DataResult<SearchNode> getNextWayOfChar(PriorityChar pc) {
+    public DataResult<SearchNode<T>> getNextWayOfChar(PriorityChar pc) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getPriorityChar().getChar() == pc.getChar()){
+            if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
 //                System.out.println("LISTEDEN VERI CEKILIYOR : "+list.get(i));
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retreived");
-            }else{
+            } else {
 //                System.out.println("Gelen char : "+pc.getChar()+" /// Listeden cekilen char : "+list.get(i).getPriorityChar().getChar());
             }
         }
@@ -28,7 +29,7 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     }
 
     @Override
-    public DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode searchNode) {
+    public DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode<T> searchNode) {
 //        System.out.println("!!!!! listee Veri ekleniyor : "+pc+"  /  "+searchNode);
         list.add(new NextWayDirectionRequiredData(pc, searchNode));
         return new SuccessDataResult<>("--> SearchNode is added to List");
@@ -46,6 +47,20 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
 //        System.out.println("List is over");
 //        System.out.println("+++++++++++++++++++++++++++++++++++++++");
     }
+
+/*
+    @Override
+    public List<SearchNode<T>> getAll(SearchNode<T> searchNode) {
+        */
+/** getNextWayDirectionRequiredDataList--> fonksiyonu interface'de olmadigi icin erisemiyorum.*//*
+
+        for (SearchNode<T> tmp : searchNode.get) {
+
+        }
+
+
+    }
+*/
 
 
 
@@ -67,5 +82,9 @@ public class NextWayDirectionList implements ReachableNextWayDirection {
     public int size() {
         System.out.println(list.size());
         return list.size();
+    }
+
+    public List<NextWayDirectionRequiredData> getNextWayDirectionRequiredDataList() {
+        return new ArrayList<NextWayDirectionRequiredData>(list);
     }
 }

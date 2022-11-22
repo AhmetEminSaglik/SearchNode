@@ -1,0 +1,53 @@
+
+g	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ù÷„ŞÉ0
+h	java:S112‘"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ü÷„ŞÉ0
+j
+java:S2095/"MUse try-with-resources or close this "DirectoryStream" in a "finally" clause.(Ó¡ÄÏ8åù„ŞÉ0
+X	java:S125"<This block of commented-out lines of code should be removed.(£ªó²8èù„ŞÉ0
+O
+java:S1135"2Complete the task associated to this TODO comment.(šûø”8èù„ŞÉ0
+X	java:S125("<This block of commented-out lines of code should be removed.(˜üí¢8êù„ŞÉ0
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(µíşŒşÿÿÿÿ8ìù„ŞÉ0
+X	java:S125N"<This block of commented-out lines of code should be removed.(äèÏ8ƒÏíÉ0
+X	java:S125T"<This block of commented-out lines of code should be removed.(‘†8îù„ŞÉ0
+W	java:S125f"<This block of commented-out lines of code should be removed.(§Îï}8îù„ŞÉ0
+M
+java:S1481o"1Remove this unused "newFileIndex" local variable.(ÿÏÒ8ïù„ŞÉ0
+X	java:S125r"<This block of commented-out lines of code should be removed.(œ®‘8À½íÉ0
+U	java:S106t"9Replace this use of System.out or System.err by a logger.(ÌÒà8ğù„ŞÉ0
+T	java:S106x"9Replace this use of System.out or System.err by a logger.(õ¬¼n8ñù„ŞÉ0
+Z	java:S106y"9Replace this use of System.out or System.err by a logger.(“Á‰Õÿÿÿÿÿ8ñù„ŞÉ0
+U	java:S106}"9Replace this use of System.out or System.err by a logger.(æ†óÁ8òù„ŞÉ0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(•ñ¡¨úÿÿÿÿ8òù„ŞÉ0
+[	java:S106‚"9Replace this use of System.out or System.err by a logger.(Ã³‡ûÿÿÿÿ8óù„ŞÉ0
+^	java:S125„"<This block of commented-out lines of code should be removed.(¥»Ç®şÿÿÿÿ8ôù„ŞÉ0
+Y	java:S125ˆ"<This block of commented-out lines of code should be removed.(ŸÆÒË8´†ÂíÉ0
+|
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ôù„ŞÉ0
+V	java:S106Œ"9Replace this use of System.out or System.err by a logger.(ïúš8õù„ŞÉ0
+[	java:S106"9Replace this use of System.out or System.err by a logger.(İÌ÷©ÿÿÿÿÿ8õù„ŞÉ0
+Y	java:S125—"<This block of commented-out lines of code should be removed.(÷½Ãê8öù„ŞÉ0
+Y	java:S125"<This block of commented-out lines of code should be removed.(Æİí8öù„ŞÉ0
+V	java:S106¨"9Replace this use of System.out or System.err by a logger.(¶ÿÃô8øù„ŞÉ0
+V	java:S106ª"9Replace this use of System.out or System.err by a logger.(–î¾‰8øù„ŞÉ0
+^	java:S125±"<This block of commented-out lines of code should be removed.(×˜· øÿÿÿÿ8ùù„ŞÉ0
+[	java:S106´"9Replace this use of System.out or System.err by a logger.(ğàŸúÿÿÿÿ8úù„ŞÉ0
+Y	java:S125·"<This block of commented-out lines of code should be removed.(ò‚ÙÎ8ûù„ŞÉ0
+^	java:S125º"<This block of commented-out lines of code should be removed.(†å‹şÿÿÿÿ8ûù„ŞÉ0
+^	java:S125½"<This block of commented-out lines of code should be removed.(†å‹şÿÿÿÿ8üù„ŞÉ0
+^	java:S125¿"<This block of commented-out lines of code should be removed.(†å‹şÿÿÿÿ8üù„ŞÉ0
+^	java:S125Á"<This block of commented-out lines of code should be removed.(†å‹şÿÿÿÿ8üù„ŞÉ0
+Y	java:S125Ã"<This block of commented-out lines of code should be removed.(îÁ‹8üù„ŞÉ0
+^	java:S125Ê"<This block of commented-out lines of code should be removed.(¨äùÿÿÿÿÿ8şù„ŞÉ0
+V	java:S106Ö"9Replace this use of System.out or System.err by a logger.(ëÕ˜œ8şù„ŞÉ0
+[	java:S106×"9Replace this use of System.out or System.err by a logger.(à¢¡şÿÿÿÿ8ÿù„ŞÉ0
+T
+java:S2696Ø"6Make the enclosing method "static" or remove this set.(Ø£§8ÿù„ŞÉ0
+T
+java:S2696Ù"6Make the enclosing method "static" or remove this set.(£âÄ8ÿù„ŞÉ0
+Y	java:S125Ú"<This block of commented-out lines of code should be removed.(»Øôá8€ú„ŞÉ0
+R	java:S125ß"<This block of commented-out lines of code should be removed.(ĞıÆ¡
+H
+java:S1128"+Remove this unused import 'java.sql.Array'.(Õø‹ù8×†ÂíÉ0
+P
+java:S1144£"-Remove this unused private "moveFile" method.(ˆó•ïıÿÿÿÿ8„ú„ŞÉ0

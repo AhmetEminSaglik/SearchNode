@@ -1,0 +1,12 @@
+
+_
+java:S1659"DDeclare "endTime" and all following declarations on a separate line.(¸Õûÿÿÿÿ
+q
+java:S1450"VRemove the "endTime" field and declare it as a local variable in the relevant methods.(¸Õûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÏÀëÍ
+Q	java:S125"<This block of commented-out lines of code should be removed.(Ó£«ø
+V	java:S125"<This block of commented-out lines of code should be removed.(Óàéşÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ÿä¾õÿÿÿÿÿ
+X	java:S125"<This block of commented-out lines of code should be removed.(€š‰á8çõŞŞÉ0
+P
+java:S1128":Remove this unused import 'java.util.concurrent.TimeUnit'.(Æ™ş

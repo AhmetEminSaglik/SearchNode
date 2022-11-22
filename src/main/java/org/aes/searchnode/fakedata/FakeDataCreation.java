@@ -39,7 +39,8 @@ public class FakeDataCreation {
         List<FileFundamental> filePaths = new ArrayList<>();
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\books\\";
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\newWords\\"; //directoryForCreatedWords
-        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\word\\"; //directory For String Data
+//        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\word\\"; //directory For String Data
+        String directory = "D:\\Bootcamp\\enginDemiroglu\\javacamp\\course-6-springBoot\\books\\"; //directory For String Data
 
 
         try {
@@ -54,7 +55,7 @@ public class FakeDataCreation {
                 fileFundamental.setFileName(fileName);
                 fileFundamental.setFileExtension(extension);
                 filePaths.add(fileFundamental);
-                System.out.println("processed file :"+fileFundamental.getCompletePath());
+                System.out.println("processed file :" + fileFundamental.getCompletePath());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -64,6 +65,19 @@ public class FakeDataCreation {
 
     static int hashsetSize = 0;
     static int listSize = 0;
+
+    /**
+     * create data {
+     * get fileFundamental list
+     * read book,
+     * clear data in list
+     * add to searchNode
+     * <p>
+     * }
+     */
+//    public void createDataWithSearchNode() {
+//
+//    }
 
     public void createData() {
 
@@ -97,7 +111,7 @@ public class FakeDataCreation {
         int newFileIndex = 0;
         List<FileFundamental> pathList = getBookFileFundementalList();
         int modFile = 500;
-        int lastMovedFolderIndex = 0;
+//        int lastMovedFolderIndex = 0;
         for (int i = 0; i < pathList.size(); i++) {
             System.out.println("file index : " + i);
 
@@ -108,18 +122,18 @@ public class FakeDataCreation {
                 newFileIndex++;
                 newFileFund.setFileName("Processed-test-data");
                 if (i > 0 || pathList.size() < modFile) {
-                    System.out.println("temizlik oncesi data size : "+ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+                    System.out.println("temizlik oncesi data size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
                     List<String> cleanReadDataList = fixValueInReadDataList(fileOpsFacade.getReadDataList());
-                    System.out.println("temizlik Sonrasi data size : "+ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+                    System.out.println("temizlik Sonrasi data size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
 
                     List<String> cleanReadDataList2 = fixValueInReadDataList(cleanReadDataList);
-                    System.out.println("2. temizlik Sonrasi data size : "+ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+                    System.out.println("2. temizlik Sonrasi data size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
                     write(newFileFund, cleanReadDataList2);
                  /*   for (int j = lastMovedFolderIndex; j <= i; j++) {
                         String destinationPath = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\old books\\";
                         moveFile(pathList.get(j), destinationPath);
                     }*/
-                    lastMovedFolderIndex = i;
+//                    lastMovedFolderIndex = i;
 
                     fileOpsFacade.clearList();
                     try {

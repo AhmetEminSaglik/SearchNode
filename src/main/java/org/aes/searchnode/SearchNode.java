@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchNode<T> {
+    /**
+     * TODO : Search node'da fazlaca sayida kod var. Buradaki bir takim fonksiyonlar baska bir yerden cagrilabilir.*/
     private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData nodeData = new NodeData();
     private PossibilityNextWayDirection pNWDQueue = null;

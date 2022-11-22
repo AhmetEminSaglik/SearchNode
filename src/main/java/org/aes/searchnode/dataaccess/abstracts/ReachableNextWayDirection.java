@@ -4,16 +4,20 @@ import org.aes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 
-public interface ReachableNextWayDirection {
-    DataResult<SearchNode> getNextWayOfChar(PriorityChar pc);
+import java.util.List;
 
-    DataResult<SearchNode> addPossibilityNWDNodeToReachableNWD(PriorityChar pc,/*SearchNode connectionStartSearchNode,*/ SearchNode searchNode);
+public interface ReachableNextWayDirection<T> {
+    DataResult<SearchNode<T>> getNextWayOfChar(PriorityChar pc);
+
+    DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc,/*SearchNode connectionStartSearchNode,*/ SearchNode<T> searchNode);
 
     void printAllDataOfSearchNode();
 
+//    List<T> getAll(SearchNode<T> searchNode);
+
     /**
      * return SearchNode Available Next Way Directions size in stored .
-     * */
+     */
     int size();
 
 

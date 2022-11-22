@@ -1,0 +1,21 @@
+
+E
+java:S3740"/Provide the parametrized type for this generic.(¯©þ²
+P
+java:S1191"5Use classes from the Java API instead of Sun classes.(»ÌÝÕüÿÿÿÿ
+[
+java:S18542"@Remove this useless assignment to local variable "listToSearch".(“Ø´Óúÿÿÿÿ
+Q	java:S125""<This block of commented-out lines of code should be removed.(£Ÿû˜
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(ëéáÛ
+L
+java:S14812"1Remove this unused "listToSearch" local variable.(“Ø´Óúÿÿÿÿ
+V	java:S1256"<This block of commented-out lines of code should be removed.(ÚåÈÐÿÿÿÿÿ
+Q	java:S125="<This block of commented-out lines of code should be removed.(¨Ç­œ
+V	java:S125L"<This block of commented-out lines of code should be removed.(ºñáýÿÿÿÿÿ
+S	java:S106k"9Replace this use of System.out or System.err by a logger.(ë’ùúýÿÿÿÿ
+W
+java:S1128"<Remove this unused import 'com.sun.source.tree.LiteralTree'.(»ÌÝÕüÿÿÿÿ
+b
+java:S1128"GRemove this unused import 'org.aes.searchnode.testing.TimeCalculation'.(¬Àãˆùÿÿÿÿ
+?
+java:S1128")Remove this unused import 'java.io.File'.(†Ð¥Å

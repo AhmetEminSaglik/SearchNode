@@ -17,7 +17,7 @@ public class TestingSearchNode implements TestingObjects {
             searchNode.add(tmp);
         }
         timeCalculation.stop();
-        printElapsedTime("SearchNode ADDED ", timeCalculation);
+        printElapsedTime("  > SearchNode > data is ADDED ", timeCalculation);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class TestingSearchNode implements TestingObjects {
         timeCalculation.start();
         timeCalculation.stop();
 
-        printElapsedTime("SearchNode SORTED ", timeCalculation);
+        printElapsedTime("  > SearchNode > SORTED ", timeCalculation);
     }
 
     @Override
@@ -45,6 +45,6 @@ public class TestingSearchNode implements TestingObjects {
         System.out.println("found Text Number : " + foundTextNumber);
         System.out.println("missing  Text Number : " + missingTextNumber);
 
-        printElapsedTime("SearchNode SEARCHED ", timeCalculation);
+        printElapsedTime("  > SearchNode >  SEARCHED ", timeCalculation);
     }
 }

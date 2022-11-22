@@ -16,8 +16,7 @@ public class TestingArrayList implements TestingObjects {
         }
 //        arrayList.addAll(list); // this is faster about
         timeCalculation.stop();
-        timeCalculation.printElapsedTime();
-        printElapsedTime("  > Arraylist - Data is added  : ", timeCalculation);
+        printElapsedTime("  > Arraylist > data is ADDED : ", timeCalculation);
     }
 
     @Override
@@ -25,7 +24,7 @@ public class TestingArrayList implements TestingObjects {
         timeCalculation.start();
         Collections.sort(arrayList);
         timeCalculation.stop();
-        printElapsedTime("ArrayList data is sorted", timeCalculation);
+        printElapsedTime("  > ArrayList > data is sorted : ", timeCalculation);
     }
 
     @Override
@@ -47,6 +46,6 @@ public class TestingArrayList implements TestingObjects {
         System.out.println("found Text Number : " + foundTextNumber);
         System.out.println("missing  Text Number : " + missingTextNumber);
 
-        printElapsedTime("ArrayList data searched all given data", timeCalculation);
+        printElapsedTime("  > ArrayList >  data searched all given data : ", timeCalculation);
     }
 }

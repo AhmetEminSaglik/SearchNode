@@ -1,5 +1,7 @@
 package org.aes.searchnode.testing;
 
+import org.aes.searchnode.core.utilities.ReadableStringFormat;
+
 import java.util.concurrent.TimeUnit;
 
 public class TimeCalculation {
@@ -22,6 +24,7 @@ public class TimeCalculation {
     }
 
     public void printElapsedTime() {
-        System.out.println("Elapsed Time : " + elapsedTime);
+//        System.out.println("Elapsed Time : " + ReadableStringFormat.getReadableValueIntToString((int) (elapsedTime / 1000))+" seconds");
+        System.out.println("Elapsed Time : " + ReadableStringFormat.getReadableValueIntToString((int) (elapsedTime))+" miliSeconds");
     }
 }
