@@ -21,13 +21,18 @@ import java.util.List;
 
 public class SearchNode<T> {
     /**
-     * TODO : Search node'da fazlaca sayida kod var. Buradaki bir takim fonksiyonlar baska bir yerden cagrilabilir.*/
+     * TODO : Search node'da fazlaca sayida kod var. Buradaki bir takim fonksiyonlar baska bir yerden cagrilabilir.
+     */
     private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData nodeData = new NodeData();
     private PossibilityNextWayDirection pNWDQueue = null;
     PriorityCharService pcService = new PriorityCharManager();
     SearchNode<T> movedLastSearchNodeConnection = null;
     private List<SearchNode> sNListToIncreaseNWDTV = new ArrayList<>();
+
+    public void addAll(List<T> list) {
+        list.forEach(item -> add(item));
+    }
 
     public void add(T t /*Object object, Class<?> clazz*/) {
 

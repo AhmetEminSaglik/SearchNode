@@ -23,12 +23,19 @@ public class Main {
 
     public static void main(String[] args) {
 
+        List<String> list= new ArrayList<>();
+        list.add("Ahmet");
+        list.add("ahmetemin");
+        list.add("emin");
+        list.add("emine");
         SearchNode<String > searchNodeTest = new SearchNode();
-        searchNodeTest.add("Ahmet");
-        searchNodeTest.add("ahmetemin");
-        searchNodeTest.add("emin");
-        searchNodeTest.add("emine");
+//        searchNodeTest.add("Ahmet");
+//        searchNodeTest.add("ahmetemin");
+//        searchNodeTest.add("emin");
+//        searchNodeTest.add("emine");
+        searchNodeTest.addAll(list);
         searchNodeTest.getReachableNWD().printAllDataOfSearchNode();
+        System.out.println(searchNodeTest.search("ahmetemin"));
 
         System.exit(0);
 //        TimeCalculation timeCalculation = new TimeCalculation();
