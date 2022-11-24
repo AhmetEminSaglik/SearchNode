@@ -1,35 +1,31 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
 import org.aes.searchnode.SearchNode;
-import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
-import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 
-import java.util.Queue;
-
-public class PossibilityNextWayDirection implements IPreProcessesToCreateReachableNWD {
+public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReachableNWD<T> {
     private StringBuilder currentLocationStringAddress = new StringBuilder();
-    Object data;
+    T data;
 
-    private SearchNode firstSearchNodeToConnectRootSearchNode = null;
-    private SearchNode searchNodeAddingProcess;
+    private SearchNode<T> firstSearchNodeToConnectRootSearchNode = null;
+    private SearchNode<T> searchNodeAddingProcess;
     private PriorityChar pcForFirstSNToConnectRootSN = null;
 
-    public PossibilityNextWayDirection(Object data, SearchNode movedLastSearchNodeConnection/*, PriorityChar pcForNextSearchNodeConnection*/) {
+    public PossibilityNextWayDirection(T data, SearchNode<T> movedLastSearchNodeConnection/*, PriorityChar pcForNextSearchNodeConnection*/) {
         this.data = data;
         this.searchNodeAddingProcess = movedLastSearchNodeConnection;
     }
+
     @Override
-    public DataResult<SearchNode<Object>> createNextWayChar(PriorityChar pc) throws Exception /*throws Exception*/ {
+    public DataResult<SearchNode<T>> createNextWayChar(PriorityChar pc) throws Exception /*throws Exception*/ {
         if (pcForFirstSNToConnectRootSN == null) {
             pcForFirstSNToConnectRootSN = pc;
         }
 
-        SearchNode newSearchNode = new SearchNode();
+        SearchNode<T> newSearchNode = new SearchNode<T>();
 
         createCurrentLocationStringAddress(pc/*, searchNodeAddingProcess*/);
         setSearchNodeDeep(newSearchNode);
@@ -45,8 +41,8 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
         return new SuccessDataResult<>(newSearchNode, "Searchnode is created in for " + getClass().getSimpleName());
     }
 
-    void initializeSearchNodeFundamentals(SearchNode searchNode) {
-        searchNode.setNodeData(new NodeData());
+    void initializeSearchNodeFundamentals(SearchNode<T> searchNode) {
+        searchNode.setNodeData(new NodeData<T>());
     }
 
     void createCurrentLocationStringAddress(PriorityChar pc/*, SearchNode searchNode*/) {
@@ -56,13 +52,13 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
         currentLocationStringAddress.append(pc.getChar());
     }
 
-    void setSearchNodeDeep(SearchNode searchNode) {
+    void setSearchNodeDeep(SearchNode<T> searchNode) {
         int deep = currentLocationStringAddress.length();
         searchNode.getNodeData().setDeep(deep);
     }
 
-    void fillNodeData(SearchNode searchNode) throws Exception {
-        NodeData nodeData = searchNode.getNodeData();
+    void fillNodeData(SearchNode<T> searchNode) throws Exception {
+        NodeData<T> nodeData = searchNode.getNodeData();
         nodeData.setLocationStringAddress(currentLocationStringAddress.toString());
         Result result = addDataToDataNode(nodeData);
         if (!result.isSuccess()) {
@@ -70,7 +66,7 @@ public class PossibilityNextWayDirection implements IPreProcessesToCreateReachab
         }
     }
 
-    Result addDataToDataNode(NodeData nodeData) throws Exception {
+    Result addDataToDataNode(NodeData<T> nodeData) throws Exception {
 
         if (nodeData.getLocationStringAddress().equals(data.toString())) {
 

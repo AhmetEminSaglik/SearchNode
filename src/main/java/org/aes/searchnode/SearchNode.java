@@ -9,6 +9,7 @@ import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextW
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
@@ -28,7 +29,7 @@ public class SearchNode<T> {
     private PossibilityNextWayDirection pNWDQueue = null;
     PriorityCharService pcService = new PriorityCharManager();
     SearchNode<T> movedLastSearchNodeConnection = null;
-    private List<SearchNode> sNListToIncreaseNWDTV = new ArrayList<>();
+    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
     public void addAll(List<T> list) {
         list.forEach(item -> add(item));
@@ -118,6 +119,32 @@ public class SearchNode<T> {
         }
         return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
     }
+/*
+    public List<T> getAll() {
+        List<T> list = new ArrayList<>();
+        movedLastSearchNodeConnection = this;
+        StringBuilder stringBuilder = new StringBuilder();
+        addAllDataToList(list, this);
+//getReachableNWD().
+        return null;
+    }
+
+    private void addAllDataToList(List<T> list, SearchNode<T> searchNode) {
+        List<NextWayDirectionRequiredData> currentSearchNodeNextWayDirectionRequiredData = searchNode.getReachableNWD().getAllDataOfSearchNode();
+        for (NextWayDirectionRequiredData tmpNWDRD : currentSearchNodeNextWayDirectionRequiredData) {
+            SearchNode<T> tmpSearchNode = tmpNWDRD.getSearchNode();
+
+            List<DataInfo<T>> tmpSearchNode.getNodeData().getListDataInfo().get(0);
+        }
+
+    }
+
+    private void addEachDataOfNodeDataToList(List<T> allDataList, List<DataInfo<T>> dataInfoList) {
+        dataInfoList.forEach(e -> {
+            allDataList.add(e.getValue())
+        });
+    }*/
+
 
     private Result transferPossibilityNWDToReachableNWD() {
         if (pNWDQueue != null)
@@ -182,28 +209,28 @@ public class SearchNode<T> {
         this.reachableNWD = reachableNWD;
     }
 
-    public NodeData getNodeData() {
+    public NodeData<T> getNodeData() {
         return nodeData;
     }
 
-    public void setNodeData(NodeData nodeData) {
+    public void setNodeData(NodeData<T> nodeData) {
         this.nodeData = nodeData;
     }
 
-    public PossibilityNextWayDirection getpNWDQueue() {
+    public PossibilityNextWayDirection<T> getpNWDQueue() {
         return pNWDQueue;
     }
 
-    public void setpNWDQueue(PossibilityNextWayDirection pNWDQueue) {
+    public void setpNWDQueue(PossibilityNextWayDirection<T> pNWDQueue) {
         this.pNWDQueue = pNWDQueue;
     }
 
-    private void addSNToList(SearchNode searchNode) {
+    private void addSNToList(SearchNode<T> searchNode) {
         sNListToIncreaseNWDTV.add(searchNode);
     }
 
     private void increaseNewAddedItemLocationsNWDTV() {
-        for (SearchNode tmp : sNListToIncreaseNWDTV) {
+        for (SearchNode<T> tmp : sNListToIncreaseNWDTV) {
 //            System.out.println("increaseNextWayDirectionTotalValue olan LSA : " + tmp.getNodeData().getLocationStringAddress());
             tmp.getNodeData().increaseNextWayDirectionTotalValue();
         }

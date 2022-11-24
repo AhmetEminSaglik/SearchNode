@@ -35,8 +35,14 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
         return new SuccessDataResult<>("--> SearchNode is added to List");
     }
 
-
     @Override
+    public List<NextWayDirectionRequiredData> getAllDataOfSearchNode() {
+        return new ArrayList<>(list);
+//        return null;
+    }
+
+
+    /*@Override
     public void printAllDataOfSearchNode() {
 //        System.out.println("List  Datas : ");
         for (int i = 0; i < list.size(); i++) {
@@ -46,13 +52,16 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
         }
 //        System.out.println("List is over");
 //        System.out.println("+++++++++++++++++++++++++++++++++++++++");
-    }
+    }*/
 
 /*
     @Override
     public List<SearchNode<T>> getAll(SearchNode<T> searchNode) {
         */
-/** getNextWayDirectionRequiredDataList--> fonksiyonu interface'de olmadigi icin erisemiyorum.*//*
+
+    /**
+     * getNextWayDirectionRequiredDataList--> fonksiyonu interface'de olmadigi icin erisemiyorum.
+     *//*
 
         for (SearchNode<T> tmp : searchNode.get) {
 
@@ -76,8 +85,6 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 //    public DataResult<SearchNode> createNextWayChar(PriorityChar pc) {
 //        return null;
 //    }
-
-
     @Override
     public int size() {
         System.out.println(list.size());

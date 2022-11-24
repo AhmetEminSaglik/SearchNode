@@ -1,7 +1,0 @@
-
-o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¢Âüö
-A
-java:S1905"&Remove this unnecessary cast to "int".(£Éúúÿÿÿÿ
-F
-java:S2201"+The return value of "replace" must be used.(÷–¸ùÿÿÿÿ
-P	java:S125"<This block of commented-out lines of code should be removed.(ÈÔ¡X

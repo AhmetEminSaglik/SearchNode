@@ -1,11 +1,11 @@
 package org.aes.searchnode.entities.concretes;
 
-public class DataInfo {
-    private Object value;
+public class DataInfo<T> {
+    private T value;
     private int numberOfhowManyTimesAddedThisValue = 0;
 
-    public DataInfo(Object value) {
-        this.value = value;
+    public DataInfo(T t) {
+        this.value = t;
         increaseNumberOfHowManyTimesAddedThisValue();
     }
 
@@ -21,7 +21,7 @@ public class DataInfo {
                 '}';
     }
 
-    public Object getValue() {
+    public T getValue() {
         return value;
     }
 

@@ -22,21 +22,36 @@ public class Main {
             .setFileExtension(".txt");
 
     public static void main(String[] args) {
-
-        List<String> list= new ArrayList<>();
+        SearchNode<String> searchNodeTest = new SearchNode<>();
+        List<String> list = new ArrayList<>();
         list.add("Ahmet");
         list.add("ahmetemin");
         list.add("emin");
         list.add("emine");
-        SearchNode<String > searchNodeTest = new SearchNode();
+        list.add("test");
+        searchNodeTest.addAll(list);
+        System.out.println(searchNodeTest.search("test").toString());
+        System.out.println(searchNodeTest.search("random").toString());
+        System.out.print("searchNode total added value : ");
+        searchNodeTest.printSizeOfAddedItems();
+
+        searchNodeTest.add("test");
+        System.out.println(searchNodeTest.search("test").toString());
+        System.out.println(searchNodeTest.search("random").toString());
+        System.out.print("searchNode total added value : ");
+        searchNodeTest.printSizeOfAddedItems();
+
 //        searchNodeTest.add("Ahmet");
 //        searchNodeTest.add("ahmetemin");
 //        searchNodeTest.add("emin");
 //        searchNodeTest.add("emine");
-        searchNodeTest.addAll(list);
-        searchNodeTest.getReachableNWD().printAllDataOfSearchNode();
-        System.out.println(searchNodeTest.search("ahmetemin"));
 
+//        searchNodeTest.getReachableNWD().printAllDataOfSearchNode();
+//        searchNodeTest.getReachableNWD().printAllDataOfSearchNode();
+//        System.out.println(searchNodeTest.search("ahmetemin"));
+
+//        System.out.println(searchNodeTest.search("test").toString());
+//        System.out.println(searchNodeTest.search("random").toString());
         System.exit(0);
 //        TimeCalculation timeCalculation = new TimeCalculation();
 //        timeCalculation.start();
