@@ -16,6 +16,8 @@ import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAnd
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -159,6 +161,12 @@ public class SearchNode<T> {
             SearchNode<T> tmpSearchNode = tmpNWDRD.getSearchNode();
 
             List<DataInfo<T>> dataInfoList = tmpSearchNode.getNodeData().getListDataInfo();
+            /*tmpSearchNode.getNodeData().getListDataInfo().forEach(e -> {
+                if (e.getNumberOfhowManyTimesAddedThisValue() > 1) {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null,"geldii");
+                }
+            });*/
 //            if (tmpSearchNode.getNodeData().getListDataInfo().size() > 0) {
 //                System.out.println("data bulunan searchNode icinde geziyoruz : tmpSearrhNode :" + tmpSearchNode.getNodeData().getLocationStringAddress());
 //            }
@@ -273,7 +281,7 @@ public class SearchNode<T> {
     }
 
     public void printSizeOfAddedItems() {
-        System.out.println("Total Added Items : " + ReadableStringFormat.getReadableValueIntToString(getNodeData().getNextWayDirectionTotalValue()));
+        System.out.println("Total Items in SearchNode : " + ReadableStringFormat.getReadableValueLongToString(getNodeData().getNextWayDirectionTotalValue()));
     }
 
     @Override

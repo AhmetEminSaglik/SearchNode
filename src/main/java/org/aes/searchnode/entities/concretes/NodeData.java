@@ -14,7 +14,7 @@ public class NodeData <T>{
 
     private List<DataInfo<T>> listDataInfo = new ArrayList<>();
     //    private DataInfo dataInfo;
-    private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
+    private long nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
     private String locationStringAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public int getDeep() {
@@ -79,7 +79,7 @@ public class NodeData <T>{
         this.data = data;
     }*/
 
-    public int getNextDirectionsTotalValueNumber() {
+    public long getNextDirectionsTotalValueNumber() {
         return nextDirectionsTotalValueNumber;
     }
 
@@ -108,7 +108,7 @@ public class NodeData <T>{
      *
      * @return int This returns how many data is existed in next way directions.
      */
-    public int getNextWayDirectionTotalValue() {
+    public long getNextWayDirectionTotalValue() {
         return nextDirectionsTotalValueNumber;
     }
 
