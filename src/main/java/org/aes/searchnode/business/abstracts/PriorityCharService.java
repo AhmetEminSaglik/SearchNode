@@ -14,7 +14,7 @@ import java.util.List;
 public interface PriorityCharService {
     PriorityCharDAO priorityCharDAO = ConfigPriorityChar.getPriorityCharDAO();
     DataResult<PriorityChar> getPriorityChar(char c);
-//    Result sort(Comparator<PriorityChar> comparator);
+//    Result sort(ComparatorValue<PriorityChar> comparator);
     Result deletePriorityChar(char c);
     DataResult<PriorityChar>  updatePriorityChar(char c);
 

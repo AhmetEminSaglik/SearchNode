@@ -1,16 +1,12 @@
 package org.aes.searchnode;
 
-import com.sun.source.tree.LiteralTree;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
-import org.aes.searchnode.testing.TimeCalculation;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +18,18 @@ public class Main {
             .setFileExtension(".txt");
 
     public static void main(String[] args) {
+
+
         SearchNode<String> searchNodeTest = new SearchNode<>();
         List<String> list = new ArrayList<>();
-        list.add("Ahmet");
+        list.add("ahmet");
+        list.add("zeynep");
         list.add("ahmetemin");
+        list.add("ah");
+
         list.add("emin");
         list.add("emine");
+        list.add("test");
         list.add("test");
         searchNodeTest.addAll(list);
         System.out.println(searchNodeTest.search("test").toString());
@@ -35,11 +37,29 @@ public class Main {
         System.out.print("searchNode total added value : ");
         searchNodeTest.printSizeOfAddedItems();
 
-        searchNodeTest.add("test");
+//        searchNodeTest.add("test");
         System.out.println(searchNodeTest.search("test").toString());
         System.out.println(searchNodeTest.search("random").toString());
         System.out.print("searchNode total added value : ");
         searchNodeTest.printSizeOfAddedItems();
+
+        System.out.println("--------------------------");
+        searchNodeTest.getAllReverse().forEach(e -> {
+            System.out.println(e);
+        });
+        System.out.println("::::::::::::::::::::::::::::::::::::");
+
+        searchNodeTest.getAll().forEach(e -> {
+            System.out.println(e);
+        });
+       /* TimeCalculation timeCalculation = new TimeCalculation();
+        timeCalculation.start();
+        FileFundamental fileFund = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/").setFileName("Word-Data-1_398_449").setFileExtension(".txt");
+        FileOperationFacade fileOperationFacade = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement(fileFund));
+        fileOperationFacade.read();
+        timeCalculation.stop();
+        timeCalculation.printElapsedTime();*/
+
 
 //        searchNodeTest.add("Ahmet");
 //        searchNodeTest.add("ahmetemin");

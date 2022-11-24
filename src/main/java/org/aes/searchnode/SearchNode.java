@@ -16,8 +16,8 @@ import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAnd
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
 import org.aes.searchnode.exception.NotFoundRequestedFieldException;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SearchNode<T> {
@@ -119,31 +119,62 @@ public class SearchNode<T> {
         }
         return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
     }
-/*
+
+    /*
+
+                TODO
+                    En son burda ileri adimdaki Searchnodelari alip datalari varsalisteye ekleyip devam etme uzerinde calisiyordum
+    */
     public List<T> getAll() {
+//        setConfigOrderBy(OrderBy.ASC);
+        return getAllData();
+    }
+
+    public List<T> getAllReverse() {
+//        setConfigOrderBy(OrderBy.DESC);
+
+        List<T> list = getAllData();
+        Collections.reverse(list);
+        return list;
+//        return getAllData();
+    }
+
+//    private void setConfigOrderBy(OrderBy orderBy) {
+//        ConfigOrderBy.setOrderByNextWayDirectionRequiredData(orderBy);
+//    }
+
+    private List<T> getAllData() {
         List<T> list = new ArrayList<>();
         movedLastSearchNodeConnection = this;
         StringBuilder stringBuilder = new StringBuilder();
         addAllDataToList(list, this);
-//getReachableNWD().
-        return null;
+        return list;
     }
 
+    //TODO simdi listenin siralanmasi lazim. ondan sonra duzgun bir sekilde veriler cekilebilir
     private void addAllDataToList(List<T> list, SearchNode<T> searchNode) {
-        List<NextWayDirectionRequiredData> currentSearchNodeNextWayDirectionRequiredData = searchNode.getReachableNWD().getAllDataOfSearchNode();
+        List<NextWayDirectionRequiredData<T>> currentSearchNodeNextWayDirectionRequiredData = searchNode.getReachableNWD().getAllDataOfSearchNode();
+//        System.out.println("SearchNode : " + searchNode.getNodeData().getLocationStringAddress());
         for (NextWayDirectionRequiredData tmpNWDRD : currentSearchNodeNextWayDirectionRequiredData) {
             SearchNode<T> tmpSearchNode = tmpNWDRD.getSearchNode();
 
-            List<DataInfo<T>> tmpSearchNode.getNodeData().getListDataInfo().get(0);
+            List<DataInfo<T>> dataInfoList = tmpSearchNode.getNodeData().getListDataInfo();
+//            if (tmpSearchNode.getNodeData().getListDataInfo().size() > 0) {
+//                System.out.println("data bulunan searchNode icinde geziyoruz : tmpSearrhNode :" + tmpSearchNode.getNodeData().getLocationStringAddress());
+//            }
+            addEachDataOfNodeDataToList(list, dataInfoList);
+            addAllDataToList(list, tmpSearchNode);
+//            System.out.println("for icinde geziyoruz : tmpSearrhNode :" + tmpSearchNode.getNodeData().getLocationStringAddress());
         }
 
     }
 
     private void addEachDataOfNodeDataToList(List<T> allDataList, List<DataInfo<T>> dataInfoList) {
         dataInfoList.forEach(e -> {
-            allDataList.add(e.getValue())
+            allDataList.add(e.getValue());
+//            System.out.println("eklenen data  : " + e);
         });
-    }*/
+    }
 
 
     private Result transferPossibilityNWDToReachableNWD() {
