@@ -61,30 +61,31 @@ public class FakeDataCreation {
         return filePaths;
     }
 
-    boolean fixedValuesInReadDataList = true;
 
     public void createDataWithSearchNode() {
         SearchNode<String> searchNode = new SearchNode<>();
 //        FileOperationFacade fileOpsFacade = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement());
-//        FileFundamental newFileFund = new FileFundamental();
+        FileFundamental newFileFund = new FileFundamental();
 //        newFileFund.setPath("C:\\Users\\USER\\Desktop\\SearchNodeGithub\\SearchNode\\src\\main\\java\\org\\aes\\searchnode\\fakedata\\");
 //        newFileFund.setFileName("clear-data");
-//        newFileFund.setFileExtension(".txt");
+        newFileFund.setPath("src/main/java/org/aes/searchnode/backupWordData/usedSearchNode/");
+        newFileFund.setFileName("data-first-10_000-books");
+        newFileFund.setFileExtension(".txt");
 
         List<FileFundamental> pathList = getBookFileFundementalList();
         for (int i = 0; i < pathList.size(); i++) {
 //            System.out.println("path (0) : "+pathList.get(i).getCompletePath());
 
             read(pathList.get(i));
-            System.out.print("Process File :  " + ReadableStringFormat.getReadableValueIntToString((i + 1)) + " / " + ReadableStringFormat.getReadableValueIntToString(pathList.size()));
-            System.out.println(" --> line sayisi : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+            System.out.print("Process File :  " + ReadableStringFormat.getReadableValueIntToString((i + 1)) + " | " + ReadableStringFormat.getReadableValueIntToString(pathList.size()) + " | ");
+//            System.out.println(" --> line sayisi : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
 //            System.exit(0);
             List<String> cleanReadDataList = fileOpsFacade.getReadDataList();
-            System.out.println(" fileOpsFacade.getReadDataList() size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+//            System.out.println(" fileOpsFacade.getReadDataList() size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
 //            System.out.println(" cleanReadDataList size : " + cleanReadDataList.size());
 //            while (fixedValuesInReadDataList == true) {
             cleanReadDataList = fixValueInReadDataListForSearchNode(cleanReadDataList);
-            System.out.println("Total word  : " + ReadableStringFormat.getReadableValueIntToString(cleanReadDataList.size()) + " number from this book");
+//            System.out.println("Total word  : " + ReadableStringFormat.getReadableValueIntToString(cleanReadDataList.size()) + " number from this book");
 
             //            }
             searchNode.addAll(new ArrayList<>(cleanReadDataList));
@@ -97,9 +98,11 @@ public class FakeDataCreation {
 //            } catch (InterruptedException e) {
 //                throw new RuntimeException(e);
 //            }
-            if (i % 10_000 == 0) {
-                JOptionPane.showMessageDialog(null, " 100 book read");
+            if (i >= 10_000) {
+//                JOptionPane.showMessageDialog(null, " 100 book read");
+                fileOpsFacade.write(newFileFund, searchNode.getAll());
             }
+
         }
 /**
  * while(FileExist)
@@ -121,6 +124,7 @@ public class FakeDataCreation {
 //            System.out.println("islem yapiacak data : "+tmp);
 //            System.out.println("tmp before remove : "+tmp);
             //DataResult<String> dataResult = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
+            tmp = tmp.toLowerCase();
             tmp = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
 //            fixedValuesInReadDataList = dataResult.isSuccess();
 //            System.out.println("tmp after remove : "+tmp );
@@ -143,7 +147,7 @@ public class FakeDataCreation {
         }
 
 //        System.out.println("hashset : " + ReadableStringFormat.getReadableValueIntToString(hashSet.size()));
-        System.out.println("totalWords: " + ReadableStringFormat.getReadableValueIntToString(totalWords.size()));
+//        System.out.println("totalWords: " + ReadableStringFormat.getReadableValueIntToString(totalWords.size()));
 //        System.out.println("hashset data : ");
 //        hashSet.forEach(System.out::println);
 

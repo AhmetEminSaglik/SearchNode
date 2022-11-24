@@ -48,6 +48,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 
     @Override
     public List<NextWayDirectionRequiredData> getAllDataOfSearchNode() {
+        Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
         return new ArrayList<>(list);
     }
 

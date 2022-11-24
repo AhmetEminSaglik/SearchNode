@@ -4,6 +4,7 @@ import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
+import org.aes.searchnode.testing.TimeCalculation;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
@@ -22,8 +23,12 @@ public class Main {
     public static void main(String[] args) {
 //        System.out.println((int)']');
 //        System.exit(0);
-        FakeDataCreation fakeDataCreation= new FakeDataCreation();
+        TimeCalculation timeCalculation = new TimeCalculation();
+        timeCalculation.start();
+        FakeDataCreation fakeDataCreation = new FakeDataCreation();
         fakeDataCreation.createDataWithSearchNode();
+        timeCalculation.stop();
+        timeCalculation.printElapsedTime();
         System.exit(0);
 //        for (int i = 48; i < 122; i++) { //48 57 65 90   97 122
 //            System.out.println(i + " : " + (char) i);

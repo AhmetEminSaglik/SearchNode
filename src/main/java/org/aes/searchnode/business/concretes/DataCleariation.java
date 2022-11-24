@@ -28,7 +28,7 @@ public class DataCleariation {
 //        boolean textUpdated = false;
         for (int i = 0; i < text.length(); i++) {
             int asciiNumberOfChar = text.charAt(i);
-            if ((isLowerThan0(asciiNumberOfChar) || isBetween9AndSmallA(asciiNumberOfChar) ||isBetweenSmallZAndBigA(asciiNumberOfChar)|| isGreaterThanBigA(asciiNumberOfChar)) && !isSpace(asciiNumberOfChar)) {
+            if ((/*isLowerThan0(asciiNumberOfChar) || isBetween9AndSmallA(asciiNumberOfChar)*/ isLowerThanSmallA(asciiNumberOfChar)|| isBetweenSmallZAndBigA(asciiNumberOfChar) || isGreaterThanBigA(asciiNumberOfChar)) && !isSpace(asciiNumberOfChar)) {
                 text = text.replace(text.charAt(i), ' ');
 //                textUpdated = true;
             }
@@ -49,27 +49,29 @@ public class DataCleariation {
         return text;
     }
 
-    private boolean isLowerThan0(int asciiNum) {
+    private boolean isLowerThan0(int asciiNum) { // to save numbers
         if (asciiNum < 48)
             return true;
         return false;
     }
 
-    private boolean isBetween9AndSmallA(int asciiNum) {
-        if (asciiNum > 57 && asciiNum < 65)
-            return true;
-        return false;
+    private boolean isLowerThanSmallA(int asciiNum) { // remove numbers
+        return asciiNum < 65;
     }
+
+    private boolean isBetween9AndSmallA(int asciiNum) {
+        return (asciiNum > 57 && asciiNum < 65);
+
+    }
+
     private boolean isBetweenSmallZAndBigA(int asciiNum) {
-        if (asciiNum > 90 && asciiNum < 97)
-            return true;
-        return false;
+        return (asciiNum > 90 && asciiNum < 97);
+
     }
 
     private boolean isGreaterThanBigA(int asciiNum) {
-        if (asciiNum > 122)
-            return true;
-        return false;
+        return (asciiNum > 122);
+
     }
 
     private boolean isSpace(int asciiNum) {
