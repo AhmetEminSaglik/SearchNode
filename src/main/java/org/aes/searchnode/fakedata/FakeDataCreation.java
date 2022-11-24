@@ -70,6 +70,7 @@ public class FakeDataCreation {
 //        newFileFund.setFileName("clear-data");
         newFileFund.setPath("src/main/java/org/aes/searchnode/backupWordData/usedSearchNode/");
         newFileFund.setFileName("data-first-10_000-books");
+//        newFileFund.setFileName("data-between-10_000-20_000-books");
         newFileFund.setFileExtension(".txt");
 
         List<FileFundamental> pathList = getBookFileFundementalList();
@@ -101,7 +102,11 @@ public class FakeDataCreation {
             if (i >= 10_000) {
 //                JOptionPane.showMessageDialog(null, " 100 book read");
                 fileOpsFacade.write(newFileFund, searchNode.getAll());
-            }
+                return;
+            } /*if(i>=100){
+                fileOpsFacade.write(newFileFund, searchNode.getAll());
+                return;
+            }*/
 
         }
 /**
