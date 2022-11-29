@@ -25,7 +25,7 @@ public class FakeDataCreation {
 //    public FileOperationFacade fileOpsFacade = new FileOperationFacade(
 //            new WriteFileManagement(), new ReadFileManagement());
 
-    FileOperationFacade fileOpsFacade;
+    public FileOperationFacade fileOpsFacade;
 
     public FakeDataCreation() {
         WriteFileService writeFileService = new WriteFileManagement();
@@ -39,6 +39,7 @@ public class FakeDataCreation {
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\newWords\\"; //directoryForCreatedWords
 //        String directory = "src\\main\\java\\org\\aes\\searchnode\\fakedata\\word\\"; //directory For String Data
 //        String directory = "D:\\Bootcamp\\enginDemiroglu\\javacamp\\course-6-springBoot\\books\\"; //directory For String Data
+//        String directory = "src/main/java/org/aes/searchnode/backupWordData/usedSearchNode/broken data/"; //directory For String Data
         String directory = "src/main/java/org/aes/searchnode/backupWordData/usedSearchNode/"; //directory For String Data
 
         try {
@@ -63,9 +64,9 @@ public class FakeDataCreation {
         return filePaths;
     }
 
-
-    public void createDataWithSearchNode() {
-        SearchNode<String> searchNode = new SearchNode<>();
+    public void createDataWithHashSet() {
+//        SearchNode<StringcreateDataWithHashSet> searchNode = new SearchNode<>();
+        HashSet hashSet= new HashSet();
 //        FileOperationFacade fileOpsFacade = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement());
         FileFundamental newFileFund = new FileFundamental();
 //        newFileFund.setPath("C:\\Users\\USER\\Desktop\\SearchNodeGithub\\SearchNode\\src\\main\\java\\org\\aes\\searchnode\\fakedata\\");
@@ -80,16 +81,95 @@ public class FakeDataCreation {
         int mod = 0;
         List<FileFundamental> pathList = getBookFileFundementalList();
         final int bookMod = 250;
-        for (int i = 0; i < pathList.size(); i++) {
-//            System.out.println("path (0) : "+pathList.get(i).getCompletePath());
 
+        for (int i = 0; i <= pathList.size()-1; i++) {
+//            System.out.println("path (0) : "+pathList.get(i).getCompletePath());
             read(pathList.get(i));
-            System.out.println("Process File :  " + ReadableStringFormat.getReadableValueIntToString((i + 1)) + " | " + ReadableStringFormat.getReadableValueIntToString(pathList.size()) + " | ");
+            System.out.println("Process File :  " + ReadableStringFormat.getReadableValueIntToString((i + 1)) + " | " + ReadableStringFormat.getReadableValueIntToString(pathList.size()) + " | " + " file : " + pathList.get(i).getCompletePath());
             mod++;
-            if (mod % bookMod == bookMod - 1) {
+            if (mod % bookMod == bookMod - 1 || i==pathList.size()-1) {
+                System.out.println("i degeri : "+i);
+                System.out.println("islencek yeni file : "+newFileFund.getCompletePath() );
 //            System.out.println(" --> line sayisi : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
 //            System.exit(0);
                 List<String> cleanReadDataList = fileOpsFacade.getReadDataList();
+                System.out.println("okunan : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+//            System.out.println(" fileOpsFacade.getReadDataList() size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+//            System.out.println(" cleanReadDataList size : " + cleanReadDataList.size());
+//            while (fixedValuesInReadDataList == true) {
+                cleanReadDataList = fixValueInReadDataListForSearchNode(cleanReadDataList);
+//            System.out.println("Total word  : " + ReadableStringFormat.getReadableValueIntToString(cleanReadDataList.size()) + " number from this book");
+
+                //            }
+                hashSet.addAll(new ArrayList<>(cleanReadDataList));
+//            searchNode.getAll().forEach(e-> System.out.println(e));
+//            cleanReadDataList = null;
+                fileOpsFacade.clearList();
+//                searchNode.printSizeOfAddedItems();
+//                System.exit(0);
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//                if (i >= 50_000) {
+//                JOptionPane.showMessageDialog(null, " 100 book read");
+
+//                }
+            /*if(i>=100){
+                fileOpsFacade.write(newFileFund, searchNode.getAll());
+                return;
+            }*/
+            }else{
+                System.out.println("if 'e girmeyen i :"+i);
+            }
+
+            System.out.println("for sonu i : "+i);
+
+        }
+//        if (i >= pathList.size() - 1) {
+        System.out.println("Dosyaya yaziliyor. Sonrasinda program durdurulacak file : \n" + newFileFund.getCompletePath());
+        List list= new ArrayList(hashSet);
+        fileOpsFacade.write(newFileFund, list);
+//            return;
+//        }
+/**
+ * while(FileExist)
+ * {
+ * read
+ * clear
+ * add
+ * }
+ * */
+    }
+    public void createDataWithSearchNode() {
+        SearchNode<String> searchNode = new SearchNode<>();
+//        FileOperationFacade fileOpsFacade = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement());
+        FileFundamental newFileFund = new FileFundamental();
+//        newFileFund.setPath("C:\\Users\\USER\\Desktop\\SearchNodeGithub\\SearchNode\\src\\main\\java\\org\\aes\\searchnode\\fakedata\\");
+//        newFileFund.setFileName("clear-data");
+        newFileFund.setPath("src/main/java/org/aes/searchnode/backupWordData/usedSearchNode/");
+//        newFileFund.setFileName("data-first-20_000-books");
+//        newFileFund.setFileName("20_000-35_000-books");
+//        newFileFund.setFileName("35_000-50_000-books");
+        newFileFund.setFileName("ordered-all-Uniqe-Text-from-40_881-books");
+//        newFileFund.setFileName("data-between-10_000-20_000-books");
+        newFileFund.setFileExtension(".txt");
+        int mod = 0;
+        List<FileFundamental> pathList = getBookFileFundementalList();
+        final int bookMod = 250;
+        for (int i = 0; i <= pathList.size()-1; i++) {
+//            System.out.println("path (0) : "+pathList.get(i).getCompletePath());
+
+            read(pathList.get(i));
+            System.out.println("Process File :  " + ReadableStringFormat.getReadableValueIntToString((i + 1)) + " | " + ReadableStringFormat.getReadableValueIntToString(pathList.size()) + " | " + " file : " + pathList.get(i).getCompletePath());
+            mod++;
+            if (mod % bookMod == bookMod - 1 || i==pathList.size()-1) {
+                System.out.println("islencek file : "+newFileFund.getCompletePath() );
+//            System.out.println(" --> line sayisi : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
+//            System.exit(0);
+                List<String> cleanReadDataList = fileOpsFacade.getReadDataList();
+                System.out.println("okunan : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
 //            System.out.println(" fileOpsFacade.getReadDataList() size : " + ReadableStringFormat.getReadableValueIntToString(fileOpsFacade.getReadDataList().size()));
 //            System.out.println(" cleanReadDataList size : " + cleanReadDataList.size());
 //            while (fixedValuesInReadDataList == true) {
@@ -119,9 +199,12 @@ public class FakeDataCreation {
             }
 
         }
+        System.out.println("SearchNode'a eklendi");
+        searchNode.printSizeOfAddedItems();
+//        System.exit(0);
 //        if (i >= pathList.size() - 1) {
-            System.out.println("Dosyaya yaziliyor. Sonrasinda program durdurulacak file : \n" + newFileFund.getCompletePath());
-            fileOpsFacade.write(newFileFund, searchNode.getAll());
+        System.out.println("Dosyaya yaziliyor. Sonrasinda program durdurulacak file : \n" + newFileFund.getCompletePath());
+        fileOpsFacade.write(newFileFund, searchNode.getAll());
 //            return;
 //        }
 /**
@@ -137,6 +220,18 @@ public class FakeDataCreation {
     private boolean isTextLengthLargerThan3(String text) {
         return text.length() > 3;
 
+    }
+
+    boolean isDataBroken(String text) {
+        if (text.equalsIgnoreCase("aaaaaaaaaaaay") || text.equalsIgnoreCase("aaaa") ||
+                text.equalsIgnoreCase("aaaaabbbeeeeij") || text.equalsIgnoreCase("aaaaabbbeeeeij") ||
+                text.equalsIgnoreCase("aaaachtung") || text.equalsIgnoreCase("aaaah") ||
+                text.equalsIgnoreCase("aaab") || text.equalsIgnoreCase("aaab")
+        ) {
+            JOptionPane.showMessageDialog(null, text + " is found");
+            return true;
+        }
+        return false;
     }
 
     public List<String> fixValueInReadDataListForSearchNode(List<String> readDataList) {
@@ -161,7 +256,9 @@ public class FakeDataCreation {
                     List<String> newList = Arrays.stream(tmp.split(" ")).
                             filter(text -> !text.trim().equals("") && isTextLengthLargerThan3(text)).
                             collect(Collectors.toList());
+                    newList.stream().filter(e -> isDataBroken(e));
                     hashSet.addAll(newList);//totalWords.addAll(newList);
+
                 } else {
                     if (!tmp.trim().equals("") && isTextLengthLargerThan3(tmp)) {
                         hashSet.add(tmp);//totalWords.add(tmp);

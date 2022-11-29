@@ -10,6 +10,7 @@ import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +24,22 @@ public class Main {
     public static void main(String[] args) {
 //        System.out.println((int)']');
 //        System.exit(0);
+//        String text="3 tane txt dosyasi var. hepsini searchNode'a aktaramiyorum/ Heap yetmiyor. Bunlari okuyup Hashset'e aktarmaliyim. Sonrasinda yazdircam. ";
+//        JOptionPane.showMessageDialog(null,text);
+//        System.exit(0);
         TimeCalculation timeCalculation = new TimeCalculation();
         timeCalculation.start();
         FakeDataCreation fakeDataCreation = new FakeDataCreation();
         fakeDataCreation.createDataWithSearchNode();
+
+        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList().get(0));
+
+        System.out.println("txt'ten okunan file : "+ReadableStringFormat.getReadableValueIntToString(fakeDataCreation.fileOpsFacade.getReadDataList().size()));
+
         timeCalculation.stop();
         timeCalculation.printElapsedTime();
+
+        System.out.println();
         System.exit(0);
 //        for (int i = 48; i < 122; i++) { //48 57 65 90   97 122
 //            System.out.println(i + " : " + (char) i);
