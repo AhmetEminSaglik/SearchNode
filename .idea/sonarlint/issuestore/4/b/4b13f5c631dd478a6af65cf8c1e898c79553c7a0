@@ -1,0 +1,19 @@
+
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¢Âüö
+V	java:S125"<This block of commented-out lines of code should be removed.(ä¼ßˆÿÿÿÿÿ
+V	java:S125!"<This block of commented-out lines of code should be removed.(™¹á×úÿÿÿÿ
+V	java:S125$"<This block of commented-out lines of code should be removed.(äù‡ûúÿÿÿÿ
+\
+java:S11265"AReplace this if-then-else statement by a single return statement.(ø¸‡ıÿÿÿÿ
+W
+java:S1126N"AReplace this if-then-else statement by a single return statement.(Ğ«Ÿ“
+d
+java:S1128"IRemove this unused import 'org.aes.searchnode.core.utilities.DataResult'.(ÂùÑšúÿÿÿÿ
+i
+java:S1128"NRemove this unused import 'org.aes.searchnode.core.utilities.ErrorDataResult'.(ÛÔ°çûÿÿÿÿ
+f
+java:S1128"PRemove this unused import 'org.aes.searchnode.core.utilities.SuccessDataResult'.(£•²ò
+G
+java:S11444"1Remove this unused private "isLowerThan0" method.(±Ô÷…
+S
+java:S1144>"8Remove this unused private "isBetween9AndSmallA" method.(šõåüøÿÿÿÿ
