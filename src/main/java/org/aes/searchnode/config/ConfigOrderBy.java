@@ -1,4 +1,4 @@
-/*
+package org.aes.searchnode.config;/*
 package org.aes.searchnode.config;
 
 import org.aes.searchnode.dataaccess.concretes.orderby.Order;

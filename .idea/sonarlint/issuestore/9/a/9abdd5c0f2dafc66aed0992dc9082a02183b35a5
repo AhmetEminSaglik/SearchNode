@@ -1,6 +1,0 @@
-
-o	java:S115
-"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(é”Ä¦
-n	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ø”ý
-
-Q	java:S125"<This block of commented-out lines of code should be removed.(è‡Ñ

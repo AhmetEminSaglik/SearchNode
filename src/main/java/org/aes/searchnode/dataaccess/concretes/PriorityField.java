@@ -1,4 +1,4 @@
-/*
+package org.aes.searchnode.dataaccess.concretes;/*
 
 Deger almak icin Bu Class yerine
 package org.aes.searchnode.dataaccess.concretes;
