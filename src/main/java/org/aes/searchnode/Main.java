@@ -20,8 +20,8 @@ public class Main {
             .setFileName("Word-Data-1_398_449")
             .setFileExtension(".txt");
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
+        Thread.sleep(15000);
         FileOperationFacade fofAllData = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement(exampleDataFile));
         fofAllData.read();
         System.out.print("read data size : ");
@@ -32,7 +32,12 @@ public class Main {
         FileOperationFacade fofSearchData = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement(fileFundSearchDataList));
         fofSearchData.read();
         new Main().testArraylist(fofAllData, fofSearchData.getReadDataList());
+        System.out.println("Arraylis is over");
+        Thread.sleep(5000);
         new Main().testSearchNode(fofAllData, fofSearchData.getReadDataList());
+        System.out.println("searchNode is over");
+        Thread.sleep(15000);
+
 
 
 
@@ -73,6 +78,7 @@ public class Main {
         testingArrayList.sort();
 
         testingArrayList.search(listToSearch);
+//        testingArrayList.clear();
     }
 
     void testSearchNode(FileOperationFacade fofAllData, List<String> listToSearch) {
@@ -80,6 +86,7 @@ public class Main {
         testingSearchNode.addData(fofAllData.getReadDataList());
         testingSearchNode.sort();
         testingSearchNode.search(listToSearch);
+//        testingSearchNode.clear();
 
     }
 

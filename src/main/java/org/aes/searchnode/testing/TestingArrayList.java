@@ -49,4 +49,9 @@ public class TestingArrayList implements TestingObjects {
 
         printElapsedTime("ArrayList data searched all given data", timeCalculation);
     }
+
+    @Override
+    public void clear() {
+        arrayList.clear();
+    }
 }

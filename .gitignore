@@ -1,3 +1,3 @@
-src/main/java/org/aes/searchnode/fakedata/books
-src/main/java/org/aes/searchnode/fakedata/oldBooks
 src/main/java/org/aes/searchnode/backupWordData
+target/
+.idea/

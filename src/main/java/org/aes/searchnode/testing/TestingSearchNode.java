@@ -47,4 +47,9 @@ public class TestingSearchNode implements TestingObjects {
 
         printElapsedTime("SearchNode SEARCHED ", timeCalculation);
     }
+
+    @Override
+    public void clear() {
+        searchNode = null;
+    }
 }

@@ -12,4 +12,5 @@ public interface TestingObjects {
     default void printElapsedTime(String text,TimeCalculation timeCalculation) {
         System.out.print(text+" :");timeCalculation.printElapsedTime();
     }
+    void clear();
 }
