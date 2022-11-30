@@ -1,5 +1,6 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
@@ -31,7 +32,21 @@ public class Main {
         list.add("test");
         list.add("test");
         searchNodeTest.addAll(list);
+        searchNodeTest.getAll().forEach(System.out::println);
         searchNodeTest.printSizeOfAddedItems();
+
+        List<String> startWith = new ArrayList<>();
+        String startWithText = "ahmet";
+        DataResult<List<String>> dataResult = searchNodeTest.getAllStartWith(startWithText);
+
+        System.out.println("words start with : " + startWithText);
+        if (dataResult.isSuccess()) {
+            List startWithList = dataResult.getData();
+            startWithList.forEach(System.out::println);
+        } else {
+            System.out.println("error : " + dataResult.getMsg());
+        }
+
 
 //
         System.out.println();

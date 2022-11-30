@@ -19,7 +19,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     private static final ComparatorNextWayDirectionRequiredData comparatorNextWayDirectionRequiredData = new ComparatorNextWayDirectionRequiredData();
 
     @Override
-    public DataResult<SearchNode<T>> getNextWayOfChar(PriorityChar pc) {
+    public DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retreived");
@@ -47,7 +47,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     }
 
     @Override
-    public List<NextWayDirectionRequiredData> getAllDataOfSearchNode() {
+    public List<NextWayDirectionRequiredData<T>> getAllDataOfSearchNode() {
         Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
         return new ArrayList<>(list);
     }
