@@ -51,7 +51,7 @@ public class SearchNode<T> {
                 for (int i = 0; i < stringValue.length(); i++) {
                     addSNToList(movedLastSearchNodeConnection);
                     PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
-                    DataResult<SearchNode> drReachablNWD = movedLastSearchNodeConnection.moveReachableNWD(pc);
+                    DataResult<SearchNode<T>> drReachablNWD = movedLastSearchNodeConnection.moveReachableNWD(pc);
                     if (!drReachablNWD.isSuccess()) {
                         stringValue.delete(0, i);
                         initializePossibilityNWD(t/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
@@ -101,12 +101,12 @@ public class SearchNode<T> {
 //        System.out.println("gelen arama degerleri text : "+text);
         for (int i = 0; i < stringValue.length(); i++) {
             PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
-            DataResult<SearchNode> drReachablNWD = movedLastSearchNodeConnection.moveReachableNWD(pc);
+            DataResult<SearchNode<T>> drReachablNWD = movedLastSearchNodeConnection.moveReachableNWD(pc);
 //            System.out.println(" drReachablNWD  :"+ drReachablNWD);
             if (drReachablNWD.isSuccess()) {
 //                System.out.println("SUCCESSSSSSSSSSSSSS");
 //                if (drReachablNWD.getData().getNodeData().getData() != null && drReachablNWD.getData().getNodeData().getData().equals(text)) {
-                DataResult<DataInfo> drDataInfo = drReachablNWD.getData().getNodeData().search(text);
+                DataResult<DataInfo<T>> drDataInfo = drReachablNWD.getData().getNodeData().search(text);
 //                System.out.println("drDataInfo : "+drDataInfo.toString());
 //                System.out.println("LSA:  : "+movedLastSearchNodeConnection.getNodeData().getLocationStringAddress());
                 if (drDataInfo.isSuccess()) {
@@ -128,50 +128,53 @@ public class SearchNode<T> {
     */
     public List<T> getAll() {
 //        setConfigOrderBy(OrderBy.ASC);
-        return getAllData();
+        return getAllData(this);
     }
 
     public List<T> getAllReverse() {
 //        setConfigOrderBy(OrderBy.DESC);
 
-        List<T> list = getAllData();
+        List<T> list = getAllData(this);
         Collections.reverse(list);
         return list;
 //        return getAllData();
     }
 
+    public DataResult<List<T>> getAllStartWith(String text) {
+        SearchNode<T> currentSearchNode = this;
+        for (int i = 0; i < text.length(); i++) {
+            DataResult<SearchNode<T>> dataResult = currentSearchNode.moveReachableNWD(getPriorityCharOfGivenChar(text.charAt(i)));
+            if (dataResult.isSuccess()) {
+                currentSearchNode = dataResult.getData();
+            } else {
+
+                return new ErrorDataResult<>(new ArrayList<>(), "Has not been added any text in this direction");
+            }
+        }
+        return new SuccessDataResult<>(getAllData(currentSearchNode));
+
+    }
 //    private void setConfigOrderBy(OrderBy orderBy) {
 //        ConfigOrderBy.setOrderByNextWayDirectionRequiredData(orderBy);
 //    }
 
-    private List<T> getAllData() {
+    private List<T> getAllData(SearchNode<T> searchNode) {
         List<T> list = new ArrayList<>();
-        movedLastSearchNodeConnection = this;
+        movedLastSearchNodeConnection = searchNode;
         StringBuilder stringBuilder = new StringBuilder();
-        addAllDataToList(list, this);
+        addAllDataToList(list, searchNode);
         return list;
     }
 
     //TODO simdi listenin siralanmasi lazim. ondan sonra duzgun bir sekilde veriler cekilebilir
     private void addAllDataToList(List<T> list, SearchNode<T> searchNode) {
         List<NextWayDirectionRequiredData<T>> currentSearchNodeNextWayDirectionRequiredData = searchNode.getReachableNWD().getAllDataOfSearchNode();
-//        System.out.println("SearchNode : " + searchNode.getNodeData().getLocationStringAddress());
-        for (NextWayDirectionRequiredData tmpNWDRD : currentSearchNodeNextWayDirectionRequiredData) {
-            SearchNode<T> tmpSearchNode = tmpNWDRD.getSearchNode();
+        List<DataInfo<T>> dataInfoList = searchNode.getNodeData().getListDataInfo();
+        addEachDataOfNodeDataToList(list, dataInfoList);
 
-            List<DataInfo<T>> dataInfoList = tmpSearchNode.getNodeData().getListDataInfo();
-            /*tmpSearchNode.getNodeData().getListDataInfo().forEach(e -> {
-                if (e.getNumberOfhowManyTimesAddedThisValue() > 1) {
-                    System.out.println(e);
-                    JOptionPane.showMessageDialog(null,"geldii");
-                }
-            });*/
-//            if (tmpSearchNode.getNodeData().getListDataInfo().size() > 0) {
-//                System.out.println("data bulunan searchNode icinde geziyoruz : tmpSearrhNode :" + tmpSearchNode.getNodeData().getLocationStringAddress());
-//            }
-            addEachDataOfNodeDataToList(list, dataInfoList);
+        for (NextWayDirectionRequiredData<T> tmpNWDRD : currentSearchNodeNextWayDirectionRequiredData) {
+            SearchNode<T> tmpSearchNode = tmpNWDRD.getSearchNode();
             addAllDataToList(list, tmpSearchNode);
-//            System.out.println("for icinde geziyoruz : tmpSearrhNode :" + tmpSearchNode.getNodeData().getLocationStringAddress());
         }
 
     }
@@ -191,8 +194,8 @@ public class SearchNode<T> {
         return new SuccessResult();
     }
 
-    DataResult<SearchNode> moveReachableNWD(PriorityChar pc) {
-        DataResult<SearchNode> dataResult = reachableNWD.getNextWayOfChar(pc);
+    DataResult<SearchNode<T>> moveReachableNWD(PriorityChar pc) {
+        DataResult<SearchNode<T>> dataResult = reachableNWD.getNextSearchNodeWayOfChar(pc);
         if (dataResult.isSuccess()) {
             movedLastSearchNodeConnection = dataResult.getData();
             return dataResult;

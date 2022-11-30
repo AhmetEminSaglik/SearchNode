@@ -8,11 +8,11 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.List;
 
 public interface ReachableNextWayDirection<T> {
-    DataResult<SearchNode<T>> getNextWayOfChar(PriorityChar pc);
+    DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc);
 
     DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc,/*SearchNode connectionStartSearchNode,*/ SearchNode<T> searchNode);
 
-    List<NextWayDirectionRequiredData> getAllDataOfSearchNode();
+    List<NextWayDirectionRequiredData<T>> getAllDataOfSearchNode();
 
 //    List<T> getAll(SearchNode<T> searchNode);
 
