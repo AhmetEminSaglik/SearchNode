@@ -6,11 +6,8 @@ import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
 import org.aes.searchnode.testing.TimeCalculation;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
-import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
-import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,23 +19,21 @@ public class Main {
             .setFileExtension(".txt");
 
     public static void main(String[] args) {
-//        System.out.println((int)']');
-//        System.exit(0);
-//        String text="3 tane txt dosyasi var. hepsini searchNode'a aktaramiyorum/ Heap yetmiyor. Bunlari okuyup Hashset'e aktarmaliyim. Sonrasinda yazdircam. ";
-//        JOptionPane.showMessageDialog(null,text);
-//        System.exit(0);
-        TimeCalculation timeCalculation = new TimeCalculation();
-        timeCalculation.start();
-        FakeDataCreation fakeDataCreation = new FakeDataCreation();
-        fakeDataCreation.createDataWithSearchNode();
+        SearchNode<String> searchNodeTest = new SearchNode<>();
+        List<String> list = new ArrayList<>();
+        list.add("ahmet");
+        list.add("zeynep");
+        list.add("ahmetemin");
+        list.add("ah");
 
-        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList().get(0));
+        list.add("emin");
+        list.add("emine");
+        list.add("test");
+        list.add("test");
+        searchNodeTest.addAll(list);
+        searchNodeTest.printSizeOfAddedItems();
 
-        System.out.println("txt'ten okunan file : "+ReadableStringFormat.getReadableValueIntToString(fakeDataCreation.fileOpsFacade.getReadDataList().size()));
-
-        timeCalculation.stop();
-        timeCalculation.printElapsedTime();
-
+//
         System.out.println();
         System.exit(0);
 //        for (int i = 48; i < 122; i++) { //48 57 65 90   97 122
@@ -61,19 +56,7 @@ public class Main {
 
 //        System.out.println(Collections.binarySearch(intList, 2));
 //        System.exit(0);
-        SearchNode<String> searchNodeTest = new SearchNode<>();
-        List<String> list = new ArrayList<>();
-        list.add("ahmet");
-        list.add("zeynep");
-        list.add("ahmetemin");
-        list.add("ah");
 
-        list.add("emin");
-        list.add("emine");
-        list.add("test");
-        list.add("test");
-        searchNodeTest.addAll(list);
-        searchNodeTest.printSizeOfAddedItems();
 
 //System.exit(0);
 //        System.out.println("--------------------------");
@@ -130,5 +113,16 @@ public class Main {
 
     static void printNumberReadableFormat(int val) {
         System.out.println(ReadableStringFormat.getReadableValueIntToString(val));
+    }
+
+    static void readFile() {
+        TimeCalculation timeCalculation = new TimeCalculation();
+        timeCalculation.start();
+        FakeDataCreation fakeDataCreation = new FakeDataCreation();
+        fakeDataCreation.createDataWithSearchNode();
+        fakeDataCreation.read(fakeDataCreation.getBookFileFundementalList().get(0));
+        System.out.println("txt'ten okunan file : " + ReadableStringFormat.getReadableValueIntToString(fakeDataCreation.fileOpsFacade.getReadDataList().size()));
+        timeCalculation.stop();
+        timeCalculation.printElapsedTime();
     }
 }

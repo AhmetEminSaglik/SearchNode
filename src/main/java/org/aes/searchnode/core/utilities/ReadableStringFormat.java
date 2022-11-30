@@ -2,6 +2,9 @@ package org.aes.searchnode.core.utilities;
 
 public class ReadableStringFormat {
     public static String getReadableValueIntToString(int num) {
+        if (num == 0) {
+            return "0";
+        }
         String text = "";
         int j = 0;
         while (num > 0) {
