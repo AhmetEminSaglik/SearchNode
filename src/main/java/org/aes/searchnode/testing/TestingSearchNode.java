@@ -1,6 +1,6 @@
 package org.aes.searchnode.testing;
 
-import org.aes.searchnode.SearchNode;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 
 import java.util.List;

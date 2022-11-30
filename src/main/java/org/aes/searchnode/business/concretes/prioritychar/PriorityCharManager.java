@@ -1,6 +1,6 @@
 package org.aes.searchnode.business.concretes.prioritychar;
 
-import org.aes.searchnode.business.abstracts.PriorityCharService;
+import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.entities.concretes.PriorityChar;

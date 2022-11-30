@@ -1,8 +1,7 @@
 package org.aes.searchnode.fakedata;
 
-import org.aes.searchnode.SearchNode;
 import org.aes.searchnode.business.concretes.DataCleariation;
-import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
 import org.ahmeteminsaglik.fileoperation.business.abstracts.WriteFileService;
@@ -10,7 +9,6 @@ import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -181,7 +179,7 @@ public class FakeDataCreation {
 //            searchNode.getAll().forEach(e-> System.out.println(e));
 //            cleanReadDataList = null;
                 fileOpsFacade.clearList();
-                searchNode.printSizeOfAddedItems();
+//                searchNode.printSizeOfAddedItems();
 //                System.exit(0);
 //            try {
 //                Thread.sleep(5000);
@@ -200,11 +198,11 @@ public class FakeDataCreation {
 
         }
         System.out.println("SearchNode'a eklendi");
-        searchNode.printSizeOfAddedItems();
+//        searchNode.printSizeOfAddedItems();
 //        System.exit(0);
 //        if (i >= pathList.size() - 1) {
         System.out.println("Dosyaya yaziliyor. Sonrasinda program durdurulacak file : \n" + newFileFund.getCompletePath());
-        fileOpsFacade.write(newFileFund, searchNode.getAll());
+        fileOpsFacade.write(newFileFund, searchNode.getAll().getData());
 //            return;
 //        }
 /**

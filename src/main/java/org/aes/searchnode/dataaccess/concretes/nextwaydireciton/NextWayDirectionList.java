@@ -1,6 +1,6 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
-import org.aes.searchnode.SearchNode;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
@@ -8,7 +8,6 @@ import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.comparator.ComparatorNextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,7 +57,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
         return list.size();
     }
 
-    public List<NextWayDirectionRequiredData> getNextWayDirectionRequiredDataList() {
-        return new ArrayList<NextWayDirectionRequiredData>(list);
+    public List<NextWayDirectionRequiredData<T>> getNextWayDirectionRequiredDataList() {
+        return new ArrayList<>(list);
     }
 }
