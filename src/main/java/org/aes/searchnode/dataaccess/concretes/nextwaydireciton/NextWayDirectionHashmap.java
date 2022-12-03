@@ -1,6 +1,6 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
-import org.aes.searchnode.SearchNode;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
@@ -15,7 +15,7 @@ public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection <T>
     HashMap<Character, SearchNode> hashMap = new HashMap<>();
 
     @Override
-    public DataResult<SearchNode<T>> getNextWayOfChar(PriorityChar pc) {
+    public DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc) {
         SearchNode<T> searchNode = hashMap.get(pc.getChar());
         if (searchNode != null)
             return new SuccessDataResult<>(searchNode, "Data is retreived");
@@ -29,7 +29,7 @@ public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection <T>
     }
 
     @Override
-    public List<NextWayDirectionRequiredData> getAllDataOfSearchNode() {
+    public List<NextWayDirectionRequiredData<T>> getAllDataOfSearchNode() {
         return null;
     }
 

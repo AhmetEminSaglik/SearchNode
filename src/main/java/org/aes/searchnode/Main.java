@@ -1,6 +1,10 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
+import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
+import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
@@ -18,56 +22,49 @@ public class Main {
             .setFileName("Word-Data-1_398_449")
             .setFileExtension(".txt");
 
+    static void printSlash() {
+        System.out.println("-------------------------------------------");
+    }
+
     public static void main(String[] args) {
-        SearchNode<String> searchNodeTest = new SearchNode<>();
+        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+
+        searchNodeTest.add("first");
+        printSlash();
         List<String> list = new ArrayList<>();
         list.add("ahmet");
         list.add("zeynep");
-        list.add("ahmetemin");
         list.add("ah");
 
-        list.add("emin");
-        list.add("emine");
-        list.add("test");
-        list.add("test");
         searchNodeTest.addAll(list);
-        searchNodeTest.printSizeOfAddedItems();
+        printSlash();
+        System.out.println(searchNodeTest.search("ahmet"));
+        System.out.println(searchNodeTest.search("kerem"));
+        printSlash();
+        searchNodeTest.getAll().getData().forEach(System.out::println);
+        printSlash();
 
-//
-        System.out.println();
+        searchNodeTest.getAllReverse().getData().forEach(System.out::println);
+        printSlash();
+
+//        searchNodeTest.printSizeOfAddedItems();
+
+        List<String> startWith = new ArrayList<>();
+        String startWithText = "f";
+        DataResult<List<String>> dataResult = searchNodeTest.getAllStartWith(startWithText);
+
+        System.out.println("words start with : " + startWithText);
+        if (dataResult.isSuccess()) {
+            List startWithList = dataResult.getData();
+            startWithList.forEach(System.out::println);
+        } else {
+            System.out.println("error : " + dataResult.getMsg());
+        }
+        System.out.println(searchNodeTest.search("ahmetcan"));
+        System.out.println(searchNodeTest.search("ahmetemin"));
+
         System.exit(0);
-//        for (int i = 48; i < 122; i++) { //48 57 65 90   97 122
-//            System.out.println(i + " : " + (char) i);
-//        }
-//        System.exit(0);
-//        List<Integer> intList = new ArrayList<>();
-//        intList.add(1);
-//
-//        intList.add(2);
-//        intList.add(2);
-//        intList.add(3);
-//        List<String> StringList = new ArrayList<>();
-//        StringList.add("a");
-//        StringList.add("b");
-//        StringList.add("c");
-//        StringList.add("d");
-//        Collections.binarySearch(StringList, "a");
-//
 
-//        System.out.println(Collections.binarySearch(intList, 2));
-//        System.exit(0);
-
-
-//System.exit(0);
-//        System.out.println("--------------------------");
-//        searchNodeTest.getAllReverse().forEach(e -> {
-//            System.out.println(e);
-//        });
-//        System.out.println("::::::::::::::::::::::::::::::::::::");
-//
-//        searchNodeTest.getAll().forEach(e -> {
-//            System.out.println(e);
-//        });
        /* TimeCalculation timeCalculation = new TimeCalculation();
         timeCalculation.start();
         FileFundamental fileFund = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/").setFileName("Word-Data-1_398_449").setFileExtension(".txt");

@@ -1,4 +1,4 @@
-package org.aes.searchnode.business.abstracts;
+package org.aes.searchnode.business.abstracts.prioritychar;
 
 import org.aes.searchnode.config.prioritychar.ConfigPriorityChar;
 import org.aes.searchnode.core.utilities.DataResult;
