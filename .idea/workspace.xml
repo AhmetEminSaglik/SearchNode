@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postresql commands/postreSQL create database and insert values .txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postresql commands/postreSQL create tables.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postresql commands/postreSQL insert values.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postresql commands/postreSQL test join.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +88,8 @@
       <workItem from="1669784571416" duration="1989000" />
       <workItem from="1669797142418" duration="4815000" />
       <workItem from="1670101802746" duration="599000" />
-      <workItem from="1670103114935" duration="758000" />
+      <workItem from="1670103114935" duration="1212000" />
+      <workItem from="1670145276374" duration="1646000" />
     </task>
     <servers />
   </component>
