@@ -1,0 +1,16 @@
+
+INSERT INTO data_structor_processes(record_id,data_structor_id)
+VALUES(8,2);
+INSERT INTO sorting_processes(record_id,sorting_algorithm_id)
+VALUES(8,9);
+INSERT INTO searching_processes(record_id,searching_algorithm_id)
+VALUES(8,3);
+
+INSERT INTO word_processes(
+	record_id,total_word_list_id,searched_word_list_id,found_word,missing_word)
+VALUES(8,1,2,2,1);
+
+INSERT INTO complexity(record_id,process_name_id,process_name_record_id,elapsed_time,memory_usage)
+VALUES(8,1,2,'00:00:03','500 kb');
+VALUES(8,2,2,'00:00:07','100 kb');
+VALUES(8,3,2,'00:00:07','100 kb');

@@ -1,6 +1,6 @@
 package org.aes.searchnode.entities.concretes;
 
-import org.aes.searchnode.SearchNode;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 
 public class NextWayDirectionRequiredData <T>{
     PriorityChar priorityChar;

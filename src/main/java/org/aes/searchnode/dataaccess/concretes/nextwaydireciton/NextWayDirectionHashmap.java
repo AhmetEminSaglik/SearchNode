@@ -1,6 +1,6 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
-import org.aes.searchnode.SearchNode;
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;

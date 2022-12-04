@@ -1,6 +1,7 @@
+/*
 package org.aes.searchnode;
 
-import org.aes.searchnode.business.abstracts.PriorityCharService;
+import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.*;
@@ -22,24 +23,37 @@ import java.util.Collections;
 import java.util.List;
 
 public class SearchNode<T> {
-    /**
+    */
+/**
      * TODO : Search node'da fazlaca sayida kod var. Buradaki bir takim fonksiyonlar baska bir yerden cagrilabilir.
-     */
-    private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
+     *//*
+
+ */
+/*   private ReachableNextWayDirection reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData nodeData = new NodeData();
     private PossibilityNextWayDirection pNWDQueue = null;
     PriorityCharService pcService = new PriorityCharManager();
     SearchNode<T> movedLastSearchNodeConnection = null;
-    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
+    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();*//*
 
-    public void addAll(List<T> list) {
+
+  */
+/*  public void addAll(List<T> list) {
         list.forEach(item -> add(item));
     }
 
-    public void add(T t /*Object object, Class<?> clazz*/) {
+    public void add(T t *//*
+*/
+/*Object object, Class<?> clazz*//*
+*/
+/*) {
 
         clearNWDTVList();
-        Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
+        Object value = getValueOfObjectToBeProcess(t*//*
+*/
+/*object, clazz*//*
+*/
+/*);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
         stringValue = trimObject(stringValue.toString());
         if (stringValue.toString().equals("")) {
@@ -54,7 +68,11 @@ public class SearchNode<T> {
                     DataResult<SearchNode<T>> drReachablNWD = movedLastSearchNodeConnection.moveReachableNWD(pc);
                     if (!drReachablNWD.isSuccess()) {
                         stringValue.delete(0, i);
-                        initializePossibilityNWD(t/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
+                        initializePossibilityNWD(t*//*
+*/
+/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*//*
+*/
+/*);
                         movePossibilityNWD(value, stringValue);
                         break;
                     }
@@ -83,8 +101,10 @@ public class SearchNode<T> {
                 //printSizeOfAddedItems();
             }
         }
-    }
+    }*//*
 
+*/
+/*
     private StringBuilder trimObject(String text) {
         return new StringBuilder(text.trim());
     }
@@ -119,18 +139,24 @@ public class SearchNode<T> {
             }
         }
         return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
-    }
+    }*//*
 
-    /*
+
+    */
+/*
 
                 TODO
                     En son burda ileri adimdaki Searchnodelari alip datalari varsalisteye ekleyip devam etme uzerinde calisiyordum
-    */
-    public List<T> getAll() {
+    *//*
+
+ */
+/*   public List<T> getAll() {
 //        setConfigOrderBy(OrderBy.ASC);
         return getAllData(this);
-    }
+    }*//*
 
+*/
+/*
     public List<T> getAllReverse() {
 //        setConfigOrderBy(OrderBy.DESC);
 
@@ -138,8 +164,10 @@ public class SearchNode<T> {
         Collections.reverse(list);
         return list;
 //        return getAllData();
-    }
+    }*//*
 
+*/
+/*
     public DataResult<List<T>> getAllStartWith(String text) {
         SearchNode<T> currentSearchNode = this;
         for (int i = 0; i < text.length(); i++) {
@@ -153,21 +181,25 @@ public class SearchNode<T> {
         }
         return new SuccessDataResult<>(getAllData(currentSearchNode));
 
-    }
+    }*//*
+
 //    private void setConfigOrderBy(OrderBy orderBy) {
 //        ConfigOrderBy.setOrderByNextWayDirectionRequiredData(orderBy);
 //    }
 
-    private List<T> getAllData(SearchNode<T> searchNode) {
+*/
+/*    private List<T> getAllData(SearchNode<T> searchNode) {
         List<T> list = new ArrayList<>();
         movedLastSearchNodeConnection = searchNode;
         StringBuilder stringBuilder = new StringBuilder();
         addAllDataToList(list, searchNode);
         return list;
-    }
+    }*//*
+
 
     //TODO simdi listenin siralanmasi lazim. ondan sonra duzgun bir sekilde veriler cekilebilir
-    private void addAllDataToList(List<T> list, SearchNode<T> searchNode) {
+*/
+/*    private void addAllDataToList(List<T> list, SearchNode<T> searchNode) {
         List<NextWayDirectionRequiredData<T>> currentSearchNodeNextWayDirectionRequiredData = searchNode.getReachableNWD().getAllDataOfSearchNode();
         List<DataInfo<T>> dataInfoList = searchNode.getNodeData().getListDataInfo();
         addEachDataOfNodeDataToList(list, dataInfoList);
@@ -203,7 +235,11 @@ public class SearchNode<T> {
         return new ErrorDataResult<>("Can not move in ReachableNWD. Because direction is not found.");
     }
 
-    private void movePossibilityNWD(Object value, StringBuilder stringBuilder/*PriorityChar pc*/) throws Exception {
+    private void movePossibilityNWD(Object value, StringBuilder stringBuilder*//*
+*/
+/*PriorityChar pc*//*
+*/
+/*) throws Exception {
 
         for (int i = 0; i < stringBuilder.length(); i++) {
             PriorityChar pc = getPriorityCharOfGivenChar(stringBuilder.charAt(i));
@@ -217,14 +253,36 @@ public class SearchNode<T> {
         pNWDQueue = null;
     }
 
-    private void initializePossibilityNWD(Object data/*,PriorityChar pc*/) {
-        pNWDQueue = new PossibilityNextWayDirection(data, movedLastSearchNodeConnection/*,pc*//*, movedLastSearchNodeConnection*/);
-    }
+    private void initializePossibilityNWD(Object data*//*
+*/
+/*,PriorityChar pc*//*
+*/
+/*) {
+        pNWDQueue = new PossibilityNextWayDirection(data, movedLastSearchNodeConnection*//*
+*/
+/*,pc*//*
+*/
+/**//*
+*/
+/*, movedLastSearchNodeConnection*//*
+*/
+/*);
+    }*//*
 
-    Object getValueOfObjectToBeProcess(T t/*Object o, Class<?> clazz*/) {
-        /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
+
+    */
+/*Object getValueOfObjectToBeProcess(T t*//*
+*/
+/*Object o, Class<?> clazz*//*
+*/
+/*) {
+        *//*
+*/
+/*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
          *  pfOrder.getPriorityFieldName(index).getName()
-         * */
+         * *//*
+*/
+/*
         PriorityFieldOrder pfOrder = null;
         try {
             pfOrder = new PriorityFieldOrder(t.getClass());
@@ -291,6 +349,8 @@ public class SearchNode<T> {
         return "SearchNode{" +
                 "nodeData=" + nodeData +
                 '}';
-    }
+    }*//*
+
 }
 
+*/
