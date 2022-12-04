@@ -19,19 +19,19 @@ name VARCHAR(50) UNIQUE NOT NULL
 
 CREATE TABLE data_structor_processes(
 id SERIAL PRIMARY KEY,
-recordId INTEGER NOT NULL,
+record_id INTEGER NOT NULL,
 data_structor_id INTEGER NOT NULL
 );
 
 CREATE TABLE sorting_processes(
 id SERIAL PRIMARY KEY,
-recordId INTEGER NOT NULL,
+record_id INTEGER NOT NULL,
 sorting_algorithm_id INTEGER NOT NULL
 );
 
 CREATE TABLE searching_processes(
 id SERIAL PRIMARY KEY,
-recordId INTEGER NOT NULL,
+record_id INTEGER NOT NULL,
 searching_algorithm_id INTEGER NOT NULL
 );
 
@@ -48,7 +48,7 @@ word_tbl_name VARCHAR(50) NOT NULL
 
 CREATE TABLE word_processes(
 id SERIAL PRIMARY KEY,
-recordId INTEGER NOT NULL,
+record_id INTEGER NOT NULL,
 total_word_list_id INTEGER NOT NULL,
 searched_word_list_id INTEGER NOT NULL,
 found_word INTEGER NOT NULL,
@@ -57,9 +57,9 @@ missing_word INTEGER NOT NULL
 
 CREATE TABLE complexity(
 id SERIAL PRIMARY KEY,
-recordId INTEGER NOT NULL,
+record_id INTEGER NOT NULL,
 process_name_id INTEGER NOT NULL,
 process_name_record_id INTEGER NOT NULL,
 elapsed_time TIME NOT NULL,
-memory_usage VARCHAR(50) NOT NULL
+memory_usage INTEGER NOT NULL
 );
