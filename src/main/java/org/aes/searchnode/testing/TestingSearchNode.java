@@ -44,6 +44,7 @@ public class TestingSearchNode implements TestingObjects {
         timeCalculation.stop();
         System.out.println("found Text Number : " + foundTextNumber);
         System.out.println("missing  Text Number : " + missingTextNumber);
+        System.out.println("searched list size IN SEARCHNODE : " + list.size());
 
         printElapsedTime("  > SearchNode >  SEARCHED ", timeCalculation);
     }

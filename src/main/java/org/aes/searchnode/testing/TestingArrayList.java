@@ -41,6 +41,7 @@ public class TestingArrayList implements TestingObjects {
             }
 
         }
+        System.out.println("searched list size IN ARRAYLIST : " + list.size());
         timeCalculation.stop();
 
         System.out.println("found Text Number : " + foundTextNumber);
