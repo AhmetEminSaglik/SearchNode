@@ -9,6 +9,7 @@ import org.aes.searchnode.entities.concretes.DataInfo;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.example.Student;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
@@ -21,6 +22,8 @@ import java.util.List;
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> rootSearchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
+    private List<SearchNode<?>> snListToIncreaseNWDTV = new ArrayList<>();
+    SNUtility snUtility = new SNUtility();
 
     public SearchNodeManagement(SearchNode<T> rootSearchNode) {
         this.rootSearchNode = rootSearchNode;
@@ -221,18 +224,17 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void addSNToList(SearchNode<T> searchNode) {
-        searchNode.getSnListToIncreaseNWDTV().add(searchNode);
+        snUtility.addSNToIncreaseNWDTVList(snListToIncreaseNWDTV, searchNode);
     }
 
     private void increaseNewAddedItemLocationsNWDTV() {
-        for (SearchNode<T> tmp : rootSearchNode. getSnListToIncreaseNWDTV()) {
-            System.out.println("test >> " +tmp);
+        for (SearchNode<?> tmp : snListToIncreaseNWDTV) {
             tmp.getNodeData().increaseNextWayDirectionTotalValue();
         }
     }
 
     private void clearNWDTVList() {
-        rootSearchNode.getSnListToIncreaseNWDTV().clear();
-        SNUtility.clearNWDTVList(rootSearchNode.getSnListToIncreaseNWDTV());
+        SNUtility.clearNWDTVList(snListToIncreaseNWDTV);
     }
+
 }

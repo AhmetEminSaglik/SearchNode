@@ -30,17 +30,18 @@ public class Main {
 //        SearchNodeService<String> searchNodeTest = new SearchNodeAPI<>();
         SearchNode<String> searchNodeTest = new SearchNode<>();
 
-        searchNodeTest.add("first");
+//        searchNodeTest.add("first");
         printSlash();
         List<String> list = new ArrayList<>();
         list.add("ahmet");
-        list.add("zeynep");
+        list.add("ahmetemin");
+//        list.add("zeynep");
         list.add("ah");
 
         searchNodeTest.addAll(list);
         printSlash();
-        System.out.println(searchNodeTest.search("ahmet"));
-        System.out.println(searchNodeTest.search("kerem"));
+//        System.out.println(searchNodeTest.search("ahmet"));
+//        System.out.println(searchNodeTest.search("kerem"));
         printSlash();
         searchNodeTest.getAll().getData().forEach(System.out::println);
         printSlash();
@@ -61,8 +62,8 @@ public class Main {
         } else {
             System.out.println("error : " + dataResult.getMsg());
         }
-        System.out.println(searchNodeTest.search("ah"));
-        System.out.println(searchNodeTest.search("ahmet"));
+//        System.out.println(searchNodeTest.search("ah"));
+//        System.out.println(searchNodeTest.search("ahmet"));
 
 
         System.out.println("SearchNode NWDTV : "+searchNodeTest.getTotalItemNumber());
@@ -71,7 +72,7 @@ public class Main {
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
                 .getNodeData().getLocationStringAddress());
         System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
-//                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
+                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
                 .getNodeData().getNextWayDirectionTotalValue());
 
