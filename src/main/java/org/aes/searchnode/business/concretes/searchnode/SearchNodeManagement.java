@@ -1,6 +1,7 @@
 package org.aes.searchnode.business.concretes.searchnode;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
+import org.aes.searchnode.business.concretes.utility.SNUtility;
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
@@ -9,7 +10,6 @@ import org.aes.searchnode.entities.concretes.DataInfo;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-import org.aes.searchnode.entities.example.Student;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
