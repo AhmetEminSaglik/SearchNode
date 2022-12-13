@@ -42,7 +42,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
-        stringValue = trimObject(stringValue.toString());
+        stringValue = SNUtility.trimObject(stringValue.toString());
         if (stringValue.toString().equals("")) {
             return new ErrorResult("Empty or Space can not added to SearchNode");
         } else {
@@ -50,7 +50,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
                     addSNToList(movedLastSearchNodeConnection);
-                    PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
+                    PriorityChar pc = SNUtility.getPriorityCharOfGivenChar(rootSearchNode,stringValue.charAt(i));
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
                         stringValue.delete(0, i);
@@ -87,7 +87,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         movedLastSearchNodeConnection = rootSearchNode;
         StringBuilder stringValue = new StringBuilder(text);
         for (int i = 0; i < stringValue.length(); i++) {
-            PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
+            PriorityChar pc = SNUtility.getPriorityCharOfGivenChar(rootSearchNode,stringValue.charAt(i));
             DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
             if (drReachablNWD.isSuccess()) {
                 DataResult<DataInfo<T>> drDataInfo = drReachablNWD.getData().getNodeData().search(text);
@@ -119,7 +119,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     public DataResult<List<T>> getAllStartWith(String text) {
         SearchNode<T> currentSearchNode = rootSearchNode;
         for (int i = 0; i < text.length(); i++) {
-            DataResult<SearchNode<T>> dataResult = moveReachableNWD(currentSearchNode, getPriorityCharOfGivenChar(text.charAt(i)));
+            DataResult<SearchNode<T>> dataResult = moveReachableNWD(currentSearchNode, SNUtility.getPriorityCharOfGivenChar(rootSearchNode,text.charAt(i)));
             if (dataResult.isSuccess()) {
                 currentSearchNode = dataResult.getData();
             } else {
@@ -137,15 +137,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
 
-    private StringBuilder trimObject(String text) {
-        return new StringBuilder(text.trim());
-    }
 
-    private PriorityChar getPriorityCharOfGivenChar(char c) {
-        DataResult<PriorityChar> drPriorityChar = rootSearchNode.getPcService().getPriorityChar(c);
-        PriorityChar pc = drPriorityChar.getData();
-        return pc;
-    }
 
     private List<T> getAllData(SearchNode<T> searchNode) {
         List<T> list = new ArrayList<>();
@@ -192,14 +184,11 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     private void movePossibilityNWD(Object value, StringBuilder stringBuilder) throws Exception {
         for (int i = 0; i < stringBuilder.length(); i++) {
-            PriorityChar pc = getPriorityCharOfGivenChar(stringBuilder.charAt(i));
+            PriorityChar pc = SNUtility.getPriorityCharOfGivenChar(rootSearchNode,stringBuilder.charAt(i));
             rootSearchNode.getPNWDQueue().createNextWayChar(pc);
         }
     }
 
-    private void clearPossibilityNWD() {
-        rootSearchNode.setPNWDQueue(null);
-    }
 
     private void initializePossibilityNWD(Object data) {
         rootSearchNode.setPNWDQueue(new PossibilityNextWayDirection(data, movedLastSearchNodeConnection));
@@ -233,8 +222,13 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
     }
 
+    private void clearPossibilityNWD() {
+        rootSearchNode.setPNWDQueue(null);
+    }
+
     private void clearNWDTVList() {
-        SNUtility.clearNWDTVList(snListToIncreaseNWDTV);
+        snListToIncreaseNWDTV.clear();
+//        SNUtility.clearNWDTVList(snListToIncreaseNWDTV);
     }
 
 }

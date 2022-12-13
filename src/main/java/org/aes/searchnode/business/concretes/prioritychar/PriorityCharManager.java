@@ -8,6 +8,20 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 public class PriorityCharManager implements PriorityCharService {
 
     @Override
+    public DataResult<PriorityChar> get(char c) {
+        return priorityCharDAO.get(c);
+    }
+
+    @Override
+    public Result reset(char c) {
+        return priorityCharDAO.delete(c);
+    }
+
+    @Override
+    public DataResult<PriorityChar> update(char c) {
+        return priorityCharDAO.update(c);
+    }
+  /*  @Override
     public DataResult<PriorityChar> getPriorityChar(char c) {
         return priorityCharDAO.get(c);
     }
@@ -20,5 +34,5 @@ public class PriorityCharManager implements PriorityCharService {
     @Override
     public DataResult<PriorityChar>  updatePriorityChar(char c) {
         return priorityCharDAO.update(c);
-    }
+    }*/
 }

@@ -61,16 +61,19 @@ public class Main {
         } else {
             System.out.println("error : " + dataResult.getMsg());
         }
-//        System.out.println(searchNodeTest.search("ah"));
-//        System.out.println(searchNodeTest.search("ahmet"));
+        System.out.println("+++++++++++++++++++++++++++ SEARCH OPERATION +++++++++++++++++++++++++++");
+        System.out.println(searchNodeTest.search("ah"));
+        System.out.println(searchNodeTest.search("ahmet"));
+        System.out.println(searchNodeTest.search("ahmetrandom"));
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 
         System.out.println("SearchNode NWDTV : "+searchNodeTest.getTotalItemNumber());
-        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
+        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().get('a').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
                 .getNodeData().getLocationStringAddress());
-        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
+        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().get('a').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
                 .getNodeData().getNextWayDirectionTotalValue());

@@ -12,6 +12,8 @@ public interface PriorityCharDAO {
     Result add(List<Character> cList, char nextToThisChar);
     Result delete(char c);
     DataResult<PriorityChar>  update(char c);
+    DataResult<PriorityChar>  reset(char c);
+
 
 
 }

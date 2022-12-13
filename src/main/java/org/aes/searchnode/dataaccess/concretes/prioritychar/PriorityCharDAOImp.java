@@ -49,6 +49,11 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
         return null;
     }
 
+    @Override
+    public DataResult<PriorityChar> reset(char c) {
+        return null;
+    }
+
 
 }
 
