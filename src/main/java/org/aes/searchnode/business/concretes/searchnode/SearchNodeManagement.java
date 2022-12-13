@@ -225,12 +225,14 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void increaseNewAddedItemLocationsNWDTV() {
-        for (SearchNode<T> tmp : rootSearchNode.getSnListToIncreaseNWDTV()) {
+        for (SearchNode<T> tmp : rootSearchNode. getSnListToIncreaseNWDTV()) {
+            System.out.println("test >> " +tmp);
             tmp.getNodeData().increaseNextWayDirectionTotalValue();
         }
     }
 
     private void clearNWDTVList() {
         rootSearchNode.getSnListToIncreaseNWDTV().clear();
+        SNUtility.clearNWDTVList(rootSearchNode.getSnListToIncreaseNWDTV());
     }
 }

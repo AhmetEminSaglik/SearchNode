@@ -27,7 +27,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        SearchNodeService<String> searchNodeTest = new SearchNodeAPI<>();
+//        SearchNodeService<String> searchNodeTest = new SearchNodeAPI<>();
+        SearchNode<String> searchNodeTest = new SearchNode<>();
 
         searchNodeTest.add("first");
         printSlash();
@@ -60,8 +61,19 @@ public class Main {
         } else {
             System.out.println("error : " + dataResult.getMsg());
         }
-        System.out.println(searchNodeTest.search("ahmetcan"));
-        System.out.println(searchNodeTest.search("ahmetemin"));
+        System.out.println(searchNodeTest.search("ah"));
+        System.out.println(searchNodeTest.search("ahmet"));
+
+
+        System.out.println("SearchNode NWDTV : "+searchNodeTest.getTotalItemNumber());
+        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
+//                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
+//                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
+                .getNodeData().getLocationStringAddress());
+        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
+//                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
+//                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
+                .getNodeData().getNextWayDirectionTotalValue());
 
         System.exit(0);
 

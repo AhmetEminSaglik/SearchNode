@@ -102,7 +102,13 @@ public class SearchNode<T> implements SearchNodeService<T> {
         this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
     }*/
 
+    public List<SearchNode<T>> getSnListToIncreaseNWDTV() {
+        return snListToIncreaseNWDTV;
+    }
 
+    public void setSNListToIncreaseNWDTV(List<SearchNode<T>> snListToIncreaseNWDTV) {
+        this.snListToIncreaseNWDTV = snListToIncreaseNWDTV;
+    }
     @Override
     public String toString() {
         return "SearchNode{" +
