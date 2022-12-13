@@ -12,8 +12,6 @@ import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextW
 import org.aes.searchnode.entities.concretes.DataInfo;
 import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -25,7 +23,7 @@ public class SearchNode<T> implements SearchNodeService<T>, UpdatePriorityCharSe
     private PriorityCharService pcService = new PriorityCharManager();
 //    private List<SearchNode<T>> snListToIncreaseNWDTV = new ArrayList<>();
 
-    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
+    SearchNodeService<T> searchNodeService = new SearchNodeManagement<>(this);
 
     @Override
     public DataResult<DataInfo<T>> search(String text) {
@@ -67,51 +65,6 @@ public class SearchNode<T> implements SearchNodeService<T>, UpdatePriorityCharSe
     public ReachableNextWayDirection<T> getReachableNWD() {
         return reachableNWD;
     }
-/*
-    public void setReachableNWD(ReachableNextWayDirection<T> reachableNWD) {
-        this.reachableNWD = reachableNWD;
-    }
-
-    public NodeData<T> getNodeData() {
-        return nodeData;
-    }
-
-    public void setNodeData(NodeData<T> nodeData) {
-        this.nodeData = nodeData;
-    }
-
-    public PossibilityNextWayDirection<T> getpNWDQueue() {
-        return pNWDQueue;
-    }
-
-    public void setPNWDQueue(PossibilityNextWayDirection<T> pNWDQueue) {
-        this.pNWDQueue = pNWDQueue;
-    }
-
-    public PriorityCharService getPcService() {
-        return pcService;
-    }
-
-    public void setPcService(PriorityCharService pcService) {
-        this.pcService = pcService;
-    }
-
-    public List<SearchNode<T>> getSnListToIncreaseNWDTV() {
-        return sNListToIncreaseNWDTV;
-    }
-
-    public void setSNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
-        this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
-    }*/
-
-//    public List<SearchNode<T>> getSnListToIncreaseNWDTV() {
-//        return snListToIncreaseNWDTV;
-//    }
-//
-//    public void setSNListToIncreaseNWDTV(List<SearchNode<T>> snListToIncreaseNWDTV) {
-//        this.snListToIncreaseNWDTV = snListToIncreaseNWDTV;
-//    }
-
 
     @Override
     public Result reset(char c) {
