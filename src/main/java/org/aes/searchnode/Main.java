@@ -4,7 +4,7 @@ import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
-import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
+import org.aes.searchnode.dpi.controllers.SearchNodeAPI;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
@@ -27,7 +27,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+        SearchNodeService<String> searchNodeTest = new SearchNodeAPI<>();
 
         searchNodeTest.add("first");
         printSlash();

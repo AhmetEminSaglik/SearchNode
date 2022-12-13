@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * DPI : Development Programing Interface
  */
-public class SearchNodeDPI<T> implements SearchNodeService<T> {
+public class SearchNodeAPI<T> implements SearchNodeService<T> {
     SearchNodeService<T> searchNodeService = new SearchNode<>();
 
     @Override

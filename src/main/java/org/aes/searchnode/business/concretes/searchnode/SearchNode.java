@@ -1,5 +1,6 @@
 package org.aes.searchnode.business.concretes.searchnode;
 
+import lombok.Data;
 import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
@@ -13,13 +14,14 @@ import org.aes.searchnode.entities.concretes.NodeData;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class SearchNode<T> implements SearchNodeService<T> {
 
     private ReachableNextWayDirection<T> reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
-    private NodeData<T> nodeData = new NodeData<T>();
+    private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
-    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
+    private List<SearchNode<T>> snListToIncreaseNWDTV = new ArrayList<>();
 
     SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
 
@@ -63,7 +65,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     public ReachableNextWayDirection<T> getReachableNWD() {
         return reachableNWD;
     }
-
+/*
     public void setReachableNWD(ReachableNextWayDirection<T> reachableNWD) {
         this.reachableNWD = reachableNWD;
     }
@@ -80,7 +82,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
         return pNWDQueue;
     }
 
-    public void setpNWDQueue(PossibilityNextWayDirection<T> pNWDQueue) {
+    public void setPNWDQueue(PossibilityNextWayDirection<T> pNWDQueue) {
         this.pNWDQueue = pNWDQueue;
     }
 
@@ -92,13 +94,13 @@ public class SearchNode<T> implements SearchNodeService<T> {
         this.pcService = pcService;
     }
 
-    public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
+    public List<SearchNode<T>> getSnListToIncreaseNWDTV() {
         return sNListToIncreaseNWDTV;
     }
 
-    public void setsNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
+    public void setSNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
         this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
-    }
+    }*/
 
 
     @Override
