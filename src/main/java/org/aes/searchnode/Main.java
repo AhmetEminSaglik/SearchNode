@@ -39,8 +39,8 @@ public class Main {
 
         searchNodeTest.addAll(list);
         printSlash();
-        System.out.println(searchNodeTest.search("ahmet"));
-        System.out.println(searchNodeTest.search("kerem"));
+//        System.out.println(searchNodeTest.search("ahmet"));
+//        System.out.println(searchNodeTest.search("kerem"));
         printSlash();
         searchNodeTest.getAll().getData().forEach(System.out::println);
         printSlash();
@@ -61,8 +61,8 @@ public class Main {
         } else {
             System.out.println("error : " + dataResult.getMsg());
         }
-        System.out.println(searchNodeTest.search("ah"));
-        System.out.println(searchNodeTest.search("ahmet"));
+//        System.out.println(searchNodeTest.search("ah"));
+//        System.out.println(searchNodeTest.search("ahmet"));
 
 
         System.out.println("SearchNode NWDTV : "+searchNodeTest.getTotalItemNumber());
