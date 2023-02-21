@@ -25,6 +25,27 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ahmeteminsaglik</groupId>
+            <artifactId>database-algorithm-process-entity</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ahmeteminsaglik</groupId>
+            <artifactId>available-algorithm</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ahmeteminsaglik</groupId>
+            <artifactId>test-algorithm</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

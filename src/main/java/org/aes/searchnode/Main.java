@@ -4,7 +4,6 @@ import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
-import org.aes.searchnode.dpi.controllers.SearchNodeAPI;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
@@ -28,7 +27,7 @@ public class Main {
 
     public static void main(String[] args) {
 //        SearchNodeService<String> searchNodeTest = new SearchNodeAPI<>();
-        SearchNode<String> searchNodeTest = new SearchNode<>();
+        SearchNodeService<String> searchNodeTest = new SearchNode<>();
 
         searchNodeTest.add("first");
         printSlash();
@@ -36,7 +35,11 @@ public class Main {
         list.add("ahmet");
         list.add("zeynep");
         list.add("ah");
-
+        searchNodeTest.addAll(list);
+        searchNodeTest.add("version 1");
+        List<String> allData = searchNodeTest.getAll().getData();
+        allData.forEach(System.out::println);
+        System.exit(0);
         searchNodeTest.addAll(list);
         printSlash();
 //        System.out.println(searchNodeTest.search("ahmet"));
@@ -65,15 +68,15 @@ public class Main {
 //        System.out.println(searchNodeTest.search("ahmet"));
 
 
-        System.out.println("SearchNode NWDTV : "+searchNodeTest.getTotalItemNumber());
-        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
+/*        System.out.println("SearchNode NWDTV : " + searchNodeTest.getTotalItemNumber());
+        System.out.println("SearchNode NWDTV : " + searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
                 .getNodeData().getLocationStringAddress());
-        System.out.println("SearchNode NWDTV : "+searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
+        System.out.println("SearchNode NWDTV : " + searchNodeTest.getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('a').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('h').getData()).getData()
 //                .getReachableNWD().getNextSearchNodeWayOfChar(searchNodeTest.getPcService().getPriorityChar('m').getData()).getData()
-                .getNodeData().getNextWayDirectionTotalValue());
+                .getNodeData().getNextWayDirectionTotalValue());*/
 
         System.exit(0);
 
