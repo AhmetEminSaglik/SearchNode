@@ -30,6 +30,8 @@ public class TestingSearchNode implements TestingObjects {
 
     @Override
     public void search(List<String> list) {
+        System.out.println("search yapilicak searchnode  size : "+searchNode.getNodeData().getListDataInfo().size());
+        System.out.println("aranacak kelime listesi size : "+list.size());
         int foundTextNumber = 0;
         int missingTextNumber = 0;
         timeCalculation.start();
