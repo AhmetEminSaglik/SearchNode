@@ -22,7 +22,7 @@ class SpecialDataTestAlgorithm {
     @Order(1)
     void test_SearchNode_SpecialData_ComplexityCalculation_SaveDatabase() {
         TestAlgorithmResult testAlgorithmResult = TestAlgorithmUtility.prepareTestAlgorithm(
-                EnumWordTable.WORD_1_500_000, EnumWordTable.WORD_15_000);
+                EnumWordTable.WORD_3_000_000, EnumWordTable.WORD_3_000_000);
         TestAlgorithmUtility.testWithSearchNode(testAlgorithmResult);
         System.out.println(" \n - - - SearchNode - Special Data ");
         printResult(testAlgorithmResult);
@@ -45,11 +45,13 @@ class SpecialDataTestAlgorithm {
         testAlgorithmResult.setSearchAlgorithmProcess(EnumSearchAlgorithm.HASHMAP);
         //Set word tables
         WordProcessUsedTable wordProcessUsedTable = new WordProcessUsedTable();
-        wordProcessUsedTable.setEnumTotalWordList(EnumWordTable.WORD_1_500_000);
-        wordProcessUsedTable.setEnumSearchWordList(EnumWordTable.WORD_15_000);
+        wordProcessUsedTable.setEnumTotalWordList(EnumWordTable.WORD_3_000_000);
+        wordProcessUsedTable.setEnumSearchWordList(EnumWordTable.WORD_3_000_000);
         // test algorithm
         testAlgorithmResult.setWordProcessUsedTable(wordProcessUsedTable);
         testAlgorithm.test(testAlgorithmResult);
+        System.out.println(" \n - - - Hashmap - Special Data - No Sort - Hashmap Search  ");
+        printResult(testAlgorithmResult);
         // save database the result
 //            DatabaseConnectionSN databaseConnectionSN = new DatabaseConnectionSN();
 //            databaseConnectionSN.save(testAlgorithmResult);
@@ -68,8 +70,8 @@ class SpecialDataTestAlgorithm {
         testAlgorithmResult.setSearchAlgorithmProcess(EnumSearchAlgorithm.BINARY_SEARCH);
         //Set word
         WordProcessUsedTable wordProcessUsedTable = new WordProcessUsedTable();
-        wordProcessUsedTable.setEnumTotalWordList(EnumWordTable.WORD_1_500_000);
-        wordProcessUsedTable.setEnumSearchWordList(EnumWordTable.WORD_15_000);
+        wordProcessUsedTable.setEnumTotalWordList(EnumWordTable.WORD_3_000_000);
+        wordProcessUsedTable.setEnumSearchWordList(EnumWordTable.WORD_3_000_000);
         // test algorithm
         testAlgorithmResult.setWordProcessUsedTable(wordProcessUsedTable);
         testAlgorithm.test(testAlgorithmResult);

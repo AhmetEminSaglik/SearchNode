@@ -8,8 +8,10 @@ import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.comparator.ComparatorNextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -26,6 +28,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
         }
         return new ErrorDataResult<>("Data is not found in " + getClass().getSimpleName());
     }
+
 
     @Override
     public DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode<T> searchNode) {
