@@ -34,7 +34,7 @@ public class TestingArrayList implements TestingObjects {
         int missingTextNumber = 0;
         timeCalculation.start();
         for (String tmpTxt : list) {
-            int result = Arrays.binarySearch(arrayList.toArray(), tmpTxt);
+            int result = Collections.binarySearch(arrayList,tmpTxt);//Arrays.binarySearch(arrayList.toArray(), tmpTxt);
             if (result >= 0) {
                 foundTextNumber++;
             } else {

@@ -33,10 +33,11 @@ public class Main {
         fofSearchData.read();
         new Main().testArraylist(fofAllData, fofSearchData.getReadDataList());
         System.out.println("Arraylis is over");
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
+        System.out.println("------------------------------------------------------------");
         new Main().testSearchNode(fofAllData, fofSearchData.getReadDataList());
         System.out.println("searchNode is over");
-        Thread.sleep(15000);
+//        Thread.sleep(15000);
 
 
 
