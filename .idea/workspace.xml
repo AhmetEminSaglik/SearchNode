@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/business/concretes/searchnode/test/SpecialDataTestAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/business/concretes/searchnode/test/SpecialDataTestAlgorithm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +35,7 @@
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -74,7 +75,7 @@
       <recent name="org.aes.searchnode.business.concretes.searchnode.test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SpecialDataTestAlgorithm.test_SearchNode_SpecialData_ComplexityCalculation_SaveDatabase">
+  <component name="RunManager" selected="JUnit.SpecialDataTestAlgorithm">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.Main" />
       <module name="SearchNode" />
@@ -160,11 +161,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpecialDataTestAlgorithm" />
         <item itemvalue="JUnit.SpecialDataTestAlgorithm.test_SearchNode_SpecialData_ComplexityCalculation_SaveDatabase" />
         <item itemvalue="JUnit.SpecialDataTestAlgorithm.test_HashMap_SpecialData_NoSort_HashMapSearch_ComplexityCalculation_SaveDatabase" />
         <item itemvalue="JUnit.SpecialDataTestAlgorithm.test_Array_SpecialData_MergeSort_BinarySearch_ComplexityCalculation_SaveDatabase" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SpecialDataTestAlgorithm" />
       </list>
     </recent_temporary>
   </component>
@@ -185,6 +186,11 @@
       <workItem from="1677060861413" duration="1977000" />
       <workItem from="1678453596543" duration="239000" />
       <workItem from="1678471293792" duration="784000" />
+      <workItem from="1678629913941" duration="296000" />
+      <workItem from="1678695242393" duration="18000" />
+      <workItem from="1678992790812" duration="3000" />
+      <workItem from="1679038845458" duration="668000" />
+      <workItem from="1679041920731" duration="2480000" />
     </task>
     <servers />
   </component>
