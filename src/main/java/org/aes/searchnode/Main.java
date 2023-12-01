@@ -28,13 +28,25 @@ public class Main {
 
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
-
+        char a = 'a', b = 'b';
+        List<Character> characterList = new ArrayList<>();
+        characterList.add('z');
+        characterList.add('b');
+        characterList.add('a');
+        System.out.println((int) a + "- a");
+//        searchNodeTest.updatePriorityChar(a, b);
+//        searchNodeTest.updatePriorityChar('a', 'z');
+        searchNodeTest.updatePriorityChar(characterList, 'e');
+        searchNodeTest.updatePriorityChar('f', 'z');
         searchNodeTest.add("first");
         printSlash();
         List<String> list = new ArrayList<>();
         list.add("ahmet");
+        list.add("bolu");
+        list.add("ceyhan");
         list.add("zeynep");
-        list.add("ah");
+        list.add("mehmet");
+        list.add("emir");
 
         searchNodeTest.addAll(list);
         printSlash();
@@ -48,6 +60,7 @@ public class Main {
         printSlash();
 
 //        searchNodeTest.printSizeOfAddedItems();
+
 
         List<String> startWith = new ArrayList<>();
         String startWithText = "f";

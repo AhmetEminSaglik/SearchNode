@@ -31,7 +31,7 @@ public class PriorityChar {
     @Override
     public String toString() {
         return "PriorityChar{" +
-                "c=" + c +
+                "char=" + c +
                 ", value=" + value +
                 '}';
     }

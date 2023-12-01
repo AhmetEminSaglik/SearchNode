@@ -133,13 +133,28 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return searchNode.getNodeData().getNextWayDirectionTotalValue();
     }
 
+    @Override
+    public Result resetPriorityChar(char c) {
+        return searchNode.resetPriorityChar(c);
+    }
+
+    @Override
+    public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
+        return searchNode.updatePriorityChar(cList, nextToThisChar);
+    }
+
+    @Override
+    public Result updatePriorityChar(char c, char nextToThisChar) {
+        return searchNode.updatePriorityChar(c, nextToThisChar);
+    }
+
 
     private StringBuilder trimObject(String text) {
         return new StringBuilder(text.trim());
     }
 
     private PriorityChar getPriorityCharOfGivenChar(char c) {
-        DataResult<PriorityChar> drPriorityChar = searchNode.getPcService().getPriorityChar(c);
+        DataResult<PriorityChar> drPriorityChar = searchNode.getPcService().get(c);
         PriorityChar pc = drPriorityChar.getData();
         return pc;
     }

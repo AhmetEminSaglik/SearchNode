@@ -1,13 +1,12 @@
 package org.aes.searchnode.dataaccess.concretes.prioritychar;
 
 import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
+import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
 import org.aes.searchnode.entities.concretes.PriorityChar;
-import org.aes.searchnode.entities.concretes.PriorityCharPool;
 
 import java.util.List;
 
@@ -28,14 +27,17 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
 
     @Override
     public Result add(char c, char nextToThisChar) {
-
-        return null;
+//        PriorityChar pc = priorityCharPoolDAO.getPriorityChar(nextToThisChar);
+        priorityCharPoolDAO.updatePriorityChar(c, nextToThisChar);
+        return new SuccessResult("Priority Char value is updated :" + c);
     }
 
 
     @Override
     public Result add(List<Character> cList, char nextToThisChar) {
-        return null;
+//        PriorityChar pc = priorityCharPoolDAO.getPriorityChar(nextToThisChar);
+        priorityCharPoolDAO.updatePriorityCharList(cList, nextToThisChar);
+        return new SuccessResult("Priority Char List Value is updated :");
     }
 
 

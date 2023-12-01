@@ -48,4 +48,19 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     public long getTotalItemNumber() {
         return searchNodeService.getTotalItemNumber();
     }
+
+    @Override
+    public Result resetPriorityChar(char c) {
+        return searchNodeService.resetPriorityChar(c);
+    }
+
+    @Override
+    public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
+        return searchNodeService.updatePriorityChar(cList, nextToThisChar);
+    }
+
+    @Override
+    public Result updatePriorityChar(char c, char nextToThisChar) {
+        return searchNodeService.updatePriorityChar(c, nextToThisChar);
+    }
 }

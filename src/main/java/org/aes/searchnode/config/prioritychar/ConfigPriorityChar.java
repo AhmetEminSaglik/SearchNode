@@ -6,14 +6,16 @@ import org.aes.searchnode.dataaccess.concretes.prioritychar.PriorityCharDAOImp;
 import org.aes.searchnode.dataaccess.concretes.prioritychar.pool.PriorityCharPoolDAOImp;
 
 public class ConfigPriorityChar {
-    private ConfigPriorityChar() {
-    }
-    public static PriorityCharDAO getPriorityCharDAO() {
-        return new PriorityCharDAOImp(getPriorityCharPoolDAO());
+    static PriorityCharPoolDAO priorityCharPoolDAO = new PriorityCharPoolDAOImp();
+    static PriorityCharDAO priorityCharDAO = new PriorityCharDAOImp(priorityCharPoolDAO);
+
+    public  PriorityCharDAO getPriorityCharDAO() {
+        return priorityCharDAO;
     }
 
-    public static PriorityCharPoolDAO getPriorityCharPoolDAO() {
-        return new PriorityCharPoolDAOImp();
+    public  PriorityCharPoolDAO getPriorityCharPoolDAO() {
+
+        return priorityCharPoolDAO;
     }
 
 

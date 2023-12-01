@@ -101,6 +101,18 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
 
+    public Result updatePriorityChar(char c, char nextToThisChar) {
+        return pcService.add(c, nextToThisChar);
+    }
+
+    public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
+        return pcService.add(cList, nextToThisChar);
+    }
+
+    public Result resetPriorityChar(char c) {
+        return pcService.delete(c);
+    }
+
     @Override
     public String toString() {
         return "SearchNode{" +

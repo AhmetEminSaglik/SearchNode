@@ -11,12 +11,12 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.Comparator;
 import java.util.List;
 
-public interface PriorityCharService {
-    PriorityCharDAO priorityCharDAO = ConfigPriorityChar.getPriorityCharDAO();
-    DataResult<PriorityChar> getPriorityChar(char c);
+public interface PriorityCharService  extends  PriorityCharDAO{
+//    PriorityCharDAO priorityCharDAO = ConfigPriorityChar.getPriorityCharDAO();
+//    DataResult<PriorityChar> getPriorityChar(char c);
 //    Result sort(ComparatorValue<PriorityChar> comparator);
-    Result deletePriorityChar(char c);
-    DataResult<PriorityChar>  updatePriorityChar(char c);
+//    Result deletePriorityChar(char c);
+//    DataResult<PriorityChar>  updatePriorityChar(char c);
 
 
 
