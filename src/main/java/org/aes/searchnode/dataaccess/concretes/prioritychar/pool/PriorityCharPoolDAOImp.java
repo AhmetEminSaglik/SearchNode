@@ -25,10 +25,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
 
     @Override
     public PriorityChar updatePriorityCharList(List<Character> characterList, char nextToThisChar) {
-//        printPriorityPool();
         PriorityChar charToAddNext = getPriorityChar(nextToThisChar);
         double charValueToAddBefore = getNextCharValue(charToAddNext);
-
         double increaseValueOfCharList = calculateIncreaseValueOfCharList(charToAddNext.getValue(), charValueToAddBefore, characterList.size());
         for (int i = 0; i < characterList.size(); i++) {
             list.add(new PriorityChar(characterList.get(i), charToAddNext.getValue() + increaseValueOfCharList * (i + 1)));
@@ -39,7 +37,9 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
     }
 
     private double calculateIncreaseValueOfCharList(double charToAddNext, double charValueToAddBefore, int characterListSize) {
-        return (((charToAddNext + charValueToAddBefore) % 1) + 1) / (characterListSize + 1);
+        charToAddNext %= 1;
+        charValueToAddBefore %= 1;
+        return (((charValueToAddBefore - charToAddNext))) / (characterListSize + 1);
     }
 
     @Override
@@ -70,9 +70,9 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
         return (beforeCharValue + nextCharValue) / 2;
     }
 
-    private double calculateNewPriorityCharListValue(double beforeCharValue, double nextCharValue) {
-        return (beforeCharValue + nextCharValue) / 2;
-    }
+//    private double calculateNewPriorityCharListValue(double beforeCharValue, double nextCharValue) {
+//        return (beforeCharValue + nextCharValue) / 2;
+//    }
 
 
     private void printPriorityPool() {

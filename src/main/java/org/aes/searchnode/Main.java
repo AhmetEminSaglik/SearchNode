@@ -34,10 +34,17 @@ public class Main {
         characterList.add('b');
         characterList.add('a');
         System.out.println((int) a + "- a");
-//        searchNodeTest.updatePriorityChar(a, b);
-//        searchNodeTest.updatePriorityChar('a', 'z');
         searchNodeTest.updatePriorityChar(characterList, 'e');
         searchNodeTest.updatePriorityChar('f', 'z');
+        searchNodeTest.updatePriorityChar('u', 'b');
+        searchNodeTest.updatePriorityChar('g', 'b');
+        searchNodeTest.updatePriorityChar('t', 'b');
+        List<Character> characterList2 = new ArrayList<>();
+        characterList2.add('e');
+        characterList2.add('q');
+        characterList2.add('w');
+//        searchNodeTest.updatePriorityChar(characterList2, 't');
+
         searchNodeTest.add("first");
         printSlash();
         List<String> list = new ArrayList<>();
