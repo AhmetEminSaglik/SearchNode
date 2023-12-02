@@ -34,21 +34,24 @@ public class Main {
         characterList.add('b');
         characterList.add('a');
         System.out.println((int) a + "- a");
+        System.out.println("e "+(int)'e');
         searchNodeTest.updatePriorityChar(characterList, 'e');
-        searchNodeTest.updatePriorityChar('f', 'z');
-        searchNodeTest.updatePriorityChar('u', 'b');
-        searchNodeTest.updatePriorityChar('g', 'b');
-        searchNodeTest.updatePriorityChar('t', 'b');
+        searchNodeTest.updatePriorityChar('e', 'z');
+        searchNodeTest.updatePriorityChar('d', 'b');
+        searchNodeTest.updatePriorityChar('c', 'b');
+        searchNodeTest.updatePriorityChar('k', 'b');
+//        searchNodeTest.resetPriorityChar('e');
         List<Character> characterList2 = new ArrayList<>();
         characterList2.add('e');
         characterList2.add('q');
         characterList2.add('w');
-//        searchNodeTest.updatePriorityChar(characterList2, 't');
+        searchNodeTest.updatePriorityChar(characterList2, 't');
 
         searchNodeTest.add("first");
         printSlash();
         List<String> list = new ArrayList<>();
         list.add("ahmet");
+        list.add("gazete");
         list.add("bolu");
         list.add("ceyhan");
         list.add("zeynep");
@@ -62,9 +65,12 @@ public class Main {
         printSlash();
         searchNodeTest.getAll().getData().forEach(System.out::println);
         printSlash();
-
-        searchNodeTest.getAllReverse().getData().forEach(System.out::println);
+        searchNodeTest.updatePriorityChar('g','a');
+        searchNodeTest.getAll().getData().forEach(System.out::println);
         printSlash();
+
+//        searchNodeTest.getAllReverse().getData().forEach(System.out::println);
+//        printSlash();
 
 //        searchNodeTest.printSizeOfAddedItems();
 
@@ -82,6 +88,7 @@ public class Main {
         }
         System.out.println(searchNodeTest.search("ahmetcan"));
         System.out.println(searchNodeTest.search("ahmetemin"));
+
 
         System.exit(0);
 

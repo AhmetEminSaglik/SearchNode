@@ -1,10 +1,16 @@
 package org.aes.searchnode.dataaccess.concretes.prioritychar.pool;
 
 import org.aes.searchnode.business.concretes.prioritychar.pool.PriorityCharPoolComparator;
+import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.core.utilities.Result;
+import org.aes.searchnode.core.utilities.SuccessDataResult;
+import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.entities.concretes.PriorityCharPool;
 
+import javax.xml.crypto.Data;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -24,49 +30,68 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
     }
 
     @Override
-    public PriorityChar updatePriorityCharList(List<Character> characterList, char nextToThisChar) {
-        PriorityChar charToAddNext = getPriorityChar(nextToThisChar);
-        double charValueToAddBefore = getNextCharValue(charToAddNext);
-        double increaseValueOfCharList = calculateIncreaseValueOfCharList(charToAddNext.getValue(), charValueToAddBefore, characterList.size());
+    public DataResult<List<PriorityChar>> updatePriorityCharList(List<Character> characterList, char nextToThisChar) {
+        for (Character c : characterList) {
+            System.out.println("silinecek karakter :" + c);
+            deletePriorityChar(getPriorityChar(c));
+        }
+        PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
+//        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
+        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
+        double increaseValueOfCharList = calculateIncreaseValueOfCharList(nextPriorityChar.getValue(), charValueToAddBefore, characterList.size());
+        for (Character c : characterList) {
+            System.out.println("List : " + c + " increaseValueOfCharList " + increaseValueOfCharList);
+        }
+        List<PriorityChar> newPcList = new ArrayList<>();
         for (int i = 0; i < characterList.size(); i++) {
-            list.add(new PriorityChar(characterList.get(i), charToAddNext.getValue() + increaseValueOfCharList * (i + 1)));
+            PriorityChar newPc = new PriorityChar(characterList.get(i), nextPriorityChar.getValue() + increaseValueOfCharList * (i + 1));
+            list.add(newPc);
+            newPcList.add(newPc);
         }
         sort(priorityCharPoolComparator);
         printPriorityPool();
-        return null;
+        return new SuccessDataResult<>(newPcList, "Priority chars are updated to list ");
     }
 
     private double calculateIncreaseValueOfCharList(double charToAddNext, double charValueToAddBefore, int characterListSize) {
-        charToAddNext %= 1;
-        charValueToAddBefore %= 1;
         return (((charValueToAddBefore - charToAddNext))) / (characterListSize + 1);
     }
 
     @Override
     public void sort(Comparator<PriorityChar> comparator) {
+        printPriorityPool();
         list.sort(comparator);
     }
 
     @Override
-    public void deletePriorityChar(char c) {
-
+    public DataResult deletePriorityChar(PriorityChar pc) {
+        list.remove(pc);
+        printPriorityPool();
+        return new SuccessDataResult(getPriorityChar(pc.getChar()), "Priority char is ");
     }
 
+
     @Override
-    public void updatePriorityChar(char c, char nextToThisChar) {
-//        printPriorityPool();
-        PriorityChar charToAddNext = getPriorityChar(nextToThisChar);
-        double charValueToAddBefore = getNextCharValue(charToAddNext);
-//        System.out.println("updatePriorityChar : ");
-//        System.out.println("charToAddNext.getValue() : " + charToAddNext.getValue());
-//        System.out.println(" charValueToAddBefore : " + charValueToAddBefore);
-        double newCharValue = calculateNewPriorityCharValue(charToAddNext.getValue(), charValueToAddBefore);
-        list.add(new PriorityChar(c, newCharValue));
+    public DataResult<PriorityChar> updatePriorityChar(char c, char nextToThisChar) {
+        deletePriorityChar(getPriorityChar(c));
+        PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
+        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
+        double newCharValue = calculateNewPriorityCharValue(nextPriorityChar.getValue(), charValueToAddBefore);
+        PriorityChar newPc = new PriorityChar(c, newCharValue);
+        list.add(newPc);
         sort(priorityCharPoolComparator);
         printPriorityPool();
+        return new SuccessDataResult<PriorityChar>(newPc, "Prioritychar is updated");
     }
 
     private double calculateNewPriorityCharValue(double beforeCharValue, double nextCharValue) {
+        System.out.println("beforeCharValue: " + beforeCharValue);
+//        System.out.println("nextCharValue: "+nextCharValue);
+//        beforeCharValue%=1;
+//        nextCharValue%=1;
+//        System.out.println("beforeCharValue: "+beforeCharValue);
+//        System.out.println("nextCharValue: "+nextCharValue);
+//        System.exit(0);
         return (beforeCharValue + nextCharValue) / 2;
     }
 
@@ -76,6 +101,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
 
 
     private void printPriorityPool() {
+        if (list.size() == 0)
+            return;
 //        sort(priorityCharPoolComparator);
         System.out.println("----------> Priority Char Pool List Size :" + list.size());
         for (int i = 0; i < list.size(); i++) {
