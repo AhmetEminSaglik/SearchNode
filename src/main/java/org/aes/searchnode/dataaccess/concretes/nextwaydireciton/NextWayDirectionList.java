@@ -21,7 +21,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     public DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
-                return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retreived");
+                return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retrieved");
             }
         }
         return new ErrorDataResult<>("Data is not found in " + getClass().getSimpleName());

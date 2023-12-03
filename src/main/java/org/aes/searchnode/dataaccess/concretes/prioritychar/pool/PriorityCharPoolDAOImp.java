@@ -1,11 +1,13 @@
 package org.aes.searchnode.dataaccess.concretes.prioritychar.pool;
 
+import org.aes.searchnode.business.abstracts.prioritychar.NotifyPriorityCharIsUpdated;
 import org.aes.searchnode.business.concretes.prioritychar.pool.PriorityCharPoolComparator;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
+import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.entities.concretes.PriorityCharPool;
 
@@ -13,9 +15,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  provide a connection
+public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriorityCharIsUpdated { //DAO  provide a connection
     List<PriorityChar> list = PriorityCharPool.getList();
     PriorityCharPoolComparator priorityCharPoolComparator = new PriorityCharPoolComparator();
+    List<NextWayDirectionRequiredData<?>> listToNotifyAfterUpdatePriorityChar = new ArrayList<>();
 
     @Override
     public PriorityChar getPriorityChar(char c) {
@@ -47,6 +50,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
             newPcList.add(newPc);
         }
         sort(priorityCharPoolComparator);
+        updatePriorityChar();
         printPriorityPool();
         return new SuccessDataResult<>(newPcList, "Priority chars are updated to list ");
     }
@@ -78,8 +82,14 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
         PriorityChar newPc = new PriorityChar(c, newCharValue);
         list.add(newPc);
         sort(priorityCharPoolComparator);
+        updatePriorityChar();
         printPriorityPool();
         return new SuccessDataResult<PriorityChar>(newPc, "Priority Char is updated");
+    }
+
+    @Override
+    public void addToListToBeNotifedWhenPriorityCharIsUpdated(NextWayDirectionRequiredData<?> nextWayDirectionRequiredData) {
+        listToNotifyAfterUpdatePriorityChar.add(nextWayDirectionRequiredData);
     }
 
     private double calculateNewPriorityCharValue(double beforeCharValue, double nextCharValue) {
@@ -117,6 +127,14 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
             }
         }
         return Math.floor(pchar.getValue() + 1);
+    }
+
+    @Override
+    public void updatePriorityChar() {
+        listToNotifyAfterUpdatePriorityChar.forEach(e -> e.updatePriorityChar());
+//        for(int i=0;i<listToNotifyAfterUpdatePriorityChar.size();i++){
+//            listToNotifyAfterUpdatePriorityChar.get(i).updatePriorityChar();
+//        }
     }
 //    @Override
 //    public void updatePriorityChar(char c) {

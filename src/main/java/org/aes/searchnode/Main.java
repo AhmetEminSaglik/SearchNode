@@ -101,8 +101,8 @@ public class Main {
         itemList.add("zeynep");
         itemList.add("çene");
 //        searchNodeTest.updatePriorityChar('a', 'z');
-        searchNodeTest.updatePriorityChar('ç', 'c');
         searchNodeTest.addAll(itemList);
+        searchNodeTest.updatePriorityChar('ç', 'c');
         List<String> list = searchNodeTest.getAll().getData();
 
         for (String s : list) {
