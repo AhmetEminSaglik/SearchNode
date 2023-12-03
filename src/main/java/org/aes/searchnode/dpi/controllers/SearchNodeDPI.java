@@ -55,6 +55,11 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result resetAllPriorityChar() {
+        return searchNodeService.resetAllPriorityChar();
+    }
+
+    @Override
     public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
         return searchNodeService.updatePriorityChar(cList, nextToThisChar);
     }

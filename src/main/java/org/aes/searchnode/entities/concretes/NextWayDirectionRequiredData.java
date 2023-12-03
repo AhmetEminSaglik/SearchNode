@@ -43,13 +43,16 @@ public class NextWayDirectionRequiredData<T> implements NotifyPriorityCharIsUpda
 
     @Override
     public void updatePriorityChar() {
-        if (priorityCharPoolDAO.getPriorityChar(priorityChar.getChar()).getValue() % 1 != 0) {
-            System.out.println("priorityChar Update Notify  CALISTI ");
-            System.out.println("BEFORE UPDATE : " + priorityChar);
-
+//        if (priorityCharPoolDAO.getPriorityChar(priorityChar.getChar()).getValue() % 1 != 0) {
+//            System.out.println("priorityChar Update Notify  CALISTI ");
+//            System.out.println("BEFORE UPDATE : " + priorityChar);
+//
             this.priorityChar = priorityCharPoolDAO.getPriorityChar(priorityChar.getChar());
-            System.out.println("AFTER UPDATE : " + priorityChar);
-        }
+//            System.out.println("AFTER UPDATE : " + priorityChar);
+//        } else  if(priorityChar.getChar()=='z'){
+//            System.out.println(" NOTIFY:E IF DEN GIRMEYENLER priorityChar : " + priorityChar);
+//        }
     }
-
 }
+
+

@@ -26,6 +26,14 @@ public class Main {
         System.out.println("-------------------------------------------");
     }
 
+    static void printSearchNodeList(SearchNodeDPI<String> searchNodeTest) {
+        System.out.println("----------------------------");
+        List<String> list = searchNodeTest.getAll().getData();
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
         /*char a = 'a', b = 'b';
@@ -107,14 +115,28 @@ public class Main {
         characterList.add('z');
         characterList.add('a');
         searchNodeTest.updatePriorityChar(characterList, 'ç');
-        searchNodeTest.updatePriorityChar('ç', 'k');
+        searchNodeTest.updatePriorityChar('z', 'c');
         searchNodeTest.addAll(itemList);
-//        searchNodeTest.updatePriorityChar('ç', 'c');
+        searchNodeTest.updatePriorityChar('ç', 'c');
+//        searchNodeTest.resetPriorityChar();
+
+//        searchNodeTest.resetPriorityChar('z');
+//        searchNodeTest.resetPriorityChar('z');
+        printSearchNodeList(searchNodeTest);
+        searchNodeTest.resetAllPriorityChar();
+        printSearchNodeList(searchNodeTest);
+
+//        searchNodeTest.resetPriorityChar('z');
+//
+//        printSearchNodeList(searchNodeTest);
+
+    /*
         List<String> list = searchNodeTest.getAll().getData();
 
         for (String s : list) {
             System.out.println(s);
         }
+*/
 
        /* TimeCalculation timeCalculation = new TimeCalculation();
         timeCalculation.start();

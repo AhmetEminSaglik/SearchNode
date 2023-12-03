@@ -4,6 +4,7 @@ import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.config.prioritychar.ConfigPriorityChar;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
+import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 
@@ -28,8 +29,13 @@ public class PriorityCharManager implements PriorityCharService {
     }
 
     @Override
-    public Result delete(char c) {
-        return priorityCharDAO.delete(c);
+    public Result remove(char c) {
+        return priorityCharDAO.remove(c);
+    }
+
+    @Override
+    public Result removeAll() {
+       return priorityCharDAO.removeAll();
     }
 
     @Override

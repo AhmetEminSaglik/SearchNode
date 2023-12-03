@@ -15,7 +15,9 @@ public interface PriorityCharPoolDAO {
 
     void sort(Comparator<PriorityChar> comparator);
 
-    DataResult deletePriorityChar(PriorityChar pc);
+    DataResult removePriorityChar(char c);
+
+    Result removeAll();
 //    void deletePriorityChar(PriorityChar pc);
 
     DataResult<PriorityChar> updatePriorityChar(char c, char nextToThisChar);

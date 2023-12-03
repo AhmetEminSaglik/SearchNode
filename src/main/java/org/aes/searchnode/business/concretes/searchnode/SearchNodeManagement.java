@@ -139,6 +139,11 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result resetAllPriorityChar() {
+        return searchNode.resetAllPriorityChar();
+    }
+
+    @Override
     public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
         return searchNode.updatePriorityChar(cList, nextToThisChar);
     }

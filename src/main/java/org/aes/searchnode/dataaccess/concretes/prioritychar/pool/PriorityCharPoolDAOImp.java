@@ -5,7 +5,6 @@ import org.aes.searchnode.business.concretes.prioritychar.pool.PriorityCharPoolC
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
-import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
@@ -34,7 +33,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     public DataResult<List<PriorityChar>> updatePriorityCharList(List<Character> characterList, char nextToThisChar) {
         for (Character c : characterList) {
             System.out.println("silinecek karakter :" + c);
-            deletePriorityChar(getPriorityChar(c));
+            removePriorityChar(c);
         }
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
 //        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
@@ -66,16 +65,27 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     }
 
     @Override
-    public DataResult deletePriorityChar(PriorityChar pc) {
-        list.remove(pc);
+    public DataResult removePriorityChar(char c) {
+        System.out.println((int)c+" :"+c+"  > SILINECEK KARAKTER : "+getPriorityChar(c));
+        list.remove(getPriorityChar(c));
         printPriorityPool();
-        return new SuccessDataResult(getPriorityChar(pc.getChar()), "Priority char is ");
+        System.out.println("RESETLENMIS OLMALI  : "+getPriorityChar(c));
+
+        updatePriorityChar();
+        return new SuccessDataResult(getPriorityChar(c), "Priority char is removed");
+    }
+
+    @Override
+    public Result removeAll() {
+        list.clear();
+        updatePriorityChar();
+        return new SuccessDataResult("Priority char is removed");
     }
 
 
     @Override
     public DataResult<PriorityChar> updatePriorityChar(char c, char nextToThisChar) {
-        deletePriorityChar(getPriorityChar(c));
+        removePriorityChar(c);
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
         double charValueToAddBefore = getNextCharValue(nextPriorityChar);
         double newCharValue = calculateNewPriorityCharValue(nextPriorityChar.getValue(), charValueToAddBefore);

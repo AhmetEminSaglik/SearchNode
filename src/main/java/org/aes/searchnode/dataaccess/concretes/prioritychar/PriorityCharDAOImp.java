@@ -42,8 +42,14 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
 
 
     @Override
-    public Result delete(char c) {
-        return null;
+    public Result remove(char c) {
+        priorityCharPoolDAO.removePriorityChar(c);
+        return new SuccessResult();
+    }
+
+    @Override
+    public Result removeAll() {
+        return priorityCharPoolDAO.removeAll();
     }
 
     @Override
