@@ -18,7 +18,6 @@ public class NextWayDirectionRequiredData<T> implements NotifyPriorityCharIsUpda
     }
 
     public PriorityChar getPriorityChar() {
-        System.out.println(" NextWayDirectionRequiredData > priorityChar : "+priorityChar);
         return priorityChar;/*new PriorityChar(priorityChar.getChar(), priorityChar.getValue());*/
     }
 

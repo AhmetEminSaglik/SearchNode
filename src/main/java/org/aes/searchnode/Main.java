@@ -99,10 +99,17 @@ public class Main {
         itemList.add("celal");
         itemList.add("çanakkale");
         itemList.add("zeynep");
+        itemList.add("kayseri");
         itemList.add("çene");
 //        searchNodeTest.updatePriorityChar('a', 'z');
+        List<Character> characterList = new ArrayList<>();
+        characterList.add('c');
+        characterList.add('z');
+        characterList.add('a');
+        searchNodeTest.updatePriorityChar(characterList, 'ç');
+        searchNodeTest.updatePriorityChar('ç', 'k');
         searchNodeTest.addAll(itemList);
-        searchNodeTest.updatePriorityChar('ç', 'c');
+//        searchNodeTest.updatePriorityChar('ç', 'c');
         List<String> list = searchNodeTest.getAll().getData();
 
         for (String s : list) {
