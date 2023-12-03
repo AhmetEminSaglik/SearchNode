@@ -9,9 +9,7 @@ import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoo
 import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.entities.concretes.PriorityCharPool;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -81,7 +79,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO { //DAO  prov
         list.add(newPc);
         sort(priorityCharPoolComparator);
         printPriorityPool();
-        return new SuccessDataResult<PriorityChar>(newPc, "Prioritychar is updated");
+        return new SuccessDataResult<PriorityChar>(newPc, "Priority Char is updated");
     }
 
     private double calculateNewPriorityCharValue(double beforeCharValue, double nextCharValue) {

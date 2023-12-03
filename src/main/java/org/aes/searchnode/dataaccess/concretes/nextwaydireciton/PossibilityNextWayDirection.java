@@ -20,7 +20,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
     }
 
     @Override
-    public DataResult<SearchNode<T>> createNextWayChar(PriorityChar pc) throws Exception /*throws Exception*/ {
+    public DataResult<SearchNode<T>> createNextWayPriorityChar(PriorityChar pc) throws Exception /*throws Exception*/ {
         if (pcForFirstSNToConnectRootSN == null) {
             pcForFirstSNToConnectRootSN = pc;
         }

@@ -28,10 +28,11 @@ public class Main {
 
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
-        char a = 'a', b = 'b';
+        /*char a = 'a', b = 'b';
         List<Character> characterList = new ArrayList<>();
         characterList.add('z');
         characterList.add('b');
+        characterList.add('a');
         characterList.add('a');
         System.out.println((int) a + "- a");
         System.out.println("e "+(int)'e');
@@ -90,7 +91,23 @@ public class Main {
         System.out.println(searchNodeTest.search("ahmetemin"));
 
 
-        System.exit(0);
+        System.exit(0);*/
+
+
+        List<String> itemList = new ArrayList<>();
+        itemList.add("ahmet");
+        itemList.add("celal");
+        itemList.add("çanakkale");
+        itemList.add("zeynep");
+        itemList.add("çene");
+//        searchNodeTest.updatePriorityChar('a', 'z');
+        searchNodeTest.updatePriorityChar('ç', 'c');
+        searchNodeTest.addAll(itemList);
+        List<String> list = searchNodeTest.getAll().getData();
+
+        for (String s : list) {
+            System.out.println(s);
+        }
 
        /* TimeCalculation timeCalculation = new TimeCalculation();
         timeCalculation.start();

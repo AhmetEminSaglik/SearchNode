@@ -162,7 +162,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     private List<T> getAllData(SearchNode<T> searchNode) {
         List<T> list = new ArrayList<>();
         movedLastSearchNodeConnection = searchNode;
-        StringBuilder stringBuilder = new StringBuilder();
+//        StringBuilder stringBuilder = new StringBuilder();
         addAllDataToList(list, searchNode);
         return list;
     }
@@ -205,7 +205,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     private void movePossibilityNWD(Object value, StringBuilder stringBuilder) throws Exception {
         for (int i = 0; i < stringBuilder.length(); i++) {
             PriorityChar pc = getPriorityCharOfGivenChar(stringBuilder.charAt(i));
-            searchNode.getpNWDQueue().createNextWayChar(pc);
+            searchNode.getpNWDQueue().createNextWayPriorityChar(pc);
         }
     }
 

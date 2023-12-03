@@ -5,5 +5,5 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 
 public interface IPreProcessesToCreateReachableNWD <T>{
-    DataResult<SearchNode<T>> createNextWayChar(PriorityChar pc) throws Exception;
+    DataResult<SearchNode<T>> createNextWayPriorityChar(PriorityChar pc) throws Exception;
 }
