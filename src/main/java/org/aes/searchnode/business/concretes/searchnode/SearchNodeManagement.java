@@ -129,7 +129,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public long getTotalItemNumber() {
+    public int getTotalItemNumber() {
         return searchNode.getNodeData().getNextWayDirectionTotalValue();
     }
 

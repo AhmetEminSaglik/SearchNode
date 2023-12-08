@@ -19,7 +19,7 @@ public interface SearchNodeService<T> {
 
     DataResult<List<T>> getAllStartWith(String text);
 
-    long getTotalItemNumber();
+    int getTotalItemNumber();
     Result resetPriorityChar(char c);
     Result resetAllPriorityChars();
     Result updatePriorityChar(List<Character> cList, char nextToThisChar);

@@ -45,7 +45,7 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public long getTotalItemNumber() {
+    public int getTotalItemNumber() {
         return searchNodeService.getTotalItemNumber();
     }
 

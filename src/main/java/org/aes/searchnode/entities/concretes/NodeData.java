@@ -3,10 +3,11 @@ package org.aes.searchnode.entities.concretes;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeData <T>{
+public class NodeData<T> {
     public static int NEW_VALUE_IS_ADDED = 1;
     public static int NUMBER_OF_VALUE_IS_INCREASED = 2;
     private int deep;
@@ -14,7 +15,7 @@ public class NodeData <T>{
 
     private List<DataInfo<T>> listDataInfo = new ArrayList<>();
     //    private DataInfo dataInfo;
-    private long nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
+    private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
     private String locationStringAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public int getDeep() {
@@ -79,7 +80,7 @@ public class NodeData <T>{
         this.data = data;
     }*/
 
-    public long getNextDirectionsTotalValueNumber() {
+    public int getNextDirectionsTotalValueNumber() {
         return nextDirectionsTotalValueNumber;
     }
 
@@ -108,7 +109,7 @@ public class NodeData <T>{
      *
      * @return int This returns how many data is existed in next way directions.
      */
-    public long getNextWayDirectionTotalValue() {
+    public int getNextWayDirectionTotalValue() {
         return nextDirectionsTotalValueNumber;
     }
 
