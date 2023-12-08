@@ -8,15 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/prioritychar/PriorityCharManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/prioritychar/PriorityCharManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/pool/PriorityCharPoolDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/pool/PriorityCharPoolDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/pool/PriorityCharPoolDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/pool/PriorityCharPoolDAOImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dpi/controllers/SearchNodeDPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dpi/controllers/SearchNodeDPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/concretes/NextWayDirectionRequiredData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/concretes/NextWayDirectionRequiredData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +47,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "work/THESIS-PriorityChar-Update-Notify",
-    "last_opened_file_path": "D:/projects/intelijidea/SearchNode-All/SearchNode/src/main/java/org/aes/searchnode",
+    "git-widget-placeholder": "work/THESIS-V1",
+    "last_opened_file_path": "D:/github/myProjects/githubtanCekilenler/YTM_Dersi_TasarimDersi_Kodlamalari",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
@@ -109,6 +103,7 @@
       <workItem from="1670103114935" duration="1212000" />
       <workItem from="1670145276374" duration="1646000" />
       <workItem from="1689257982907" duration="1683000" />
+      <workItem from="1701950852727" duration="3000" />
     </task>
     <servers />
   </component>

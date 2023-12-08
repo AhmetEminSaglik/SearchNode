@@ -36,6 +36,7 @@ public class Main {
 
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+
         /*char a = 'a', b = 'b';
         List<Character> characterList = new ArrayList<>();
         characterList.add('z');
@@ -123,9 +124,9 @@ public class Main {
 //        searchNodeTest.resetPriorityChar('z');
 //        searchNodeTest.resetPriorityChar('z');
         printSearchNodeList(searchNodeTest);
-        searchNodeTest.resetAllPriorityChar();
+        searchNodeTest.resetAllPriorityChars();
         printSearchNodeList(searchNodeTest);
-
+//searchNodeTest.getAllReverse()
 //        searchNodeTest.resetPriorityChar('z');
 //
 //        printSearchNodeList(searchNodeTest);

@@ -16,7 +16,7 @@ import java.util.List;
 public class SearchNode<T> implements SearchNodeService<T> {
 
     private ReachableNextWayDirection<T> reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
-    private NodeData<T> nodeData = new NodeData<T>();
+    private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
@@ -115,7 +115,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public Result resetAllPriorityChar() {
+    public Result resetAllPriorityChars() {
         return pcService.removeAll();
     }
 

@@ -21,7 +21,7 @@ public interface SearchNodeService<T> {
 
     long getTotalItemNumber();
     Result resetPriorityChar(char c);
-    Result resetAllPriorityChar();
+    Result resetAllPriorityChars();
     Result updatePriorityChar(List<Character> cList, char nextToThisChar);
     Result updatePriorityChar(char c, char nextToThisChar);
 //    void updatePriorityChar();
