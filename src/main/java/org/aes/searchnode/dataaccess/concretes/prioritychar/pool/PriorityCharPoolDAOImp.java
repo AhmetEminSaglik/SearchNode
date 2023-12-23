@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriorityCharIsUpdated { //DAO  provide a connection
+public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriorityCharIsUpdated {
     List<PriorityChar> list = PriorityCharPool.getList();
     PriorityCharPoolComparator priorityCharPoolComparator = new PriorityCharPoolComparator();
     List<NextWayDirectionRequiredData<?>> listToNotifyAfterUpdatePriorityChar = new ArrayList<>();
@@ -36,7 +36,6 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             removePriorityChar(c);
         }
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
-//        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
         double charValueToAddBefore = getNextCharValue(nextPriorityChar);
         double increaseValueOfCharList = calculateIncreaseValueOfCharList(nextPriorityChar.getValue(), charValueToAddBefore, characterList.size());
         for (Character c : characterList) {
@@ -49,7 +48,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             newPcList.add(newPc);
         }
         sort(priorityCharPoolComparator);
-        updatePriorityChar();
+        notifyPriorityCharIsUpdated();
         printPriorityPool();
         return new SuccessDataResult<>(newPcList, "Priority chars are updated to list ");
     }
@@ -66,19 +65,19 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     @Override
     public DataResult removePriorityChar(char c) {
-        System.out.println((int)c+" :"+c+"  > SILINECEK KARAKTER : "+getPriorityChar(c));
+        System.out.println((int) c + " :" + c + "  > SILINECEK KARAKTER : " + getPriorityChar(c));
         list.remove(getPriorityChar(c));
         printPriorityPool();
-        System.out.println("RESETLENMIS OLMALI  : "+getPriorityChar(c));
+        System.out.println("RESETLENMIS OLMALI  : " + getPriorityChar(c));
 
-        updatePriorityChar();
+        notifyPriorityCharIsUpdated();
         return new SuccessDataResult(getPriorityChar(c), "Priority char is removed");
     }
 
     @Override
     public Result removeAll() {
         list.clear();
-        updatePriorityChar();
+        notifyPriorityCharIsUpdated();
         return new SuccessDataResult("Priority char is removed");
     }
 
@@ -92,7 +91,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         PriorityChar newPc = new PriorityChar(c, newCharValue);
         list.add(newPc);
         sort(priorityCharPoolComparator);
-        updatePriorityChar();
+        notifyPriorityCharIsUpdated();
         printPriorityPool();
         return new SuccessDataResult<PriorityChar>(newPc, "Priority Char is updated");
     }
@@ -140,14 +139,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     }
 
     @Override
-    public void updatePriorityChar() {
-        listToNotifyAfterUpdatePriorityChar.forEach(e -> e.updatePriorityChar());
-//        for(int i=0;i<listToNotifyAfterUpdatePriorityChar.size();i++){
-//            listToNotifyAfterUpdatePriorityChar.get(i).updatePriorityChar();
-//        }
+    public void notifyPriorityCharIsUpdated() {
+        listToNotifyAfterUpdatePriorityChar.forEach
+                (e -> e.notifyPriorityCharIsUpdated());
     }
-//    @Override
-//    public void updatePriorityChar(char c) {
-//
-//    }
 }

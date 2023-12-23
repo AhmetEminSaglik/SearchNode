@@ -9,18 +9,21 @@ import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
 import org.aes.searchnode.testing.TimeCalculation;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.WriteFileService;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Main {
 
-    static final FileFundamental exampleDataFile = new FileFundamental()
-            .setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/")
-            .setFileName("Word-Data-1_398_449")
-            .setFileExtension(".txt");
+    static final FileFundamental exampleDataFile = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/").setFileName("Word-Data-1_398_449").setFileExtension(".txt");
 
     static void printSlash() {
         System.out.println("-------------------------------------------");
@@ -34,10 +37,50 @@ public class Main {
         }
     }
 
+    private static String updateTextNotBelongsToEnglishChars(String text) {
+        StringBuilder sb = new StringBuilder(text);
+        for (int i = 0; i < sb.length(); i++) {
+            char c = sb.charAt(i);
+            if (!(c > 97 && c < 122 || c > 65 && c < 90)) {
+                sb.setCharAt(i, ' ');
+            }
+        }
+
+        return sb.toString().replace("  "," ");
+    }
+
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+        FileFundamental ffRead = new FileFundamental().setFileName("longString").setPath("src/main/java/org/aes/searchnode/").setFileExtension(".txt");
+        FileFundamental ffWrite = new FileFundamental().setFileName("Uniqe-Data").setPath("src/main/java/org/aes/searchnode/").setFileExtension(".txt");
+        ReadFileService readFileService = new ReadFileManagement(ffRead);
+        WriteFileService writeFileService = new WriteFileManagement(ffWrite);
+        FileOperationFacade fof = new FileOperationFacade(writeFileService, readFileService);
+        readFileService.read();
+        List<String> dataList = fof.getReadDataList();
+        for (int i = 0; i < dataList.size(); i++) {
+            String text = dataList.get(i);
+            text = updateTextNotBelongsToEnglishChars(text);
+//            System.out.println("AFTER text : " + text);
+            String[] dataArr = text.split(" ");
+            Arrays.stream(dataArr).forEach(e -> {
+                e = e.trim();
+                if (e.length() >= 2) {
+                    System.out.println("eklenecek e  :" + e);
+                    searchNodeTest.add(e);
+                }
+            });
+            searchNodeTest.addAll(Arrays.asList(dataArr));
+        }
+        searchNodeTest.getAll().getData().forEach(e ->
+                writeFileService.append(e));
+        System.out.println("searchNode total data :" + searchNodeTest.getTotalItemNumber());
+//        String text="";
+//        String[] arr = text.split(" ");
+        System.out.println("arr size : " + fof.getReadDataList().size());
 
-        /*char a = 'a', b = 'b';
+        System.exit(0);
+        /*  *//*char a = 'a', b = 'b';
         List<Character> characterList = new ArrayList<>();
         characterList.add('z');
         characterList.add('b');
@@ -100,7 +143,7 @@ public class Main {
         System.out.println(searchNodeTest.search("ahmetemin"));
 
 
-        System.exit(0);*/
+        System.exit(0);*//*
 
 
         List<String> itemList = new ArrayList<>();
@@ -131,21 +174,21 @@ public class Main {
 //
 //        printSearchNodeList(searchNodeTest);
 
-    /*
+    *//*
         List<String> list = searchNodeTest.getAll().getData();
 
         for (String s : list) {
             System.out.println(s);
         }
-*/
+*//*
 
-       /* TimeCalculation timeCalculation = new TimeCalculation();
+         *//* TimeCalculation timeCalculation = new TimeCalculation();
         timeCalculation.start();
         FileFundamental fileFund = new FileFundamental().setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/").setFileName("Word-Data-1_398_449").setFileExtension(".txt");
         FileOperationFacade fileOperationFacade = new FileOperationFacade(new WriteFileManagement(), new ReadFileManagement(fileFund));
         fileOperationFacade.read();
         timeCalculation.stop();
-        timeCalculation.printElapsedTime();*/
+        timeCalculation.printElapsedTime();*//*
 
         //bulunan txt sayisi : filePaths.size() : 40881
 //        FakeDataCreation fakeDataCreation = new FakeDataCreation();
@@ -165,7 +208,7 @@ public class Main {
 
 //        new Main().testArraylist(fofAllData, fofSearchData.getReadDataList());
 //        new Main().testSearchNode(fofAllData, fofSearchData.getReadDataList());
-
+*/
     }
 
     void testArraylist(FileOperationFacade fofAllData, List<String> listToSearch) {

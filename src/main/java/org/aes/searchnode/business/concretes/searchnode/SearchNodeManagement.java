@@ -89,15 +89,15 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             if (drReachablNWD.isSuccess()) {
                 DataResult<DataInfo<T>> drDataInfo = drReachablNWD.getData().getNodeData().search(text);
                 if (drDataInfo.isSuccess()) {
-                    return new SuccessDataResult<>(drDataInfo.getData(), "Data is found :" + drDataInfo.getData().getValue());
+                    return new SuccessDataResult<>(drDataInfo.getData(),
+                            "Data is found :" + drDataInfo.getData().getValue());
                 }
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             } else {
-                return new ErrorDataResult<>("Requested Data : " + text + " /1/ Data is not found");
+                return new ErrorDataResult<>("Requested Data : " + text + " --> Data is not found");
             }
         }
-        return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
-
+        return new ErrorDataResult<>("Requested Data : " + text + " --> Data is not found");
     }
 
     @Override

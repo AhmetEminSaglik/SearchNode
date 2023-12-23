@@ -9,7 +9,7 @@ import org.aes.searchnode.entities.concretes.DataInfo;
 import java.util.List;
 
 /**
- * DPI : Development Programing Interface
+ * DPI : Developer Programing Interface
  */
 public class SearchNodeDPI<T> implements SearchNodeService<T> {
     SearchNodeService<T> searchNodeService = new SearchNode<>();

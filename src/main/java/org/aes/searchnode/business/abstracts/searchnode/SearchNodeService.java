@@ -8,22 +8,14 @@ import java.util.List;
 
 public interface SearchNodeService<T> {
     DataResult<DataInfo<T>> search(String text);
-
     Result add(T t);
-
     Result addAll(List<T> list);
-
     DataResult<List<T>> getAll();
-
     DataResult<List<T>> getAllReverse();
-
     DataResult<List<T>> getAllStartWith(String text);
-
     int getTotalItemNumber();
     Result resetPriorityChar(char c);
     Result resetAllPriorityChars();
     Result updatePriorityChar(List<Character> cList, char nextToThisChar);
     Result updatePriorityChar(char c, char nextToThisChar);
-//    void updatePriorityChar();
-
 }
