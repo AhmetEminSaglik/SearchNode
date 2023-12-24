@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dpi/controllers/SearchNodeDPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dpi/controllers/SearchNodeDPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,22 +38,25 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work/THESIS-update-function-names",
-    "last_opened_file_path": "D:/github/myProjects/githubtanCekilenler/YTM_Dersi_TasarimDersi_Kodlamalari",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;work/THESIS-Unit-Test&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ahmet/OneDrive/Desktop/test/School-Mobil-App/Backend&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.57701147&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\intelijidea\SearchNode-All\SearchNode\src\main\java\org\aes\searchnode" />
@@ -160,6 +158,13 @@
         <item itemvalue="JUnit.SearchNodeDPITest.updatePriorityCharListBeforeAddingItemToSearchNodeTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-15.0.2-corretto-15.0.2-249ae16d76d6-a3a272c2" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
