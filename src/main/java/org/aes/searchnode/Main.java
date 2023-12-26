@@ -81,6 +81,9 @@ public class Main {
         addData("al");
         addData("alim");
         addData("ali");
+        String searchedData = searchNodeTest.search("ali").getData().toString();
+        log.info("searchedData : "+searchedData);
+        System.exit(0);
 //        log.info("`alime` eklendi ");
 //        searchNodeTest.add("alime");
 //        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());

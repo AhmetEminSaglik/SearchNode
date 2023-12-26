@@ -26,4 +26,5 @@ objenin fonksiyonuna  custom obje'nin class'i ile istenen  field'leri gondererek
             a-) PossibilityNextWayDirection  > nodeData.increaseNextDirectionsExistingTotalDataNumber(); --> bu sinifta deger azaltma islemi yapilacak.
         2-) Milyonlarca veri setinin icinde 1 milyon verinin arama islemi yapilacak, time ve space complexityleri hesaplanacak.
         3-) Merge Sort ve binary Search kullanilacak.
+            a-) NextWayDirectionList > getNextSearchNodeWayOfChar(Pc) fonksiyonunda, linear search yaninda bir de binary search implement edilmeli
 
