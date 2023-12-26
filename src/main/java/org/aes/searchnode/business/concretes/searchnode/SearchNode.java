@@ -38,6 +38,16 @@ public class SearchNode<T> implements SearchNodeService<T> {
         return searchNodeService.addAll(list);
     }
 
+    @Override
+    public Result remove(T t) {
+        return searchNodeService.remove(t);
+    }
+
+    @Override
+    public Result removeAll(List<T> list) {
+        return searchNodeService.removeAll(list);
+    }
+
 
     @Override
     public DataResult<List<T>> getAll() {

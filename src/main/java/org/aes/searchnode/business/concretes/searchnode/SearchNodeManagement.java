@@ -35,6 +35,60 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result remove(T t) {
+//        clearNWDTVList();
+        Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
+        StringBuilder stringValue = new StringBuilder(value.toString().trim());
+        stringValue = trimObject(stringValue.toString());
+        if (stringValue.toString().equals("")) {
+            return new ErrorResult("Empty or Space can not be deleted in SearchNode");
+        } else {
+            movedLastSearchNodeConnection = searchNode;
+//            if(movedLastSearchNodeConnection.getTotalItemNumber()==1){
+//
+//            }
+            try {
+                for (int i = 0; i < stringValue.length(); i++) {
+                    addSNToList(movedLastSearchNodeConnection);
+                    PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
+                    DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
+                    if (!drReachablNWD.isSuccess()) {
+                        stringValue.delete(0, i);
+                        initializePossibilityNWD(t/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
+                        movePossibilityNWD(value, stringValue);
+                        break;
+                    }
+                    movedLastSearchNodeConnection = drReachablNWD.getData();
+                }
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                System.exit(0);
+            }
+            if (searchNode.getpNWDQueue() != null) {
+                Result result = transferPossibilityNWDToReachableNWD();
+                if (result.isSuccess()) {
+                    increaseNewAddedItemLocationsNWDTV();
+                }
+                clearPossibilityNWD();
+            }
+            if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationStringAddress())) {
+                DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t);
+                if (drNodeDataAddProgress.getData().equals(NodeData.NEW_VALUE_IS_ADDED)) {
+                    increaseNewAddedItemLocationsNWDTV();
+                }
+            }
+        }
+
+        return new SuccessResult("Data is added");
+
+    }
+
+    @Override
+    public Result removeAll(List<T> list) {
+        return null;
+    }
+
+    @Override
     public Result add(T t) {
         clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);

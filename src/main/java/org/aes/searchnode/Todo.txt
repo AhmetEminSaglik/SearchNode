@@ -16,3 +16,12 @@ objenin fonksiyonuna  custom obje'nin class'i ile istenen  field'leri gondererek
     liste halinde gonderebiliriz. Bunuda ayni sekilde interface icinde yapicaz.
     Ancak aradaki fark su olucaktir : Islemler Objede gerceklesecegi icin  customer bunu kullanirken
     yorulmayacaktir
+
+
+
+
+
+    TODO
+        1-) Remove fonksiyonu eklenecek.
+        2-) Milyonlarca veri setinin icinde 1 milyon verinin arama islemi yapilacak, time ve space complexityleri hesaplanacak.
+        3-) Merge Sort ve binary Search kullanilacak.

@@ -2,20 +2,27 @@ package org.aes.searchnode;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
+//import org.aes.searchnode.core.utilities.CustomLog;
+import org.aes.searchnode.core.utilities.CustomLog;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
+import org.aes.searchnode.dataaccess.comparator.ComparatorNextWayDirectionRequiredData;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
+import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.TestingArrayList;
 import org.aes.searchnode.testing.TestingSearchNode;
 import org.aes.searchnode.testing.TimeCalculation;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    private static CustomLog log = new CustomLog(Main.class);
 
     static final FileFundamental exampleDataFile = new FileFundamental()
             .setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/")
@@ -33,9 +40,40 @@ public class Main {
             System.out.println(s);
         }
     }
+//    private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+
+//        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+        SearchNode<String> searchNodeTest = new SearchNode<>();
+        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+//        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+        searchNodeTest.add("alim");
+
+        log.info("`alim` eklendi ");
+        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+        log.info("`alime` eklendi ");
+        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+        log.info("`al` eklendi ");
+        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+        log.info("`ali` eklendi ");
+        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+
+//        List<NextWayDirectionRequiredData<String>> list = searchNodeTest.getReachableNWD().getAllDataOfSearchNode();
+        List<NextWayDirectionRequiredData<String>> list = searchNodeTest.getReachableNWD().getAllDataOfSearchNode();
+        System.out.println(list.get(0));
+        System.out.println("list.get(0).getSearchNode().getTotalItemNumber();  " + list.get(0).getSearchNode().getTotalItemNumber());
+        System.out.println(list.get(0).getSearchNode().getNodeData());
+        System.out.println(list.get(0).getSearchNode().getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getTotalItemNumber());
+        System.out.println(list.get(0).getSearchNode().getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getNodeData().getNextWayDirectionTotalValue());
+        System.out.println(list.get(0).getSearchNode().getNodeData().getNextWayDirectionTotalValue());
+
+//        list.forEach(System.out::println);
+//        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+//        System.out.println("searchNodeTest.getpNWDQueue().getFirstSearchNodeToConnectRootSearchNode()  : "+searchNodeTest.getpNWDQueue().getFirstSearchNodeToConnectRootSearchNode());
+
+//        System.out.println("searchNodeTest.getpNWDQueue().getFirstSearchNodeToConnectRootSearchNode()  : " + searchNodeTest.getpNWDQueue().getFirstSearchNodeToConnectRootSearchNode());
 
         /*char a = 'a', b = 'b';
         List<Character> characterList = new ArrayList<>();
@@ -102,7 +140,7 @@ public class Main {
 
         System.exit(0);*/
 
-
+/*
         List<String> itemList = new ArrayList<>();
         itemList.add("ahmet");
         itemList.add("celal");
@@ -125,7 +163,7 @@ public class Main {
 //        searchNodeTest.resetPriorityChar('z');
         printSearchNodeList(searchNodeTest);
         searchNodeTest.resetAllPriorityChars();
-        printSearchNodeList(searchNodeTest);
+        printSearchNodeList(searchNodeTest);*/
 //searchNodeTest.getAllReverse()
 //        searchNodeTest.resetPriorityChar('z');
 //

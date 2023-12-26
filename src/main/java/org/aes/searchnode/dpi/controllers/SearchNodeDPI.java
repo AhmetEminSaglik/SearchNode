@@ -20,6 +20,16 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result remove(T t) {
+        return searchNodeService.remove(t);
+    }
+
+    @Override
+    public Result removeAll(List<T> list) {
+        return searchNodeService.removeAll(list);
+    }
+
+    @Override
     public Result add(T t) {
         return searchNodeService.add(t);
     }
