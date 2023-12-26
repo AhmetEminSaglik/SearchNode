@@ -1,5 +1,6 @@
 package org.aes.searchnode.business.concretes.searchnode;
 
+import org.aes.searchnode.Main;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
@@ -19,6 +20,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
+    private static CustomLog log = new CustomLog(Main.class);
+
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
 
@@ -101,6 +104,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
                     addSNToList(movedLastSearchNodeConnection);
+//                    System.out.println("eklencek movedLastSearchNodeConnection : "+movedLastSearchNodeConnection.getNodeData());
                     PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
@@ -294,12 +298,14 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
     }
 
-    private void addSNToList(SearchNode<T> searchNode) {
-        searchNode.getsNListToIncreaseNWDTV().add(searchNode);
+    private void addSNToList(SearchNode<T> searchNodeToAdd) {
+        searchNode.getsNListToIncreaseNWDTV().add(searchNodeToAdd);
     }
 
     private void increaseNewAddedItemLocationsNWDTV() {
+//        log.info("searchNode.getsNListToIncreaseNWDTV() " + searchNode.getsNListToIncreaseNWDTV().size());
         for (SearchNode<T> tmp : searchNode.getsNListToIncreaseNWDTV()) {
+//            log.info("_________________________eklencek searchNode.getNodeData(): " + searchNode.getNodeData());
             tmp.getNodeData().increaseNextWayDirectionTotalValue();
         }
     }

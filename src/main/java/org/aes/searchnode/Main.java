@@ -40,34 +40,67 @@ public class Main {
             System.out.println(s);
         }
     }
-//    private static final Logger log = LoggerFactory.getLogger(Main.class);
+
+    //    private static final Logger log = LoggerFactory.getLogger(Main.class);
+    private static void printSearchNodeData(SearchNode<String> searchNode) {
+        log.info("----------------------------------> SearchNode");
+        log.info("seachnode  NodeData : " + searchNode.getNodeData());
+        log.info("seachnode  getTotalItemNumber : " + searchNode.getTotalItemNumber());
+    }
+
+    private static void printAllNodesOfSearchNode(SearchNode<String> searchNode) {
+        log.info("Recursive SearchNode : " + searchNode.getNodeData());
+        searchNode.getReachableNWD().getAllDataOfSearchNode().forEach(e -> {
+            SearchNode<String> tmp = e.getSearchNode();
+            printAllNodesOfSearchNode(tmp);
+        });
+    }
+
+    static SearchNode<String> searchNodeTest = new SearchNode<>();
+
+    public static void addData(String data) {
+        searchNodeTest.add(data);
+        log.info('`' + data + "` eklendi");
+        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+    }
 
     public static void main(String[] args) {
 
 //        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
-        SearchNode<String> searchNodeTest = new SearchNode<>();
         log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
 //        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-        searchNodeTest.add("alim");
+//        searchNodeTest.add("emin");
+//        searchNodeTest.add("murat");
+//        addData("emin");
+//        addData("murat");
+        addData("alime");
+        addData("ayse");
+        addData("al");
+        addData("alim");
+        addData("ali");
+//        log.info("`alime` eklendi ");
+//        searchNodeTest.add("alime");
+//        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+//        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
 
-        log.info("`alim` eklendi ");
-        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-        log.info("`alime` eklendi ");
-        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-        log.info("`al` eklendi ");
-        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-        log.info("`ali` eklendi ");
-        log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-
+        log.info("1-> nodeData : " + searchNodeTest.getNodeData().toString());
+        log.info("2-> nodeData : " + searchNodeTest.getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getNodeData().toString());
 //        List<NextWayDirectionRequiredData<String>> list = searchNodeTest.getReachableNWD().getAllDataOfSearchNode();
-        List<NextWayDirectionRequiredData<String>> list = searchNodeTest.getReachableNWD().getAllDataOfSearchNode();
-        System.out.println(list.get(0));
-        System.out.println("list.get(0).getSearchNode().getTotalItemNumber();  " + list.get(0).getSearchNode().getTotalItemNumber());
-        System.out.println(list.get(0).getSearchNode().getNodeData());
-        System.out.println(list.get(0).getSearchNode().getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getTotalItemNumber());
-        System.out.println(list.get(0).getSearchNode().getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getNodeData().getNextWayDirectionTotalValue());
-        System.out.println(list.get(0).getSearchNode().getNodeData().getNextWayDirectionTotalValue());
+//        List<NextWayDirectionRequiredData<String>> list = searchNodeTest.getReachableNWD().getAllDataOfSearchNode();
+//        log.info("ilk harf total item sayisi : " + searchNodeTest.getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getTotalItemNumber());
+//        System.out.println(list.get(0));
+//        System.out.println("list.get(0).getSearchNode().getTotalItemNumber();  " + list.get(0).getSearchNode().getTotalItemNumber());
+//        System.out.println(list.get(0).getSearchNode().getNodeData());
+//        System.out.println(list.get(0).getSearchNode().getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getTotalItemNumber());
+//        System.out.println(list.get(0).getSearchNode().getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode().getNodeData().getNextWayDirectionTotalValue());
+//        System.out.println(list.get(0).getSearchNode().getNodeData().getNextWayDirectionTotalValue());
+
+//        log.info(searchNodeTest.getTotalItemNumber() + "");
+//        printSearchNodeData(searchNodeTest);
+//        printSearchNodeData(searchNodeTest.getReachableNWD().getAllDataOfSearchNode().get(0).getSearchNode());
+        log.info("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+        printAllNodesOfSearchNode(searchNodeTest);
+
 
 //        list.forEach(System.out::println);
 //        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
