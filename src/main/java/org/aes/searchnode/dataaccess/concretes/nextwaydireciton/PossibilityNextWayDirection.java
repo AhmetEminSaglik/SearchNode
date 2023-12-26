@@ -75,7 +75,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
                 return new SuccessResult();
             }*/
             nodeData.addData(data);
-            return new SuccessDataResult<>();
+            return new SuccessDataResult<>("Data is added");
 //            throw new Exception("Data is not null\n --> given data : " + data + "\n -->  registered data : " + nodeData.getData());
         }
         return new ErrorResult("Data is not added");

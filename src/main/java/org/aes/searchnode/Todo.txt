@@ -23,5 +23,7 @@ objenin fonksiyonuna  custom obje'nin class'i ile istenen  field'leri gondererek
 
     TODO
         1-) Remove fonksiyonu eklenecek.
+            a-) PossibilityNextWayDirection  > nodeData.increaseNextDirectionsExistingTotalDataNumber(); --> bu sinifta deger azaltma islemi yapilacak.
         2-) Milyonlarca veri setinin icinde 1 milyon verinin arama islemi yapilacak, time ve space complexityleri hesaplanacak.
         3-) Merge Sort ve binary Search kullanilacak.
+

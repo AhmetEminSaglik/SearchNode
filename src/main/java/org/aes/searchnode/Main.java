@@ -75,6 +75,9 @@ public class Main {
 //        addData("murat");
         addData("alime");
         addData("ayse");
+        addData("a");
+        addData("a");
+        addData("a");
         addData("al");
         addData("alim");
         addData("ali");
