@@ -34,7 +34,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     }
 
     private DataResult<SearchNode<T>> linearSearch(List<NextWayDirectionRequiredData<T>> list, PriorityChar pc) {
-        System.out.println("LINEAR SEARCH");
+//        System.out.println("LINEAR SEARCH");
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retrieved");

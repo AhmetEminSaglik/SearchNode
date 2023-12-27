@@ -62,27 +62,31 @@ public class Main {
         searchNodeTest.add(data);
         log.info('`' + data + "` eklendi");
         log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+//        printAllNodesOfSearchNode(searchNodeTest);
     }
 
     public static void main(String[] args) {
 
 //        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+
         log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
 //        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
 //        searchNodeTest.add("emin");
 //        searchNodeTest.add("murat");
 //        addData("emin");
 //        addData("murat");
-        addData("alime");
+        addData("alaçatı");
         addData("ayse");
-        addData("a");
-        addData("a");
-        addData("a");
-        addData("al");
+//        addData("a");
+//        addData("a");
+//        addData("a");
+//        addData("al");
         addData("alim");
         addData("ali");
-        String searchedData = searchNodeTest.search("ali").getData().toString();
-        log.info("searchedData : "+searchedData);
+        printAllNodesOfSearchNode(searchNodeTest);
+
+//        String searchedData = searchNodeTest.search("ali").getData().toString();
+//        log.info("searchedData : "+searchedData);
         System.exit(0);
 //        log.info("`alime` eklendi ");
 //        searchNodeTest.add("alime");

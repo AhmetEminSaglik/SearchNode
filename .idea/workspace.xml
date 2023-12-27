@@ -7,8 +7,8 @@
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Todo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work/THESIS-update-Todo",
+    "git-widget-placeholder": "work/THESIS-linear-search-is-implemented-to-get-PC",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ahmet/OneDrive/Desktop/test/School-Mobil-App/Backend",
     "nodejs_package_manager_path": "npm",
