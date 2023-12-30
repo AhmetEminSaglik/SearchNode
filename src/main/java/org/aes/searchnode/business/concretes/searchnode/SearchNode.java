@@ -128,15 +128,6 @@ public class SearchNode<T> implements SearchNodeService<T> {
     public Result resetAllPriorityChars() {
         return pcService.removeAll();
     }
-/*
-    @Override
-    public String toString() {
-        return "SearchNode{" +
-                "nodeData=" + nodeData +
-                '}';
-    }
-    */
-
     @Override
     public String toString() {
         return "SearchNode{" +

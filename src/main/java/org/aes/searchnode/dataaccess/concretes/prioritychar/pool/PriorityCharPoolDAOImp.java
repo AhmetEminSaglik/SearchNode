@@ -66,10 +66,10 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     @Override
     public DataResult removePriorityChar(char c) {
-        System.out.println((int)c+" :"+c+"  > SILINECEK KARAKTER : "+getPriorityChar(c));
+        System.out.println((int) c + " :" + c + "  > SILINECEK KARAKTER : " + getPriorityChar(c));
         list.remove(getPriorityChar(c));
         printPriorityPool();
-        System.out.println("RESETLENMIS OLMALI  : "+getPriorityChar(c));
+        System.out.println("RESETLENMIS OLMALI  : " + getPriorityChar(c));
 
         updatePriorityChar();
         return new SuccessDataResult(getPriorityChar(c), "Priority char is removed");
@@ -104,19 +104,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     private double calculateNewPriorityCharValue(double beforeCharValue, double nextCharValue) {
         System.out.println("beforeCharValue: " + beforeCharValue);
-//        System.out.println("nextCharValue: "+nextCharValue);
-//        beforeCharValue%=1;
-//        nextCharValue%=1;
-//        System.out.println("beforeCharValue: "+beforeCharValue);
-//        System.out.println("nextCharValue: "+nextCharValue);
-//        System.exit(0);
         return (beforeCharValue + nextCharValue) / 2;
     }
-
-//    private double calculateNewPriorityCharListValue(double beforeCharValue, double nextCharValue) {
-//        return (beforeCharValue + nextCharValue) / 2;
-//    }
-
 
     private void printPriorityPool() {
         if (list.size() == 0)
@@ -130,8 +119,6 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     private double getNextCharValue(PriorityChar pchar) {
         for (int i = 0; i < list.size(); i++) {
-//            System.out.println("list.get(i).getValue() : " + list.get(i).getValue());
-//            System.out.println("pchar.getValue() : " + pchar.getValue());
             if (list.get(i).getValue() > pchar.getValue()) {
                 return list.get(i).getValue();
             }
@@ -142,12 +129,5 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     @Override
     public void updatePriorityChar() {
         listToNotifyAfterUpdatePriorityChar.forEach(e -> e.updatePriorityChar());
-//        for(int i=0;i<listToNotifyAfterUpdatePriorityChar.size();i++){
-//            listToNotifyAfterUpdatePriorityChar.get(i).updatePriorityChar();
-//        }
     }
-//    @Override
-//    public void updatePriorityChar(char c) {
-//
-//    }
 }

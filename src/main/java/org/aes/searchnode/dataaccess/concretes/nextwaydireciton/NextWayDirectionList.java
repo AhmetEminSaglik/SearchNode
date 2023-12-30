@@ -28,12 +28,8 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 
     @Override
     public Result clearPc(PriorityChar pc) {
-//        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA pc : "+pc);
-//        NextWayDirectionRequiredData itemToDelete;
         for (int i = 0; i < list.size(); i++) {
-//            System.out.println("Liste : "+list.get(i));
             if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
-//                System.out.println(">>>>> SILINECEK  :"+list.get(i));
                 list.remove(i);
             }
         }
@@ -97,18 +93,7 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     @Override
     public DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode<T> searchNode) {
         list.add(new NextWayDirectionRequiredData(pc, searchNode));
-        /*if (list.size() > 1) {
-            System.out.println("sort onces : ");
-            list.forEach(e -> {
-                System.out.println(e);
-            });
-            Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
-            System.out.println("sort sonrasi : ");
-            list.forEach(e -> {
-                System.out.println(e);
-            });
-            System.out.println("===================================");
-        }*/
+//            Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
         return new SuccessDataResult<>("--> SearchNode is added to List");
     }
 

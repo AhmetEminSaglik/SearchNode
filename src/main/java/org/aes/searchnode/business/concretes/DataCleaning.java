@@ -1,10 +1,6 @@
 package org.aes.searchnode.business.concretes;
 
-import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.ErrorDataResult;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
-
-public class DataCleariation {
+public class DataCleaning {
     public String trimData(String text) {
         return text.trim();
     }

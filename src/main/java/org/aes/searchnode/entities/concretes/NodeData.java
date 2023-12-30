@@ -88,13 +88,6 @@ public class NodeData<T> {
         nextDirectionsTotalValueNumber++;
     }
 
-//    public void decreaseNextDirectionsExistingTotalDataNumber() {
-//        nextDirectionsTotalValueNumber--;
-//    }
-//    public void setNextDirectionsTotalValueNumber(int nextDirectionsTotalValueNumber) {
-//        this.nextDirectionsTotalValueNumber = nextDirectionsTotalValueNumber;
-//    }
-
     public String getLocationStringAddress() {
         return locationStringAddress;
     }

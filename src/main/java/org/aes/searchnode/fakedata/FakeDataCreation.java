@@ -1,6 +1,6 @@
 package org.aes.searchnode.fakedata;
 
-import org.aes.searchnode.business.concretes.DataCleariation;
+import org.aes.searchnode.business.concretes.DataCleaning;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
@@ -233,24 +233,24 @@ public class FakeDataCreation {
     }
 
     public List<String> fixValueInReadDataListForSearchNode(List<String> readDataList) {
-        DataCleariation dataCleariation = new DataCleariation();
+        DataCleaning dataCleaning = new DataCleaning();
         HashSet<String> hashSet = new HashSet<>();
         //List<String> totalWords2 = new ArrayList<>();
         for (String tmp : readDataList) {
-            tmp = dataCleariation.trimData(tmp);
+            tmp = dataCleaning.trimData(tmp);
 //            tmp = dataCleariation.removeWildCards(tmp);
 //            System.out.println("islem yapiacak data : "+tmp);
 //            System.out.println("tmp before remove : "+tmp);
             //DataResult<String> dataResult = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
             tmp = tmp.toLowerCase();
-            tmp = dataCleariation.removeWordsIfNotBelongsToEnglish(tmp);
+            tmp = dataCleaning.removeWordsIfNotBelongsToEnglish(tmp);
 //            fixedValuesInReadDataList = dataResult.isSuccess();
 //            System.out.println("tmp after remove : "+tmp );
 
 //            tmp = dataResult.getData();
 //                System.out.println("islem yapiacak data : " + tmp);
             if (tmp != null) {
-                if (dataCleariation.hasMultipleWords(tmp)) {
+                if (dataCleaning.hasMultipleWords(tmp)) {
                     List<String> newList = Arrays.stream(tmp.split(" ")).
                             filter(text -> !text.trim().equals("") && isTextLengthLargerThan3(text)).
                             collect(Collectors.toList());

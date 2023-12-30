@@ -1,6 +1,5 @@
 package org.aes.searchnode.business.concretes.searchnode;
 
-import org.aes.searchnode.Main;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
@@ -39,59 +38,34 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         log.info(index + " -> " + sbText.substring(0, index));
         SearchNode searchNodeNext = null;
         PriorityChar pc = null;
-//            return new SuccessResult("There is not such as word");
         if (searchNode.getNodeData() != null) {
-            log.info("searchNode.getNodeData().getLocationStringAddress() : " + searchNode.getNodeData().getLocationStringAddress());
-            log.info(".contentEquals(sbText) : " + sbText);
             if (searchNode.getNodeData().getLocationStringAddress().contentEquals(sbText)) {
-                System.out.println("searchNode SILINECEK DATA " + searchNode.getNodeData());
-                log.info("Data is removed");
+                String msg = "Data is removed : " + sbText;
+                log.info(msg);
                 searchNode.getNodeData().getListDataInfo().clear();
-                System.out.println("searchNode SILINDIKTEN SONRA  DATA " + searchNode.getNodeData());
-                return new SuccessResult("Data is removed");
-            } else {
-                log.info("Tekrardan recursive girecek");
+                return new SuccessResult(msg);
             }
             char c = sbText.charAt(index);
             pc = searchNode.getPcService().get(c).getData();
-            /*SearchNode<T> searchNodeNext*/
-            searchNodeNext= searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
+            searchNodeNext = searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
             log.info("Recursive girmeden once SN : " + searchNode);
             if (searchNodeNext == null) {
                 return new SuccessResult("There is not such as word");
             }
-//            System.out.println("index  "+index+" / pc : "+pc);
             removeRecurcive(searchNodeNext, sbText, ++index);
-//            System.out.println("index  "+index+" / pc : "+pc);
-            /*if (searchNodeNext.getNodeData().getNextDirectionsTotalValueNumber() == 1) {
-                searchNode.getReachableNWD().clearPc(pc);
-                searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
-                log.info("SearchNode connection is removed");
-                return new SuccessResult("SearchNode is removed");
-            }*/
-
         }
-        System.out.println(" recursivden geri adim atildi: " + (index - 1));
-
         searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
-        System.out.println("searchNode.getNodeData() : " + searchNode.getNodeData());
         if (searchNode.getNodeData().getNextDirectionsTotalValueNumber() <= 0) {
-            System.out.println("recursive geri adim atildi. sonrakinda NWDTV 0 oldugu icin SILINECEK : Pc  : " + pc);
 
-            System.out.println("Silinme ONCESI : " + searchNode.getReachableNWD().getAllDataOfSearchNode().size());
-            if (searchNode.getReachableNWD().getAllDataOfSearchNode().size() > 0)
-                System.out.println(searchNode.getReachableNWD().getAllDataOfSearchNode().get(0));
+//            if (searchNode.getReachableNWD().getAllDataOfSearchNode().size() > 0)
+//                System.out.println(searchNode.getReachableNWD().getAllDataOfSearchNode().get(0));
             searchNode.getReachableNWD().clearPc(pc);
-            System.out.println("Silinme SONRASI : " + searchNode.getReachableNWD().getAllDataOfSearchNode().size());
         }
-//        searchNode=dataResultSN.getData();
-
         return new SuccessResult();
     }
 
     @Override
     public Result remove(T t) {
-//        clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
         stringValue = trimObject(stringValue.toString());
@@ -100,87 +74,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         } else {
 
             removeRecurcive(searchNode, stringValue, 0);
-        }/*{
-            removeRecurcive(searchNode, stringValue, 0);
-
-            movedLastSearchNodeConnection = searchNode;
-            log.info("--> BEFORE searchNode : " + searchNode);
-
-            *//*if (movedLastSearchNodeConnection.getTotalItemNumber() == 1) {
-                movedLastSearchNodeConnection.getReachableNWD().clearList();
-                log.info("--> AFTER clear List  :" + searchNode);
-            }*//*
-            try {
-                for (int i = 0; i < stringValue.length(); i++) {
-                    if (movedLastSearchNodeConnection.getTotalItemNumber() == 1) {
-                        movedLastSearchNodeConnection.getReachableNWD().clearList();
-                        log.info("--> AFTER clear List  == 1 :" + searchNode);
-                        searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
-                        return null;
-                    } else if (movedLastSearchNodeConnection.getTotalItemNumber() > 1) {
-                        PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
-                        movedLastSearchNodeConnection.getReachableNWD().clearPc(pc);
-                        log.info("--> AFTER clear PC >1  :" + searchNode);
-                        return null;
-                    }
-
-//                    addSNToList(movedLastSearchNodeConnection);
-                    PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
-                    if (searchNode.getNodeData().getNextWayDirectionTotalValue() == 1) {
-                        System.out.println();
-//                        searchNode.getReachableNWD().getAllDataOfSearchNode().forEach(System.out::println);
-                        System.out.println("<><> searchNode.getReachableNWD().getAllDataOfSearchNode().size() : " + searchNode.getReachableNWD().getAllDataOfSearchNode().size());
-                        System.out.println(searchNode);
-//                        searchNode.getReachableNWD().getAllDataOfSearchNode().remove(0);
-                        searchNode.getReachableNWD().getAllDataOfSearchNode().remove(searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc));
-                        System.out.println();
-                        System.out.printf("<><> searchNode.getReachableNWD().getAllDataOfSearchNode().size() : " + searchNode.getReachableNWD().getAllDataOfSearchNode().size());
-                        System.out.println();
-//                        searchNode.getReachableNWD().getAllDataOfSearchNode().forEach(System.out::println);
-                        return null;
-                    }
-                    DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
-                    log.info("drReachablNWD : " + drReachablNWD);
-                    if (drReachablNWD.isSuccess()) {
-                        NodeData<T> nodeData = drReachablNWD.getData().getNodeData();
-                        log.info("SONUC  : " + drReachablNWD);
-                        if (nodeData.getNextDirectionsTotalValueNumber() == 0) {
-                            log.info("--> ==0");
-                        } else if (nodeData.getNextDirectionsTotalValueNumber() == 1) {
-                            log.info("--> ==1");
-
-                        } else {
-                            log.info("--> >1");
-                        }
-                        stringValue.delete(0, i);
-                        initializePossibilityNWD(t*//*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*//*);
-                        movePossibilityNWD(value, stringValue);
-                        break;
-                    } else {
-                        log.info("IF'e GIRMEDI ");
-                    }
-                    movedLastSearchNodeConnection = drReachablNWD.getData();
-                }
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-//                return new ErrorDataResult<>(new NodeData<>() "Data is not found");
-                System.exit(0);
-            }
-            if (searchNode.getpNWDQueue() != null) {
-                Result result = transferPossibilityNWDToReachableNWD();
-                if (result.isSuccess()) {
-                    increaseNewAddedItemLocationsNWDTV();
-                }
-                clearPossibilityNWD();
-            }
-            if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationStringAddress())) {
-                DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t);
-                if (drNodeDataAddProgress.getData().equals(NodeData.NEW_VALUE_IS_ADDED)) {
-                    increaseNewAddedItemLocationsNWDTV();
-                }
-            }
-        }*/
-
+        }
         return new SuccessResult("Data is added");
 
     }
@@ -203,7 +97,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
                     addSNToList(movedLastSearchNodeConnection);
-//                    System.out.println("eklencek movedLastSearchNodeConnection : "+movedLastSearchNodeConnection.getNodeData());
                     PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
@@ -400,15 +293,9 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     private void addSNToList(SearchNode<T> searchNodeToAdd) {
         searchNode.getsNListToIncreaseNWDTV().add(searchNodeToAdd);
     }
-//    private  void deleteSN(Sea){
-//
-//
-//    }
 
     private void increaseNewAddedItemLocationsNWDTV() {
-//        log.info("searchNode.getsNListToIncreaseNWDTV() " + searchNode.getsNListToIncreaseNWDTV().size());
         for (SearchNode<T> tmp : searchNode.getsNListToIncreaseNWDTV()) {
-//            log.info("_________________________eklencek searchNode.getNodeData(): " + searchNode.getNodeData());
             tmp.getNodeData().increaseNextWayDirectionTotalValue();
         }
     }
