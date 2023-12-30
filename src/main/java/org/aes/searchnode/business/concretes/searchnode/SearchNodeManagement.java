@@ -34,8 +34,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private Result removeRecurcive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
-        log.info("searchnode : " + searchNode);
-        log.info(index + " -> " + sbText.substring(0, index));
         SearchNode searchNodeNext = null;
         PriorityChar pc = null;
         if (searchNode.getNodeData() != null) {
@@ -48,7 +46,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             char c = sbText.charAt(index);
             pc = searchNode.getPcService().get(c).getData();
             searchNodeNext = searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
-            log.info("Recursive girmeden once SN : " + searchNode);
             if (searchNodeNext == null) {
                 return new SuccessResult("There is not such as word");
             }
@@ -143,10 +140,10 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 }
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             } else {
-                return new ErrorDataResult<>("Requested Data : " + text + " /1/ Data is not found");
+                return new ErrorDataResult<>("Requested Data : " + text + "Data is not found");
             }
         }
-        return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
+        return new ErrorDataResult<>("Requested Data : " + text + " Data is not found");
 
     }
 
