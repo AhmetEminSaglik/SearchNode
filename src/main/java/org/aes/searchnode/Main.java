@@ -68,11 +68,15 @@ public class Main {
         String name = "ali";
         addData("alim");
         addData("al");
-        addData("aliye");
+//        addData("aliye");
         addData(name);
         printSlash();
         searchNodeTest.remove(name);
-        log.info("SEARCH : " + name + " result : " + searchNodeTest.search(name));
+        searchNodeTest.remove(name);
+        searchNodeTest.remove(name);
+        searchNodeTest.remove(name);
+        searchNodeTest.remove(name);
+//        log.info("SEARCH : " + name + " result : " + searchNodeTest.search(name));
         printSlash();
         log.info(searchNodeTest.getNodeData().toString());//        searchNodeTest.remove(name);
         printSlash();

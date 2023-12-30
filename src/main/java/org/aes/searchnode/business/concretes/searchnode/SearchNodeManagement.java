@@ -33,32 +33,49 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return new SuccessResult();
     }
 
-    private Result removeRecurcive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
-        SearchNode searchNodeNext = null;
+    private Result removeRecursive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
+        String address = sbText.substring(0, index);
+        System.out.println("address : " + address);
+        SearchNode<T> searchNodeNext = null;
         PriorityChar pc = null;
-        if (searchNode.getNodeData() != null) {
-            if (searchNode.getNodeData().getLocationStringAddress().contentEquals(sbText)) {
-                String msg = "Data is removed : " + sbText;
-                log.info(msg);
-                searchNode.getNodeData().getListDataInfo().clear();
-                return new SuccessResult(msg);
+        Result result = null;
+        NodeData<T> nodeData = searchNode.getNodeData();
+
+        if (nodeData != null) {
+            if (nodeData.getLocationStringAddress().contentEquals(sbText)) {
+                String msg = "";
+                if (!nodeData.getListDataInfo().isEmpty()) {
+                    msg = ">> Data is removed : " + sbText;
+                    log.info(msg);
+                    searchNode.getNodeData().getListDataInfo().clear();
+                    return new SuccessResult(msg);
+                } else {
+                    System.out.println("DATA BOS AMA TEKRAR SILINMEYE CALISIYOR");
+                }
+                msg = "Data is not found";
+                return new ErrorResult(msg);
             }
             char c = sbText.charAt(index);
             pc = searchNode.getPcService().get(c).getData();
             searchNodeNext = searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
             if (searchNodeNext == null) {
-                return new SuccessResult("There is not such as word");
+                return new ErrorDataResult<>(null, "There is not such as word");
             }
-            removeRecurcive(searchNodeNext, sbText, ++index);
+            result = removeRecursive(searchNodeNext, sbText, ++index);
         }
-        searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
+        if (result.isSuccess()) {
+            System.out.println("gelen result : " + result);
+            log.info("decreaseNextWayDirectionTotalValue YAPILDI Adress : " + address);
+            searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
+        }
+
         if (searchNode.getNodeData().getNextDirectionsTotalValueNumber() <= 0) {
 
 //            if (searchNode.getReachableNWD().getAllDataOfSearchNode().size() > 0)
 //                System.out.println(searchNode.getReachableNWD().getAllDataOfSearchNode().get(0));
             searchNode.getReachableNWD().clearPc(pc);
         }
-        return new SuccessResult();
+        return new ErrorResult("Data deletion process is ended");
     }
 
     @Override
@@ -70,15 +87,26 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             return new ErrorResult("Empty or Space can not be deleted in SearchNode");
         } else {
 
-            removeRecurcive(searchNode, stringValue, 0);
+            removeRecursive(searchNode, stringValue, 0);
         }
         return new SuccessResult("Data is added");
 
     }
 
     @Override
-    public Result removeAll(List<T> list) {
-        return null;
+    public DataResult<List<T>> removeAll(List<T> list) {
+        List<T> removedData = new ArrayList<>();
+        List<T> notFoundData = new ArrayList<>();
+        for (T t : list) {
+            if (remove(t).isSuccess()) {
+                removedData.add(t);
+            } else {
+                notFoundData.add(t);
+            }
+        }
+        String msg = "Removed Data size  :" + removedData.size() + ". Not found Data size  : " + notFoundData.size() + ". Removed data can be found in data.";
+        DataResult<List<T>> result = new SuccessDataResult<>(removedData);
+        return result;
     }
 
     @Override

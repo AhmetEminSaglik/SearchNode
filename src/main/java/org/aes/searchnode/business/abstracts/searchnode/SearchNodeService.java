@@ -15,7 +15,7 @@ public interface SearchNodeService<T> {
 
     Result remove(T t);
 
-    Result removeAll(List<T> list);
+    DataResult<List<T>> removeAll(List<T> list);
 
     DataResult<List<T>> getAll();
 

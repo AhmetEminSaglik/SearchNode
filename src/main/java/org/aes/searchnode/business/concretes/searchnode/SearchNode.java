@@ -21,7 +21,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
-    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
+    SearchNodeService<T> searchNodeService = new SearchNodeManagement<T>(this);
 
     @Override
     public DataResult<DataInfo<T>> search(String text) {
@@ -44,10 +44,9 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public Result removeAll(List<T> list) {
+    public DataResult<List<T>> removeAll(List<T> list) {
         return searchNodeService.removeAll(list);
     }
-
 
     @Override
     public DataResult<List<T>> getAll() {
