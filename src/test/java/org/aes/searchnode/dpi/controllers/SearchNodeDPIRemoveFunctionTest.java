@@ -25,13 +25,42 @@ public class SearchNodeDPIRemoveFunctionTest {
         int actual = searchNode.getAll().getData().size();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void removeOneAddedData() {
+    public void remove1Data() {
         searchNode.add("alim");
         searchNode.remove("alim");
         int expected = 0;
         int actual = searchNode.getAll().getData().size();
         System.out.println(searchNode.search("alim"));
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void remove3DataFrom5Data() {
+        searchNode.add("al");
+        searchNode.add("ali");
+        searchNode.add("alim");
+        searchNode.add("abcde");
+        searchNode.add("zeynep");
+
+        int expected = 5;
+        int actual = searchNode.getAll().getData().size();
+        Assertions.assertEquals(expected, actual);
+
+        searchNode.remove("ali");
+        expected = 4;
+        actual = searchNode.getAll().getData().size();
+        Assertions.assertEquals(expected, actual);
+
+        searchNode.remove("alim");
+        expected = 3;
+        actual = searchNode.getAll().getData().size();
+        Assertions.assertEquals(expected, actual);
+
+        searchNode.remove("abcde");
+        expected = 2;
+        actual = searchNode.getAll().getData().size();
         Assertions.assertEquals(expected, actual);
     }
 }

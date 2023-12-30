@@ -3,6 +3,7 @@ package org.aes.searchnode.dpi.controllers;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.entities.concretes.DataInfo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -260,54 +261,74 @@ class SearchNodeDPITest {
     public void removeStringTest() {
         searchNode.addAll(getStringListData());
         searchNode.remove("alim");
-        DataResult dr = searchNode.search("alim");
+        DataResult<DataInfo<String>> dr = searchNode.search("alim");
         Object expected = null;
         Object actual = dr.getData();
         Assertions.assertEquals(expected, actual);
 
         dr = searchNode.search("ali");
         String expectedData = "ali";
-        String actualData = dr.getData().toString();
+        String actualData = dr.getData().getValue();
         Assertions.assertEquals(expectedData, actualData);
 
 
         dr = searchNode.search("al");
         expectedData = "al";
-        actualData = dr.getData().toString();
+        actualData = dr.getData().getValue();
         Assertions.assertEquals(expectedData, actualData);
 
         dr = searchNode.search("a");
         expectedData = null;
-        actualData = dr.getData().toString();
+        if (dr.getData() != null) {
+            actualData=dr.getData().getValue();
+        } else {
+            actualData = null;
+        }
         Assertions.assertEquals(expectedData, actualData);
 
         searchNode.remove("ali");
 
         dr = searchNode.search("ali");
         expectedData = null;
-        actualData = dr.getData().toString();
+        if (dr.getData() != null) {
+            actualData=dr.getData().getValue();
+        } else {
+            actualData = null;
+        }
         Assertions.assertEquals(expectedData, actualData);
 
         dr = searchNode.search("al");
         expectedData = "al";
-        actualData = dr.getData().toString();
+        actualData = dr.getData().getValue();
         Assertions.assertEquals(expectedData, actualData);
 
         dr = searchNode.search("a");
         expectedData = null;
-        actualData = dr.getData().toString();
+        if (dr.getData() != null) {
+            actualData=dr.getData().getValue();
+        } else {
+            actualData = null;
+        }
         Assertions.assertEquals(expectedData, actualData);
 
         searchNode.remove("al");
 
         dr = searchNode.search("al");
         expectedData = null;
-        actualData = dr.getData().toString();
+        if (dr.getData() != null) {
+            actualData=dr.getData().getValue();
+        } else {
+            actualData = null;
+        }
         Assertions.assertEquals(expectedData, actualData);
 
         dr = searchNode.search("a");
         expectedData = null;
-        actualData = dr.getData().toString();
+        if (dr.getData() != null) {
+            actualData=dr.getData().getValue();
+        } else {
+            actualData = null;
+        }
         Assertions.assertEquals(expectedData, actualData);
 
     }
