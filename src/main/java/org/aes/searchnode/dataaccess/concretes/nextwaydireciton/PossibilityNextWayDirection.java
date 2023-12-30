@@ -88,4 +88,15 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
     public SearchNode getFirstSearchNodeToConnectRootSearchNode() {
         return firstSearchNodeToConnectRootSearchNode;
     }
+
+    @Override
+    public String toString() {
+        return "PossibilityNextWayDirection{" +
+                "currentLocationStringAddress=" + currentLocationStringAddress +
+                ", data=" + data +
+                ", firstSearchNodeToConnectRootSearchNode=" + firstSearchNodeToConnectRootSearchNode +
+                ", searchNodeAddingProcess=" + searchNodeAddingProcess +
+                ", pcForFirstSNToConnectRootSN=" + pcForFirstSNToConnectRootSN +
+                '}';
+    }
 }

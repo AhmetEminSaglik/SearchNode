@@ -7,8 +7,13 @@
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/ReachableNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/ReachableNextWayDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionHashmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionHashmap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -43,6 +48,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JUnit.SearchNodeDPIRemoveFunctionTest.removeNotAddedData.executor": "Run",
+    "JUnit.SearchNodeDPIRemoveFunctionTest.removeOneAddedData.executor": "Run",
     "JUnit.SearchNodeDPITest.executor": "Run",
     "JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor": "Run",
     "JUnit.SearchNodeDPITest.removeStringTest.executor": "Run",
@@ -53,9 +60,9 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work/THESIS-linear-search-is-implemented-to-get-PC",
+    "git-widget-placeholder": "work/THESIS-logger-refactor",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ahmet/OneDrive/Desktop/test/School-Mobil-App/Backend",
+    "last_opened_file_path": "C:/Users/ahmet/OneDrive/Desktop/EmirAlbayrak/School-Mobil-App/Backend",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
@@ -91,7 +98,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchNodeDPITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SearchNodeDPIRemoveFunctionTest.removeNotAddedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <extension name="coverage">
         <pattern>
@@ -100,13 +107,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeDPITest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeDPIRemoveFunctionTest" />
+      <option name="METHOD_NAME" value="removeNotAddedData" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SearchNodeDPIRemoveFunctionTest.removeOneAddedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <extension name="coverage">
         <pattern>
@@ -115,8 +123,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeDPITest" />
-      <option name="METHOD_NAME" value="getAllReverseSearchNodeDataIsSorted" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeDPIRemoveFunctionTest" />
+      <option name="METHOD_NAME" value="removeOneAddedData" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,10 +157,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.SearchNodeDPIRemoveFunctionTest.removeOneAddedData" />
+        <item itemvalue="JUnit.SearchNodeDPIRemoveFunctionTest.removeNotAddedData" />
         <item itemvalue="JUnit.SearchNodeDPITest.removeStringTest" />
         <item itemvalue="JUnit.java in SearchNode" />
-        <item itemvalue="JUnit.SearchNodeDPITest" />
-        <item itemvalue="JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted" />
       </list>
     </recent_temporary>
   </component>

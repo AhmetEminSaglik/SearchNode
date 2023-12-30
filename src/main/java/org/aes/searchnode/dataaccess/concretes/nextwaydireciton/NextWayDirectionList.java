@@ -1,10 +1,9 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
+import org.aes.searchnode.Main;
 import org.aes.searchnode.business.concretes.prioritychar.pool.PriorityCharPoolComparator;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
-import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.ErrorDataResult;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
+import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.comparator.ComparatorNextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
@@ -16,8 +15,31 @@ import java.util.List;
 
 
 public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
+    private static CustomLog log = new CustomLog(NextWayDirectionList.class);
+
     private List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
     private static final ComparatorNextWayDirectionRequiredData comparatorNextWayDirectionRequiredData = new ComparatorNextWayDirectionRequiredData();
+
+    @Override
+    public Result clearList() {
+        list.clear();
+        return new SuccessResult("All data is removed");
+    }
+
+    @Override
+    public Result clearPc(PriorityChar pc) {
+//        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA pc : "+pc);
+//        NextWayDirectionRequiredData itemToDelete;
+        for (int i = 0; i < list.size(); i++) {
+//            System.out.println("Liste : "+list.get(i));
+            if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
+//                System.out.println(">>>>> SILINECEK  :"+list.get(i));
+                list.remove(i);
+            }
+        }
+        return new SuccessDataResult<>();
+    }
+
 
     @Override
     public DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc) {
@@ -105,4 +127,31 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     public List<NextWayDirectionRequiredData<T>> getNextWayDirectionRequiredDataList() {
         return new ArrayList<>(list);
     }
+
+    static int counter = 0;
+
+    @Override
+    public String toString() {
+        Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
+        StringBuilder text = new StringBuilder();
+        list.forEach(e -> {
+            text.append(e.getPriorityChar().getChar()).append(",");
+        });
+        if (text.length() > 1)
+            text.deleteCharAt(text.length() - 1);
+        return ">>>  NextWayDirectionList{" +
+                "list= [" + text + "]}";
+    }
+
+    public String customToString() {
+        if (!list.isEmpty()) {
+            counter++;
+            String toString = ListUtils.recursiveToString(list, counter);
+            counter--;
+            return toString;
+        }
+        return "";
+    }
+
+
 }

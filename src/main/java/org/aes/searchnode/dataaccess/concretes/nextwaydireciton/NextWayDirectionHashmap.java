@@ -3,6 +3,7 @@ package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
+import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
@@ -11,7 +12,7 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.HashMap;
 import java.util.List;
 
-public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection <T>{
+public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection<T> {
     HashMap<Character, SearchNode> hashMap = new HashMap<>();
 
     @Override
@@ -45,5 +46,17 @@ public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection <T>
     @Override
     public int size() {
         return hashMap.size();
+    }
+
+    @Override
+    public Result clearList() {
+        hashMap.clear();
+        return new SuccessDataResult<>();
+    }
+
+    @Override
+    public Result clearPc(PriorityChar pc) {
+        hashMap.remove(pc);
+        return new SuccessDataResult<>();
     }
 }

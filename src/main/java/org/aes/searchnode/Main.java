@@ -30,7 +30,7 @@ public class Main {
             .setFileExtension(".txt");
 
     static void printSlash() {
-        System.out.println("-------------------------------------------");
+        log.info("-------------------------------------------");
     }
 
     static void printSearchNodeList(SearchNodeDPI<String> searchNodeTest) {
@@ -66,16 +66,41 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        String name = "ali";
+        addData("alim");
+        addData("al");
+//        addData("ayse");
+//        addData("abdullah");
+        addData("aliye");
+        addData(name);
+        printSlash();
+//        addData(name + "m");
+//        searchNodeTest.add(name);
+        searchNodeTest.remove(name);
+        log.info("SEARCH : " + name + " result : " + searchNodeTest.search(name));
+//        searchNodeTest.remove("alim");
 
+        printSlash();
+        log.info(searchNodeTest.getNodeData().toString());//        searchNodeTest.remove(name);
+        printSlash();
+//        log.info("remove Function is used right before ");
+
+        printAllNodesOfSearchNode(searchNodeTest);
+//        String data = searchNodeTest.search(name).getData().getValue();
+//        log.info("Data : " + data);
+
+        System.exit(0);
 //        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
 
         log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
+
 //        System.out.println("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
 //        searchNodeTest.add("emin");
 //        searchNodeTest.add("murat");
 //        addData("emin");
 //        addData("murat");
         addData("alaçatı");
+
         addData("ayse");
 //        addData("a");
 //        addData("a");
@@ -83,6 +108,7 @@ public class Main {
 //        addData("al");
         addData("alim");
         addData("ali");
+
         printAllNodesOfSearchNode(searchNodeTest);
 
 //        String searchedData = searchNodeTest.search("ali").getData().toString();
