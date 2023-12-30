@@ -35,12 +35,10 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     private Result removeRecursive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
         String address = sbText.substring(0, index);
-        System.out.println("address : " + address);
         SearchNode<T> searchNodeNext = null;
         PriorityChar pc = null;
         Result result = null;
         NodeData<T> nodeData = searchNode.getNodeData();
-
         if (nodeData != null) {
             if (nodeData.getLocationStringAddress().contentEquals(sbText)) {
                 String msg = "";
@@ -49,8 +47,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                     log.info(msg);
                     searchNode.getNodeData().getListDataInfo().clear();
                     return new SuccessResult(msg);
-                } else {
-                    System.out.println("DATA BOS AMA TEKRAR SILINMEYE CALISIYOR");
                 }
                 msg = "Data is not found";
                 return new ErrorResult(msg);
@@ -64,15 +60,10 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             result = removeRecursive(searchNodeNext, sbText, ++index);
         }
         if (result.isSuccess()) {
-            System.out.println("gelen result : " + result);
-            log.info("decreaseNextWayDirectionTotalValue YAPILDI Adress : " + address);
             searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
         }
 
         if (searchNode.getNodeData().getNextDirectionsTotalValueNumber() <= 0) {
-
-//            if (searchNode.getReachableNWD().getAllDataOfSearchNode().size() > 0)
-//                System.out.println(searchNode.getReachableNWD().getAllDataOfSearchNode().get(0));
             searchNode.getReachableNWD().clearPc(pc);
         }
         return new ErrorResult("Data deletion process is ended");
@@ -86,7 +77,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         if (stringValue.toString().equals("")) {
             return new ErrorResult("Empty or Space can not be deleted in SearchNode");
         } else {
-
             removeRecursive(searchNode, stringValue, 0);
         }
         return new SuccessResult("Data is added");
