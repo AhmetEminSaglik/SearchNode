@@ -1,6 +1,5 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
-import org.aes.searchnode.Main;
 import org.aes.searchnode.business.concretes.prioritychar.pool.PriorityCharPoolComparator;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.*;
@@ -15,6 +14,7 @@ import java.util.List;
 
 
 public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
+//    boolean sorted = false;
     private static CustomLog log = new CustomLog(NextWayDirectionList.class);
 
     private List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
@@ -62,11 +62,19 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 
     }
 
-    static PriorityCharPoolComparator comparator = new PriorityCharPoolComparator();
+//    static PriorityCharPoolComparator comparator = new PriorityCharPoolComparator();
 
     /*private DataResult<SearchNode<T>> binarySearch(List<NextWayDirectionRequiredData<T>> list, PriorityChar pc) {
-        Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
-        System.out.println("BINEARY SEARCH");
+        if (!sorted) {
+            System.out.println("Sortlanacak : " + sorted);
+            Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
+            sorted = true;
+            System.out.println("Sortlandi : " + sorted);
+        }
+//        else {
+//            System.out.println("elseye girdi");
+//        }
+//        System.out.println("BINARY SEARCH");
 
 //        public static int binarySearch(String[] array, String target) {
         int left = 0;
@@ -92,6 +100,10 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 
     @Override
     public DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode<T> searchNode) {
+//        if (sorted) {
+//            sorted = false;
+//            System.out.println("SORT FALSE OLDU");
+//        }
         list.add(new NextWayDirectionRequiredData(pc, searchNode));
 //            Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
         return new SuccessDataResult<>("--> SearchNode is added to List");

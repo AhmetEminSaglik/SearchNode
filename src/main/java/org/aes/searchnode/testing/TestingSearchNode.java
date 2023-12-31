@@ -2,22 +2,36 @@ package org.aes.searchnode.testing;
 
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.core.utilities.ReadableStringFormat;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TestingSearchNode implements TestingObjects {
+public class TestingSearchNode implements TestingDataStructorFeature, CalculateDataStructorComplexity {
 
     SearchNode<String> searchNode = new SearchNode<>();
+    List<String> poolList = new ArrayList<>();
+    List<String> searchList = new ArrayList<>();
     TimeCalculation timeCalculation = new TimeCalculation();
+
+    public TestingSearchNode() {
+    }
+
+    public TestingSearchNode(List<String> poolList, List<String> searchList) {
+        this.poolList = poolList;
+        this.searchList = searchList;
+    }
 
     @Override
     public void addData(List<String> list) {
+        System.out.println("[SN] Word Pool Size : " + ReadableStringFormat.getReadableValueIntToString(list.size()));
+
         timeCalculation.start();
         for (String tmp : list) {
             searchNode.add(tmp);
         }
         timeCalculation.stop();
-        printElapsedTime("  > SearchNode > data is ADDED ", timeCalculation);
+        printElapsedTime("[SN] SearchNode > Add Process", timeCalculation);
     }
 
     @Override
@@ -25,11 +39,13 @@ public class TestingSearchNode implements TestingObjects {
         timeCalculation.start();
         timeCalculation.stop();
 
-        printElapsedTime("  > SearchNode > SORTED ", timeCalculation);
+        printElapsedTime("[SN] SearchNode > Sort Process", timeCalculation);
     }
 
     @Override
     public void search(List<String> list) {
+        System.out.println("[SN] Search Data Size : " + ReadableStringFormat.getReadableValueIntToString(list.size()));
+
         int foundTextNumber = 0;
         int missingTextNumber = 0;
         timeCalculation.start();
@@ -42,9 +58,18 @@ public class TestingSearchNode implements TestingObjects {
             }
         }
         timeCalculation.stop();
-        System.out.println("found Text Number : " + foundTextNumber);
-        System.out.println("missing  Text Number : " + missingTextNumber);
+        System.out.println("[SN] Found Data Number : " + ReadableStringFormat.getReadableValueIntToString(foundTextNumber));
+        System.out.println("[SN] Missing Data Number : " + ReadableStringFormat.getReadableValueIntToString(missingTextNumber));
 
-        printElapsedTime("  > SearchNode >  SEARCHED ", timeCalculation);
+        printElapsedTime("[SN] SearchNode > Search Process", timeCalculation);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
+
+    }
+
+    @Override
+    public void run() {
+        addData(poolList);
+        sort();
+        search(searchList);
     }
 }

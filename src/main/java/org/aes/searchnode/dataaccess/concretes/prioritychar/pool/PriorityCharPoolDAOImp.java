@@ -90,7 +90,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         sort(priorityCharPoolComparator);
         updatePriorityChar();
         printPriorityPool();
-        return new SuccessDataResult<PriorityChar>(newPc, "Priority Char is updated");
+        return new SuccessDataResult<>(newPc, "Priority Char is updated");
     }
 
     @Override

@@ -1,22 +1,36 @@
 package org.aes.searchnode.testing;
 
-import java.lang.reflect.Array;
+import org.aes.searchnode.core.utilities.ReadableStringFormat;
+
 import java.util.*;
 
-public class TestingArrayList implements TestingObjects {
+public class TestingArrayList implements TestingDataStructorFeature, CalculateDataStructorComplexity {
 
     List<String> arrayList = new ArrayList<>();
+    List<String> poolList = new ArrayList<>();
+    List<String> searchList = new ArrayList<>();
     TimeCalculation timeCalculation = new TimeCalculation();
+
+    public TestingArrayList() {
+    }
+
+    public TestingArrayList(List<String> poolList, List<String> searchList) {
+        this.poolList = poolList;
+        this.searchList = searchList;
+    }
 
     @Override
     public void addData(List<String> list) {
+        System.out.println("[AL] Word Pool Size : " + ReadableStringFormat.getReadableValueIntToString(list.size()));
+
+
         timeCalculation.start();
         for (int i = 0; i < list.size(); i++) {
             arrayList.add(list.get(i));
         }
 //        arrayList.addAll(list); // this is faster about
         timeCalculation.stop();
-        printElapsedTime("  > Arraylist > data is ADDED : ", timeCalculation);
+        printElapsedTime("[AL] Arraylist > Add Process", timeCalculation);
     }
 
     @Override
@@ -24,11 +38,13 @@ public class TestingArrayList implements TestingObjects {
         timeCalculation.start();
         Collections.sort(arrayList);
         timeCalculation.stop();
-        printElapsedTime("  > ArrayList > data is sorted : ", timeCalculation);
+        printElapsedTime("[AL] ArrayList > Sort Process", timeCalculation);
     }
 
     @Override
     public void search(List<String> list) {
+        System.out.println("[AL] Search Data Size : " + ReadableStringFormat.getReadableValueIntToString(list.size()));
+
         int foundTextNumber = 0;
         int missingTextNumber = 0;
         timeCalculation.start();
@@ -43,9 +59,17 @@ public class TestingArrayList implements TestingObjects {
         }
         timeCalculation.stop();
 
-        System.out.println("found Text Number : " + foundTextNumber);
-        System.out.println("missing  Text Number : " + missingTextNumber);
+        System.out.println("[AL] Found Data Number : " + ReadableStringFormat.getReadableValueIntToString(foundTextNumber));
+        System.out.println("[AL] Missing Data Number : " + ReadableStringFormat.getReadableValueIntToString(missingTextNumber));
 
-        printElapsedTime("  > ArrayList >  data searched all given data : ", timeCalculation);
+        printElapsedTime("[AL] ArrayList > Search Process", timeCalculation);
+        System.out.println("----------------------------------------------------------------------------------------");
+    }
+
+    @Override
+    public void run() {
+        addData(poolList);
+        sort();
+        search(searchList);
     }
 }

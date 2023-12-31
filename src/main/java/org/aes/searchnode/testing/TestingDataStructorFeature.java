@@ -2,7 +2,7 @@ package org.aes.searchnode.testing;
 
 import java.util.List;
 
-public interface TestingObjects {
+public interface TestingDataStructorFeature {
     void addData(List<String> list);
 
     void sort();
@@ -10,6 +10,6 @@ public interface TestingObjects {
     void search(List<String> list);
 
     default void printElapsedTime(String text,TimeCalculation timeCalculation) {
-        System.out.print(text+" :");timeCalculation.printElapsedTime();
+        System.out.print(text+" : ");timeCalculation.printElapsedTime();
     }
 }
