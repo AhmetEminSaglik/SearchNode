@@ -1,4 +1,4 @@
-package org.aes.searchnode.testing;
+package org.aes.searchnode.testing.concretes;
 
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 

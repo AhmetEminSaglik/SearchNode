@@ -1,4 +1,4 @@
-package org.aes.searchnode.testing;
+package org.aes.searchnode.testing.abstracts;
 
 public interface CalculateDataStructorComplexity {
 

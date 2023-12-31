@@ -1,6 +1,8 @@
-package org.aes.searchnode.testing;
+package org.aes.searchnode.testing.concretes;
 
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
+import org.aes.searchnode.testing.abstracts.CalculateDataStructorComplexity;
+import org.aes.searchnode.testing.abstracts.TestingDataStructorFeature;
 
 import java.util.*;
 
@@ -48,8 +50,11 @@ public class TestingArrayList implements TestingDataStructorFeature, CalculateDa
         int foundTextNumber = 0;
         int missingTextNumber = 0;
         timeCalculation.start();
+
+        Object[] arr = arrayList.toArray();
+//        Arrays.binarySearch();
         for (String tmpTxt : list) {
-            int result = Arrays.binarySearch(arrayList.toArray(), tmpTxt);
+            int result = Arrays.binarySearch(arr, tmpTxt);
             if (result >= 0) {
                 foundTextNumber++;
             } else {

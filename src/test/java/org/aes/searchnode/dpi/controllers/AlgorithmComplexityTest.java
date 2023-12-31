@@ -1,8 +1,8 @@
 package org.aes.searchnode.dpi.controllers;
 
-import org.aes.searchnode.testing.CalculateDataStructorComplexity;
-import org.aes.searchnode.testing.TestingArrayList;
-import org.aes.searchnode.testing.TestingSearchNode;
+import org.aes.searchnode.testing.abstracts.CalculateDataStructorComplexity;
+import org.aes.searchnode.testing.concretes.TestingArrayList;
+import org.aes.searchnode.testing.concretes.TestingSearchNode;
 import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
@@ -18,6 +18,7 @@ public class AlgorithmComplexityTest {
     private static CalculateDataStructorComplexity calculateDataStructorComplexity;
     private static FileFundamental ffAllWords = new FileFundamental()
             .setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/")
+            .setFileName("Word-Data-1_398_449")
             .setFileExtension(".txt");
 
     static String word_13_k = "word-data-13-985";
@@ -63,7 +64,7 @@ public class AlgorithmComplexityTest {
     @Test
     @Order(2)
     @DisplayName("1-ArrayList : Search  13_935 from 13_935")
-    public void testArrrayList_MergeSort_BinarySearch_Search_13_985_WordData_From_13_985_WordPool() {// mod 5
+    public void testArrrayList_Sort_BinarySearch_Search_13_985_WordData_From_13_985_WordPool() {// mod 5
         ffWordPool.setFileName(word_13_k);
         ffWordsToSearch.setFileName(word_13_k);
 
@@ -110,7 +111,7 @@ public class AlgorithmComplexityTest {
     @Test
     @Order(4)
     @DisplayName("2-ArrayList : Search 279_690 from 13_935")
-    public void testArrrayList_MergeSort_BinarySearch_Search_279_690_WordData_From_13_985_WordPool() {// mod 5
+    public void testArrrayList_Sort_BinarySearch_Search_279_690_WordData_From_13_985_WordPool() {// mod 5
         ffWordPool.setFileName(word_13_k);
         ffWordsToSearch.setFileName(word_279_k);
 
@@ -160,7 +161,7 @@ public class AlgorithmComplexityTest {
     @Test
     @Order(6)
     @DisplayName("3-ArrayList : Search 13_935 from 279_690")
-    public void testArrrayList_MergeSort_BinarySearch_Search_13_985_WordData_From_279_690_WordPool() {// mod 5
+    public void testArrrayList_Sort_BinarySearch_Search_13_985_WordData_From_279_690_WordPool() {// mod 5
         ffWordPool.setFileName(word_13_k);
         ffWordsToSearch.setFileName(word_279_k);
 
@@ -210,7 +211,7 @@ public class AlgorithmComplexityTest {
     @Test
     @Order(8)
     @DisplayName("4-ArrayList : Search 279_690 from 279_690")
-    public void testArrrayList_MergeSort_BinarySearch_Search_279_690_WordData_From_279_690_WordPool() {// mod 5
+    public void testArrrayList_Sort_BinarySearch_Search_279_690_WordData_From_279_690_WordPool() {// mod 5
         ffWordPool.setFileName(word_279_k);
         ffWordsToSearch.setFileName(word_279_k);
 
@@ -238,7 +239,7 @@ public class AlgorithmComplexityTest {
     @Test
     @Order(10)
     @DisplayName("5-ArrayList : Search 419_535 from 279_690")
-    public void testArrrayList_MergeSort_BinarySearch_Search_419_535_WordData_From_279_690_WordPool() {// mod 5
+    public void testArrrayList_Sort_BinarySearch_Search_419_535_WordData_From_279_690_WordPool() {// mod 5
         ffWordPool.setFileName(word_419_k);
         ffWordsToSearch.setFileName(word_279_k);
 
@@ -289,7 +290,7 @@ public class AlgorithmComplexityTest {
     @Test
     @Order(12)
     @DisplayName("6-ArrayList : Search 279_690 from 419_535")
-    public void testArrrayList_MergeSort_BinarySearch_Search_279_690_WordData_From_419_535_WordPool() {// mod 5
+    public void testArrrayList_Sort_BinarySearch_Search_279_690_WordData_From_419_535_WordPool() {// mod 5
         ffWordPool.setFileName(word_419_k);
         ffWordsToSearch.setFileName(word_279_k);
 
@@ -323,24 +324,12 @@ public class AlgorithmComplexityTest {
         List<String> searchList = getWordListFromPath(ffWordsToSearch);
         calculateDataStructorComplexity = new TestingSearchNode(allList, searchList);
         calculateDataStructorComplexity.run();
-        /*ffWordPool.setFileName(word_419_k);
-        List<String> allList = getWordListFromPath(ffWordPool);
-
-        testDataStructor = new TestingSearchNode();
-        testDataStructor.addData(allList);
-        testDataStructor.sort();
-
-        allList.clear();
-        ffWordsToSearch.setFileName(word_419_k);
-        allList.addAll(getWordListFromPath(ffWordsToSearch));
-        testDataStructor.search(allList);
-    */
     }
 
     @Test
     @Order(14)
     @DisplayName("7- ArrayList : Search 419_535 from 419_535")
-    public void testArrrayList_MergeSort_BinarySearch_Search_419_535_WordData_From_419_535_WordPool() { // mod 10
+    public void testArrrayList_Sort_BinarySearch_Search_419_535_WordData_From_419_535_WordPool() { // mod 10
         ffWordPool.setFileName(word_419_k);
         ffWordsToSearch.setFileName(word_419_k);
 
@@ -349,18 +338,33 @@ public class AlgorithmComplexityTest {
 
         calculateDataStructorComplexity = new TestingArrayList(allList, searchList);
         calculateDataStructorComplexity.run();
-        /*ffWordPool.setFileName(word_419_k);
-        List<String> allList = getWordListFromPath(ffWordPool);
+    }
 
-        testDataStructor = new TestingArrayList();
-        testDataStructor.addData(allList);
-        testDataStructor.sort();
-        allList.clear();
-        ffWordsToSearch.setFileName(word_419_k);
+    @Test
+    @Order(15)
+    @DisplayName("8-SearchNode : Search 1_398_449 from 1_398_449")
+    public void testSearchNode_Search_1_398_449_WordData_From_1_398_449_WordPool() {// mod 10
+//        ffWordPool.setFileName(ffWordPool);
+//        ffWordsToSearch.setFileName(word_419_k);
 
-        allList.addAll(getWordListFromPath(ffWordsToSearch));
-        testDataStructor.search(allList);
-    */
+        List<String> allList = getWordListFromPath(ffAllWords);
+        List<String> searchList = getWordListFromPath(ffAllWords);
+        calculateDataStructorComplexity = new TestingSearchNode(allList, searchList);
+        calculateDataStructorComplexity.run();
+    }
+
+    @Test
+    @Order(16)
+    @DisplayName("8- ArrayList : Search 1_398_449 from 1_398_449")
+    public void testArrrayList_Sort_BinarySearch_Search_1_398_449_WordData_From_1_398_449_WordPool() { // mod 10
+//        ffWordPool.setFileName(word_419_k);
+//        ffWordsToSearch.setFileName(word_419_k);
+
+        List<String> allList = getWordListFromPath(ffAllWords);
+        List<String> searchList = getWordListFromPath(ffAllWords);
+
+        calculateDataStructorComplexity = new TestingArrayList(allList, searchList);
+        calculateDataStructorComplexity.run();
     }
 
     public static List<String> getWordListFromPath(FileFundamental fileFundamental) {

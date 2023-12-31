@@ -1,8 +1,10 @@
-package org.aes.searchnode.testing;
+package org.aes.searchnode.testing.concretes;
 
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
+import org.aes.searchnode.testing.abstracts.CalculateDataStructorComplexity;
+import org.aes.searchnode.testing.abstracts.TestingDataStructorFeature;
 
 import java.util.ArrayList;
 import java.util.List;
