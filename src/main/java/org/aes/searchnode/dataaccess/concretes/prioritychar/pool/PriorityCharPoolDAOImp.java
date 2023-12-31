@@ -11,6 +11,7 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.entities.concretes.PriorityCharPool;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,8 +20,21 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     PriorityCharPoolComparator priorityCharPoolComparator = new PriorityCharPoolComparator();
     List<NextWayDirectionRequiredData<?>> listToNotifyAfterUpdatePriorityChar = new ArrayList<>();
 
+    private boolean sorted = false;
+
     @Override
     public PriorityChar getPriorityChar(char c) {
+        if (!sorted) {
+            sort(priorityCharPoolComparator);
+            sorted = true;
+        }
+        /*}*/
+//        return binarySearch(c);
+        return linearSearch(c);
+
+    }
+
+    private PriorityChar linearSearch(char c) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getChar() == c) {
                 return list.get(i); // return char with priority value kod
@@ -29,8 +43,27 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         return new PriorityChar(c, (int) c); // return char with ascii kod
     }
 
+    private PriorityChar binarySearch(char c) {
+//        Collections.sort(list); // listeyi sırala
+        int low = 0;
+        int high = list.size() - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (list.get(mid).getChar() == c) {
+                return list.get(mid); // karakter bulundu
+            } else if (list.get(mid).getChar() < c) {
+                low = mid + 1; // sağ yarıyı ara
+            } else {
+                high = mid - 1; // sol yarıyı ara
+            }
+        }
+        return new PriorityChar(c, (int) c); // karakter bulunamadı
+    }
+
+
     @Override
     public DataResult<List<PriorityChar>> updatePriorityCharList(List<Character> characterList, char nextToThisChar) {
+        sorted = false;
         for (Character c : characterList) {
             removePriorityChar(c);
         }
@@ -81,6 +114,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     @Override
     public DataResult<PriorityChar> updatePriorityChar(char c, char nextToThisChar) {
+        sorted = false;
+
         removePriorityChar(c);
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
         double charValueToAddBefore = getNextCharValue(nextPriorityChar);

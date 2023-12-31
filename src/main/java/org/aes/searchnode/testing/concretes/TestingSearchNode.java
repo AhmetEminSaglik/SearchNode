@@ -3,6 +3,7 @@ package org.aes.searchnode.testing.concretes;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
+import org.aes.searchnode.entities.concretes.DataInfo;
 import org.aes.searchnode.testing.abstracts.CalculateDataStructorComplexity;
 import org.aes.searchnode.testing.abstracts.TestingDataStructorFeature;
 
@@ -52,7 +53,7 @@ public class TestingSearchNode implements TestingDataStructorFeature, CalculateD
         int missingTextNumber = 0;
         timeCalculation.start();
         for (String tmpText : list) {
-            DataResult dataResult = searchNode.search(tmpText);
+            DataResult<DataInfo<String>> dataResult = searchNode.search(tmpText);
             if (dataResult.isSuccess()) {
                 foundTextNumber++;
             } else {

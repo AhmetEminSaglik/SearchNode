@@ -14,11 +14,12 @@ import java.util.List;
 
 
 public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
-//    boolean sorted = false;
+    //    boolean sorted = false;
     private static CustomLog log = new CustomLog(NextWayDirectionList.class);
 
     private List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
     private static final ComparatorNextWayDirectionRequiredData comparatorNextWayDirectionRequiredData = new ComparatorNextWayDirectionRequiredData();
+    private boolean sorted = false;
 
     @Override
     public Result clearList() {
@@ -52,16 +53,35 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     }
 
     private DataResult<SearchNode<T>> linearSearch(List<NextWayDirectionRequiredData<T>> list, PriorityChar pc) {
-//        System.out.println("LINEAR SEARCH");
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
                 return new SuccessDataResult<>(list.get(i).getSearchNode(), "Data is retrieved");
             }
         }
         return new ErrorDataResult<>("Data is not found in " + getClass().getSimpleName());
-
     }
 
+    private DataResult<SearchNode<T>> binarySearch(List<NextWayDirectionRequiredData<T>> list, PriorityChar pc) {
+        if (!sorted) {
+//            System.out.println("sorted  pc :"+pc);
+//            Collections.sort(list, comparatorNextWayDirectionRequiredData); // listeyi sırala
+            sort();
+            sorted = true;
+        }
+        int low = 0;
+        int high = list.size() - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (list.get(mid).getPriorityChar().getChar() == pc.getChar()) {
+                return new SuccessDataResult<>(list.get(mid).getSearchNode(), "Data is retrieved");
+            } else if (list.get(mid).getPriorityChar().getChar() < pc.getChar()) {
+                low = mid + 1; // sağ yarıyı ara
+            } else {
+                high = mid - 1; // sol yarıyı ara
+            }
+        }
+        return new ErrorDataResult<>("Data is not found in " + getClass().getSimpleName());
+    }
 //    static PriorityCharPoolComparator comparator = new PriorityCharPoolComparator();
 
     /*private DataResult<SearchNode<T>> binarySearch(List<NextWayDirectionRequiredData<T>> list, PriorityChar pc) {
@@ -101,17 +121,18 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     @Override
     public DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode<T> searchNode) {
 //        if (sorted) {
-//            sorted = false;
+        sorted = false;
 //            System.out.println("SORT FALSE OLDU");
 //        }
-        list.add(new NextWayDirectionRequiredData(pc, searchNode));
+        list.add(new NextWayDirectionRequiredData<>(pc, searchNode));
 //            Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
         return new SuccessDataResult<>("--> SearchNode is added to List");
     }
 
     @Override
     public List<NextWayDirectionRequiredData<T>> getAllDataOfSearchNode() {
-        Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
+        sort();
+//        Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
         return new ArrayList<>(list);
     }
 
@@ -148,6 +169,10 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
             return toString;
         }
         return "";
+    }
+
+    void sort() {
+        Collections.sort(list, comparatorNextWayDirectionRequiredData);
     }
 
 
