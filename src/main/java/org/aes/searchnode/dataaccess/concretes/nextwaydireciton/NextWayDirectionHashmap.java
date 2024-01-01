@@ -1,3 +1,4 @@
+/*
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
@@ -34,14 +35,16 @@ public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection<T> 
         return null;
     }
 
-   /* @Override
+   */
+/* @Override
     public List<> printAllDataOfSearchNode() {
         for (Character tmp : hashMap.keySet()) {
             System.out.println(tmp + " : " + hashMap.keySet());
         }
         System.out.println("Hashmap is over");
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
-    }*/
+    }*//*
+
 
     @Override
     public int size() {
@@ -60,3 +63,4 @@ public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection<T> 
         return new SuccessDataResult<>();
     }
 }
+*/

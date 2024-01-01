@@ -5,13 +5,17 @@ import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.CustomLog;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
+import org.aes.searchnode.entities.concretes.PriorityChar;
 import org.aes.searchnode.fakedata.FakeDataCreation;
 import org.aes.searchnode.testing.concretes.TestingArrayList;
 import org.aes.searchnode.testing.concretes.TestingSearchNode;
 import org.aes.searchnode.testing.concretes.TimeCalculation;
+import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
 import org.ahmeteminsaglik.fileoperation.business.concretes.FileOperationFacade;
+import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Main {
@@ -57,25 +61,63 @@ public class Main {
 //        printAllNodesOfSearchNode(searchNodeTest);
     }
 
+    private static FileFundamental fileFundamental = new FileFundamental()
+//            .setPath("src/main/java/org/aes/searchnode/fakedata/DataToTest/")
+            .setPath("src/main/java/org/aes/searchnode/fakedata/mod-test-data/")
+//            .setFileName("word-data-699-225")
+            .setFileExtension(".txt");
+
+
+    public static List<String> getWordListFromPath(FileFundamental fileFundamental) {
+        ReadFileService readFileService = new ReadFileManagement(fileFundamental);
+        readFileService.read();
+        return readFileService.getReadDataList();
+    }
+
     public static void main(String[] args) {
+//        List<String> list = getWordListFromPath(fileFundamental);
+//        System.out.println("list size : " + ReadableStringFormat.getReadableValueIntToString(list.size()));
+//        HashSet<String> hashSet = new HashSet<>(list);
+//        System.out.println("hashset size: " + ReadableStringFormat.getReadableValueIntToString(hashSet.size()));
+//        SearchNodeDPI<String> sn = new SearchNodeDPI<>();
+        SearchNode<String> sn = new SearchNode<>();
+        sn.add("ali");
+        sn.add("veli");
+        sn.add("veli");
+        sn.add("veli");
+        sn.add("mustafa");
+        sn.add("ahmet");
 
-
-        String name = "ali";
-        addData("alim");
-        addData("al");
-//        addData("aliye");
-        addData(name);
         printSlash();
-        searchNodeTest.remove(name);
-        searchNodeTest.remove(name);
-        searchNodeTest.remove(name);
-        searchNodeTest.remove(name);
-        searchNodeTest.remove(name);
-//        log.info("SEARCH : " + name + " result : " + searchNodeTest.search(name));
+        sn.getAll().getData().forEach(System.out::println);
+//        log.info("sn.getTotalItemNumber() : " + sn.getTotalItemNumber());
+//        printSlash();
+//        sn.remove("ali");
+//        log.info("ali removed");
+//        sn.getAll().getData().forEach(System.out::println);
+//        printSlash();
+//        log.info("sn.getTotalItemNumber() : " + sn.getTotalItemNumber());
+//        sn.removeAll(sn.getAll().getData());
+//        log.info("ali removed");
+//
+//        log.info("sn.getTotalItemNumber() : " + sn.getTotalItemNumber());
+//        System.out.println(sn.getTotalItemNumber());
+//
+//        printSlash();
+//        sn.getAll().getData().forEach(System.out::println);
+//        System.out.println(sn.getTotalItemNumber());
+//        log.info("sn.getReachableNWD().getAllDataOfSearchNode().size() : " + sn.getReachableNWD().getAllDataOfSearchNode().size());
+//
+//        System.out.println("------------------");
+//        sn.getAll().getData().forEach(System.out::println);
+//        sn.getReachableNWD().clearPc(sn.getPcService().get('a').getData());
+//        sn.getReachableNWD().getAllDataOfSearchNode().forEach(System.out::println);
         printSlash();
-        log.info(searchNodeTest.getNodeData().toString());//        searchNodeTest.remove(name);
+        sn.getAll().getData().forEach(System.out::println);
         printSlash();
-        printAllNodesOfSearchNode(searchNodeTest);
+        sn.removeAll(sn.getAll().getData());
+        printSlash();
+        sn.getAll().getData().forEach(System.out::println);
     }
 
     void testArraylist(FileOperationFacade fofAllData, List<String> listToSearch) {

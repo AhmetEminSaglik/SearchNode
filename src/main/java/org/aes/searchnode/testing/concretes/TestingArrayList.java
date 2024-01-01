@@ -24,13 +24,10 @@ public class TestingArrayList implements TestingDataStructorFeature, CalculateDa
     @Override
     public void addData(List<String> list) {
         System.out.println("[AL] Word Pool Size : " + ReadableStringFormat.getReadableValueIntToString(list.size()));
-
-
         timeCalculation.start();
         for (int i = 0; i < list.size(); i++) {
             arrayList.add(list.get(i));
         }
-//        arrayList.addAll(list); // this is faster about
         timeCalculation.stop();
         printElapsedTime("[AL] Arraylist > Add Process", timeCalculation);
     }

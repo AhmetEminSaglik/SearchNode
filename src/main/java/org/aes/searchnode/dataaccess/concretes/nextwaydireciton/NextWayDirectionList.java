@@ -29,12 +29,17 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 
     @Override
     public Result clearPc(PriorityChar pc) {
+        String msg = "";
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
                 list.remove(i);
+                msg = pc + " Data is removed";
+                return new SuccessDataResult<>(msg);
             }
         }
-        return new SuccessDataResult<>();
+        msg = pc + "Data is not removed because is not found.";
+        log.info(msg);
+        return new ErrorResult(msg);
     }
 
 

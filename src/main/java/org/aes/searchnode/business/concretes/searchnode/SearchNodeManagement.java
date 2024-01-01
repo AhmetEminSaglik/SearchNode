@@ -34,7 +34,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private Result removeRecursive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
-        String address = sbText.substring(0, index);
+//        String address = sbText.substring(0, index);
         SearchNode<T> searchNodeNext = null;
         PriorityChar pc = null;
         Result result = null;
@@ -44,7 +44,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 String msg = "";
                 if (!nodeData.getListDataInfo().isEmpty()) {
                     msg = ">> Data is removed : " + sbText;
-                    log.info(msg);
+//                    log.info(msg);
                     searchNode.getNodeData().getListDataInfo().clear();
                     return new SuccessResult(msg);
                 }
@@ -59,13 +59,16 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             }
             result = removeRecursive(searchNodeNext, sbText, ++index);
         }
+
         if (result.isSuccess()) {
             searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
         }
-
         if (searchNode.getNodeData().getNextDirectionsTotalValueNumber() <= 0) {
             searchNode.getReachableNWD().clearPc(pc);
+            return new SuccessResult("Data is removed");
         }
+
+
         return new ErrorResult("Data deletion process is ended");
     }
 
@@ -77,7 +80,13 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         if (stringValue.toString().equals("")) {
             return new ErrorResult("Empty or Space can not be deleted in SearchNode");
         } else {
-            removeRecursive(searchNode, stringValue, 0);
+            Result result = removeRecursive(searchNode, stringValue, 0);
+         /*   if (result.isSuccess()) {
+                searchNode.getReachableNWD().getAllDataOfSearchNode().remove(
+                        searchNode.getReachableNWD().getNextSearchNodeWayOfChar(
+                                searchNode.getPcService().get(stringValue.charAt(0)).getData()
+                        ).getData());
+            }*/
         }
         return new SuccessResult("Data is added");
 
@@ -95,7 +104,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             }
         }
         String msg = "Removed Data size  :" + removedData.size() + ". Not found Data size  : " + notFoundData.size() + ". Removed data can be found in data.";
-        DataResult<List<T>> result = new SuccessDataResult<>(removedData);
+        DataResult<List<T>> result = new SuccessDataResult<>(removedData, msg);
         return result;
     }
 
