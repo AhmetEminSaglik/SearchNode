@@ -5,7 +5,10 @@ import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
-import org.aes.searchnode.entities.concretes.*;
+import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.PriorityChar;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
@@ -34,7 +37,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private Result removeRecursive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
-//        String address = sbText.substring(0, index);
         SearchNode<T> searchNodeNext = null;
         PriorityChar pc = null;
         Result result = null;
@@ -44,7 +46,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 String msg = "";
                 if (!nodeData.getListDataInfo().isEmpty()) {
                     msg = ">> Data is removed : " + sbText;
-//                    log.info(msg);
                     searchNode.getNodeData().getListDataInfo().clear();
                     return new SuccessResult(msg);
                 }
@@ -77,19 +78,14 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
         stringValue = trimObject(stringValue.toString());
+        Result result;
         if (stringValue.toString().equals("")) {
             return new ErrorResult("Empty or Space can not be deleted in SearchNode");
         } else {
-            Result result = removeRecursive(searchNode, stringValue, 0);
-         /*   if (result.isSuccess()) {
-                searchNode.getReachableNWD().getAllDataOfSearchNode().remove(
-                        searchNode.getReachableNWD().getNextSearchNodeWayOfChar(
-                                searchNode.getPcService().get(stringValue.charAt(0)).getData()
-                        ).getData());
-            }*/
-        }
-        return new SuccessResult("Data is added");
+            result = removeRecursive(searchNode, stringValue, 0);
 
+        }
+        return result;
     }
 
     @Override

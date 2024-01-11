@@ -1,6 +1,6 @@
 package org.aes.searchnode.dataaccess.comparator;
 
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
 
 import java.util.Comparator;
 
@@ -8,9 +8,6 @@ public class ComparatorNextWayDirectionRequiredData implements Comparator<NextWa
 
     @Override
     public int compare(NextWayDirectionRequiredData o1, NextWayDirectionRequiredData o2) {
-//        return new Order().getComparator(OrderBy.ASC)
-//        return   Order.getComparator(ConfigOrderBy.getOrderByNextWayDirectionRequiredData()) .
-//                compare(o1.getPriorityChar().getValue(), o2.getPriorityChar().getValue());
         return o1.getPriorityChar().getValue() > o2.getPriorityChar().getValue() ? 1 : -1;
     }
 

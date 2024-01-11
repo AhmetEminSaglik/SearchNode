@@ -6,7 +6,7 @@ import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.List;
 
@@ -35,7 +35,6 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
 
     @Override
     public Result add(List<Character> cList, char nextToThisChar) {
-//        PriorityChar pc = priorityCharPoolDAO.getPriorityChar(nextToThisChar);
         priorityCharPoolDAO.updatePriorityCharList(cList, nextToThisChar);
         return new SuccessResult("Priority Char List Value is updated :");
     }
@@ -56,7 +55,6 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     public DataResult update(char c) {
         return null;
     }
-
 
 }
 

@@ -6,12 +6,11 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
-import org.aes.searchnode.entities.concretes.PriorityCharPool;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.PriorityChar;
+import org.aes.searchnode.entities.PriorityCharPool;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,7 +27,6 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             sort(priorityCharPoolComparator);
             sorted = true;
         }
-        /*}*/
 //        return binarySearch(c);
         return linearSearch(c);
 
@@ -37,27 +35,10 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     private PriorityChar linearSearch(char c) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getChar() == c) {
-                return list.get(i); // return char with priority value kod
+                return list.get(i); // return char with priority value code value
             }
         }
-        return new PriorityChar(c, (int) c); // return char with ascii kod
-    }
-
-    private PriorityChar binarySearch(char c) {
-//        Collections.sort(list); // listeyi sırala
-        int low = 0;
-        int high = list.size() - 1;
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (list.get(mid).getChar() == c) {
-                return list.get(mid); // karakter bulundu
-            } else if (list.get(mid).getChar() < c) {
-                low = mid + 1; // sağ yarıyı ara
-            } else {
-                high = mid - 1; // sol yarıyı ara
-            }
-        }
-        return new PriorityChar(c, (int) c); // karakter bulunamadı
+        return new PriorityChar(c, (int) c); // return char with ascii code value
     }
 
 
@@ -68,7 +49,6 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             removePriorityChar(c);
         }
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
-//        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
         double charValueToAddBefore = getNextCharValue(nextPriorityChar);
         double increaseValueOfCharList = calculateIncreaseValueOfCharList(nextPriorityChar.getValue(), charValueToAddBefore, characterList.size());
         for (Character c : characterList) {
@@ -141,7 +121,6 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     private void printPriorityPool() {
         if (list.size() == 0)
             return;
-//        sort(priorityCharPoolComparator);
         System.out.println("----------> Priority Char Pool List Size :" + list.size());
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));

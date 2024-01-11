@@ -7,8 +7,8 @@ import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWa
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
-import org.aes.searchnode.entities.concretes.DataInfo;
-import org.aes.searchnode.entities.concretes.NodeData;
+import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NodeData;
 
 import java.util.ArrayList;
 import java.util.List;

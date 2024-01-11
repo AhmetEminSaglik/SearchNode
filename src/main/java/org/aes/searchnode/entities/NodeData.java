@@ -1,4 +1,4 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
 
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;
@@ -14,7 +14,6 @@ public class NodeData<T> {
 
 
     private List<DataInfo<T>> listDataInfo = new ArrayList<>();
-    //    private DataInfo dataInfo;
     private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
     private String locationStringAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
@@ -38,20 +37,6 @@ public class NodeData<T> {
         }
         addObjectToListDataInfo(t);
         return new SuccessDataResult<>(NEW_VALUE_IS_ADDED, " Data is added");
-
-       /* if (listDataInfo.size() == 0) {
-            addObjectToListDataInfo(o);
-            return new SuccessDataResult<Integer>(NEW_VALUE_IS_ADDED, " Data is added");
-        } else {
-            for (DataInfo tmp : listDataInfo) {
-                if (tmp.equals(o)) {
-                    tmp.increaseNumberOfHowManyTimesAddedThisValue();
-                    return new SuccessDataResult<Integer>(NUMBER_OF_VALUE_IS_INCREASED, " Data value number is increased");
-                }
-            }
-            addObjectToListDataInfo(o);
-            return new SuccessDataResult<Integer>(NEW_VALUE_IS_ADDED, " Data is added");
-        }*/
     }
 
     public DataResult<DataInfo<T>> search(Object o) {
@@ -72,14 +57,6 @@ public class NodeData<T> {
     public List<DataInfo<T>> getListDataInfo() {
         return listDataInfo;
     }
-/*   public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }*/
-
     public int getNextDirectionsTotalValueNumber() {
         return nextDirectionsTotalValueNumber;
     }

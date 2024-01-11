@@ -14,17 +14,5 @@ public class NodeTypeConversion {
         for (Integer tmp : integerList)
             list.add(convertTypeStringTobeReadyForProcessingData(tmp));
         return list;
-    } //
-    /*yukaridaki integer'in listesini burda yapcaz
-     * sonra  field kismini Integer  //ama veri String olarak islenecek
-     *
-     * String olanda field kismini String
-     * type yok
-     *
-     * obje olanda ise musteriden objelerin listelemesini isticez  Onun icinde field alma class yazip, liste sekilinde dondurup
-     * sirayla eklemesini isticez sonra o listeyi buraya yonlendirip ona gore  sirala islemi yapicaz
-     * */
-
-//    public String convertTypeToString(Integer integer)
-
+    }
 }

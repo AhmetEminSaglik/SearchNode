@@ -3,7 +3,7 @@ package org.aes.searchnode.testing.concretes;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
-import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.DataInfo;
 import org.aes.searchnode.testing.abstracts.CalculateDataStructorComplexity;
 import org.aes.searchnode.testing.abstracts.TestingDataStructorFeature;
 

@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 public class CustomLog {
 
-//    static final String prefix = "---AES-DEV.-MODE---> :";
     private final Logger log;
 
     public CustomLog(Class clazz) {
@@ -14,15 +13,15 @@ public class CustomLog {
     }
 
     public void info(String text) {
-        log.info(/*prefix + */text);
+        log.info(text);
     }
 
     public void warn(String text) {
-        log.warn(/*prefix +*/ text);
+        log.warn(text);
     }
 
     public void error(String text) {
-        log.error(/*prefix + */text);
+        log.error(text);
     }
 
 

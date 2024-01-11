@@ -3,8 +3,8 @@ package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.PriorityChar;
 
 public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReachableNWD<T> {
     private StringBuilder currentLocationStringAddress = new StringBuilder();
@@ -69,14 +69,8 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
     Result addDataToDataNode(NodeData<T> nodeData) throws Exception {
 
         if (nodeData.getLocationStringAddress().equals(data.toString())) {
-
-          /*  if (nodeData.getData() == null) {
-                nodeData.setData(data);
-                return new SuccessResult();
-            }*/
             nodeData.addData(data);
             return new SuccessDataResult<>("Data is added");
-//            throw new Exception("Data is not null\n --> given data : " + data + "\n -->  registered data : " + nodeData.getData());
         }
         return new ErrorResult("Data is not added");
     }

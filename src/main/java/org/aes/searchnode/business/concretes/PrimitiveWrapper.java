@@ -11,14 +11,5 @@ public class PrimitiveWrapper {
             return true;
         }
         return false;
-
-
     }
-//    public  boolean isPrimitive(Class clazz){
-//        System.out.println(clazz.get instanceof  Number);
-//        if (clazz.isPrimitive()) {
-//            System.out.println("??????? obje primitive gelen obje : "+object+" / class : "+object.getClass());
-//            return true;
-//        }
-//    }
 }

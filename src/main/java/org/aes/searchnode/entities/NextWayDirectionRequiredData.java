@@ -1,9 +1,8 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
 
 import org.aes.searchnode.business.abstracts.prioritychar.NotifyPriorityCharIsUpdated;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.config.prioritychar.ConfigPriorityChar;
-import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
 
 public class NextWayDirectionRequiredData<T> implements NotifyPriorityCharIsUpdated {

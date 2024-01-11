@@ -2,8 +2,8 @@ package org.aes.searchnode.dataaccess.abstracts.prioritychar.pool;
 
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.Comparator;
 import java.util.List;
