@@ -68,9 +68,9 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
             if (list.get(mid).getPriorityChar().getChar() == pc.getChar()) {
                 return new SuccessDataResult<>(list.get(mid).getSearchNode(), "Data is retrieved");
             } else if (list.get(mid).getPriorityChar().getChar() < pc.getChar()) {
-                low = mid + 1; // sağ yarıyı ara
+                low = mid + 1; // search for right half
             } else {
-                high = mid - 1; // sol yarıyı ara
+                high = mid - 1; // search for left half
             }
         }
         return new ErrorDataResult<>("Data is not found in " + getClass().getSimpleName());

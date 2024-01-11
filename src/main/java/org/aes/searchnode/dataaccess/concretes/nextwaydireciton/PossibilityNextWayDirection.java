@@ -14,20 +14,20 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
     private SearchNode<T> searchNodeAddingProcess;
     private PriorityChar pcForFirstSNToConnectRootSN = null;
 
-    public PossibilityNextWayDirection(T data, SearchNode<T> movedLastSearchNodeConnection/*, PriorityChar pcForNextSearchNodeConnection*/) {
+    public PossibilityNextWayDirection(T data, SearchNode<T> movedLastSearchNodeConnection) {
         this.data = data;
         this.searchNodeAddingProcess = movedLastSearchNodeConnection;
     }
 
     @Override
-    public DataResult<SearchNode<T>> createNextWayPriorityChar(PriorityChar pc) throws Exception /*throws Exception*/ {
+    public DataResult<SearchNode<T>> createNextWayPriorityChar(PriorityChar pc) throws Exception {
         if (pcForFirstSNToConnectRootSN == null) {
             pcForFirstSNToConnectRootSN = pc;
         }
 
         SearchNode<T> newSearchNode = new SearchNode<T>();
 
-        createCurrentLocationStringAddress(pc/*, searchNodeAddingProcess*/);
+        createCurrentLocationStringAddress(pc);
         setSearchNodeDeep(newSearchNode);
         fillNodeData(newSearchNode);
 
@@ -42,10 +42,10 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
     }
 
     void initializeSearchNodeFundamentals(SearchNode<T> searchNode) {
-        searchNode.setNodeData(new NodeData<T>());
+        searchNode.setNodeData(new NodeData<>());
     }
 
-    void createCurrentLocationStringAddress(PriorityChar pc/*, SearchNode searchNode*/) {
+    void createCurrentLocationStringAddress(PriorityChar pc) {
         if (currentLocationStringAddress.toString().equals("")) {
             currentLocationStringAddress.append(searchNodeAddingProcess.getNodeData().getLocationStringAddress());
         }

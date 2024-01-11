@@ -49,7 +49,6 @@ public class TestingArrayList implements TestingDataStructorFeature, CalculateDa
         timeCalculation.start();
 
         Object[] arr = arrayList.toArray();
-//        Arrays.binarySearch();
         for (String tmpTxt : list) {
             int result = Arrays.binarySearch(arr, tmpTxt);
             if (result >= 0) {

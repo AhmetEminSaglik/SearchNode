@@ -27,7 +27,6 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
 
     @Override
     public Result add(char c, char nextToThisChar) {
-//        PriorityChar pc = priorityCharPoolDAO.getPriorityChar(nextToThisChar);
         priorityCharPoolDAO.updatePriorityChar(c, nextToThisChar);
         return new SuccessResult("Priority Char value is updated :" + c);
     }

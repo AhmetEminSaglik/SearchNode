@@ -75,7 +75,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     @Override
     public Result remove(T t) {
-        Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
+        Object value = getValueOfObjectToBeProcess(t);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
         stringValue = trimObject(stringValue.toString());
         Result result;
@@ -107,7 +107,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     @Override
     public Result add(T t) {
         clearNWDTVList();
-        Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
+        Object value = getValueOfObjectToBeProcess(t);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
         stringValue = trimObject(stringValue.toString());
         if (stringValue.toString().equals("")) {
@@ -121,7 +121,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
                         stringValue.delete(0, i);
-                        initializePossibilityNWD(t/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
+                        initializePossibilityNWD(t);
                         movePossibilityNWD(value, stringValue);
                         break;
                     }
@@ -237,7 +237,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     private List<T> getAllData(SearchNode<T> searchNode) {
         List<T> list = new ArrayList<>();
         movedLastSearchNodeConnection = searchNode;
-//        StringBuilder stringBuilder = new StringBuilder();
         addAllDataToList(list, searchNode);
         return list;
     }
