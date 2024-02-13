@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionHashmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionHashmap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/NextWayDirectionList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NextWayDirectionRequiredData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NextWayDirectionRequiredData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/PriorityChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/PriorityChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/NotFoundAnyDeclaredFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/NotFoundAnyDeclaredFieldException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/NotFoundRequestedFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/NotFoundRequestedFieldException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/solutions/SolutionMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/solutions/SolutionMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/testing/concretes/TestingArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/testing/concretes/TestingArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/testing/concretes/TimeCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/testing/concretes/TimeCalculation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/fakedata/Word-Data-1_398_449 - backup.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/fakedata/Word-Data-1_398_449.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/fakedata/mod-test-data/word-data-699-225.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +60,7 @@
     "JUnit.AlgorithmComplexityTest.testSearchNode_Search_419_535_WordData_From_279_690_WordPool.executor": "Run",
     "JUnit.AlgorithmComplexityTest.testSearchNode_Search_419_535_WordData_From_419_535_WordPool.executor": "Run",
     "JUnit.AlgorithmComplexityTest.testSearchNode_Search_466_150_WordData_From_466_150_WordPool.executor": "Run",
+    "JUnit.All in SearchNode.executor": "Run",
     "JUnit.SearchNodeComplexityTest.prepareFileOpearationService.executor": "Run",
     "JUnit.SearchNodeComplexityTest.testSearchNodeWith_1_398_449_Words.executor": "Run",
     "JUnit.SearchNodeComplexityTest.testSearchNodeWith_1_398_449_Words_with_mod_10.executor": "Run",
@@ -80,6 +75,7 @@
     "JUnit.SearchNodeDPITest.removeStringTest.executor": "Run",
     "JUnit.controllers in SearchNode.executor": "Run",
     "JUnit.java in SearchNode.executor": "Run",
+    "JUnit.org.aes.searchnode.dpi.controllers in SearchNode.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -88,9 +84,9 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "work/thesis-last-updates-before-send",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ahmet/OneDrive/Desktop/EmirAlbayrak/School-Mobil-App/Backend",
+    "last_opened_file_path": "D:/projects/intelijidea/SearchNode-All/FileOperationLibrary",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.57701147",
     "settings.editor.selected.configurable": "File.Encoding",
@@ -114,7 +110,7 @@
       <recent name="org.aes.searchnode.core.utilities" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.java in SearchNode">
+  <component name="RunManager" selected="JUnit.org.aes.searchnode.dpi.controllers in SearchNode">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.Main" />
       <module name="SearchNode" />
@@ -128,17 +124,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmComplexityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.AlgorithmComplexityTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,14 +148,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="controllers in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SearchNode" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="java in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <option name="TEST_OBJECT" value="directory" />
@@ -175,20 +156,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="org.aes.searchnode.dpi.controllers in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SearchNode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.org.aes.searchnode.dpi.controllers in SearchNode" />
+        <item itemvalue="JUnit.All in SearchNode" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.java in SearchNode" />
         <item itemvalue="JUnit.SearchNodeDPIRemoveFunctionTest" />
-        <item itemvalue="JUnit.AlgorithmComplexityTest" />
-        <item itemvalue="JUnit.controllers in SearchNode" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-15.0.2-corretto-15.0.2-249ae16d76d6-a3a272c2" />
+        <option value="jdk-15.0.2-corretto-15.0.2-4caba194b151-9bc2d75a" />
       </set>
     </attachedChunks>
   </component>

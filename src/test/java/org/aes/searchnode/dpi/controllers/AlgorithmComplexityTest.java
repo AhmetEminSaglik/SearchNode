@@ -26,7 +26,6 @@ public class AlgorithmComplexityTest {
     static String word_13_k = "word-data-13-985";
     static String word_279_k = "word-data-279-690";
     static String word_466_k = "word-data-466-150";
-    static String word_699_k = "word-data-699-225";
     FileFundamental ffWordPool = new FileFundamental()
             .setPath("src/main/java/org/aes/searchnode/fakedata/mod-test-data/")
             .setFileExtension(".txt");

@@ -50,7 +50,7 @@ public class Main {
         searchNodeTest.add(data);
         log.info('`' + data + "` eklendi");
         log.info("searchNodeTest total item value :" + searchNodeTest.getTotalItemNumber());
-//        printAllNodesOfSearchNode(searchNodeTest);
+        printAllNodesOfSearchNode(searchNodeTest);
     }
 
     private static FileFundamental fileFundamental = new FileFundamental()
@@ -68,12 +68,19 @@ public class Main {
 
     public static void main(String[] args) {
         SearchNode<String> sn = new SearchNode<>();
-        sn.add("ali");
-        sn.add("veli");
-        sn.add("veli");
-        sn.add("veli");
-        sn.add("mustafa");
-        sn.add("ahmet");
+        addData("ali");
+        addData("veli");
+        addData("veli");
+        addData("veli");
+        addData("mustafa");
+        addData("ahmet");
+//        addData("ali");
+//        sn.add("ali");
+//        sn.add("veli");
+//        sn.add("veli");
+//        sn.add("veli");
+//        sn.add("mustafa");
+//        sn.add("ahmet");
 
         printSlash();
         sn.getAll().getData().forEach(System.out::println);
