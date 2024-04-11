@@ -4,7 +4,8 @@ import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
-import org.aes.searchnode.core.utilities.*;
+import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.entities.concretes.DataInfo;
@@ -15,13 +16,12 @@ import java.util.List;
 
 public class SearchNode<T> implements SearchNodeService<T> {
 
+    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
     private ReachableNextWayDirection<T> reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
-
-    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
 
     @Override
     public DataResult<DataInfo<T>> search(String text) {

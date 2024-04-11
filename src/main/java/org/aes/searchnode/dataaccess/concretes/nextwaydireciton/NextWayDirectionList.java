@@ -8,14 +8,15 @@ import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.comparator.ComparatorNextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
-    private List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
     private static final ComparatorNextWayDirectionRequiredData comparatorNextWayDirectionRequiredData = new ComparatorNextWayDirectionRequiredData();
+    private List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
 
     @Override
     public DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc) {
@@ -30,18 +31,6 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     @Override
     public DataResult<SearchNode<T>> addPossibilityNWDNodeToReachableNWD(PriorityChar pc, SearchNode<T> searchNode) {
         list.add(new NextWayDirectionRequiredData(pc, searchNode));
-        /*if (list.size() > 1) {
-            System.out.println("sort onces : ");
-            list.forEach(e -> {
-                System.out.println(e);
-            });
-            Collections.sort(list, new ComparatorNextWayDirectionRequiredData());
-            System.out.println("sort sonrasi : ");
-            list.forEach(e -> {
-                System.out.println(e);
-            });
-            System.out.println("===================================");
-        }*/
         return new SuccessDataResult<>("--> SearchNode is added to List");
     }
 

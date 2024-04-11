@@ -1,2 +1,0 @@
-Abstract class / interface   : XYZ --> XYZImpl
-Service                      : XYZ --> XYZ Managemnt

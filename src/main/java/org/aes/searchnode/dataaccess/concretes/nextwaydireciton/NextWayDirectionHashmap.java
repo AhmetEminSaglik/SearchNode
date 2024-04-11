@@ -11,7 +11,7 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.HashMap;
 import java.util.List;
 
-public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection <T>{
+public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection<T> {
     HashMap<Character, SearchNode> hashMap = new HashMap<>();
 
     @Override
@@ -32,15 +32,6 @@ public class NextWayDirectionHashmap<T> implements ReachableNextWayDirection <T>
     public List<NextWayDirectionRequiredData<T>> getAllDataOfSearchNode() {
         return null;
     }
-
-   /* @Override
-    public List<> printAllDataOfSearchNode() {
-        for (Character tmp : hashMap.keySet()) {
-            System.out.println(tmp + " : " + hashMap.keySet());
-        }
-        System.out.println("Hashmap is over");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++");
-    }*/
 
     @Override
     public int size() {

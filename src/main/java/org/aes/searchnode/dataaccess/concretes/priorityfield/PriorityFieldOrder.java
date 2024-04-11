@@ -15,8 +15,6 @@ public class PriorityFieldOrder {
     Class clazz;
 
     public PriorityFieldOrder(Class<?> clazz) throws NotFoundAnyDeclaredFieldException {
-//        System.out.println("GELEN COMPONENT TYPE : "+clazz);
-
         this.clazz = clazz;
         setPriorityFieldsInDefaultOrder();
     }
@@ -41,6 +39,7 @@ public class PriorityFieldOrder {
 //        System.out.println(fieldNameList.size());
 
     }
+/*
 
     public Field getFirstField() {
         if (!fieldNameList.isEmpty()) {
@@ -59,6 +58,7 @@ public class PriorityFieldOrder {
         }
         return null;
     }
+*/
 
     public Field getPriorityFieldName(int index) throws NotFoundRequestedFieldException { // returns first index, this is for String,Integer...Byte
         //obje yerine clazz ile islemler yapilacak

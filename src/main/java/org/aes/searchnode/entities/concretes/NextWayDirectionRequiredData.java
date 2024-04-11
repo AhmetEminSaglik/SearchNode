@@ -3,7 +3,6 @@ package org.aes.searchnode.entities.concretes;
 import org.aes.searchnode.business.abstracts.prioritychar.NotifyPriorityCharIsUpdated;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.config.prioritychar.ConfigPriorityChar;
-import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
 
 public class NextWayDirectionRequiredData<T> implements NotifyPriorityCharIsUpdated {
@@ -47,7 +46,7 @@ public class NextWayDirectionRequiredData<T> implements NotifyPriorityCharIsUpda
 //            System.out.println("priorityChar Update Notify  CALISTI ");
 //            System.out.println("BEFORE UPDATE : " + priorityChar);
 //
-            this.priorityChar = priorityCharPoolDAO.getPriorityChar(priorityChar.getChar());
+        this.priorityChar = priorityCharPoolDAO.getPriorityChar(priorityChar.getChar());
 //            System.out.println("AFTER UPDATE : " + priorityChar);
 //        } else  if(priorityChar.getChar()=='z'){
 //            System.out.println(" NOTIFY:E IF DEN GIRMEYENLER priorityChar : " + priorityChar);

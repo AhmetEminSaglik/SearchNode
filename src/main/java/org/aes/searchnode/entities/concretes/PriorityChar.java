@@ -1,8 +1,5 @@
 package org.aes.searchnode.entities.concretes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PriorityChar {
     char c;
     double value;

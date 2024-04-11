@@ -2,7 +2,7 @@ package org.aes.searchnode.core.utilities;
 
 public class Result {
     private boolean success;
-    private  String msg;
+    private String msg;
 
     public Result(boolean success) {
         this.success = success;

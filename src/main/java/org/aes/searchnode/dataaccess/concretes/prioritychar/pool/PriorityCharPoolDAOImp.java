@@ -66,10 +66,10 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     @Override
     public DataResult removePriorityChar(char c) {
-        System.out.println((int)c+" :"+c+"  > SILINECEK KARAKTER : "+getPriorityChar(c));
+        System.out.println((int) c + " :" + c + "  > SILINECEK KARAKTER : " + getPriorityChar(c));
         list.remove(getPriorityChar(c));
         printPriorityPool();
-        System.out.println("RESETLENMIS OLMALI  : "+getPriorityChar(c));
+        System.out.println("RESETLENMIS OLMALI  : " + getPriorityChar(c));
 
         updatePriorityChar();
         return new SuccessDataResult(getPriorityChar(c), "Priority char is removed");

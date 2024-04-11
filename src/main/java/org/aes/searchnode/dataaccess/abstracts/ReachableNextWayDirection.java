@@ -14,12 +14,9 @@ public interface ReachableNextWayDirection<T> {
 
     List<NextWayDirectionRequiredData<T>> getAllDataOfSearchNode();
 
-//    List<T> getAll(SearchNode<T> searchNode);
-
     /**
      * return SearchNode Available Next Way Directions size in stored .
      */
     int size();
-
 
 }

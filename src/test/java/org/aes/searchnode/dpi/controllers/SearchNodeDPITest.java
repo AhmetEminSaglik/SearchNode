@@ -53,7 +53,7 @@ class SearchNodeDPITest {
         searchNode.add("masa");
         searchNode.add("masa");
         expected = list.size() + 1;
-        actual=searchNode.getTotalItemNumber();
+        actual = searchNode.getTotalItemNumber();
         Assertions.assertEquals(expected, actual);
     }
 
