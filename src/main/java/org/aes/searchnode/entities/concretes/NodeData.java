@@ -5,6 +5,7 @@ import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NodeData<T> {
@@ -55,12 +56,21 @@ public class NodeData<T> {
     }
 
     //    public DataResult<List<DataInfo<T>>> search(Object o) {
-    public DataResult<NodeDataService> search(Object o) {
+    private void sortDataInfoList() {
+        Collections.sort(listDataInfo);
+
+        for (int i = 0; i < listDataInfo.size(); i++) {
+            listDataInfo.get(i).index = i;
+        }
+    }
+
+    public DataResult<NodeDataService<T>> search(Object o) {
+        sortDataInfoList();
         for (DataInfo<T> tmp : listDataInfo) {
             if (tmp.getValue().equals(o)) {
 //                list.add(this);
                 return new SuccessDataResult<>(
-                        new NodeDataService<T>(this));
+                        new NodeDataService<>(this));
             }
         }
         return new ErrorDataResult<>("Data is not found");

@@ -91,7 +91,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
             DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
             if (drReachablNWD.isSuccess()) {
-                DataResult<NodeDataService> drNodeData = drReachablNWD.getData().getNodeData().search(text);
+                DataResult<NodeDataService<T>> drNodeData = drReachablNWD.getData().getNodeData().search(text);
                 if (drNodeData.isSuccess()) {
                     return new SuccessDataResult<>(drNodeData.getData(), "Data is found :" + drNodeData.getData().getLocationAddress());
                 }

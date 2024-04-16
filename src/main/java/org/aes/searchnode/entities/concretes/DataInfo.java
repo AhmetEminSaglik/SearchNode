@@ -1,7 +1,7 @@
 package org.aes.searchnode.entities.concretes;
 
-public class DataInfo<T> {
-    private int index;
+public class DataInfo<T> implements Comparable<DataInfo> {
+    protected int index;
     private final T value;
     private String explanation;
     private int totalSameNum = 0;
@@ -11,7 +11,7 @@ public class DataInfo<T> {
         this.value = t;
         this.explanation = explanation;
         increaseTotalSameNum();
-        System.out.println("created index: "+index);
+//        System.out.println("created index: " + index);
     }
 
     public void increaseTotalSameNum() {
@@ -42,11 +42,22 @@ public class DataInfo<T> {
     @Override
     public String toString() {
 //        String explanationToString = this.explanation != null ? " ,explanation='" + explanation + '\'' : " ,explanation=" + explanation;
-        return "DataInfo{" +
+        return "\nDataInfo{" +
                 "index=" + index +
                 ", value=" + value +
-                ", explanation=\"" + explanation +"\""+
+                ", explanation=\"" + explanation + "\"" +
                 ", totalSameNum=" + totalSameNum +
                 '}';
+    }
+
+    @Override
+    public int compareTo(DataInfo data) {
+        int result = this.explanation.compareTo(data.explanation);
+        if (result <= 0) {
+            int tempIndex = index;
+            index = data.index;
+            data.index = tempIndex;
+        }
+        return result;
     }
 }

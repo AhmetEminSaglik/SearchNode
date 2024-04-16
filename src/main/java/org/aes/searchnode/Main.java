@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
 
     static void printSlash() {
-        System.out.println("-------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
     }
 
     static void printSearchNodeList(SearchNodeDPI<String> searchNodeTest) {
@@ -24,20 +24,36 @@ public class Main {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
 
 
-        searchNodeTest.add("Ahmet", "Demo Aciklama");
-        searchNodeTest.add("Ahmet", "Demo Aciklama");
-        searchNodeTest.add("Ahmet", "Demo Aciklama1");
-        searchNodeTest.add("Ahmet");
-        searchNodeTest.add("Ahmet");
-        searchNodeTest.add("Ahmet");
+        searchNodeTest.add("Ahmet", "EE");
+        searchNodeTest.add("AES", "AA");
+        searchNodeTest.add("AES", "AA");
+        searchNodeTest.add("Ahmet", "CC");
+        searchNodeTest.add("Ahmet", "CC");
+        searchNodeTest.add("Ahmet", "CC");
+        searchNodeTest.add("AES", "ZZ");
+        searchNodeTest.add("Ahmet", "YY");
+        searchNodeTest.add("Ahmet", "YY");
+        searchNodeTest.add("Ahmet", "YY");
+        searchNodeTest.add("AEs", "BB");
+//        searchNodeTest.add("Ahmet", "BB");
+//        searchNodeTest.add("Ahmet", "CC");
+//        searchNodeTest.add("Ahmet");
+//        searchNodeTest.add("Ahmet");
+//        searchNodeTest.add("Ahmet");
 
 //        searchNodeTest.add("Ahmet", "Demo Aciklama");
-        printSearchNodeList(searchNodeTest);
+//        printSearchNodeList(searchNodeTest);
 
-        System.out.println("------");
-        System.out.println(searchNodeTest.search("Ahmet").getData().getLocationAddress());
-        System.out.println(searchNodeTest.search("Ahmet").getData().getListDataInfo());
+        printSlash();
+//        System.out.println(searchNodeTest.search("Ahmet").getData().getLocationAddress());
+//        System.out.println(searchNodeTest.search("Ahmet").getData().getListDataInfo());
         System.out.println(searchNodeTest.search("Ahmet").getData());
+        printSlash();
+        System.out.println(searchNodeTest.search("AhmetEmin").getData());
+        printSlash();
+        System.out.println(searchNodeTest.search("AEs").getData());
+        printSlash();
+        System.out.println(searchNodeTest.search("AES").getData());
         /*DataResult dataResult = searchNodeTest.search("Ahmet");
         if (dataResult.isSuccess()) {
             System.out.println("Data is found : " + dataResult.getData());
