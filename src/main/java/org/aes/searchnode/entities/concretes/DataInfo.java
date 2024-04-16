@@ -1,8 +1,8 @@
 package org.aes.searchnode.entities.concretes;
 
 public class DataInfo<T> implements Comparable<DataInfo> {
-    protected int index;
     private final T value;
+    protected int index;
     private String explanation;
     private int totalSameNum = 0;
 

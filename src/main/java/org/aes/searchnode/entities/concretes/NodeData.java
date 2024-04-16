@@ -64,13 +64,13 @@ public class NodeData<T> {
         }
     }
 
-    public DataResult<NodeDataService<T>> search(Object o) {
+    public DataResult<NodeData<T>> search(Object o) {
         sortDataInfoList();
         for (DataInfo<T> tmp : listDataInfo) {
             if (tmp.getValue().equals(o)) {
 //                list.add(this);
-                return new SuccessDataResult<>(
-                        new NodeDataService<>(this));
+                System.out.println("Buraya geldi ve donucek : " + this);
+                return new SuccessDataResult<>(this);
             }
         }
         return new ErrorDataResult<>("Data is not found");
@@ -156,5 +156,16 @@ public class NodeData<T> {
             text.deleteCharAt(text.length() - 1);
         return text.toString();
 
+    }
+
+    public void update(String path, String oldExp, String newExp) {
+        if (path.equals(locationAddress)) {
+            for (DataInfo<T> tmp : listDataInfo) {
+                if (tmp.getExplanation().equals(oldExp)) {
+                    tmp.setExplanation(newExp);
+                    return;
+                }
+            }
+        }
     }
 }

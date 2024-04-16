@@ -21,6 +21,21 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result update(T t, String oldExp, String newExp) {
+        return searchNodeService.update(t, oldExp, newExp);
+    }
+
+    @Override
+    public Result update(T t, String oldExp, List<String> expList) {
+        return searchNodeService.update(t, oldExp, expList);
+    }
+
+    @Override
+    public Result update(T t, List<String> expList) {
+        return searchNodeService.update(t,expList);
+    }
+
+    @Override
     public Result add(T t) {
         return searchNodeService.add(t);
     }
@@ -28,6 +43,11 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     @Override
     public Result add(T t, String explanation) {
         return searchNodeService.add(t, explanation);
+    }
+
+    @Override
+    public Result add(T t, List<String> expList) {
+        return searchNodeService.add(t, expList);
     }
 
     @Override

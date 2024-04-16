@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NodeDataService<T> {
-    private int deep;
+    private final int deep;
     private List<DataInfo<T>> listDataInfo = new ArrayList<>();
-    private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
+    private final int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
     private String locationAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public NodeDataService(NodeData<T> nodeData) {
@@ -60,7 +60,7 @@ public class NodeDataService<T> {
         return "NodeDataService{" +
                 "deep=" + deep +
                 ", listDataInfo=" + listDataInfo +
-                (listDataInfo.size() == 0 ? "" : "\n")+
+                (listDataInfo.size() == 0 ? "" : "\n") +
                 "\n, nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
                 ", locationAddress='" + locationAddress + '\'' +
                 '}';

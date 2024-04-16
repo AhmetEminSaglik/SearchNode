@@ -31,18 +31,65 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return new SuccessResult();
     }
 
+    private String resetNullStringTypeValue(String s) {
+        if (s == null) {
+            return "";
+        }
+        return s;
+    }
+
+    @Override
+    public Result update(T t, String oldExp, String newExp) {
+        oldExp = resetNullStringTypeValue(oldExp);
+        newExp = resetNullStringTypeValue(newExp);
+
+        Object value = getValueOfObjectToBeProcess(t);
+        StringBuilder path = getStringBuilderOfData(value);
+
+        NodeData<T> nodeData = searchNodeData(path.toString()).getData();
+        nodeData.update(path.toString(), oldExp, newExp);
+        return new SuccessResult("Update is successfull");
+    }
+
+    @Override
+    public Result update(T t, String oldExp, List<String> expList) {
+        System.out.println("list Size : "+expList.size());
+        if (expList.size() > 0) {
+            update(t, oldExp, expList.get(0));
+            expList.remove(0);
+            if (expList.size() > 1) {
+                expList.forEach(e -> add(t, e));
+            }
+        } else {
+            return new ErrorResult("Explanation List is empty");
+        }
+
+        return new SuccessResult();
+    }
+
+    @Override
+    public Result update(T t, List<String> expList) {
+        return update(t, "", expList);
+    }
+
     @Override
     public Result add(T t) {
         return add(t, "");
+    }
+
+    private StringBuilder getStringBuilderOfData(Object value) {
+        StringBuilder stringValue = new StringBuilder(value.toString().trim());
+        stringValue = trimObject(stringValue.toString());
+        return stringValue;
     }
 
     @Override
     public Result add(T t, String explanation) {
 
         clearNWDTVList();
-        Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
-        StringBuilder stringValue = new StringBuilder(value.toString().trim());
-        stringValue = trimObject(stringValue.toString());
+        Object value = getValueOfObjectToBeProcess(t);
+        StringBuilder stringValue = getStringBuilderOfData(value);
+
         if (stringValue.toString().equals("")) {
             return new ErrorResult("Empty or Space can not added to SearchNode");
         } else {
@@ -84,14 +131,20 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<NodeDataService<T>> search(String text) {
+    public Result add(T t, List<String> expList) {
+        expList.forEach(e -> add(t, e));
+        return null;
+    }
+
+    private DataResult<NodeData<T>> searchNodeData(String text) {
+
         movedLastSearchNodeConnection = searchNode;
         StringBuilder stringValue = new StringBuilder(text);
         for (int i = 0; i < stringValue.length(); i++) {
             PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
             DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
             if (drReachablNWD.isSuccess()) {
-                DataResult<NodeDataService<T>> drNodeData = drReachablNWD.getData().getNodeData().search(text);
+                DataResult<NodeData<T>> drNodeData = drReachablNWD.getData().getNodeData().search(text);
                 if (drNodeData.isSuccess()) {
                     return new SuccessDataResult<>(drNodeData.getData(), "Data is found :" + drNodeData.getData().getLocationAddress());
                 }
@@ -102,6 +155,13 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
         return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
 
+
+    }
+
+    @Override
+    public DataResult<NodeDataService<T>> search(String text) {
+        NodeDataService<T> nodeDataService = new NodeDataService<>(searchNodeData(text).getData());
+        return new SuccessDataResult<>(nodeDataService);
     }
 
     @Override

@@ -45,8 +45,28 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result add(T t, List<String> expList) {
+        return searchNodeService.add(t, expList);
+    }
+
+    @Override
     public Result addAll(List<T> list) {
         return searchNodeService.addAll(list);
+    }
+
+    @Override
+    public Result update(T t, String oldExp, String newExp) {
+        return searchNodeService.update(t, oldExp, newExp);
+    }
+
+    @Override
+    public Result update(T t, String oldExp, List<String> expList) {
+        return searchNodeService.update(t, oldExp, expList);
+    }
+
+    @Override
+    public Result update(T t, List<String> expList) {
+        return searchNodeService.update(t, expList);
     }
 
 

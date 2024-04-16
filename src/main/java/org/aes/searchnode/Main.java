@@ -4,11 +4,12 @@ import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
 import org.aes.searchnode.entities.concretes.DataInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    static void printSlash() {
+    static void printSlash(int... a) {
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
     }
 
@@ -16,44 +17,37 @@ public class Main {
         System.out.println("----------------------------");
         List<DataInfo<String>> list = searchNodeTest.getAll().getData();
         for (DataInfo<String> s : list) {
-            System.out.println(s);
+            System.out.print(s);
         }
     }
 
     public static void main(String[] args) {
-        SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+        SearchNodeDPI<String> sn = new SearchNodeDPI<>();
+        sn.add("AAA", "A");
+        sn.add("AAA", "E");
+        sn.add("AAA", "Z");
+        sn.add("Long");
+        sn.add("Live");
+        sn.add("Long");
+        sn.add("Live");
+        sn.add("Long");
+        sn.add("Live");
 
+        List<String> list = new ArrayList<>();
+        sn.add("Palestina");
+        sn.add("Crush");
+        sn.add("Zionism");
 
-        searchNodeTest.add("Ahmet", "EE");
-        searchNodeTest.add("AES", "AA");
-        searchNodeTest.add("AES", "AA");
-        searchNodeTest.add("Ahmet", "CC");
-        searchNodeTest.add("Ahmet", "CC");
-        searchNodeTest.add("Ahmet", "CC");
-        searchNodeTest.add("AES", "ZZ");
-        searchNodeTest.add("Ahmet", "YY");
-        searchNodeTest.add("Ahmet", "YY");
-        searchNodeTest.add("Ahmet", "YY");
-        searchNodeTest.add("AEs", "BB");
-//        searchNodeTest.add("Ahmet", "BB");
-//        searchNodeTest.add("Ahmet", "CC");
-//        searchNodeTest.add("Ahmet");
-//        searchNodeTest.add("Ahmet");
-//        searchNodeTest.add("Ahmet");
+        list.add("Innocent Babies are killed");
+        list.add("Innocent Children are killed");
+        list.add("Innocent Women are killed");
+        list.add("Innocent Men are killed");
 
-//        searchNodeTest.add("Ahmet", "Demo Aciklama");
-//        printSearchNodeList(searchNodeTest);
+        sn.update("AAA", "Z", "T");
 
-        printSlash();
-//        System.out.println(searchNodeTest.search("Ahmet").getData().getLocationAddress());
-//        System.out.println(searchNodeTest.search("Ahmet").getData().getListDataInfo());
-        System.out.println(searchNodeTest.search("Ahmet").getData());
-        printSlash();
-        System.out.println(searchNodeTest.search("AhmetEmin").getData());
-        printSlash();
-        System.out.println(searchNodeTest.search("AEs").getData());
-        printSlash();
-        System.out.println(searchNodeTest.search("AES").getData());
+        sn.update("Palestina", "", list);
+        printSearchNodeList(sn);
+
         /*DataResult dataResult = searchNodeTest.search("Ahmet");
         if (dataResult.isSuccess()) {
             System.out.println("Data is found : " + dataResult.getData());

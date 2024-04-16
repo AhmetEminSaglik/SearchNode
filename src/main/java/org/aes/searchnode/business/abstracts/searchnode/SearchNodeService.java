@@ -16,7 +16,15 @@ public interface SearchNodeService<T> {
 
     Result add(T t, String explanation);
 
+    Result add(T t, List<String> expList);
+
     Result addAll(List<T> list);
+
+    Result update(T t, String oldExp, String newExp);
+
+    Result update(T t, String oldExp, List<String> expList);
+
+    Result update(T t, List<String> expList);
 
     DataResult<List<DataInfo<T>>> getAll();
 
