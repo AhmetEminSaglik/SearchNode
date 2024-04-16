@@ -10,9 +10,9 @@ import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.PriorityChar;
 
 public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReachableNWD<T> {
+    private final StringBuilder currentLocationAddress = new StringBuilder();
     T data;
     String explanation;
-    private StringBuilder currentLocationStringAddress = new StringBuilder();
     private SearchNode<T> firstSearchNodeToConnectRootSearchNode = null;
     private SearchNode<T> searchNodeAddingProcess;
     private PriorityChar pcForFirstSNToConnectRootSN = null;
@@ -32,7 +32,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
 
         SearchNode<T> newSearchNode = new SearchNode<T>();
 
-        createCurrentLocationStringAddress(pc/*, searchNodeAddingProcess*/);
+        createCurrentLocationAddress(pc/*, searchNodeAddingProcess*/);
         setSearchNodeDeep(newSearchNode);
         fillNodeData(newSearchNode);
 
@@ -50,21 +50,21 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
         searchNode.setNodeData(new NodeData<T>());
     }
 
-    void createCurrentLocationStringAddress(PriorityChar pc/*, SearchNode searchNode*/) {
-        if (currentLocationStringAddress.toString().equals("")) {
-            currentLocationStringAddress.append(searchNodeAddingProcess.getNodeData().getLocationStringAddress());
+    void createCurrentLocationAddress(PriorityChar pc/*, SearchNode searchNode*/) {
+        if (currentLocationAddress.toString().equals("")) {
+            currentLocationAddress.append(searchNodeAddingProcess.getNodeData().getLocationAddress());
         }
-        currentLocationStringAddress.append(pc.getChar());
+        currentLocationAddress.append(pc.getChar());
     }
 
     void setSearchNodeDeep(SearchNode<T> searchNode) {
-        int deep = currentLocationStringAddress.length();
+        int deep = currentLocationAddress.length();
         searchNode.getNodeData().setDeep(deep);
     }
 
     void fillNodeData(SearchNode<T> searchNode) throws Exception {
         NodeData<T> nodeData = searchNode.getNodeData();
-        nodeData.setLocationStringAddress(currentLocationStringAddress.toString());
+        nodeData.setLocationAddress(currentLocationAddress.toString());
         Result result = addDataToDataNode(nodeData);
         if (!result.isSuccess()) {
             nodeData.increaseNextDirectionsExistingTotalDataNumber();
@@ -73,7 +73,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
 
     Result addDataToDataNode(NodeData<T> nodeData) throws Exception {
 
-        if (nodeData.getLocationStringAddress().equals(data.toString())) {
+        if (nodeData.getLocationAddress().equals(data.toString())) {
             nodeData.addData(data, explanation);
         }
         return new ErrorResult("Data is not added");

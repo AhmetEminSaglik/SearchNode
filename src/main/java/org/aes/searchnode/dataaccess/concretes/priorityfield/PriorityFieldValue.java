@@ -16,9 +16,9 @@ public class PriorityFieldValue {
 
         priorityFieldList null ise hata firlatacak sekilde customException yazilmali
     *  */
-    private List<Field> priorityFieldList;
-    private PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
-    private Class clazz;
+    private final List<Field> priorityFieldList;
+    private final PrimitiveWrapper primitiveWrapper = new PrimitiveWrapper();
+    private final Class clazz;
 
     public PriorityFieldValue(PriorityFieldOrder priorityFieldOrder) {
         this.priorityFieldList = priorityFieldOrder.getFieldNameList();
@@ -79,8 +79,6 @@ public class PriorityFieldValue {
     }
 
     private boolean isFieldOrderClassEqualsToFieldValueClass(Object object) {
-        if (clazz.getSimpleName().equals(object.getClass().getSimpleName()))
-            return true;
-        return false;
+        return clazz.getSimpleName().equals(object.getClass().getSimpleName());
     }
 }

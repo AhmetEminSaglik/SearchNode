@@ -3,10 +3,9 @@ package org.aes.searchnode.dpi.controllers;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.concretes.NodeDataService;
 
 import java.util.List;
 
@@ -32,27 +31,27 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<DataInfo<T>> search(String text) {
+    public DataResult<NodeDataService<T>> search(String text) {
         return searchNodeService.search(text);
     }
 
     @Override
-    public DataResult<String> searchExplanationOf(String text) {
+    public DataResult<NodeDataService<T>> searchExplanationOf(String text) {
         return searchNodeService.searchExplanationOf(text);
     }
 
     @Override
-    public DataResult<List<T>> getAll() {
+    public DataResult<List<DataInfo<T>>> getAll() {
         return searchNodeService.getAll();
     }
 
     @Override
-    public DataResult<List<T>> getAllReverse() {
+    public DataResult<List<DataInfo<T>>> getAllReverse() {
         return searchNodeService.getAllReverse();
     }
 
     @Override
-    public DataResult<List<T>> getAllStartWith(String text) {
+    public DataResult<List<DataInfo<T>>> getAllStartWith(String text) {
         return searchNodeService.getAllStartWith(text);
     }
 

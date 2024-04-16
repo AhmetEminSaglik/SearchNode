@@ -10,7 +10,7 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 import java.util.List;
 
 public class PriorityCharManager implements PriorityCharService {
-    PriorityCharDAO priorityCharDAO = new ConfigPriorityChar().getPriorityCharDAO();
+    PriorityCharDAO priorityCharDAO = ConfigPriorityChar.getPriorityCharDAO();
 
     @Override
     public DataResult<PriorityChar> get(char c) {

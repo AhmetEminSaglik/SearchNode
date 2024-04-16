@@ -1,10 +1,9 @@
 package org.aes.searchnode;
 
-import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
+import org.aes.searchnode.entities.concretes.DataInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -15,8 +14,8 @@ public class Main {
 
     static void printSearchNodeList(SearchNodeDPI<String> searchNodeTest) {
         System.out.println("----------------------------");
-        List<String> list = searchNodeTest.getAll().getData();
-        for (String s : list) {
+        List<DataInfo<String>> list = searchNodeTest.getAll().getData();
+        for (DataInfo<String> s : list) {
             System.out.println(s);
         }
     }
@@ -24,8 +23,22 @@ public class Main {
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
 
+
         searchNodeTest.add("Ahmet", "Demo Aciklama");
-        DataResult dataResult = searchNodeTest.search("Ahmet");
+        searchNodeTest.add("Ahmet", "Demo Aciklama");
+        searchNodeTest.add("Ahmet", "Demo Aciklama1");
+        searchNodeTest.add("Ahmet");
+        searchNodeTest.add("Ahmet");
+        searchNodeTest.add("Ahmet");
+
+//        searchNodeTest.add("Ahmet", "Demo Aciklama");
+        printSearchNodeList(searchNodeTest);
+
+        System.out.println("------");
+        System.out.println(searchNodeTest.search("Ahmet").getData().getLocationAddress());
+        System.out.println(searchNodeTest.search("Ahmet").getData().getListDataInfo());
+        System.out.println(searchNodeTest.search("Ahmet").getData());
+        /*DataResult dataResult = searchNodeTest.search("Ahmet");
         if (dataResult.isSuccess()) {
             System.out.println("Data is found : " + dataResult.getData());
         } else {
@@ -33,8 +46,7 @@ public class Main {
         }
         dataResult=searchNodeTest.searchExplanationOf("Ahmet");
         System.out.println("dataResult For Explanation of Ahmet:" + dataResult.getData());
-
-
+*/
 
         /*char a = 'a', b = 'b';
         List<Character> characterList = new ArrayList<>();

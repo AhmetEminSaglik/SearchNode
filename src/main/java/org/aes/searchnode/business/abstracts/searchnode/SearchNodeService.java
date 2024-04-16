@@ -3,12 +3,14 @@ package org.aes.searchnode.business.abstracts.searchnode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.concretes.NodeDataService;
 
 import java.util.List;
 
 public interface SearchNodeService<T> {
-    DataResult<DataInfo<T>> search(String text);
-    DataResult<String> searchExplanationOf(String text);
+    DataResult<NodeDataService<T>> search(String text);
+
+    DataResult<NodeDataService<T>> searchExplanationOf(String text);
 
     Result add(T t);
 
@@ -16,11 +18,11 @@ public interface SearchNodeService<T> {
 
     Result addAll(List<T> list);
 
-    DataResult<List<T>> getAll();
+    DataResult<List<DataInfo<T>>> getAll();
 
-    DataResult<List<T>> getAllReverse();
+    DataResult<List<DataInfo<T>>> getAllReverse();
 
-    DataResult<List<T>> getAllStartWith(String text);
+    DataResult<List<DataInfo<T>>> getAllStartWith(String text);
 
     int getTotalItemNumber();
 

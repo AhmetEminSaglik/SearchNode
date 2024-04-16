@@ -10,6 +10,7 @@ import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.entities.concretes.DataInfo;
 import org.aes.searchnode.entities.concretes.NodeData;
+import org.aes.searchnode.entities.concretes.NodeDataService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,12 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
     @Override
-    public DataResult<DataInfo<T>> search(String text) {
+    public DataResult<NodeDataService<T>> search(String text) {
         return searchNodeService.search(text);
     }
 
     @Override
-    public DataResult<String> searchExplanationOf(String text) {
+    public DataResult<NodeDataService<T>> searchExplanationOf(String text) {
         return searchNodeService.searchExplanationOf(text);
     }
 
@@ -40,7 +41,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
 
     @Override
     public Result add(T t, String explanation) {
-        return searchNodeService.add(t,explanation);
+        return searchNodeService.add(t, explanation);
     }
 
     @Override
@@ -50,17 +51,17 @@ public class SearchNode<T> implements SearchNodeService<T> {
 
 
     @Override
-    public DataResult<List<T>> getAll() {
+    public DataResult<List<DataInfo<T>>> getAll() {
         return searchNodeService.getAll();
     }
 
     @Override
-    public DataResult<List<T>> getAllReverse() {
+    public DataResult<List<DataInfo<T>>> getAllReverse() {
         return searchNodeService.getAllReverse();
     }
 
     @Override
-    public DataResult<List<T>> getAllStartWith(String text) {
+    public DataResult<List<DataInfo<T>>> getAllStartWith(String text) {
         return searchNodeService.getAllStartWith(text);
     }
 

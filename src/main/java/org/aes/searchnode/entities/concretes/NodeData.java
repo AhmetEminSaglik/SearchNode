@@ -8,15 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NodeData<T> {
-    public static int NEW_VALUE_IS_ADDED = 1;
-    public static int NUMBER_OF_VALUE_IS_INCREASED = 2;
+    public final static int NEW_VALUE_IS_ADDED = 1;
+    public final static int NUMBER_OF_VALUE_IS_INCREASED = 2;
+    private final List<DataInfo<T>> listDataInfo = new ArrayList<>();
     private int deep;
-
-
-    private List<DataInfo<T>> listDataInfo = new ArrayList<>();
     //    private DataInfo dataInfo;
     private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
-    private String locationStringAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
+    private String locationAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public int getDeep() {
         return deep;
@@ -30,8 +28,10 @@ public class NodeData<T> {
 
         if (listDataInfo.size() > 0) {
             for (DataInfo tmp : listDataInfo) {
-                if (tmp.getValue().equals(t)) {
-                    tmp.increaseNumberOfHowManyTimesAddedThisValue();
+                if (tmp.getValue().equals(t) &&
+//                        tmp.getExplanation() != null &&// explanation != null &&
+                        tmp.getExplanation().equals(explanation)) {
+                    tmp.increaseTotalSameNum();
                     return new SuccessDataResult<>(NUMBER_OF_VALUE_IS_INCREASED, " Data value number is increased");
                 }
             }
@@ -45,7 +45,7 @@ public class NodeData<T> {
         } else {
             for (DataInfo tmp : listDataInfo) {
                 if (tmp.equals(o)) {
-                    tmp.increaseNumberOfHowManyTimesAddedThisValue();
+                    tmp.increaseTotalSameNum();
                     return new SuccessDataResult<Integer>(NUMBER_OF_VALUE_IS_INCREASED, " Data value number is increased");
                 }
             }
@@ -54,19 +54,20 @@ public class NodeData<T> {
         }*/
     }
 
-    public DataResult<DataInfo<T>> search(Object o) {
+    //    public DataResult<List<DataInfo<T>>> search(Object o) {
+    public DataResult<NodeDataService> search(Object o) {
         for (DataInfo<T> tmp : listDataInfo) {
-
             if (tmp.getValue().equals(o)) {
-
-                return new SuccessDataResult<>(tmp);
+//                list.add(this);
+                return new SuccessDataResult<>(
+                        new NodeDataService<T>(this));
             }
         }
         return new ErrorDataResult<>("Data is not found");
     }
 
     private void addObjectToListDataInfo(T t, String explanation) {
-        listDataInfo.add(new DataInfo<>(t, explanation));
+        listDataInfo.add(new DataInfo<>(listDataInfo.size(), t, explanation));
     }
 
     public List<DataInfo<T>> getListDataInfo() {
@@ -95,12 +96,12 @@ public class NodeData<T> {
 //        this.nextDirectionsTotalValueNumber = nextDirectionsTotalValueNumber;
 //    }
 
-    public String getLocationStringAddress() {
-        return locationStringAddress;
+    public String getLocationAddress() {
+        return locationAddress;
     }
 
-    public void setLocationStringAddress(String locationStringAddress) {
-        this.locationStringAddress = locationStringAddress;
+    public void setLocationAddress(String locationAddress) {
+        this.locationAddress = locationAddress;
     }
 
 
@@ -131,12 +132,12 @@ public class NodeData<T> {
                 "deep=" + deep +
                 ", data={" + getDataInfoListItems() + '}' +
                 ", nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
-                ", locationStringAddress='" + locationStringAddress + '\'' +
+                ", locationAddress='" + locationAddress + '\'' +
                 '}';
     }
 
     private String getDataInfoListItems() {
-        StringBuilder text = new StringBuilder("");
+        StringBuilder text = new StringBuilder();
 
         for (DataInfo<T> tmp : listDataInfo) {
             text.append(tmp + ",");

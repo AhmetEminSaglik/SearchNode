@@ -16,7 +16,7 @@ import java.util.List;
 
 public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     private static final ComparatorNextWayDirectionRequiredData comparatorNextWayDirectionRequiredData = new ComparatorNextWayDirectionRequiredData();
-    private List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
+    private final List<NextWayDirectionRequiredData<T>> list = new ArrayList<>();
 
     @Override
     public DataResult<SearchNode<T>> getNextSearchNodeWayOfChar(PriorityChar pc) {

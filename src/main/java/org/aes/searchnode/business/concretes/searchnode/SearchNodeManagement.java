@@ -5,10 +5,7 @@ import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
-import org.aes.searchnode.entities.concretes.DataInfo;
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.concretes.*;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
@@ -36,7 +33,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     @Override
     public Result add(T t) {
-        return add(t, null);
+        return add(t, "");
     }
 
     @Override
@@ -74,7 +71,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 }
                 clearPossibilityNWD();
             }
-            if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationStringAddress())) {
+            if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationAddress())) {
                 DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t, explanation);
                 if (drNodeDataAddProgress.getData().equals(NodeData.NEW_VALUE_IS_ADDED)) {
                     increaseNewAddedItemLocationsNWDTV();
@@ -87,16 +84,16 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<DataInfo<T>> search(String text) {
+    public DataResult<NodeDataService<T>> search(String text) {
         movedLastSearchNodeConnection = searchNode;
         StringBuilder stringValue = new StringBuilder(text);
         for (int i = 0; i < stringValue.length(); i++) {
             PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
             DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
             if (drReachablNWD.isSuccess()) {
-                DataResult<DataInfo<T>> drDataInfo = drReachablNWD.getData().getNodeData().search(text);
-                if (drDataInfo.isSuccess()) {
-                    return new SuccessDataResult<>(drDataInfo.getData(), "Data is found :" + drDataInfo.getData().getValue());
+                DataResult<NodeDataService> drNodeData = drReachablNWD.getData().getNodeData().search(text);
+                if (drNodeData.isSuccess()) {
+                    return new SuccessDataResult<>(drNodeData.getData(), "Data is found :" + drNodeData.getData().getLocationAddress());
                 }
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             } else {
@@ -108,11 +105,12 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<String> searchExplanationOf(String text) {
-        DataInfo<T> dataInfo = search(text).getData();
-        DataResult<String> dataResult;
-        if (dataInfo != null) {
-            dataResult = new SuccessDataResult(dataInfo.getExplanation(), "Data is found");
+    public DataResult<NodeDataService<T>> searchExplanationOf(String text) {
+        //todo burda hata olabilir
+        NodeDataService<T> nodeData = search(text).getData();
+        DataResult<NodeDataService<T>> dataResult;
+        if (nodeData != null) {
+            dataResult = new SuccessDataResult(nodeData, "Data is found");
         } else {
             dataResult = new ErrorDataResult<>("Data is not found");
         }
@@ -120,19 +118,19 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<List<T>> getAll() {
+    public DataResult<List<DataInfo<T>>> getAll() {
         return new SuccessDataResult<>(getAllData(searchNode));
     }
 
     @Override
-    public DataResult<List<T>> getAllReverse() {
-        List<T> list = getAllData(searchNode);
+    public DataResult<List<DataInfo<T>>> getAllReverse() {
+        List<DataInfo<T>> list = getAllData(searchNode);
         Collections.reverse(list);
         return new SuccessDataResult<>(list);
     }
 
     @Override
-    public DataResult<List<T>> getAllStartWith(String text) {
+    public DataResult<List<DataInfo<T>>> getAllStartWith(String text) {
         SearchNode<T> currentSearchNode = searchNode;
         for (int i = 0; i < text.length(); i++) {
             DataResult<SearchNode<T>> dataResult = moveReachableNWD(currentSearchNode, getPriorityCharOfGivenChar(text.charAt(i)));
@@ -183,15 +181,15 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return pc;
     }
 
-    private List<T> getAllData(SearchNode<T> searchNode) {
-        List<T> list = new ArrayList<>();
+    private List<DataInfo<T>> getAllData(SearchNode<T> searchNode) {
+        List<DataInfo<T>> list = new ArrayList<>();
         movedLastSearchNodeConnection = searchNode;
 //        StringBuilder stringBuilder = new StringBuilder();
         addAllDataToList(list, searchNode);
         return list;
     }
 
-    private void addAllDataToList(List<T> list, SearchNode<T> searchNode) {
+    private void addAllDataToList(List<DataInfo<T>> list, SearchNode<T> searchNode) {
         List<NextWayDirectionRequiredData<T>> currentSearchNodeNextWayDirectionRequiredData = searchNode.getReachableNWD().getAllDataOfSearchNode();
         List<DataInfo<T>> dataInfoList = searchNode.getNodeData().getListDataInfo();
         addEachDataOfNodeDataToList(list, dataInfoList);
@@ -203,9 +201,9 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     }
 
-    private void addEachDataOfNodeDataToList(List<T> allDataList, List<DataInfo<T>> dataInfoList) {
+    private void addEachDataOfNodeDataToList(List<DataInfo<T>> allDataList, List<DataInfo<T>> dataInfoList) {
         dataInfoList.forEach(e -> {
-            allDataList.add(e.getValue());
+            allDataList.add(e);
         });
     }
 

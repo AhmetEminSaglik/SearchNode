@@ -1,7 +1,7 @@
 package org.aes.searchnode.core.utilities;
 
 public class Result {
-    private boolean success;
+    private final boolean success;
     private String msg;
 
     public Result(boolean success) {
