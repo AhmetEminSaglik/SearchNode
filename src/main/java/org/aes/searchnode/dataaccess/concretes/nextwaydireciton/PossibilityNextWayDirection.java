@@ -11,14 +11,17 @@ import org.aes.searchnode.entities.concretes.PriorityChar;
 
 public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReachableNWD<T> {
     T data;
+    String explanation;
     private StringBuilder currentLocationStringAddress = new StringBuilder();
     private SearchNode<T> firstSearchNodeToConnectRootSearchNode = null;
     private SearchNode<T> searchNodeAddingProcess;
     private PriorityChar pcForFirstSNToConnectRootSN = null;
 
-    public PossibilityNextWayDirection(T data, SearchNode<T> movedLastSearchNodeConnection) {
+    public PossibilityNextWayDirection(T data, String explanation, SearchNode<T> movedLastSearchNodeConnection) {
         this.data = data;
+        this.explanation = explanation;
         this.searchNodeAddingProcess = movedLastSearchNodeConnection;
+
     }
 
     @Override
@@ -71,7 +74,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
     Result addDataToDataNode(NodeData<T> nodeData) throws Exception {
 
         if (nodeData.getLocationStringAddress().equals(data.toString())) {
-            nodeData.addData(data);
+            nodeData.addData(data, explanation);
         }
         return new ErrorResult("Data is not added");
     }

@@ -36,6 +36,12 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     @Override
     public Result add(T t) {
+        return add(t, null);
+    }
+
+    @Override
+    public Result add(T t, String explanation) {
+
         clearNWDTVList();
         Object value = getValueOfObjectToBeProcess(t/*object, clazz*/);
         StringBuilder stringValue = new StringBuilder(value.toString().trim());
@@ -51,7 +57,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
                         stringValue.delete(0, i);
-                        initializePossibilityNWD(t/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
+                        initializePossibilityNWD(t, explanation/*,getPriorityCharOfGivenChar(stringBuilder.charAt(0))*/);
                         movePossibilityNWD(value, stringValue);
                         break;
                     }
@@ -69,7 +75,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 clearPossibilityNWD();
             }
             if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationStringAddress())) {
-                DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t);
+                DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t, explanation);
                 if (drNodeDataAddProgress.getData().equals(NodeData.NEW_VALUE_IS_ADDED)) {
                     increaseNewAddedItemLocationsNWDTV();
                 }
@@ -77,6 +83,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
 
         return new SuccessResult("Data is added");
+
     }
 
     @Override
@@ -98,6 +105,18 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
         return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
 
+    }
+
+    @Override
+    public DataResult<String> searchExplanationOf(String text) {
+        DataInfo<T> dataInfo = search(text).getData();
+        DataResult<String> dataResult;
+        if (dataInfo != null) {
+            dataResult = new SuccessDataResult(dataInfo.getExplanation(), "Data is found");
+        } else {
+            dataResult = new ErrorDataResult<>("Data is not found");
+        }
+        return dataResult;
     }
 
     @Override
@@ -218,8 +237,8 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         searchNode.setpNWDQueue(null);
     }
 
-    private void initializePossibilityNWD(Object data) {
-        searchNode.setpNWDQueue(new PossibilityNextWayDirection(data, movedLastSearchNodeConnection));
+    private void initializePossibilityNWD(Object data, String explanation) {
+        searchNode.setpNWDQueue(new PossibilityNextWayDirection(data, explanation, movedLastSearchNodeConnection));
     }
 
     Object getValueOfObjectToBeProcess(T t) {

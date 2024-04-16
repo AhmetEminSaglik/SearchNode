@@ -8,8 +8,11 @@ import java.util.List;
 
 public interface SearchNodeService<T> {
     DataResult<DataInfo<T>> search(String text);
+    DataResult<String> searchExplanationOf(String text);
 
     Result add(T t);
+
+    Result add(T t, String explanation);
 
     Result addAll(List<T> list);
 

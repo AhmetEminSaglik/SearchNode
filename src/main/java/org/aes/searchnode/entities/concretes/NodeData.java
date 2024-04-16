@@ -26,7 +26,7 @@ public class NodeData<T> {
         this.deep = deep;
     }
 
-    public DataResult<Integer> addData(T t) {
+    public DataResult<Integer> addData(T t, String explanation) {
 
         if (listDataInfo.size() > 0) {
             for (DataInfo tmp : listDataInfo) {
@@ -36,7 +36,7 @@ public class NodeData<T> {
                 }
             }
         }
-        addObjectToListDataInfo(t);
+        addObjectToListDataInfo(t, explanation);
         return new SuccessDataResult<>(NEW_VALUE_IS_ADDED, " Data is added");
 
        /* if (listDataInfo.size() == 0) {
@@ -65,8 +65,8 @@ public class NodeData<T> {
         return new ErrorDataResult<>("Data is not found");
     }
 
-    private void addObjectToListDataInfo(T t) {
-        listDataInfo.add(new DataInfo<>(t));
+    private void addObjectToListDataInfo(T t, String explanation) {
+        listDataInfo.add(new DataInfo<>(t, explanation));
     }
 
     public List<DataInfo<T>> getListDataInfo() {

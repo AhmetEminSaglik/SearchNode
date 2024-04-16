@@ -3,7 +3,9 @@ package org.aes.searchnode.dpi.controllers;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.Result;
+import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.entities.concretes.DataInfo;
 
 import java.util.List;
@@ -25,8 +27,18 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result add(T t, String explanation) {
+        return searchNodeService.add(t, explanation);
+    }
+
+    @Override
     public DataResult<DataInfo<T>> search(String text) {
         return searchNodeService.search(text);
+    }
+
+    @Override
+    public DataResult<String> searchExplanationOf(String text) {
+        return searchNodeService.searchExplanationOf(text);
     }
 
     @Override

@@ -6,6 +6,7 @@ import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 public class SolutionMessage {
     private static final String prefixText = "\n";
     private static final String solutionAdvice = "SOLUTION ADVICE : ";
+
     private SolutionMessage() {
     }
 

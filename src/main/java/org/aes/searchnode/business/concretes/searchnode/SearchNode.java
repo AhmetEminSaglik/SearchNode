@@ -29,8 +29,18 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public DataResult<String> searchExplanationOf(String text) {
+        return searchNodeService.searchExplanationOf(text);
+    }
+
+    @Override
     public Result add(T t) {
         return searchNodeService.add(t);
+    }
+
+    @Override
+    public Result add(T t, String explanation) {
+        return searchNodeService.add(t,explanation);
     }
 
     @Override
@@ -100,11 +110,12 @@ public class SearchNode<T> implements SearchNodeService<T> {
         this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
     }
 
-
+    @Override
     public Result updatePriorityChar(char c, char nextToThisChar) {
         return pcService.add(c, nextToThisChar);
     }
 
+    @Override
     public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
         return pcService.add(cList, nextToThisChar);
     }

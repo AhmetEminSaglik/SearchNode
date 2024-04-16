@@ -1,5 +1,6 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
 
@@ -22,6 +23,18 @@ public class Main {
 
     public static void main(String[] args) {
         SearchNodeDPI<String> searchNodeTest = new SearchNodeDPI<>();
+
+        searchNodeTest.add("Ahmet", "Demo Aciklama");
+        DataResult dataResult = searchNodeTest.search("Ahmet");
+        if (dataResult.isSuccess()) {
+            System.out.println("Data is found : " + dataResult.getData());
+        } else {
+            System.out.println("Data is not found :" + dataResult.getData());
+        }
+        dataResult=searchNodeTest.searchExplanationOf("Ahmet");
+        System.out.println("dataResult For Explanation of Ahmet:" + dataResult.getData());
+
+
 
         /*char a = 'a', b = 'b';
         List<Character> characterList = new ArrayList<>();
@@ -88,6 +101,7 @@ public class Main {
 
         System.exit(0);*/
 
+/*
 
         List<String> itemList = new ArrayList<>();
         itemList.add("ahmet");
@@ -112,6 +126,8 @@ public class Main {
         printSearchNodeList(searchNodeTest);
         searchNodeTest.resetAllPriorityChars();
         printSearchNodeList(searchNodeTest);
+*/
+
     }
 
     static void printNumberReadableFormat(int val) {
