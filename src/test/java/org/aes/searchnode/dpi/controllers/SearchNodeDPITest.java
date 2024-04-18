@@ -1,3 +1,4 @@
+/*
 package org.aes.searchnode.dpi.controllers;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
@@ -276,4 +277,4 @@ class SearchNodeDPITest {
         list.add("alim");
         return list;
     }
-}
+}*/

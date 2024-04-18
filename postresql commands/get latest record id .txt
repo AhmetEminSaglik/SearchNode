@@ -1,1 +1,0 @@
-select * from  records ORDER BY id DESC LIMIT 1
