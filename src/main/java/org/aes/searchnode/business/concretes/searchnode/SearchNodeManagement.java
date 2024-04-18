@@ -31,6 +31,73 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return new SuccessResult();
     }
 
+    private Result removeRecursive(SearchNode<T> searchNode, StringBuilder sbText, int index) {
+        SearchNode<T> searchNodeNext = null;
+        PriorityChar pc = null;
+        Result result = null;
+        NodeData<T> nodeData = searchNode.getNodeData();
+        if (nodeData != null) {
+            if (nodeData.getLocationAddress().contentEquals(sbText)) {
+                String msg = "";
+                if (!nodeData.getListDataInfo().isEmpty()) {
+                    msg = ">> Data is removed : " + sbText;
+                    searchNode.getNodeData().getListDataInfo().clear();
+                    return new SuccessResult(msg);
+                }
+                msg = "Data is not found";
+                return new ErrorResult(msg);
+            }
+            char c = sbText.charAt(index);
+            pc = searchNode.getPcService().get(c).getData();
+            searchNodeNext = searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
+            if (searchNodeNext == null) {
+                return new ErrorDataResult<>(null, "There is not such as word");
+            }
+            result = removeRecursive(searchNodeNext, sbText, ++index);
+        }
+
+        if (result.isSuccess()) {
+            searchNode.getNodeData().decreaseNextWayDirectionTotalValue();
+        }
+        if (searchNode.getNodeData().getNextDirectionsTotalValueNumber() <= 0) {
+            searchNode.getReachableNWD().clearPc(pc);
+            return new SuccessResult("Data is removed");
+        }
+
+
+        return new ErrorResult("Data deletion process is ended");
+    }
+    @Override
+    public Result remove(T t) {
+        Object value = getValueOfObjectToBeProcess(t);
+        StringBuilder stringValue = new StringBuilder(value.toString().trim());
+        stringValue = trimObject(stringValue.toString());
+        Result result;
+        if (stringValue.toString().equals("")) {
+            return new ErrorResult("Empty or Space can not be deleted in SearchNode");
+        } else {
+            result = removeRecursive(searchNode, stringValue, 0);
+
+        }
+        return result;
+    }
+
+    @Override
+    public DataResult<List<T>> removeAll(List<T> list) {
+        List<T> removedData = new ArrayList<>();
+        List<T> notFoundData = new ArrayList<>();
+        for (T t : list) {
+            if (remove(t).isSuccess()) {
+                removedData.add(t);
+            } else {
+                notFoundData.add(t);
+            }
+        }
+        String msg = "Removed Data size  :" + removedData.size() + ". Not found Data size  : " + notFoundData.size() + ". Removed data can be found in data.";
+        DataResult<List<T>> result = new SuccessDataResult<>(removedData, msg);
+        return result;
+    }
+
     private String resetNullStringTypeValue(String s) {
         if (s == null) {
             return "";
@@ -341,15 +408,17 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void addSNToList(SearchNode<T> searchNode) {
-//        searchNode.getsNListToIncreaseNWDTV().add(searchNode);
-        increaseNewAddedItemLocationsNWDTV(searchNode);
+        searchNode.getsNListToIncreaseNWDTV().add(searchNode);
+//        increaseNewAddedItemLocationsNWDTV(searchNode);
     }
 
     private void increaseNewAddedItemLocationsNWDTV(SearchNode<?> searchNode) {
         searchNode.getNodeData().increaseNextWayDirectionTotalValue();
-        for (SearchNode<?> tmp : searchNode.getsNListToIncreaseNWDTV()) {
+        System.out.println("gelen sn : "+searchNode.getNodeData().getLocationAddress());
+        for (int i=1;i<searchNode.getsNListToIncreaseNWDTV().size();i++) {
 //            tmp.getNodeData().increaseNextWayDirectionTotalValue();
-            tmp.getsNListToIncreaseNWDTV().forEach(e->increaseNewAddedItemLocationsNWDTV(e));
+            System.out.println("for ici  sn : "+searchNode.getNodeData().getLocationAddress());
+            increaseNewAddedItemLocationsNWDTV(searchNode.getsNListToIncreaseNWDTV().get(i));
         }
 
     }

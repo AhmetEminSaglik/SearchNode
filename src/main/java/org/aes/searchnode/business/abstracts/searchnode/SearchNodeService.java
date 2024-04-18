@@ -21,6 +21,10 @@ public interface SearchNodeService<T> {
 
     Result addAll(List<T> list);
 
+    Result remove(T t);
+
+    DataResult<List<T>> removeAll(List<T> list);
+
     Result update(T t, String oldExp, String newExp);
 
     Result update(T t, String oldExp, List<String> expList);

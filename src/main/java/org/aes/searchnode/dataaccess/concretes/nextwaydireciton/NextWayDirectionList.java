@@ -1,9 +1,7 @@
 package org.aes.searchnode.dataaccess.concretes.nextwaydireciton;
 
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
-import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.ErrorDataResult;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
+import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.comparator.ComparatorNextWayDirectionRequiredData;
 import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
@@ -44,6 +42,27 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
     public int size() {
         System.out.println(list.size());
         return list.size();
+    }
+
+    @Override
+    public Result clearList() {
+        list.clear();
+        return new SuccessResult("All data is removed");
+    }
+
+
+    @Override
+    public Result clearPc(PriorityChar pc) {
+        String msg = "";
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getPriorityChar().getChar() == pc.getChar()) {
+                list.remove(i);
+                msg = pc + " Data is removed";
+                return new SuccessDataResult<>(msg);
+            }
+        }
+        msg = pc + "Data is not removed because is not found.";
+        return new ErrorResult(msg);
     }
 
     public List<NextWayDirectionRequiredData<T>> getNextWayDirectionRequiredDataList() {

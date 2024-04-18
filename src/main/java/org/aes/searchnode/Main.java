@@ -26,10 +26,22 @@ public class Main {
     public static void main(String[] args) {
 
         SearchNode<String> sntest = new SearchNode<>();
-        sntest.add("ahmet");
-        sntest.add("ahmete");
+//        sntest.add("ahmet");
+//        sntest.add("ahmete");
+        sntest.add("ah,");
+        System.out.println("total item number :" + sntest.getTotalItemNumber());
         sntest.add("emin");
+        System.out.println("total item number :" + sntest.getTotalItemNumber());
         sntest.add("ah");
+        System.out.println("total item number :" + sntest.getTotalItemNumber());
+        sntest.remove("ah");
+        System.out.println("REMOVEDDD ");
+        System.out.println("total item number :" + sntest.getTotalItemNumber());
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
 //        sntest.add("ahmete");
 //        System.out.println("-----------___");
 //        sntest.search("ahm");
