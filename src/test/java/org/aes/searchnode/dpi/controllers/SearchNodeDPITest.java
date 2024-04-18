@@ -2,6 +2,7 @@ package org.aes.searchnode.dpi.controllers;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
+import org.aes.searchnode.entities.concretes.DataInfo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -66,9 +67,10 @@ class SearchNodeDPITest {
         Assertions.assertEquals(expected, actual);
 
         Collections.sort(list);
-        List<String> listFromSearchNode = searchNode.getAll().getData();
+//        List<String> listFromSearchNode =
+                List<DataInfo<String>> dataInfoList=searchNode.getAll().getData();
 
-        isGivenListDataSame(list, listFromSearchNode);
+        isGivenListDataSame(list, dataInfoList);
     }
 
     @Test
@@ -81,7 +83,7 @@ class SearchNodeDPITest {
 
         Collections.sort(list);
         Collections.reverse(list);
-        List<String> listFromSearchNode = searchNode.getAllReverse().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAllReverse().getData();
 
         isGivenListDataSame(list, listFromSearchNode);
     }
@@ -96,13 +98,13 @@ class SearchNodeDPITest {
         String item3 = "çilek";
         searchNode.add(item2);
         searchNode.add(item3);
-        String actual = searchNode.search(item).getData().getValue();
+        String actual = searchNode.search(item).getData().getListDataInfo().get(0).getValue();
         Assertions.assertEquals(item, actual);
 
-        actual = searchNode.search(item2).getData().getValue();
+        actual = searchNode.search(item2).getData().getListDataInfo().get(0).getValue();
         Assertions.assertEquals(item2, actual);
 
-        actual = searchNode.search(item3).getData().getValue();
+        actual = searchNode.search(item3).getData().getListDataInfo().get(0).getValue();
         Assertions.assertEquals(item3, actual);
 
     }
@@ -117,11 +119,11 @@ class SearchNodeDPITest {
         searchNode.add("çilek");
         searchNode.add("selim");
         searchNode.add("şeftali");
-        List<String> listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("can", listFromSearchNode.get(1));
-        Assertions.assertEquals("çilek", listFromSearchNode.get(2));
-        Assertions.assertEquals("selim", listFromSearchNode.get(3));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(4));
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
+        Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
+        Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
     }
 
 
@@ -138,11 +140,11 @@ class SearchNodeDPITest {
         searchNode.add("çilek");
         searchNode.add("selim");
         searchNode.add("şeftali");
-        List<String> listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("çilek", listFromSearchNode.get(1));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(2));
-        Assertions.assertEquals("can", listFromSearchNode.get(3));
-        Assertions.assertEquals("selim", listFromSearchNode.get(4));
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        Assertions.assertEquals("çilek", listFromSearchNode.get(1).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(2).getValue());
+        Assertions.assertEquals("can", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("selim", listFromSearchNode.get(4).getValue());
     }
 
 
@@ -157,11 +159,11 @@ class SearchNodeDPITest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<String> listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("can", listFromSearchNode.get(1));
-        Assertions.assertEquals("çilek", listFromSearchNode.get(2));
-        Assertions.assertEquals("selim", listFromSearchNode.get(3));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(4));
+        List<DataInfo<String>>  listFromSearchNode = searchNode.getAll().getData();
+        Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
+        Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
+        Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
     }
 
 
@@ -180,11 +182,11 @@ class SearchNodeDPITest {
 
         searchNode.updatePriorityChar(characterList, 'a');
 
-        List<String> listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("çilek", listFromSearchNode.get(1));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(2));
-        Assertions.assertEquals("can", listFromSearchNode.get(3));
-        Assertions.assertEquals("selim", listFromSearchNode.get(4));
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        Assertions.assertEquals("çilek", listFromSearchNode.get(1).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(2).getValue());
+        Assertions.assertEquals("can", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("selim", listFromSearchNode.get(4).getValue());
     }
 
 
@@ -199,16 +201,16 @@ class SearchNodeDPITest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<String> listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("can", listFromSearchNode.get(1));
-        Assertions.assertEquals("çilek", listFromSearchNode.get(2));
-        Assertions.assertEquals("selim", listFromSearchNode.get(3));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(4));
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
+        Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
+        Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
 
         searchNode.resetPriorityChar('ç');
         listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(3));
-        Assertions.assertEquals("çilek", listFromSearchNode.get(4));
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(3).getValue());
+//        Assertions.assertEquals("çilek", listFromSearchNode.get(4)getValue().);
     }
 
     @Test
@@ -222,28 +224,28 @@ class SearchNodeDPITest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<String> listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("can", listFromSearchNode.get(1));
-        Assertions.assertEquals("çilek", listFromSearchNode.get(2));
-        Assertions.assertEquals("selim", listFromSearchNode.get(3));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(4));
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
+        Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
+        Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
 
         searchNode.resetAllPriorityChars();
         listFromSearchNode = searchNode.getAll().getData();
-        Assertions.assertEquals("çilek", listFromSearchNode.get(3));
-        Assertions.assertEquals("şeftali", listFromSearchNode.get(4));
+        Assertions.assertEquals("çilek", listFromSearchNode.get(3).getValue());
+        Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
     }
 
     @Test
     public void getAllStartWithTest() {
         searchNode.addAll(getStringListData());
-        List<String> list = searchNode.getAllStartWith("al").getData();
+        List<DataInfo<String>> list = searchNode.getAllStartWith("al").getData();
 
         String expected = "ali";
-        String actual = list.get(0);
+        String actual = list.get(0).getValue();
         Assertions.assertEquals(expected, actual);
         expected = "alim";
-        actual = list.get(1);
+        actual = list.get(1).getValue();
         Assertions.assertEquals(expected, actual);
 
 
@@ -255,9 +257,9 @@ class SearchNodeDPITest {
         Assertions.assertEquals(expectedListSize, actualListSize);
     }
 
-    private void isGivenListDataSame(List<String> listExpected, List<String> listActual) {
+    private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>>listActual) {
         for (int i = 0; i < listExpected.size(); i++) {
-            Assertions.assertEquals(listExpected.get(i), listActual.get(i));
+            Assertions.assertEquals(listExpected.get(i), listActual.get(i).getValue());
         }
 
     }

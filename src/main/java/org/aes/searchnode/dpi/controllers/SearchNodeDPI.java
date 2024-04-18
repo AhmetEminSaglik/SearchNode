@@ -5,6 +5,7 @@ import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.NodeDataService;
 
 import java.util.List;
@@ -98,5 +99,15 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     @Override
     public Result updatePriorityChar(char c, char nextToThisChar) {
         return searchNodeService.updatePriorityChar(c, nextToThisChar);
+    }
+
+    @Override
+    public DataResult<NodeData<T>> searchNodeData(String text) {
+        return searchNodeService.searchNodeData(text);
+    }
+
+    @Override
+    public List<NodeData<T>> getAllNodeData(String text) {
+        return searchNodeService.getAllNodeData(text);
     }
 }

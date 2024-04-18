@@ -3,6 +3,7 @@ package org.aes.searchnode.business.abstracts.searchnode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.concretes.NodeData;
 import org.aes.searchnode.entities.concretes.NodeDataService;
 
 import java.util.List;
@@ -43,4 +44,6 @@ public interface SearchNodeService<T> {
     Result updatePriorityChar(char c, char nextToThisChar);
 //    void updatePriorityChar();
 
+    DataResult<NodeData<T>> searchNodeData(String text);
+    List<NodeData<T>> getAllNodeData(String text);
 }

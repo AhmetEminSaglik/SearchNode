@@ -24,6 +24,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
+
     @Override
     public DataResult<NodeDataService<T>> search(String text) {
         return searchNodeService.search(text);
@@ -36,6 +37,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
 
     @Override
     public Result add(T t) {
+        System.out.println(this);
         return searchNodeService.add(t);
     }
 
@@ -136,6 +138,26 @@ public class SearchNode<T> implements SearchNodeService<T> {
         return pcService.add(c, nextToThisChar);
     }
 
+    private void demo() {
+    }
+
+    @Override
+    public DataResult<NodeData<T>> searchNodeData(String text) {
+        System.out.println("AAAAAAAAAAa");
+        System.out.println("AAAAAAAAAAa");
+        System.out.println("AAAAAAAAAAa");
+        System.out.println("AAAAAAAAAAa");
+        System.out.println("AAAAAAAAAAa");
+        demo();
+        return searchNodeService.searchNodeData(text);
+    }
+    @Override
+    public List<NodeData<T>> getAllNodeData(String text) {
+        return searchNodeService.getAllNodeData(text);
+//        return new ArrayList<>();
+//        return searchNodeService.getAllNodeData(text);
+    }
+
     @Override
     public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
         return pcService.add(cList, nextToThisChar);
@@ -157,4 +179,5 @@ public class SearchNode<T> implements SearchNodeService<T> {
                 "nodeData=" + nodeData +
                 '}';
     }
+
 }

@@ -66,7 +66,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
         NodeData<T> nodeData = searchNode.getNodeData();
         nodeData.setLocationAddress(currentLocationAddress.toString());
         Result result = addDataToDataNode(nodeData);
-        if (!result.isSuccess()) {
+        if (!result.isSuccess()&& !currentLocationAddress.toString().equals(data.toString())) {
             nodeData.increaseNextDirectionsExistingTotalDataNumber();
         }
     }

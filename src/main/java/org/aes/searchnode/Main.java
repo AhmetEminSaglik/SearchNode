@@ -1,5 +1,6 @@
 package org.aes.searchnode;
 
+import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
 import org.aes.searchnode.entities.concretes.DataInfo;
@@ -16,12 +17,33 @@ public class Main {
     static void printSearchNodeList(SearchNodeDPI<String> searchNodeTest) {
         System.out.println("----------------------------");
         List<DataInfo<String>> list = searchNodeTest.getAll().getData();
+
         for (DataInfo<String> s : list) {
             System.out.print(s);
         }
     }
 
     public static void main(String[] args) {
+
+        SearchNode<String> sntest = new SearchNode<>();
+        sntest.add("ahmet");
+        sntest.add("ahmete");
+//        System.out.println("-----------___");
+//        sntest.search("ahm");
+//        System.out.println("-----------___");
+//        sntest.search("Ahmet");
+//        System.out.println("-----------___");
+//        System.out.println(sntest.searchNodeData("Ahmet"));;
+//        System.out.println(sntest.searchNodeData("AhmetEmin"));;
+//        System.out.println(")__+__+_+_+_+__+_+_");
+        System.out.println(sntest);
+        System.out.println("-----------------------");
+        sntest.getAllNodeData("").forEach(System.out::println);
+//        printSearchNodeList(sntest);
+//        sntest.search("AhmetEminSaglik");
+
+        System.exit(0);
+
         SearchNodeDPI<String> sn = new SearchNodeDPI<>();
         sn.add("AAA", "A");
         sn.add("AAA", "E");
