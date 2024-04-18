@@ -6,21 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/1-0 create database and insert values .txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/1-1 create tables.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/1-2 insert values.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/createTables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/fake data add query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/get latest record id .txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/join test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/main_table_query.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/main_table_query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/searchnode-test-join-query.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/sum elapsed_time and memory_usage SQL.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/test join query.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/test join.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postresql commands/will worked to this codes sum with join .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,42 +38,44 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2IEQhig9KoQ0dAeUtzX6H7Qny99" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Test.executor": "Run",
-    "JUnit.All in SearchNode.executor": "Run",
-    "JUnit.SearchNodeDPITest.executor": "Run",
-    "JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor": "Run",
-    "Maven.SearchNode [clean].executor": "Run",
-    "Maven.SearchNode [install].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy-file].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "merge/thesis-and-lately-updates",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.57701147",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "two.files.diff.last.used.file": "/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in SearchNode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeDPITest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy-file].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;merge/thesis-and-lately-updates&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.57701147&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\intelijidea\SearchNode-All\SearchNode\src\main\java\org\aes\searchnode" />
@@ -96,6 +87,7 @@
       <recent name="org.aes.searchnode.dpi.controllers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.aes.searchnode.core.utilities" />
       <recent name="org.aes.searchnode.entities.concretes" />
     </key>
   </component>

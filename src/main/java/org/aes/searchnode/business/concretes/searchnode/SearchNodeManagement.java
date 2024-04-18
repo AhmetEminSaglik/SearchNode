@@ -18,7 +18,7 @@ import java.util.List;
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
-
+    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
     public SearchNodeManagement(SearchNode<T> searchNode) {
         this.searchNode = searchNode;
     }
@@ -67,6 +67,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
         return new ErrorResult("Data deletion process is ended");
     }
+
     @Override
     public Result remove(T t) {
         Object value = getValueOfObjectToBeProcess(t);
@@ -163,8 +164,10 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             movedLastSearchNodeConnection = searchNode;
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
+                    System.out.println("onceki Node : " + searchNode.getNodeData().getLocationAddress());
+                    System.out.println("onceki Node : " + movedLastSearchNodeConnection.getNodeData().getLocationAddress());
                     addSNToList(movedLastSearchNodeConnection);
-                    System.out.println("movedLastSearchNodeConnection : "+movedLastSearchNodeConnection.getNodeData().getLocationAddress());
+//                    System.out.println("movedLastSearchNodeConnection : "+movedLastSearchNodeConnection.getNodeData().getLocationAddress());
                     PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
@@ -408,23 +411,37 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void addSNToList(SearchNode<T> searchNode) {
-        searchNode.getsNListToIncreaseNWDTV().add(searchNode);
+        getsNListToIncreaseNWDTV().add(searchNode);
+        System.out.println("getsNListToIncreaseNWDTV size : "+getsNListToIncreaseNWDTV().size());
+        System.out.println("Incerase icin eklenen node : " + searchNode.getNodeData().getLocationAddress() + " eklendigi list : " + getsNListToIncreaseNWDTV().toString());
+
 //        increaseNewAddedItemLocationsNWDTV(searchNode);
     }
 
     private void increaseNewAddedItemLocationsNWDTV(SearchNode<?> searchNode) {
         searchNode.getNodeData().increaseNextWayDirectionTotalValue();
-        System.out.println("gelen sn : "+searchNode.getNodeData().getLocationAddress());
-        for (int i=1;i<searchNode.getsNListToIncreaseNWDTV().size();i++) {
-//            tmp.getNodeData().increaseNextWayDirectionTotalValue();
-            System.out.println("for ici  sn : "+searchNode.getNodeData().getLocationAddress());
-            increaseNewAddedItemLocationsNWDTV(searchNode.getsNListToIncreaseNWDTV().get(i));
-        }
+//        System.out.println("gelen sn : " + searchNode.getNodeData());
+//        System.out.println("gelen sn  InreaseList : " + getsNListToIncreaseNWDTV());
+//        for (int i = 1; i < getsNListToIncreaseNWDTV().size(); i++) {
+//            searchNode.getNodeData().increaseNextWayDirectionTotalValue();
+//            getsNListToIncreaseNWDTV().forEach(e->increaseNewAddedItemLocationsNWDTV(e));
+//            System.out.println("for ici  sn : " + searchNode.getNodeData().getLocationAddress());
+//            increaseNewAddedItemLocationsNWDTV(getsNListToIncreaseNWDTV().get(i));
+//            increaseNewAddedItemLocationsNWDTV(getsNListToIncreaseNWDTV().get(i));
+//        }
 
     }
 
 
     private void clearNWDTVList() {
-        searchNode.getsNListToIncreaseNWDTV().clear();
+        getsNListToIncreaseNWDTV().clear();
+    }
+
+    public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
+        return sNListToIncreaseNWDTV;
+    }
+
+    public void setsNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
+        this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
     }
 }

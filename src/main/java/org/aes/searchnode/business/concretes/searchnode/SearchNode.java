@@ -5,6 +5,7 @@ import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.DataResult;
+import org.aes.searchnode.core.utilities.ListUtil;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
@@ -22,7 +23,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
-    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
+//    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
 
     @Override
@@ -133,31 +134,22 @@ public class SearchNode<T> implements SearchNodeService<T> {
     public void setPcService(PriorityCharService pcService) {
         this.pcService = pcService;
     }
-
+/*
     public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
         return sNListToIncreaseNWDTV;
     }
 
     public void setsNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
         this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
-    }
+    }*/
 
     @Override
     public Result updatePriorityChar(char c, char nextToThisChar) {
         return pcService.add(c, nextToThisChar);
     }
 
-    private void demo() {
-    }
-
     @Override
     public DataResult<NodeData<T>> searchNodeData(String text) {
-        System.out.println("AAAAAAAAAAa");
-        System.out.println("AAAAAAAAAAa");
-        System.out.println("AAAAAAAAAAa");
-        System.out.println("AAAAAAAAAAa");
-        System.out.println("AAAAAAAAAAa");
-        demo();
         return searchNodeService.searchNodeData(text);
     }
     @Override
@@ -186,6 +178,8 @@ public class SearchNode<T> implements SearchNodeService<T> {
     public String toString() {
         return "SearchNode{" +
                 "nodeData=" + nodeData +
+//                "sNListToIncreaseNWDTV=" + ListUtil.toString(sNListToIncreaseNWDTV) +
+//                "sNListToIncreaseNWDTV size=" + sNListToIncreaseNWDTV.size() +
                 '}';
     }
 
