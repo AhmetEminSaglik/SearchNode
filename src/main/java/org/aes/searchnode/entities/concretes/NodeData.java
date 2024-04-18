@@ -95,9 +95,9 @@ public class NodeData<T> {
         return nextDirectionsTotalValueNumber;
     }
 
-    public void increaseNextDirectionsExistingTotalDataNumber() {
-        nextDirectionsTotalValueNumber++;
-    }
+//    public void increaseNextDirectionsExistingTotalDataNumber() {
+//        nextDirectionsTotalValueNumber++;
+//    }
 
     public void decreaseNextDirectionsExistingTotalDataNumber() {
         nextDirectionsTotalValueNumber--;

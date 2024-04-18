@@ -22,7 +22,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
-    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
+    private static List<SearchNode<?>> sNListToIncreaseNWDTV = new ArrayList<>();
 
 
     @Override
@@ -125,11 +125,11 @@ public class SearchNode<T> implements SearchNodeService<T> {
         this.pcService = pcService;
     }
 
-    public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
+    public static List<SearchNode<?>> getsNListToIncreaseNWDTV() {
         return sNListToIncreaseNWDTV;
     }
 
-    public void setsNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
+    public void setsNListToIncreaseNWDTV(List<SearchNode<?>> sNListToIncreaseNWDTV) {
         this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
     }
 
@@ -151,6 +151,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
         demo();
         return searchNodeService.searchNodeData(text);
     }
+
     @Override
     public List<NodeData<T>> getAllNodeData(String text) {
         return searchNodeService.getAllNodeData(text);

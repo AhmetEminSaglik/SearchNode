@@ -28,6 +28,9 @@ public class Main {
         SearchNode<String> sntest = new SearchNode<>();
         sntest.add("ahmet");
         sntest.add("ahmete");
+        sntest.add("emin");
+        sntest.add("ah");
+//        sntest.add("ahmete");
 //        System.out.println("-----------___");
 //        sntest.search("ahm");
 //        System.out.println("-----------___");
