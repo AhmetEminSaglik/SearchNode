@@ -4,9 +4,9 @@ import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.entities.concretes.DataInfo;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.NodeDataService;
+import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.NodeDataService;
 
 import java.util.List;
 
@@ -32,8 +32,18 @@ public class SearchNodeDPI<T> implements SearchNodeService<T> {
     }
 
     @Override
+    public Result remove(T t) {
+        return null;
+    }
+
+    @Override
+    public DataResult<List<T>> removeAll(List<T> list) {
+        return null;
+    }
+
+    @Override
     public Result update(T t, List<String> expList) {
-        return searchNodeService.update(t,expList);
+        return searchNodeService.update(t, expList);
     }
 
     @Override

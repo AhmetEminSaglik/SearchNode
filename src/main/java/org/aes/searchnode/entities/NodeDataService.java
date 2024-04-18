@@ -1,12 +1,12 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NodeDataService<T> {
     private final int deep;
-    private List<DataInfo<T>> listDataInfo = new ArrayList<>();
     private final int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
+    private List<DataInfo<T>> listDataInfo = new ArrayList<>();
     private String locationAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
 
     public NodeDataService(NodeData<T> nodeData) {

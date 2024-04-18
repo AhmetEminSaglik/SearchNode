@@ -1,4 +1,4 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
 
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.ErrorDataResult;

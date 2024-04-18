@@ -1,2 +1,0 @@
-SELECT SUM(memory_usage),SUM(elapsed_time) from complexity
-where record_id=1

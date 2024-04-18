@@ -5,7 +5,7 @@ import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
-import org.aes.searchnode.entities.concretes.*;
+import org.aes.searchnode.entities.*;
 import org.aes.searchnode.exception.ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException;
 import org.aes.searchnode.exception.InvalidFieldOrFieldNameException;
 import org.aes.searchnode.exception.NotFoundAnyDeclaredFieldException;
@@ -51,6 +51,24 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return new SuccessResult("Update is successfull");
     }
 
+    Object getValueOfObjectToBeProcess(T t) {
+        /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
+         *  pfOrder.getPriorityFieldName(index).getName()
+         * */
+        PriorityFieldOrder pfOrder = null;
+        try {
+            pfOrder = new PriorityFieldOrder(t.getClass());
+            PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
+            String fieldName = pfOrder.getPriorityFieldName(1).getName();
+            Object value = pfValue.getValueOfField(t, fieldName);
+            return value;
+        } catch (NotFoundAnyDeclaredFieldException |
+                 ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException |
+                 NotFoundRequestedFieldException | InvalidFieldOrFieldNameException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public Result update(T t, String oldExp, List<String> expList) {
         System.out.println("list Size : " + expList.size());
@@ -65,6 +83,16 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
 
         return new SuccessResult();
+    }
+
+    @Override
+    public Result remove(T t) {
+        return null;
+    }
+
+    @Override
+    public DataResult<List<T>> removeAll(List<T> list) {
+        return null;
     }
 
     @Override
@@ -321,31 +349,14 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         searchNode.setpNWDQueue(new PossibilityNextWayDirection(data, explanation, movedLastSearchNodeConnection));
     }
 
-    Object getValueOfObjectToBeProcess(T t) {
-        /*TODO  if Object is a custom object than index of priorityFieldName parameter must be dynamic
-         *  pfOrder.getPriorityFieldName(index).getName()
-         * */
-        PriorityFieldOrder pfOrder = null;
-        try {
-            pfOrder = new PriorityFieldOrder(t.getClass());
-            PriorityFieldValue pfValue = new PriorityFieldValue(pfOrder);
-            String fieldName = pfOrder.getPriorityFieldName(1).getName();
-            Object value = pfValue.getValueOfField(t, fieldName);
-            return value;
-        } catch (NotFoundAnyDeclaredFieldException |
-                 ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException |
-                 NotFoundRequestedFieldException | InvalidFieldOrFieldNameException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private void addSNToList(SearchNode<T> searchNode) {
         searchNode.getsNListToIncreaseNWDTV().add(searchNode);
     }
 
     private void increaseNewAddedItemLocationsNWDTV() {
-        System.out.println("increaseNewAddedItemLocationsNWDTV : "+searchNode.getNodeData());
-        System.out.println(" searchNode.getsNListToIncreaseNWDTV() size : "+ searchNode.getsNListToIncreaseNWDTV().size());
+        System.out.println("increaseNewAddedItemLocationsNWDTV : " + searchNode.getNodeData());
+        System.out.println(" searchNode.getsNListToIncreaseNWDTV() size : " + searchNode.getsNListToIncreaseNWDTV().size());
         for (SearchNode<T> tmp : searchNode.getsNListToIncreaseNWDTV()) {
             tmp.getNodeData().increaseNextWayDirectionTotalValue();
         }

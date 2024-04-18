@@ -5,7 +5,7 @@ import org.aes.searchnode.config.prioritychar.ConfigPriorityChar;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package org.aes.searchnode.dataaccess.comparator;
 
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
 
 import java.util.Comparator;
 

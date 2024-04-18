@@ -24,16 +24,6 @@ public class PriorityFieldValue {
         this.priorityFieldList = priorityFieldOrder.getFieldNameList();
         this.clazz = priorityFieldOrder.getClazz();
     }
-/* public PriorityFieldValue(Class clazz, List<Field> priorityFieldList) {
-
-        this.clazz = clazz;
-        this.priorityFieldList = priorityFieldList;
-    }*/
-
-  /*  public PriorityFieldValue(Class clazz) {
-
-        this.clazz = clazz;
-    }*/
 
     public Object getValueOfField(Object object) throws InvalidFieldOrFieldNameException, ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException {
         return getValueOfField(object, "");
@@ -68,14 +58,6 @@ public class PriorityFieldValue {
             throw new ClassMatchFailedBetweenPriorityFieldOrderAndPriorityFieldValueException(clazz, object.getClass());
         }
         throw new InvalidFieldOrFieldNameException(object.getClass(), fieldName);
-   /*     } else {
-            System.out.println(object.getClass());
-//            System.out.println(object.getClass());
-
-            System.out.println(" -------->  Hata firlatilacak");
-            throw new NotImplementedRequiredInterfaceException(object.getClass());
-        }*/
-
     }
 
     private boolean isFieldOrderClassEqualsToFieldValueClass(Object object) {

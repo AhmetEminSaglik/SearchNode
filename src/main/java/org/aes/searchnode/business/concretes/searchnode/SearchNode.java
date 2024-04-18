@@ -8,22 +8,20 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
-import org.aes.searchnode.entities.concretes.DataInfo;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.NodeDataService;
+import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.NodeDataService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchNode<T> implements SearchNodeService<T> {
-
-    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
+    SearchNodeService searchNodeService = new SearchNodeManagement(this);
     private ReachableNextWayDirection<T> reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
-
 
     @Override
     public DataResult<NodeDataService<T>> search(String text) {
@@ -54,6 +52,16 @@ public class SearchNode<T> implements SearchNodeService<T> {
     @Override
     public Result addAll(List<T> list) {
         return searchNodeService.addAll(list);
+    }
+
+    @Override
+    public Result remove(T t) {
+        return searchNodeService.remove(t);
+    }
+
+    @Override
+    public DataResult<List<T>> removeAll(List<T> list) {
+        return searchNodeService.removeAll(list);
     }
 
     @Override
@@ -151,6 +159,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
         demo();
         return searchNodeService.searchNodeData(text);
     }
+
     @Override
     public List<NodeData<T>> getAllNodeData(String text) {
         return searchNodeService.getAllNodeData(text);
@@ -176,8 +185,12 @@ public class SearchNode<T> implements SearchNodeService<T> {
     @Override
     public String toString() {
         return "SearchNode{" +
-                "nodeData=" + nodeData +
+                "reachableNWD=" + reachableNWD +
+//                ", nodeData=" + nodeData +
+//                ", pNWDQueue=" + pNWDQueue +
+//                ", pcService=" + pcService +
+//                ", sNListToIncreaseNWDTV=" + sNListToIncreaseNWDTV +
+//                ", searchNodeService=" + searchNodeService +
                 '}';
     }
-
 }

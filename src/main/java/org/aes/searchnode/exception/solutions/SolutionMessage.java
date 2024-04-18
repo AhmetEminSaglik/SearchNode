@@ -1,5 +1,6 @@
 package org.aes.searchnode.exception.solutions;
 
+
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldValue;
 

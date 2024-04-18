@@ -1,4 +1,4 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
 
 import org.aes.searchnode.business.abstracts.prioritychar.NotifyPriorityCharIsUpdated;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;

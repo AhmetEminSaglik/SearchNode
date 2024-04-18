@@ -6,9 +6,9 @@ import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
-import org.aes.searchnode.entities.concretes.PriorityCharPool;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.PriorityChar;
+import org.aes.searchnode.entities.PriorityCharPool;
 
 import java.util.ArrayList;
 import java.util.Comparator;

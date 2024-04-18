@@ -2,9 +2,9 @@ package org.aes.searchnode.business.abstracts.searchnode;
 
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.entities.concretes.DataInfo;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.NodeDataService;
+import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.NodeDataService;
 
 import java.util.List;
 
@@ -24,6 +24,12 @@ public interface SearchNodeService<T> {
     Result update(T t, String oldExp, String newExp);
 
     Result update(T t, String oldExp, List<String> expList);
+
+    Result remove(T t);
+
+    DataResult<List<T>> removeAll(List<T> list);
+
+//    DataResult<List<T>> getAll();
 
     Result update(T t, List<String> expList);
 
@@ -45,5 +51,6 @@ public interface SearchNodeService<T> {
 //    void updatePriorityChar();
 
     DataResult<NodeData<T>> searchNodeData(String text);
+
     List<NodeData<T>> getAllNodeData(String text);
 }

@@ -1,6 +1,6 @@
 package org.aes.searchnode.business.concretes.prioritychar.pool;
 
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.Comparator;
 

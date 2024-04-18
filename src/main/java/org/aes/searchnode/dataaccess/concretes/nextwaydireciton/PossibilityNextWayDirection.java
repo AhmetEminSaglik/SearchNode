@@ -6,8 +6,8 @@ import org.aes.searchnode.core.utilities.ErrorResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.PriorityChar;
 
 public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReachableNWD<T> {
     private final StringBuilder currentLocationAddress = new StringBuilder();
@@ -66,7 +66,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
         NodeData<T> nodeData = searchNode.getNodeData();
         nodeData.setLocationAddress(currentLocationAddress.toString());
         Result result = addDataToDataNode(nodeData);
-        if (!result.isSuccess()&& !currentLocationAddress.toString().equals(data.toString())) {
+        if (!result.isSuccess() && !currentLocationAddress.toString().equals(data.toString())) {
             nodeData.increaseNextDirectionsExistingTotalDataNumber();
         }
     }

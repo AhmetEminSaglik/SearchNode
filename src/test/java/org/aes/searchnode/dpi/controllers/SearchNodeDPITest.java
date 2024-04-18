@@ -2,7 +2,7 @@ package org.aes.searchnode.dpi.controllers;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
-import org.aes.searchnode.entities.concretes.DataInfo;
+import org.aes.searchnode.entities.DataInfo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -68,7 +68,7 @@ class SearchNodeDPITest {
 
         Collections.sort(list);
 //        List<String> listFromSearchNode =
-                List<DataInfo<String>> dataInfoList=searchNode.getAll().getData();
+        List<DataInfo<String>> dataInfoList = searchNode.getAll().getData();
 
         isGivenListDataSame(list, dataInfoList);
     }
@@ -159,7 +159,7 @@ class SearchNodeDPITest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<DataInfo<String>>  listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
         Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
@@ -257,7 +257,7 @@ class SearchNodeDPITest {
         Assertions.assertEquals(expectedListSize, actualListSize);
     }
 
-    private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>>listActual) {
+    private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>> listActual) {
         for (int i = 0; i < listExpected.size(); i++) {
             Assertions.assertEquals(listExpected.get(i), listActual.get(i).getValue());
         }
