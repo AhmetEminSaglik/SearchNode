@@ -1,4 +1,4 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
 
 public class DataInfo<T> implements Comparable<DataInfo> {
     private final T value;

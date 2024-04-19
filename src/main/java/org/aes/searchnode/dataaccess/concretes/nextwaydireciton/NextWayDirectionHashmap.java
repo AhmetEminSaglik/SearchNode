@@ -6,8 +6,8 @@ import org.aes.searchnode.core.utilities.ErrorDataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
-import org.aes.searchnode.entities.concretes.NextWayDirectionRequiredData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.NextWayDirectionRequiredData;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.HashMap;
 import java.util.List;

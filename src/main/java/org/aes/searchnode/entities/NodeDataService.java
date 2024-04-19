@@ -1,4 +1,6 @@
-package org.aes.searchnode.entities.concretes;
+package org.aes.searchnode.entities;
+
+import org.aes.searchnode.entities.DataInfo;
 
 import java.util.ArrayList;
 import java.util.List;

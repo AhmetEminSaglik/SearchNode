@@ -2,7 +2,7 @@ package org.aes.searchnode.dataaccess.abstracts.prioritychar;
 
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.List;
 

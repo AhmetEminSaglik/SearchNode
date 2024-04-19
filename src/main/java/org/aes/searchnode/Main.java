@@ -3,7 +3,6 @@ package org.aes.searchnode;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.core.utilities.ReadableStringFormat;
 import org.aes.searchnode.dpi.controllers.SearchNodeDPI;
-import org.aes.searchnode.entities.concretes.DataInfo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,8 +6,8 @@ import org.aes.searchnode.core.utilities.ErrorResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.dataaccess.abstracts.IPreProcessesToCreateReachableNWD;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.PriorityChar;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.PriorityChar;
 
 public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReachableNWD<T> {
     private final StringBuilder currentLocationAddress = new StringBuilder();
@@ -43,7 +43,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
             searchNodeAddingProcess.getReachableNWD().addPossibilityNWDNodeToReachableNWD(pc, newSearchNode);
             searchNodeAddingProcess = newSearchNode;
         }
-        return new SuccessDataResult<>(newSearchNode, "Searchnode is created in for " + getClass().getSimpleName());
+        return new SuccessDataResult<>(newSearchNode, "Searchnode is created in for " +  getClass().getSimpleName());
     }
 
     void initializeSearchNodeFundamentals(SearchNode<T> searchNode) {

@@ -1,10 +1,15 @@
 package org.aes.searchnode.business.concretes;
 
+import java.math.BigDecimal;
+
 public class PrimitiveWrapper {
     public boolean isPrimitive(Object object) {
-        return object instanceof Number ||
+        if (object instanceof Number ||
                 object instanceof Boolean ||
                 object instanceof Character ||
-                object instanceof String;
+                object instanceof String) {
+            return true;
+        }
+        return false;
     }
 }

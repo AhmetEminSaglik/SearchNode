@@ -2,9 +2,9 @@ package org.aes.searchnode.business.abstracts.searchnode;
 
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.entities.concretes.DataInfo;
-import org.aes.searchnode.entities.concretes.NodeData;
-import org.aes.searchnode.entities.concretes.NodeDataService;
+import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NodeData;
+import org.aes.searchnode.entities.NodeDataService;
 
 import java.util.List;
 
