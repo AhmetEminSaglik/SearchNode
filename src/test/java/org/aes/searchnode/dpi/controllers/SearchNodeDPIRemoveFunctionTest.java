@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//@Deprecated //Structor is changed
 public class SearchNodeDPIRemoveFunctionTest {
     SearchNodeService<String> searchNode = new SearchNode<>();
     private static CustomLog log = new CustomLog(SearchNodeDPIRemoveFunctionTest.class);
@@ -37,7 +37,7 @@ public class SearchNodeDPIRemoveFunctionTest {
         String text = "alim";
         searchNode.add(text);
         String expectedData = text;
-        String actualData = searchNode.search(text).getData().getValue();
+        String actualData = searchNode.search(text).getData().getListDataInfo().get(0).getValue();
 
         Assertions.assertEquals(expectedData, actualData);
 

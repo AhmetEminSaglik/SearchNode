@@ -45,9 +45,6 @@ public class PriorityFieldValue {
             if (tmp.getName().equals(fieldName)) {
                 tmp.trySetAccessible();
                 try {
-                    System.out.println("tmp : " + tmp);
-                    System.out.println("object : " + object);
-                    System.out.println("requested value of object is : " + tmp.get(object));
                     return tmp.get(object);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);

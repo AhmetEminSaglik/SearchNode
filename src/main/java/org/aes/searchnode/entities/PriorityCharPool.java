@@ -9,7 +9,7 @@ public class PriorityCharPool {
     private static final List<PriorityChar> pcList = new ArrayList<>();
 
     public static List<PriorityChar> getList() {
-        if (pcList.size() > 1) { // burada sortlamak yerine  veri ekledikten sonra veya veri alirken sortlanabilir.
+        if (pcList.size() > 1) {
             pcList.sort(new PriorityCharPoolComparator());
         }
         return pcList;

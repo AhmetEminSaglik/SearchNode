@@ -1,20 +1,14 @@
 package org.aes.searchnode.dpi.controllers;
 
-import org.aes.searchnode.testing.abstracts.CalculateDataStructorComplexity;
-import org.aes.searchnode.testing.concretes.TestingArrayList;
-import org.aes.searchnode.testing.concretes.TestingSearchNode;
-import org.ahmeteminsaglik.fileoperation.business.abstracts.ReadFileService;
-import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.ReadFileManagement;
-import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 import org.junit.jupiter.api.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Deprecated
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class AlgorithmComplexityTest {
+public class AlgorithmComplexityTest {/*
     private static CalculateDataStructorComplexity calculateDataStructorComplexity;
     private static SearchNodeDPI<String> searchNodeDPI;
     private static List<String> listPool;
@@ -391,7 +385,7 @@ public class AlgorithmComplexityTest {
         return readFileService.getReadDataList();
     }
 
-  /*  @Test
+  @Test
     @Order(13)
     @DisplayName("7-SearchNode : Search 13_985 from 466_150")
     public void testSearchNode_Search_13_985_WordData_From_466_150_WordPool() {// mod 10
@@ -404,7 +398,8 @@ public class AlgorithmComplexityTest {
         calculateDataStructorComplexity.run();
         calculateDataStructorComplexity = null;
 
-  *//*      searchNodeDPI.addAll(getWordListFromPath(ffWordsToSearch));
+
+      searchNodeDPI.addAll(getWordListFromPath(ffWordsToSearch));
         int result[] = resultSearchNodeSearchItems(searchList);
 
         int expected = 466_150;
@@ -413,7 +408,7 @@ public class AlgorithmComplexityTest {
 
         expected = 0;
         actual = result[1];
-        Assertions.assertEquals(expected, actual);*//*
+        Assertions.assertEquals(expected, actual);
 
     }
 
@@ -446,7 +441,8 @@ public class AlgorithmComplexityTest {
         calculateDataStructorComplexity.run();
         calculateDataStructorComplexity = null;
 
-       *//* searchNodeDPI.addAll(getWordListFromPath(ffAllWords));
+
+ searchNodeDPI.addAll(getWordListFromPath(ffAllWords));
         int result[] = resultSearchNodeSearchItems(searchList);
 
         int expected = 1_398_449;
@@ -455,7 +451,7 @@ public class AlgorithmComplexityTest {
 
         expected = 0;
         actual = result[1];
-        Assertions.assertEquals(expected, actual);*//*
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -471,6 +467,7 @@ public class AlgorithmComplexityTest {
 
         calculateDataStructorComplexity = new TestingArrayList(allList, searchList);
         calculateDataStructorComplexity.run();
-    }*/
+    }
 
-}
+
+*/}

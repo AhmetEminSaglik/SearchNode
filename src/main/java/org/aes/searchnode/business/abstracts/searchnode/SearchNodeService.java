@@ -46,7 +46,6 @@ public interface SearchNodeService<T> {
     Result updatePriorityChar(List<Character> cList, char nextToThisChar);
 
     Result updatePriorityChar(char c, char nextToThisChar);
-//    void updatePriorityChar();
 
     DataResult<NodeData<T>> searchNodeData(String text);
     List<NodeData<T>> getAllNodeData(String text);

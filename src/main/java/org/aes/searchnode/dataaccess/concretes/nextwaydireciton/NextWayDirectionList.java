@@ -40,7 +40,6 @@ public class NextWayDirectionList<T> implements ReachableNextWayDirection<T> {
 
     @Override
     public int size() {
-        System.out.println(list.size());
         return list.size();
     }
 

@@ -11,7 +11,6 @@ public class DataInfo<T> implements Comparable<DataInfo<T>> {
         this.value = t;
         this.explanation = explanation;
         increaseTotalSameNum();
-//        System.out.println("created index: " + index);
     }
 
     public void increaseTotalSameNum() {
@@ -41,8 +40,7 @@ public class DataInfo<T> implements Comparable<DataInfo<T>> {
 
     @Override
     public String toString() {
-//        String explanationToString = this.explanation != null ? " ,explanation='" + explanation + '\'' : " ,explanation=" + explanation;
-        return "\nDataInfo{" +
+        return "DataInfo{" +
                 "index=" + index +
                 ", value=" + value +
                 ", explanation=\"" + explanation + "\"" +

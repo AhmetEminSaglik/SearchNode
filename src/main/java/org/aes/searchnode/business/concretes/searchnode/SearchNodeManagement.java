@@ -18,7 +18,6 @@ import java.util.List;
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
-//    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
     public SearchNodeManagement(SearchNode<T> searchNode) {
         this.searchNode = searchNode;
     }
@@ -164,10 +163,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             movedLastSearchNodeConnection = searchNode;
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
-//                    System.out.println("onceki Node : " + searchNode.getNodeData().getLocationAddress());
-//                    System.out.println("onceki Node : " + movedLastSearchNodeConnection.getNodeData().getLocationAddress());
                     addSNToList(movedLastSearchNodeConnection);
-//                    System.out.println("movedLastSearchNodeConnection : "+movedLastSearchNodeConnection.getNodeData().getLocationAddress());
                     PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
@@ -234,8 +230,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     @Override
     public List<NodeData<T>> getAllNodeData(String text) {
         List<NodeData<T>> nodeDataList = new ArrayList<>();
-//        List<T> valueList = new ArrayList<>();
-//        searchNode.getAll().getData().forEach(e -> valueList.add(e.getValue()));
         getAllNodeData(nodeDataList, searchNode);
         return nodeDataList;
     }
@@ -253,8 +247,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             return new SuccessDataResult<>(nodeDataService);
         }
         return new ErrorDataResult<>(null);
-//        NodeDataService<T> nodeDataService = new NodeDataService<>(searchNodeData(text).getData());
-//        return new SuccessDataResult<>(nodeDataService);
     }
 
     @Override
@@ -337,7 +329,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     private List<DataInfo<T>> getAllData(SearchNode<T> searchNode) {
         List<DataInfo<T>> list = new ArrayList<>();
         movedLastSearchNodeConnection = searchNode;
-//        StringBuilder stringBuilder = new StringBuilder();
         addAllDataToList(list, searchNode);
         return list;
     }
@@ -411,7 +402,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void addSNToList(SearchNode<T> searchNodeAdd) {
-//        getsNListToIncreaseNWDTV().add(searchNode);
         searchNode.getsNListToIncreaseNWDTV().add(searchNodeAdd);
     }
 
@@ -422,7 +412,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void clearNWDTVList() {
-//        getsNListToIncreaseNWDTV().clear();
         searchNode.getsNListToIncreaseNWDTV().clear();
     }
 

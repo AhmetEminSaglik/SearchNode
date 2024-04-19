@@ -67,7 +67,6 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
         nodeData.setLocationAddress(currentLocationAddress.toString());
         Result result = addDataToDataNode(nodeData);
         if (!result.isSuccess()&& !currentLocationAddress.toString().equals(data.toString())) {
-//            System.out.println(" NWDTV++:  currentLocationAddress : "+currentLocationAddress);
             nodeData.increaseNextWayDirectionTotalValue();
         }
     }

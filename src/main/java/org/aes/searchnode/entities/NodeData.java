@@ -13,10 +13,8 @@ public class NodeData<T> {
     public final static int NUMBER_OF_VALUE_IS_INCREASED = 2;
     private final List<DataInfo<T>> listDataInfo = new ArrayList<>();
     private int deep;
-    //    private DataInfo dataInfo;
-    private int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
-    private String locationAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
-
+    private int nextDirectionsTotalValueNumber; //has total value of existing data in next directions.
+    private String locationAddress = "";
     public int getDeep() {
         return deep;
     }
@@ -30,7 +28,6 @@ public class NodeData<T> {
         if (listDataInfo.size() > 0) {
             for (DataInfo tmp : listDataInfo) {
                 if (tmp.getValue().equals(t) &&
-//                        tmp.getExplanation() != null &&// explanation != null &&
                         tmp.getExplanation().equals(explanation)) {
                     tmp.increaseTotalSameNum();
                     return new SuccessDataResult<>(NUMBER_OF_VALUE_IS_INCREASED, " Data value number is increased");
@@ -39,23 +36,8 @@ public class NodeData<T> {
         }
         addObjectToListDataInfo(t, explanation);
         return new SuccessDataResult<>(NEW_VALUE_IS_ADDED, " Data is added");
-
-       /* if (listDataInfo.size() == 0) {
-            addObjectToListDataInfo(o);
-            return new SuccessDataResult<Integer>(NEW_VALUE_IS_ADDED, " Data is added");
-        } else {
-            for (DataInfo tmp : listDataInfo) {
-                if (tmp.equals(o)) {
-                    tmp.increaseTotalSameNum();
-                    return new SuccessDataResult<Integer>(NUMBER_OF_VALUE_IS_INCREASED, " Data value number is increased");
-                }
-            }
-            addObjectToListDataInfo(o);
-            return new SuccessDataResult<Integer>(NEW_VALUE_IS_ADDED, " Data is added");
-        }*/
     }
 
-    //    public DataResult<List<DataInfo<T>>> search(Object o) {
     private void sortDataInfoList() {
         Collections.sort(listDataInfo);
 
@@ -68,7 +50,6 @@ public class NodeData<T> {
         sortDataInfoList();
         for (DataInfo<T> tmp : listDataInfo) {
             if (tmp.getValue().equals(o)) {
-//                list.add(this);
                 return new SuccessDataResult<>(this);
             }
         }
@@ -82,28 +63,10 @@ public class NodeData<T> {
     public List<DataInfo<T>> getListDataInfo() {
         return listDataInfo;
     }
-/*   public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }*/
 
     public int getNextDirectionsTotalValueNumber() {
         return nextDirectionsTotalValueNumber;
     }
-
-//    public void increaseNextDirectionsExistingTotalDataNumber() {
-//        nextDirectionsTotalValueNumber++;
-//    }
-
-    public void decreaseNextDirectionsExistingTotalDataNumber() {
-        nextDirectionsTotalValueNumber--;
-    }
-//    public void setNextDirectionsTotalValueNumber(int nextDirectionsTotalValueNumber) {
-//        this.nextDirectionsTotalValueNumber = nextDirectionsTotalValueNumber;
-//    }
 
     public String getLocationAddress() {
         return locationAddress;

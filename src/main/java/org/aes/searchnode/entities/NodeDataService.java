@@ -9,7 +9,7 @@ public class NodeDataService<T> {
     private final int deep;
     private List<DataInfo<T>> listDataInfo = new ArrayList<>();
     private final int nextDirectionsTotalValueNumber; //burdan sonrasinda kac tane data varsa o sayi burada tutulur.
-    private String locationAddress = "";  // suanki konuma gelmek icin hangi degerlerden/char'lardan gecildiyse hepsinin sirayla yazilmis halidir.
+    private String locationAddress = "";
 
     public NodeDataService(NodeData<T> nodeData) {
         this.deep = nodeData.getDeep();
@@ -34,35 +34,11 @@ public class NodeDataService<T> {
         return locationAddress;
     }
 
-/*    public static NodeDataService build() {
-        return new NodeDataService();
-    }
-
-    public NodeDataService setNDTVN(int value) {
-        this.nextDirectionsTotalValueNumber = value;
-        return this;
-    }
-
-    public NodeDataService setDeep(int deep) {
-        this.deep = deep;
-        return this;
-    }
-
-    public NodeDataService setListDataInfo(List<DataInfo<T>> listDataInfo) {
-        this.listDataInfo = listDataInfo;
-        return this;
-    }*/
-/*    public NodeDataService setLocationAddress(String locationAddress) {
-        this.locationAddress = locationAddress;
-        return this;
-    }*/
-
     @Override
     public String toString() {
         return "NodeDataService{" +
                 "deep=" + deep +
                 ", listDataInfo=" + listDataInfo +
-//                (listDataInfo.size() == 0 ? "" : "") +
                 ", nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
                 ", locationAddress='" + locationAddress + '\'' +
                 '}';

@@ -155,8 +155,6 @@ public class SearchNode<T> implements SearchNodeService<T> {
     @Override
     public List<NodeData<T>> getAllNodeData(String text) {
         return searchNodeService.getAllNodeData(text);
-//        return new ArrayList<>();
-//        return searchNodeService.getAllNodeData(text);
     }
 
     @Override
