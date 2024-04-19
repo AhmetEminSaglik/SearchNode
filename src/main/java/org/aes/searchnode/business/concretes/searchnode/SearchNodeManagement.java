@@ -164,8 +164,8 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             movedLastSearchNodeConnection = searchNode;
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
-                    System.out.println("onceki Node : " + searchNode.getNodeData().getLocationAddress());
-                    System.out.println("onceki Node : " + movedLastSearchNodeConnection.getNodeData().getLocationAddress());
+//                    System.out.println("onceki Node : " + searchNode.getNodeData().getLocationAddress());
+//                    System.out.println("onceki Node : " + movedLastSearchNodeConnection.getNodeData().getLocationAddress());
                     addSNToList(movedLastSearchNodeConnection);
 //                    System.out.println("movedLastSearchNodeConnection : "+movedLastSearchNodeConnection.getNodeData().getLocationAddress());
                     PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
@@ -185,14 +185,14 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             if (searchNode.getpNWDQueue() != null) {
                 Result result = transferPossibilityNWDToReachableNWD();
                 if (result.isSuccess()) {
-                    increaseNewAddedItemLocationsNWDTV(searchNode);
+                    increaseNewAddedItemLocationsNWDTV();
                 }
                 clearPossibilityNWD();
             }
             if (t.toString().equals(movedLastSearchNodeConnection.getNodeData().getLocationAddress())) {
                 DataResult<Integer> drNodeDataAddProgress = movedLastSearchNodeConnection.getNodeData().addData(t, explanation);
                 if (drNodeDataAddProgress.getData().equals(NodeData.NEW_VALUE_IS_ADDED)) {
-                    increaseNewAddedItemLocationsNWDTV(searchNode);
+                    increaseNewAddedItemLocationsNWDTV();
                 }
             }
         }
@@ -412,26 +412,15 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     private void addSNToList(SearchNode<T> searchNode) {
         getsNListToIncreaseNWDTV().add(searchNode);
-        System.out.println("getsNListToIncreaseNWDTV size : "+getsNListToIncreaseNWDTV().size());
-        System.out.println("Incerase icin eklenen node : " + searchNode.getNodeData().getLocationAddress() + " eklendigi list : " + getsNListToIncreaseNWDTV().toString());
-
-//        increaseNewAddedItemLocationsNWDTV(searchNode);
+//        System.out.println("getsNListToIncreaseNWDTV size : "+getsNListToIncreaseNWDTV().size());
+//        System.out.println("Incerase icin eklenen node : " + searchNode.getNodeData().getLocationAddress() + " eklendigi list : " + getsNListToIncreaseNWDTV().toString());
     }
 
-    private void increaseNewAddedItemLocationsNWDTV(SearchNode<?> searchNode) {
-        searchNode.getNodeData().increaseNextWayDirectionTotalValue();
-//        System.out.println("gelen sn : " + searchNode.getNodeData());
-//        System.out.println("gelen sn  InreaseList : " + getsNListToIncreaseNWDTV());
-//        for (int i = 1; i < getsNListToIncreaseNWDTV().size(); i++) {
-//            searchNode.getNodeData().increaseNextWayDirectionTotalValue();
-//            getsNListToIncreaseNWDTV().forEach(e->increaseNewAddedItemLocationsNWDTV(e));
-//            System.out.println("for ici  sn : " + searchNode.getNodeData().getLocationAddress());
-//            increaseNewAddedItemLocationsNWDTV(getsNListToIncreaseNWDTV().get(i));
-//            increaseNewAddedItemLocationsNWDTV(getsNListToIncreaseNWDTV().get(i));
-//        }
-
+    private void increaseNewAddedItemLocationsNWDTV() {
+        for (SearchNode<T> tmp : searchNode.getsNListToIncreaseNWDTV()) {
+            tmp.getNodeData().increaseNextWayDirectionTotalValue();
+        }
     }
-
 
     private void clearNWDTVList() {
         getsNListToIncreaseNWDTV().clear();
