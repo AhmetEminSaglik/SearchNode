@@ -69,7 +69,6 @@ public class NodeData<T> {
         for (DataInfo<T> tmp : listDataInfo) {
             if (tmp.getValue().equals(o)) {
 //                list.add(this);
-                System.out.println("Buraya geldi ve donucek : " + this);
                 return new SuccessDataResult<>(this);
             }
         }

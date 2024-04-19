@@ -62,8 +62,8 @@ public class NodeDataService<T> {
         return "NodeDataService{" +
                 "deep=" + deep +
                 ", listDataInfo=" + listDataInfo +
-                (listDataInfo.size() == 0 ? "" : "\n") +
-                "\n, nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
+//                (listDataInfo.size() == 0 ? "" : "") +
+                ", nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
                 ", locationAddress='" + locationAddress + '\'' +
                 '}';
     }

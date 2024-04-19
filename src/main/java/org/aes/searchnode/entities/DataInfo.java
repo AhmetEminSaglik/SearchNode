@@ -1,6 +1,6 @@
 package org.aes.searchnode.entities;
 
-public class DataInfo<T> implements Comparable<DataInfo> {
+public class DataInfo<T> implements Comparable<DataInfo<T>> {
     private final T value;
     protected int index;
     private String explanation;

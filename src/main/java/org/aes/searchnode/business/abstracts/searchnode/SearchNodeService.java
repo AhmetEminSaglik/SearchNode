@@ -11,7 +11,7 @@ import java.util.List;
 public interface SearchNodeService<T> {
     DataResult<NodeDataService<T>> search(String text);
 
-    DataResult<NodeDataService<T>> searchExplanationOf(String text);
+    DataResult<NodeDataService<T>> getExplanationOf(String text);
 
     Result add(T t);
 

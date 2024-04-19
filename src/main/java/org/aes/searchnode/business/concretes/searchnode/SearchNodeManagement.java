@@ -18,7 +18,7 @@ import java.util.List;
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
-    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
+//    private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
     public SearchNodeManagement(SearchNode<T> searchNode) {
         this.searchNode = searchNode;
     }
@@ -258,7 +258,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<NodeDataService<T>> searchExplanationOf(String text) {
+    public DataResult<NodeDataService<T>> getExplanationOf(String text) {
         //todo burda hata olabilir
         NodeDataService<T> nodeData = search(text).getData();
         DataResult<NodeDataService<T>> dataResult;
@@ -410,10 +410,9 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
     }
 
-    private void addSNToList(SearchNode<T> searchNode) {
-        getsNListToIncreaseNWDTV().add(searchNode);
-//        System.out.println("getsNListToIncreaseNWDTV size : "+getsNListToIncreaseNWDTV().size());
-//        System.out.println("Incerase icin eklenen node : " + searchNode.getNodeData().getLocationAddress() + " eklendigi list : " + getsNListToIncreaseNWDTV().toString());
+    private void addSNToList(SearchNode<T> searchNodeAdd) {
+//        getsNListToIncreaseNWDTV().add(searchNode);
+        searchNode.getsNListToIncreaseNWDTV().add(searchNodeAdd);
     }
 
     private void increaseNewAddedItemLocationsNWDTV() {
@@ -423,14 +422,15 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private void clearNWDTVList() {
-        getsNListToIncreaseNWDTV().clear();
+//        getsNListToIncreaseNWDTV().clear();
+        searchNode.getsNListToIncreaseNWDTV().clear();
     }
 
-    public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
+    /*public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
         return sNListToIncreaseNWDTV;
     }
 
     public void setsNListToIncreaseNWDTV(List<SearchNode<T>> sNListToIncreaseNWDTV) {
         this.sNListToIncreaseNWDTV = sNListToIncreaseNWDTV;
-    }
+    }*/
 }

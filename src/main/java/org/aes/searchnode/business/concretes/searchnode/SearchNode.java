@@ -31,8 +31,8 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<NodeDataService<T>> searchExplanationOf(String text) {
-        return searchNodeService.searchExplanationOf(text);
+    public DataResult<NodeDataService<T>> getExplanationOf(String text) {
+        return searchNodeService.getExplanationOf(text);
     }
 
     @Override

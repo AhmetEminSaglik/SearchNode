@@ -23,50 +23,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SearchNode<String> sntest = new SearchNode<>();
-//        sntest.add("ahmet");
-//        sntest.add("ahmete");
-        System.out.println("eklencek kelime :ahenk");
-//        sntest.add("a");
-        sntest.add("ahenk");
-        printSearchNodeList(sntest);
-
-        System.out.println("eklencek kelime :ahmet ");
-        sntest.add("ahmet");
-        printSearchNodeList(sntest);
-
-        System.out.println("eklencek kelime :zb");
-        sntest.add("zb");
-
-        printSearchNodeList(sntest);
-
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("total item number :" + sntest.getTotalItemNumber());
-//        sntest.remove("ah");
-//        System.out.println("REMOVEDDD ");
-        System.out.println("total item number :" + sntest.getTotalItemNumber());
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("-------------------------------------------------------------------------------------");
-//        sntest.add("ahmete");
-//        System.out.println("-----------___");
-//        sntest.search("ahm");
-//        System.out.println("-----------___");
-//        sntest.search("Ahmet");
-//        System.out.println("-----------___");
-//        System.out.println(sntest.searchNodeData("Ahmet"));;
-//        System.out.println(sntest.searchNodeData("AhmetEmin"));;
-//        System.out.println(")__+__+_+_+_+__+_+_");
-        System.out.println("total item number :" + sntest.getTotalItemNumber());
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("-------------------------------------------------------------------------------------");
-        sntest.getAllNodeData("").forEach(System.out::println);
+        SearchNode<String> sn = new SearchNode<>();
+//        sntest.add("ahmetCan");
 //        printSearchNodeList(sntest);
+//        sntest.add("ahmetEmin");
+//        sntest.add("ahm");
+//        printSearchNodeList(sntest);
+        sn.add("ab","2 karakter");
+        sn.add("abcd","4 karakter");
+//        sntest.add("ab");
+        sn.add("abcdef","6 karakter");
+
+        System.out.println("-------------------------------------------------------------------------------------");
+
+        sn.getAllNodeData("").forEach(System.out::println);
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("total item number :" + sn.getTotalItemNumber());
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("explanation : "+sn.getExplanationOf("ab"));;
 //        sntest.search("AhmetEminSaglik");
 
         System.exit(0);
 
-        SearchNodeDPI<String> sn = new SearchNodeDPI<>();
+//        SearchNodeDPI<String> sn = new SearchNodeDPI<>();
         sn.add("AAA", "A");
         sn.add("AAA", "E");
         sn.add("AAA", "Z");
@@ -98,7 +77,7 @@ public class Main {
         } else {
             System.out.println("Data is not found :" + dataResult.getData());
         }
-        dataResult=searchNodeTest.searchExplanationOf("Ahmet");
+        dataResult=searchNodeTest.getExplanationOf("Ahmet");
         System.out.println("dataResult For Explanation of Ahmet:" + dataResult.getData());
 */
 
