@@ -9,15 +9,13 @@ import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoo
 import org.aes.searchnode.entities.NextWayDirectionRequiredData;
 import org.aes.searchnode.entities.PriorityChar;
 import org.aes.searchnode.entities.PriorityCharPool;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriorityCharIsUpdated {
-    private static final Logger log = LoggerFactory.getLogger(PriorityCharPoolDAOImp.class); //DAO  provide a connection
+//    private static final Logger log = LoggerFactory.getLogger(PriorityCharPoolDAOImp.class); //DAO  provide a connection
     private List<PriorityChar> list = PriorityCharPool.getList();
     private PriorityCharPoolComparator priorityCharPoolComparator = new PriorityCharPoolComparator();
     private List<NextWayDirectionRequiredData<?>> listToNotifyAfterUpdatePriorityChar = new ArrayList<>();
@@ -51,7 +49,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         }
         sort(priorityCharPoolComparator);
         updatePriorityChar();
-        log.info("charList is updated:");
+//        log.info("charList is updated:");
+        System.out.println("charList is updated:");
         printPriorityPool();
         return new SuccessDataResult<>(newPcList, "Priority chars are updated to list ");
     }
@@ -68,7 +67,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     @Override
     public DataResult removePriorityChar(char c) {
         list.remove(getPriorityChar(c));
-        log.info("'c' is removed :");
+//        log.info("'c' is removed :");
+        System.out.println("'c' is removed :");
         printPriorityPool();
         updatePriorityChar();
         return new SuccessDataResult(getPriorityChar(c), "Priority char is removed");
@@ -92,7 +92,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         list.add(newPc);
         sort(priorityCharPoolComparator);
         updatePriorityChar();
-        log.info("\'" + c+ "' is updated:");
+//        log.info("\'" + c+ "' is updated:");
+        System.out.println("\'" + c+ "' is updated:");
         printPriorityPool();
         return new SuccessDataResult<>(newPc, "Priority Char is updated");
     }
