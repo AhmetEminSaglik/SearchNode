@@ -68,7 +68,7 @@ class SearchNodeDPITest {
 
         Collections.sort(list);
 //        List<String> listFromSearchNode =
-                List<DataInfo<String>> dataInfoList=searchNode.getAll().getData();
+        List<DataInfo<String>> dataInfoList = searchNode.getAll().getData();
 
         isGivenListDataSame(list, dataInfoList);
     }
@@ -159,7 +159,7 @@ class SearchNodeDPITest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<DataInfo<String>>  listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
         Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
@@ -257,7 +257,20 @@ class SearchNodeDPITest {
         Assertions.assertEquals(expectedListSize, actualListSize);
     }
 
-    private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>>listActual) {
+    @Test
+    public void bugTest() {
+        SearchNode<String> sn = new SearchNode<>();
+        sn.add("Furkan", "Akgun'de calisiyor");
+        sn.add("Ahmet", "Ilk ismim");
+        sn.add("Furkan", "Soyadi Cetin");
+        sn.add("Furkan", "Soyadi Cetin");
+        sn.add("Ahmet Emin", "");
+        sn.getAll().getData().forEach(e->{
+            System.out.println(e);
+        });
+    }
+
+    private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>> listActual) {
         for (int i = 0; i < listExpected.size(); i++) {
             Assertions.assertEquals(listExpected.get(i), listActual.get(i).getValue());
         }
@@ -276,4 +289,6 @@ class SearchNodeDPITest {
         list.add("alim");
         return list;
     }
+
+
 }
