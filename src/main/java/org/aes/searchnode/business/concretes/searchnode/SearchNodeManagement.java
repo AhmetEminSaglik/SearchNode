@@ -104,7 +104,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
         return s;
     }
-
+// Todo this function has bug, here will be refactored
     @Override
     public Result update(T t, String oldExp, String newExp) {
         oldExp = resetNullStringTypeValue(oldExp);
@@ -112,19 +112,21 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
         Object value = getValueOfObjectToBeProcess(t);
         StringBuilder path = getStringBuilderOfData(value);
-
         NodeData<T> nodeData = searchNodeData(path.toString()).getData();
-        nodeData.update(path.toString(), oldExp, newExp);
-        return new SuccessResult("Update is successfull");
+        if(nodeData!=null){
+        return nodeData.update(path.toString(), oldExp, newExp);
+        }
+        return new ErrorResult("Data \""+t+"\" is not found");
     }
 
+    // Todo this function has bug, here will be refactored
     @Override
     public Result update(T t, String oldExp, List<String> expList) {
         System.out.println("list Size : " + expList.size());
         if (expList.size() > 0) {
             update(t, oldExp, expList.get(0));
             expList.remove(0);
-            if (expList.size() > 1) {
+            if (expList.size() >= 1) {
                 expList.forEach(e -> add(t, e));
             }
         } else {

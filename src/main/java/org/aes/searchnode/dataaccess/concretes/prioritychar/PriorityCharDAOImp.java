@@ -26,6 +26,12 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     }
 
     @Override
+    public DataResult<List<PriorityChar>> getAll() {
+        return priorityCharPoolDAO.getAll();
+    }
+
+
+    @Override
     public Result add(char c, char nextToThisChar) {
         priorityCharPoolDAO.updatePriorityChar(c, nextToThisChar);
         return new SuccessResult("Priority Char value is updated :" + c);
@@ -35,7 +41,7 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     @Override
     public Result add(List<Character> cList, char nextToThisChar) {
         priorityCharPoolDAO.updatePriorityCharList(cList, nextToThisChar);
-        return new SuccessResult("Priority Char List Value is updated :");
+        return new SuccessResult("Priority Char List Value is updated");
     }
 
 
@@ -53,6 +59,11 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     @Override
     public DataResult update(char c) {
         return null;
+    }
+
+    @Override
+    public DataResult<PriorityChar> getNextPriorityCharOfGiven(char c) {
+        return priorityCharPoolDAO.getNextPriorityCharOfGiven(c);
     }
 
 }

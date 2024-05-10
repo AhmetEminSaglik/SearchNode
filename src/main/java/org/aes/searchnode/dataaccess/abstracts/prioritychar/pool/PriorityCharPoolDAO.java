@@ -11,6 +11,8 @@ import java.util.List;
 public interface PriorityCharPoolDAO {
     PriorityChar getPriorityChar(char c);
 
+    DataResult<List<PriorityChar>> getAll();
+
     DataResult<List<PriorityChar>> updatePriorityCharList(List<Character> characterList, char nextToThisChar);
 
     void sort(Comparator<PriorityChar> comparator);
@@ -23,5 +25,6 @@ public interface PriorityCharPoolDAO {
 
     void addToListToBeNotifedWhenPriorityCharIsUpdated(NextWayDirectionRequiredData<?> nextWayDirectionRequiredData);
 
+    DataResult<PriorityChar> getNextPriorityCharOfGiven(char c);
 
 }

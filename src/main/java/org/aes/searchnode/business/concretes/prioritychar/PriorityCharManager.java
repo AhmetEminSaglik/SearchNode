@@ -18,6 +18,11 @@ public class PriorityCharManager implements PriorityCharService {
     }
 
     @Override
+    public DataResult<List<PriorityChar>> getAll() {
+        return priorityCharDAO.getAll();
+    }
+
+    @Override
     public Result add(char c, char nextToThisChar) {
         return priorityCharDAO.add(c, nextToThisChar);
     }
@@ -40,6 +45,11 @@ public class PriorityCharManager implements PriorityCharService {
     @Override
     public DataResult<PriorityChar> update(char c) {
         return priorityCharDAO.update(c);
+    }
+
+    @Override
+    public DataResult<PriorityChar> getNextPriorityCharOfGiven(char c) {
+        return priorityCharDAO.getNextPriorityCharOfGiven(c);
     }
 
 }

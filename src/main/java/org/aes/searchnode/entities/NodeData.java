@@ -1,8 +1,6 @@
 package org.aes.searchnode.entities;
 
-import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.ErrorDataResult;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
+import org.aes.searchnode.core.utilities.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -120,14 +118,17 @@ public class NodeData<T> {
 
     }
 
-    public void update(String path, String oldExp, String newExp) {
+    public Result update(String path, String oldExp, String newExp) {
         if (path.equals(locationAddress)) {
             for (DataInfo<T> tmp : listDataInfo) {
                 if (tmp.getExplanation().equals(oldExp)) {
                     tmp.setExplanation(newExp);
-                    return;
+                    return new SuccessResult("Explanation is updated");
                 }
             }
+            return new ErrorResult("Explanation \""+oldExp+"\" is not found");
         }
+        return new ErrorResult(path+" is not equals to "+locationAddress);
     }
+
 }
