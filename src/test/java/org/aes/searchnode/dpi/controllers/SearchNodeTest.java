@@ -2,15 +2,13 @@ package org.aes.searchnode.dpi.controllers;
 
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.entities.PriorityChar;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.opentest4j.AssertionFailedError;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SearchNodeTest {
     SearchNode<String> searchNode = new SearchNode<>();
 
@@ -23,6 +21,7 @@ public class SearchNodeTest {
 
     @Test
     @Order(1)
+    @DisplayName("1- Update Char")
     public void testUpdateCharacter() {
         updateCharItem('a', 'b', 'b');
         updateCharItem('a', 'c', 'b');
@@ -39,6 +38,7 @@ public class SearchNodeTest {
 
     @Test
     @Order(2)
+    @DisplayName("2- Update Char List")
     public void testUpdateCharacterList() {
         List<Character> list = new ArrayList<>();
         list.add('z');
@@ -49,8 +49,9 @@ public class SearchNodeTest {
         updatePriorityCharacterList('a', list);
     }
 
-    @Test
+    @Test()
     @Order(3)
+    @DisplayName("3- Next Priority Char")
     public void testGetNextPriorityCharOfGivenUpdateChar() {
         getNextCharOfGiven('a', 'b');
         getNextCharOfGiven('b', 'c');
@@ -83,6 +84,7 @@ public class SearchNodeTest {
 
     @Test
     @Order(4)
+    @DisplayName("4- Reset Char")
     public void testResetCharacter() {
         updateCharItem('a', 'b', 'b');
         updateCharItem('a', 'c', 'b');
@@ -100,6 +102,7 @@ public class SearchNodeTest {
 
     @Test
     @Order(5)
+    @DisplayName("5- Reset All Chars")
     public void testResetAllPriorityCharacterList() {
         searchNode.updatePriorityChar('b', 'a');
         searchNode.updatePriorityChar('c', 'a');
@@ -125,6 +128,8 @@ public class SearchNodeTest {
     }
 
     @Test
+    @Order(6)
+    @DisplayName("6- Any Error Occured During Testing")
     public void isErrorOccured() {
         Assertions.assertFalse(errorOccured);
     }
