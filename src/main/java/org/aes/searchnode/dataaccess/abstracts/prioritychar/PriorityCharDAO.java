@@ -18,5 +18,5 @@ public interface PriorityCharDAO {
     Result removeAll();
 
     DataResult<PriorityChar> update(char c);
-    DataResult<PriorityChar> getNextPriorityCharOfGiven(char c);
+    DataResult<PriorityChar> getNextPriorityChar(char c);
 }

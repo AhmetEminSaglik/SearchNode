@@ -25,6 +25,6 @@ public interface PriorityCharPoolDAO {
 
     void addToListToBeNotifedWhenPriorityCharIsUpdated(NextWayDirectionRequiredData<?> nextWayDirectionRequiredData);
 
-    DataResult<PriorityChar> getNextPriorityCharOfGiven(char c);
+    DataResult<PriorityChar> getNextPriorityChar(char c);
 
 }

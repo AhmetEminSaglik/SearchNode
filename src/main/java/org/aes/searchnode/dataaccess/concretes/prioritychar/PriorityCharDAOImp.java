@@ -62,8 +62,8 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPriorityCharOfGiven(char c) {
-        return priorityCharPoolDAO.getNextPriorityCharOfGiven(c);
+    public DataResult<PriorityChar> getNextPriorityChar(char c) {
+        return priorityCharPoolDAO.getNextPriorityChar(c);
     }
 
 }

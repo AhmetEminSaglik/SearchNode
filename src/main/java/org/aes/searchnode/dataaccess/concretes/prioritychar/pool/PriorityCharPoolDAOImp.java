@@ -43,8 +43,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         }
 //        Todo Burda character listesini gonderirken problem yasaniyor
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
-        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
-//        double charValueToAddBefore = getNextPriorityCharOfGiven(nextToThisChar).getData().getValue();//getNextCharValue(nextPriorityChar);
+        double charValueToAddBefore = getNextPriorityChar(nextToThisChar).getData().getValue();
+//        double charValueToAddBefore = getNextPriorityChar(nextToThisChar).getData().getValue();//getNextCharValue(nextPriorityChar);
 //        System.out.println(">>>>>>>>>>>>>>charValueToAddBefore : "+charValueToAddBefore);
         double increaseValueOfCharList = calculateIncreaseValueOfCharList(nextPriorityChar.getValue(), charValueToAddBefore, characterList.size());
         for (Character c : characterList) {
@@ -96,8 +96,8 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     public DataResult<PriorityChar> updatePriorityChar(char c, char nextToThisChar) {
         removePriorityChar(c);
         PriorityChar nextPriorityChar = getPriorityChar(nextToThisChar);
-        double charValueToAddBefore = getNextCharValue(nextPriorityChar);
-//        double charValueToAddBefore = getNextPriorityCharOfGiven(nextToThisChar).getData().getValue();
+        double charValueToAddBefore = getNextPriorityChar(nextToThisChar).getData().getValue();
+//        double charValueToAddBefore = getNextPriorityChar(nextToThisChar).getData().getValue();
         double newCharValue = calculateNewPriorityCharValue(nextPriorityChar.getValue(), charValueToAddBefore);
         PriorityChar newPc = new PriorityChar(c, newCharValue);
         list.add(newPc);
@@ -114,13 +114,13 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         listToNotifyAfterUpdatePriorityChar.add(nextWayDirectionRequiredData);
     }
 
-    // Todo this function has bug, here will be refactored
+/*    // Todo this function has bug, here will be refactored
     private PriorityChar getPcBetweenGivenValues(double minBound, double maxBound) {
 //        System.out.println(" getPcBetweenGivenValues> min : " + minBound + " / max : " + maxBound);
         for (int i = 0; i < list.size(); i++) {
             PriorityChar tmp = list.get(i);
             if (tmp.getValue() > minBound && tmp.getValue() < maxBound) {
-                System.out.println("BURASDI DONUYOR tmp : " + tmp.getChar());
+//                System.out.println("BURASDI DONUYOR tmp : " + tmp.getChar());
                 return tmp;
             }
             System.out.println("tmp : " + tmp.getChar() + " " + tmp.getValue());
@@ -134,27 +134,40 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
         return null;
 
-    }
+    }*/
+
     // Todo this function has bug, here will be refactored
-    private DataResult<PriorityChar> searchPcPoolAndASCII(double minBound, double maxBound) {
-//        System.out.println("gelen min-max bounds:" + minBound + "-" + maxBound);
+    private DataResult<PriorityChar> searchNextPcInPool(double min, double max) {
+//        System.out.println("gelen min-max bounds:" + min + "-" + max);
+//        System.out.println("----\n>>>searchNextPcInPool Arama yapilacak deger araligi : (" + min + "-" + max + "]");
         for (int i = 0; i < list.size(); i++) {
             PriorityChar tmp = list.get(i);
-            System.out.println(" searchPcPoolAndASCII > " + tmp.getChar() + " " + tmp.getValue());
-            if (tmp.getChar() == ((char) Math.ceil(minBound)) || tmp.getChar() == ((char) Math.ceil(maxBound))) {
-                System.out.println(">>>>>>>>>>>>  tmp.getChar() == minbound " + tmp.getChar() + " " + tmp.getValue() + " " + minBound + "  (char)? " + ((char) Math.ceil(minBound)));
-                PriorityChar pc = getPcBetweenGivenValues(minBound, maxBound);
+//            System.out.println("PC Tmp:" + tmp.getChar() + "=" + tmp.getValue() + " values : (" + min + "-" + max + "]");
+            if (tmp.getValue() > min && tmp.getValue() <= max) {
+//                System.out.println("==== Donulecek data : [" + tmp.getChar() + "=" + tmp.getValue() + "]");
+                return new SuccessDataResult<>(tmp);
+                /*System.out.println(">>>>>>>>>>>>  tmp.getChar() == min " + tmp.getChar() + " " + tmp.getValue() + " " + min + "  (char)? " + ((char) Math.ceil(min)));
+                PriorityChar pc = getPcBetweenGivenValues(min, max);
                 if (pc != null) {
                     return new SuccessDataResult<>(pc);
                 }
                 System.out.println("++ flor olucak");
 
-                return searchPcPoolAndASCII(maxBound, maxBound + 1);
+                return searchNextPcInPool(max, fmax + 1);*/
             }
         }
-//        return searchPcPoolAndASCII(maxBound,maxBound+1);
-//        System.out.println("buradan doncuek getPriorityChar((char) maxBound)" + getPriorityChar((char) maxBound));
-        return new SuccessDataResult<>(getPriorityChar((char) minBound));
+//        System.out.println("> searchNextPcInPool'da deger araligina uygun veri yok");
+        if (isCeilValueCharContainedInPool((char) max)) {
+            min = max;
+            max++;
+//            System.out.println("Tekrardan arama yapicalak [" + min + "-" + max + "]");
+            return searchNextPcInPool(min, max);
+        }
+//        System.out.println("Donulecek data : " + (char) max + ":" + max);
+        return new SuccessDataResult<>(getPriorityChar((char) max));
+//        return searchNextPcInPool(max,max+1);
+//        System.out.println("buradan doncuek getPriorityChar((char) max)" + getPriorityChar((char) max));
+//        return new SuccessDataResult<>(getPriorityChar((char) min));
         /*
          * a 97
          * b 98
@@ -166,23 +179,38 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
 
     }
 
+    private boolean isCeilValueCharContainedInPool(char ch) {
+//        System.out.println("Pool'da [" + ch + "] var mi bakilacak");
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getChar() == ch) {
+//                System.out.println("VAR  ==> Pool'da [" + ch + "] bulundu");
+                return true;
+            }
+        }
+//        System.out.println("YOK  --> Pool'da [" + ch + "] bulunamadi");
+        return false;
+    }
+
     // Todo this function has bug, here will be refactored
     @Override
-    public DataResult<PriorityChar> getNextPriorityCharOfGiven(char c) {
-//        System.out.println(" ? SONRASI BULUNACAK char :[" + c + "] value : " + getPriorityChar(c).getValue());
+    public DataResult<PriorityChar> getNextPriorityChar(char c) {
         PriorityChar currentPc = getPriorityChar(c);
-        double minBound = currentPc.getValue();
-        double maxBound = (int) Math.ceil(currentPc.getValue());
-        if (maxBound == minBound) {
-            maxBound++;
+        double min = currentPc.getValue();
+        double max = Math.ceil(currentPc.getValue());
+        if (min == max) {
+            max++;
         }
-        System.out.println("Current pc  value " + currentPc.getValue() + "  minBound: " + minBound + "  maxBound : " + maxBound);
-        PriorityChar foundPc = getPcBetweenGivenValues(minBound, maxBound);
+//        System.out.println(">>> SONRASI BULUNACAK char :[" + c + "=" + getPriorityChar(c).getValue() + "] Deger araligi ("+min+"-"+max+"]");
+
+        return searchNextPcInPool(min, max);
+
+        /*System.out.println("Current pc  value " + currentPc.getValue() + "  min: " + min + "  max : " + max);
+        PriorityChar foundPc = getPcBetweenGivenValues(min, max);
         if (foundPc != null) {
             return new SuccessDataResult<>(foundPc);
         }
-//        System.out.println("found pc null : >> searchPcPoolAndASCII ");
-        return searchPcPoolAndASCII(minBound, maxBound);
+//        System.out.println("found pc null : >> searchNextPcInPool ");
+        return searchNextPcInPool(min, max);*/
 //        for (int i = 0; i < list.size(); i++) {
 //            if (currentPc.getValue() - list.get(i).getValue())
                 /*if (list.get(i).getValue() > currentPc.getValue()) {
@@ -214,7 +242,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         }
     }
 
-    // Todo this function has bug, here will be refactored
+    /*// Todo this function has bug, here will be refactored
     private double getNextCharValue(PriorityChar pchar) {
 //        System.out.println("list size " +pchar.getChar()+" : "+pchar.getValue());
         for (int i = 0; i < list.size(); i++) {
@@ -224,7 +252,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             }
         }
         return Math.floor(pchar.getValue() + 1);
-    }
+    }*/
 
     @Override
     public void updatePriorityChar() {

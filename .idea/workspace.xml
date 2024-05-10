@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/prioritychar/PriorityCharManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/prioritychar/PriorityCharManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/pool/PriorityCharPoolDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/pool/PriorityCharPoolDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/pool/PriorityCharPoolDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/pool/PriorityCharPoolDAOImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +67,7 @@
     "JUnit.SearchNodeTest.testResetCharacter.executor": "Run",
     "JUnit.SearchNodeTest.testUpdateCharacter.executor": "Run",
     "JUnit.SearchNodeTest.testUpdateCharacterList.executor": "Run",
+    "JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar.executor": "Run",
     "Maven.SearchNode [clean].executor": "Run",
     "Maven.SearchNode [install].executor": "Run",
     "Maven.SearchNode [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
@@ -115,22 +122,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchNodeTest.testGetNextPriorityCharOfGiven" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
-      <option name="METHOD_NAME" value="testGetNextPriorityCharOfGiven" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <extension name="coverage">
@@ -179,13 +170,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SearchNodeTest.testgetNextPriorityCharUpdateChar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SearchNode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
+      <option name="METHOD_NAME" value="testgetNextPriorityCharUpdateChar" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SearchNodeTest" />
+        <item itemvalue="JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar" />
+        <item itemvalue="JUnit.SearchNodeTest.testUpdateCharacter" />
         <item itemvalue="JUnit.SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar" />
         <item itemvalue="JUnit.SearchNodeTest.testResetAllPriorityCharacterList" />
-        <item itemvalue="JUnit.SearchNodeTest.testGetNextPriorityCharOfGiven" />
-        <item itemvalue="JUnit.SearchNodeTest.testUpdateCharacter" />
       </list>
     </recent_temporary>
   </component>

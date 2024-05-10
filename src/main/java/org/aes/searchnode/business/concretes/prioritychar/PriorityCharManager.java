@@ -48,8 +48,8 @@ public class PriorityCharManager implements PriorityCharService {
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPriorityCharOfGiven(char c) {
-        return priorityCharDAO.getNextPriorityCharOfGiven(c);
+    public DataResult<PriorityChar> getNextPriorityChar(char c) {
+        return priorityCharDAO.getNextPriorityChar(c);
     }
 
 }

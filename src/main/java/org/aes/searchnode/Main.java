@@ -72,9 +72,9 @@ public class Main {
 //        sn.updatePriorityChar('y','z');
 //        sn.updatePriorityChar('1','2');
 //        printPCDao(sn);
-//        System.out.println(sn.getPcService().getNextPriorityCharOfGiven('b').getData());
-//        sn.getPcService().getNextPriorityCharOfGiven('b');
-//        sn.getPcService().getNextPriorityCharOfGiven('c');
+//        System.out.println(sn.getPcService().getNextPriorityChar('b').getData());
+//        sn.getPcService().getNextPriorityChar('b');
+//        sn.getPcService().getNextPriorityChar('c');
 
         /*for (int i = 97; i <= 122; i++) {
             System.out.print(i + "-)" + (char) i + "    ");
@@ -100,7 +100,7 @@ public class Main {
         sn.updatePriorityChar('g', 'a');
         sn.updatePriorityChar('h', 'a');
         printPCDao(sn);
-        System.out.println(sn.getPcService().getNextPriorityCharOfGiven('g').getData());
+        System.out.println(sn.getPcService().getNextPriorityChar('g').getData());
     }
     static  void testUpdateExplanationList(){
         SearchNode<String> sn = new SearchNode<>();
