@@ -8,7 +8,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-
         SearchNode<String> sn = new SearchNode<>();
 //        sn.add("abze", "2 characters");
 //        sn.add("abcd", "4 characters");
@@ -56,17 +55,7 @@ public class Main {
 //        System.out.println("result : "+result);
 //        sn.remove("bbb");
 //        sn.search("zxccx").getData().getListDataInfo().size();
-        sn.updatePriorityChar('l', 'm');
-        sn.updatePriorityChar('l', 'm');
-        sn.updatePriorityChar('k', 'm');
-        sn.updatePriorityChar('j', 'm');
-        sn.updatePriorityChar('p', 'm');
-        sn.updatePriorityChar('o', 'm');
-        sn.updatePriorityChar('q', 'a');
-        sn.updatePriorityChar('g', 'a');
-        sn.updatePriorityChar('h', 'a');
-        printPCDao(sn);
-        System.out.println(sn.getPcService().getNextPriorityCharOfGiven('g').getData());
+
 //        printPCDao(sn);
 //        sn.updatePriorityChar('b', 'c');
 //        sn.updatePriorityChar('f', 'c');
@@ -98,6 +87,34 @@ public class Main {
         System.out.println("total item number :" + sn.getTotalItemNumber());
         System.out.println("explanation : " + sn.getExplanationOf("ab"));
         sn.getAll().getData().forEach(System.out::println);*/
+    }
+    static  void getNextPriorityChar(){
+        SearchNode<String> sn = new SearchNode<>();
+        sn.updatePriorityChar('l', 'm');
+        sn.updatePriorityChar('l', 'm');
+        sn.updatePriorityChar('k', 'm');
+        sn.updatePriorityChar('j', 'm');
+        sn.updatePriorityChar('p', 'm');
+        sn.updatePriorityChar('o', 'm');
+        sn.updatePriorityChar('q', 'a');
+        sn.updatePriorityChar('g', 'a');
+        sn.updatePriorityChar('h', 'a');
+        printPCDao(sn);
+        System.out.println(sn.getPcService().getNextPriorityCharOfGiven('g').getData());
+    }
+    static  void testUpdateExplanationList(){
+        SearchNode<String> sn = new SearchNode<>();
+        List<String> expList= new ArrayList<>();
+        expList.add("1");
+        expList.add("2");
+        expList.add("3");
+        expList.add("3");
+        expList.add("3");
+        sn.add("a");
+        sn.add("b","a");
+        printAllValues(sn);
+        sn.update("A",expList);
+        printAllValues(sn);
     }
 
     static void printPCDao(SearchNode sn) {

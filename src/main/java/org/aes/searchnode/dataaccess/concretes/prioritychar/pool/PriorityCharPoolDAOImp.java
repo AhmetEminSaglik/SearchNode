@@ -130,14 +130,14 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
                 return null;
             }
         }
-        System.out.println("CIKISS 2 bounds : " + minBound + "-" + maxBound);
+//        System.out.println("CIKISS 2 bounds : " + minBound + "-" + maxBound);
 
         return null;
 
     }
     // Todo this function has bug, here will be refactored
     private DataResult<PriorityChar> searchPcPoolAndASCII(double minBound, double maxBound) {
-        System.out.println("gelen min-max bounds:" + minBound + "-" + maxBound);
+//        System.out.println("gelen min-max bounds:" + minBound + "-" + maxBound);
         for (int i = 0; i < list.size(); i++) {
             PriorityChar tmp = list.get(i);
             System.out.println(" searchPcPoolAndASCII > " + tmp.getChar() + " " + tmp.getValue());
@@ -153,7 +153,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             }
         }
 //        return searchPcPoolAndASCII(maxBound,maxBound+1);
-        System.out.println("buradan doncuek getPriorityChar((char) maxBound)" + getPriorityChar((char) maxBound));
+//        System.out.println("buradan doncuek getPriorityChar((char) maxBound)" + getPriorityChar((char) maxBound));
         return new SuccessDataResult<>(getPriorityChar((char) minBound));
         /*
          * a 97
@@ -169,7 +169,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
     // Todo this function has bug, here will be refactored
     @Override
     public DataResult<PriorityChar> getNextPriorityCharOfGiven(char c) {
-        System.out.println(" ? SONRASI BULUNACAK char :[" + c + "] value : " + getPriorityChar(c).getValue());
+//        System.out.println(" ? SONRASI BULUNACAK char :[" + c + "] value : " + getPriorityChar(c).getValue());
         PriorityChar currentPc = getPriorityChar(c);
         double minBound = currentPc.getValue();
         double maxBound = (int) Math.ceil(currentPc.getValue());
@@ -181,7 +181,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
         if (foundPc != null) {
             return new SuccessDataResult<>(foundPc);
         }
-        System.out.println("foundpc null : >> searchPcPoolAndASCII ");
+//        System.out.println("found pc null : >> searchPcPoolAndASCII ");
         return searchPcPoolAndASCII(minBound, maxBound);
 //        for (int i = 0; i < list.size(); i++) {
 //            if (currentPc.getValue() - list.get(i).getValue())

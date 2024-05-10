@@ -104,7 +104,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
         return s;
     }
-// Todo this function has bug, here will be refactored
     @Override
     public Result update(T t, String oldExp, String newExp) {
         oldExp = resetNullStringTypeValue(oldExp);
