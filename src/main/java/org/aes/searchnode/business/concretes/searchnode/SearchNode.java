@@ -17,8 +17,8 @@ import java.util.List;
 
 public class SearchNode<T> implements SearchNodeService<T> {
 
-    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
-    private ReachableNextWayDirection<T> reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
+    SearchNodeService<T> searchNodeService = new SearchNodeManagement<>(this);
+    private ReachableNextWayDirection<T> reachableNWD = new ConfigReachableNextWayDirection<T>().getReachableNextWayDirectionObject();
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();

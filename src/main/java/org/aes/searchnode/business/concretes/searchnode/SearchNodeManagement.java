@@ -19,9 +19,13 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
 
-    public SearchNodeManagement(SearchNode<T> searchNode) {
+    protected SearchNodeManagement(SearchNode<T> searchNode) {
         this.searchNode = searchNode;
     }
+//    protected  SearchNodeManagement<T> buildSearchNodeManagement(SearchNode<T> searchNode){
+//        this.searchNode=searchNode;
+//        return  this;
+//    }
 
     @Override
     public Result addAll(List<T> list) {

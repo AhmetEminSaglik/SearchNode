@@ -1,5 +1,6 @@
-package org.aes.searchnode.business.abstracts.searchnode;
+package org.aes.searchnode;
 
+import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.entities.DataInfo;
 import org.junit.jupiter.api.*;

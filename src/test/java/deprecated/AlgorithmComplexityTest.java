@@ -1,4 +1,4 @@
-package org.aes.searchnode.dpi.controllers;
+package deprecated;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
