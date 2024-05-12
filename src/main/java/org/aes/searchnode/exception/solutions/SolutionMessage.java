@@ -10,10 +10,6 @@ public class SolutionMessage {
     private SolutionMessage() {
     }
 
-    /* public static String getSolutionNotImplementedRequiredInterfaceError(Class clazz) {
-         String msg = prefixText + solutionAdvice + "Please implement << IPriorityFields >> interface to your " + clazz.getSimpleName() + " Object.";
-         return msg;
-     }*/
     public static String getSolutionNotFoundAnyDeclaredField(Class<?> clazz) {
         return prefixText + solutionAdvice + "Please add some variable fields to your " + clazz.getSimpleName() + " Object.";
     }
