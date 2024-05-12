@@ -2,6 +2,7 @@ package org.aes.searchnode;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
+import org.aes.searchnode.entities.DataInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,13 @@ public class Main {
         String explanaton = "explanation";
         String data = "text";
         char c = 'c';
+
+        sns.add("ali");
+        sns.add("alim");
+        sns.add("ayse");
+        List<DataInfo<String>> list = sns.getAllStartWith("al");
+        list.forEach(System.out::println);
+        System.exit(0);
 
         sn.add(data);
         sns.add(data);
@@ -89,14 +97,14 @@ public class Main {
 
     static void printPCDao(SearchNode sn) {
         System.out.println("-----------------_");
-//        sn.getAllPc().getData().forEach(e -> {
+//        sn.getAllPc().forEach(e -> {
 //            System.out.println("char: " + e.getChar() + ":" + e.getValue());
 //        });
     }
 
     static void printAllValues(SearchNode<String> sn) {
         System.out.println("--------------------------------------");
-        sn.getAllPc().getData().forEach(e -> {
+        sn.getAllPc().forEach(e -> {
 //            System.out.println(e.getTotalSameNum() + "-) " + e.getValue() + " : " + e.getExplanation());
         });
     }

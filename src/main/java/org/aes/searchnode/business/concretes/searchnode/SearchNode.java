@@ -23,12 +23,12 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
     @Override
-    public DataResult<NodeDataService<T>> search(String text) {
+    public NodeDataService<T> search(String text) {
         return searchNodeService.search(text);
     }
 
     @Override
-    public DataResult<NodeDataService<T>> getExplanationOf(String text) {
+    public NodeDataService<T> getExplanationOf(String text) {
         return searchNodeService.getExplanationOf(text);
     }
 
@@ -69,17 +69,17 @@ public class SearchNode<T> implements SearchNodeService<T> {
 
 
     @Override
-    public DataResult<List<DataInfo<T>>> getAll() {
+    public List<DataInfo<T>> getAll() {
         return searchNodeService.getAll();
     }
 
     @Override
-    public DataResult<List<DataInfo<T>>> getAllReverse() {
+    public List<DataInfo<T>> getAllReverse() {
         return searchNodeService.getAllReverse();
     }
 
     @Override
-    public DataResult<List<DataInfo<T>>> getAllStartWith(String text) {
+    public List<DataInfo<T>> getAllStartWith(String text) {
         return searchNodeService.getAllStartWith(text);
     }
 
@@ -169,17 +169,17 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<PriorityChar> getPc(char c) {
+    public PriorityChar getPc(char c) {
         return searchNodeService.getPc(c);
     }
 
     @Override
-    public DataResult<List<PriorityChar>> getAllPc() {
+    public List<PriorityChar> getAllPc() {
         return searchNodeService.getAllPc();
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPc(char c) {
+    public PriorityChar getNextPc(char c) {
         return searchNodeService.getNextPc(c);
     }
 }

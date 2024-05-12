@@ -70,7 +70,7 @@ class SearchNodeTest {
         Assertions.assertEquals(expected, actual);
 
         Collections.sort(list);
-        List<DataInfo<String>> dataInfoList = searchNode.getAll().getData();
+        List<DataInfo<String>> dataInfoList = searchNode.getAll();
 
         isGivenListDataSame(list, dataInfoList);
     }
@@ -87,7 +87,7 @@ class SearchNodeTest {
 
         Collections.sort(list);
         Collections.reverse(list);
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAllReverse().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAllReverse();
 
         isGivenListDataSame(list, listFromSearchNode);
     }
@@ -104,13 +104,13 @@ class SearchNodeTest {
         String item3 = "çilek";
         searchNode.add(item2);
         searchNode.add(item3);
-        String actual = searchNode.search(item).getData().getListDataInfo().get(0).getValue();
+        String actual = searchNode.search(item).getListDataInfo().get(0).getValue();
         Assertions.assertEquals(item, actual);
 
-        actual = searchNode.search(item2).getData().getListDataInfo().get(0).getValue();
+        actual = searchNode.search(item2).getListDataInfo().get(0).getValue();
         Assertions.assertEquals(item2, actual);
 
-        actual = searchNode.search(item3).getData().getListDataInfo().get(0).getValue();
+        actual = searchNode.search(item3).getListDataInfo().get(0).getValue();
         Assertions.assertEquals(item3, actual);
 
     }
@@ -127,7 +127,7 @@ class SearchNodeTest {
         searchNode.add("çilek");
         searchNode.add("selim");
         searchNode.add("şeftali");
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
@@ -150,7 +150,7 @@ class SearchNodeTest {
         searchNode.add("çilek");
         searchNode.add("selim");
         searchNode.add("şeftali");
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("çilek", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("şeftali", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("can", listFromSearchNode.get(3).getValue());
@@ -171,7 +171,7 @@ class SearchNodeTest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
@@ -196,7 +196,7 @@ class SearchNodeTest {
 
         searchNode.updatePriorityChar(characterList, 'a');
 
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("çilek", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("şeftali", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("can", listFromSearchNode.get(3).getValue());
@@ -217,14 +217,14 @@ class SearchNodeTest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
         Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
 
         searchNode.resetPriorityChar('ç');
-        listFromSearchNode = searchNode.getAll().getData();
+        listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("şeftali", listFromSearchNode.get(3).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(4).getValue());
     }
@@ -242,14 +242,14 @@ class SearchNodeTest {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
 
-        List<DataInfo<String>> listFromSearchNode = searchNode.getAll().getData();
+        List<DataInfo<String>> listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("can", listFromSearchNode.get(1).getValue());
         Assertions.assertEquals("çilek", listFromSearchNode.get(2).getValue());
         Assertions.assertEquals("selim", listFromSearchNode.get(3).getValue());
         Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
 
         searchNode.resetAllPriorityChars();
-        listFromSearchNode = searchNode.getAll().getData();
+        listFromSearchNode = searchNode.getAll();
         Assertions.assertEquals("çilek", listFromSearchNode.get(3).getValue());
         Assertions.assertEquals("şeftali", listFromSearchNode.get(4).getValue());
     }
@@ -259,8 +259,7 @@ class SearchNodeTest {
     @DisplayName("12-) Get all data start with [al] ")
     public void getAllStartWithTest() {
         searchNode.addAll(getStringListData());
-        List<DataInfo<String>> list = searchNode.getAllStartWith("al").getData();
-
+        List<DataInfo<String>> list = searchNode.getAllStartWith("al");
         String expected = "ali";
         String actual = list.get(0).getValue();
         Assertions.assertEquals(expected, actual);
@@ -269,7 +268,7 @@ class SearchNodeTest {
         Assertions.assertEquals(expected, actual);
 
 
-        list = searchNode.getAllStartWith("s").getData();
+        list = searchNode.getAllStartWith("s");
 
         int expectedListSize = 3;
         int actualListSize = list.size();

@@ -25,7 +25,7 @@ public class SearchNodeRemoveFunctionTest {
             searchNode.add("alim");
             searchNode.remove("alim");
             int expected = 2;
-            int actual = searchNode.getAll().getData().size();
+            int actual = searchNode.getAll().size();
             Assertions.assertEquals(expected, actual);
         }
 
@@ -34,14 +34,14 @@ public class SearchNodeRemoveFunctionTest {
             String text = "alim";
             searchNode.add(text);
             String expectedData = text;
-            String actualData = searchNode.search(text).getData().getListDataInfo().get(0).getValue();
+            String actualData = searchNode.search(text).getListDataInfo().get(0).getValue();
 
             Assertions.assertEquals(expectedData, actualData);
 
 
             searchNode.remove(text);
             int expected = 0;
-            int actual = searchNode.getAll().getData().size();
+            int actual = searchNode.getAll().size();
 
             Assertions.assertEquals(expected, actual);
         }
@@ -55,22 +55,22 @@ public class SearchNodeRemoveFunctionTest {
             searchNode.add("zeynep");
 
             int expected = 5;
-            int actual = searchNode.getAll().getData().size();
+            int actual = searchNode.getAll().size();
             Assertions.assertEquals(expected, actual);
 
             searchNode.remove("ali");
             expected = 4;
-            actual = searchNode.getAll().getData().size();
+            actual = searchNode.getAll().size();
             Assertions.assertEquals(expected, actual);
 
             searchNode.remove("alim");
             expected = 3;
-            actual = searchNode.getAll().getData().size();
+            actual = searchNode.getAll().size();
             Assertions.assertEquals(expected, actual);
 
             searchNode.remove("abcde");
             expected = 2;
-            actual = searchNode.getAll().getData().size();
+            actual = searchNode.getAll().size();
             Assertions.assertEquals(expected, actual);
         }
 
@@ -88,18 +88,18 @@ public class SearchNodeRemoveFunctionTest {
             removeDataList.add("zeynep");
 
             int expected = 5;
-            int actual = searchNode.getAll().getData().size();
+            int actual = searchNode.getAll().size();
             Assertions.assertEquals(expected, actual);
             DataResult<List<String>> dr = searchNode.removeAll(removeDataList);
 
             expected = 2;
-            actual = searchNode.getAll().getData().size();
+            actual = searchNode.getAll().size();
 
             Assertions.assertEquals(expected, actual);
 
             searchNode.removeAll(removeDataList);
             expected = 2;
-            actual = searchNode.getAll().getData().size();
+            actual = searchNode.getAll().size();
 
             Assertions.assertEquals(expected, actual);
         }

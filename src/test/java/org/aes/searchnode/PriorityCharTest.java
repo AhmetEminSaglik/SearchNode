@@ -124,17 +124,17 @@ public class PriorityCharTest {
         StringBuilder sb = new StringBuilder(prefixExplanation + "PriorityCharList :");
         for (int i = 0; i < list.size(); i++) {
             char tmpChar = list.get(i);
-            sb.append("[").append(tmpChar).append("=").append(searchNode.getPc(tmpChar).getData().getValue() + "]");
+            sb.append("[").append(tmpChar).append("=").append(searchNode.getPc(tmpChar).getValue() + "]");
         }
         System.out.println(sb);
     }
 
     private void updateCharItem(char nextTo, char willBeUpdated, char charValueOfBeforeCharacter) {
-        double beforeCharValue = searchNode.getPc(charValueOfBeforeCharacter).getData().getValue();
-        double nextToCharValue = searchNode.getPc(nextTo).getData().getValue();
+        double beforeCharValue = searchNode.getPc(charValueOfBeforeCharacter).getValue();
+        double nextToCharValue = searchNode.getPc(nextTo).getValue();
         System.out.println("NextToChar: " + nextTo + "=" + nextToCharValue + "; BeforeChar: " + charValueOfBeforeCharacter + "=" + beforeCharValue + " WillBeUpdatedChar : [" + willBeUpdated + "]");
         searchNode.updatePriorityChar(willBeUpdated, nextTo);
-        PriorityChar pc = searchNode.getPc(willBeUpdated).getData();
+        PriorityChar pc = searchNode.getPc(willBeUpdated);
         double expected = (beforeCharValue + nextToCharValue) / 2;
         double actual = pc.getValue();
         printUpdatedCharacterData(Character.toString(willBeUpdated), Character.toString(nextTo), expected, actual);
@@ -143,16 +143,16 @@ public class PriorityCharTest {
 
 
     private void resetCharItem(char characterToReset) {
-        double beforeResetValue = searchNode.getPc(characterToReset).getData().getValue();
+        double beforeResetValue = searchNode.getPc(characterToReset).getValue();
         searchNode.resetPriorityChar(characterToReset);
         double expected = (int) characterToReset;
-        double actual = searchNode.getPc(characterToReset).getData().getValue();
+        double actual = searchNode.getPc(characterToReset).getValue();
         printResetCharacterData(characterToReset, beforeResetValue, expected, actual);
         Assertions.assertEquals(expected, actual);
     }
 
     private void getNextCharOfGiven(char givenChar, char expected) {
-        char actual = searchNode.getNextPc(givenChar).getData().getChar();
+        char actual = searchNode.getNextPc(givenChar).getChar();
         printNextPriorityCharOfGiven(givenChar, expected, actual);
         Assertions.assertEquals(expected, actual);
     }

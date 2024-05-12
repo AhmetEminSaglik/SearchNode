@@ -1,8 +1,6 @@
 package org.aes.searchnode.dataaccess.concretes.prioritychar;
 
-import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
@@ -17,16 +15,17 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
         this.priorityCharPoolDAO = priorityCharPoolDAO;
     }
 
+    // TODO Buraya bak belki bug olabilir
     @Override
-    public DataResult getPc(char c) {
+    public PriorityChar getPc(char c) {
         PriorityChar pc = priorityCharPoolDAO.getPriorityChar(c);
         if (pc != null)
-            return new SuccessDataResult(pc, "PriorityChar value is retrieved");
-        return new SuccessDataResult(c, "ASCII value retrieved");
+            return pc;
+        return getPc(c);
     }
 
     @Override
-    public DataResult<List<PriorityChar>> getAllPc() {
+    public List<PriorityChar> getAllPc() {
         return priorityCharPoolDAO.getAll();
     }
 
@@ -57,12 +56,12 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     }
 
     @Override
-    public DataResult update(char c) {
+    public Result update(char c) {
         return null;
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPc(char c) {
+    public PriorityChar getNextPc(char c) {
         return priorityCharPoolDAO.getNextPriorityChar(c);
     }
 

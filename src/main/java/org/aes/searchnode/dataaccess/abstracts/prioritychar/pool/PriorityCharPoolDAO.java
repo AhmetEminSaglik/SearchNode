@@ -11,19 +11,19 @@ import java.util.List;
 public interface PriorityCharPoolDAO {
     PriorityChar getPriorityChar(char c);
 
-    DataResult<List<PriorityChar>> getAll();
-    DataResult<PriorityChar> getNextPriorityChar(char c);
+    List<PriorityChar> getAll();
+    PriorityChar getNextPriorityChar(char c);
 
 
-    DataResult<List<PriorityChar>> updatePriorityCharList(List<Character> characterList, char nextToThisChar);
+    List<PriorityChar> updatePriorityCharList(List<Character> characterList, char nextToThisChar);
 
     void sort(Comparator<PriorityChar> comparator);
 
-    DataResult removePriorityChar(char c);
+    Result removePriorityChar(char c);
 
     Result removeAll();
 
-    DataResult<PriorityChar> updatePriorityChar(char c, char nextToThisChar);
+    PriorityChar updatePriorityChar(char c, char nextToThisChar);
 
     void addToListToBeNotifedWhenPriorityCharIsUpdated(NextWayDirectionRequiredData<?> nextWayDirectionRequiredData);
 

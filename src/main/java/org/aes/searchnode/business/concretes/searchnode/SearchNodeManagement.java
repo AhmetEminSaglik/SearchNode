@@ -51,7 +51,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 return new ErrorResult(msg);
             }
             char c = sbText.charAt(index);
-            pc = pcService.getPc(c).getData();
+            pc = pcService.getPc(c);
             searchNodeNext = searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
             if (searchNodeNext == null) {
                 return new ErrorDataResult<>(null, "There is not such as word");
@@ -170,7 +170,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             try {
                 for (int i = 0; i < stringValue.length(); i++) {
                     addSNToList(movedLastSearchNodeConnection);
-                    PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
+                    PriorityChar pc = getPc(stringValue.charAt(i));
                     DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
                     if (!drReachablNWD.isSuccess()) {
                         stringValue.delete(0, i);
@@ -182,7 +182,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 }
             } catch (Exception e) {
                 System.err.println(e.getMessage());
-                System.exit(0);
             }
             if (searchNode.getpNWDQueue() != null) {
                 Result result = transferPossibilityNWDToReachableNWD();
@@ -199,6 +198,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             }
         }
 
+//        System.out.println("DATA IS ADDED  size : "+getTotalItemNumber());
         return new SuccessResult("Data is added");
 
     }
@@ -206,7 +206,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     @Override
     public Result add(T t, List<String> expList) {
         expList.forEach(e -> add(t, e));
-        return null;
+        return new SuccessResult("All Explanations are added to Data Succesffuly");
     }
 
     @Override
@@ -215,7 +215,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         movedLastSearchNodeConnection = searchNode;
         StringBuilder stringValue = new StringBuilder(text);
         for (int i = 0; i < stringValue.length(); i++) {
-            PriorityChar pc = getPriorityCharOfGivenChar(stringValue.charAt(i));
+            PriorityChar pc = getPc(stringValue.charAt(i));
             DataResult<SearchNode<T>> drReachablNWD = moveReachableNWD(movedLastSearchNodeConnection, pc);
             if (drReachablNWD.isSuccess()) {
                 DataResult<NodeData<T>> drNodeData = drReachablNWD.getData().getNodeData().search(text);
@@ -246,53 +246,44 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<NodeDataService<T>> search(String text) {
+    public NodeDataService<T> search(String text) {
         DataResult<NodeData<T>> dataResult = searchNodeData(text);
         if (dataResult.isSuccess()) {
             NodeDataService<T> nodeDataService = new NodeDataService<>(searchNodeData(text).getData());
-            return new SuccessDataResult<>(nodeDataService);
+            return nodeDataService;
         }
-        return new ErrorDataResult<>(null);
+        return null;
     }
 
     @Override
-    public DataResult<NodeDataService<T>> getExplanationOf(String text) {
-        //todo burda hata olabilir
-        NodeDataService<T> nodeData = search(text).getData();
-        DataResult<NodeDataService<T>> dataResult;
-        if (nodeData != null) {
-            dataResult = new SuccessDataResult(nodeData, "Data is found");
-        } else {
-            dataResult = new ErrorDataResult<>("Data is not found");
-        }
-        return dataResult;
+    public NodeDataService<T> getExplanationOf(String text) {
+        return search(text);
     }
 
     @Override
-    public DataResult<List<DataInfo<T>>> getAll() {
-        return new SuccessDataResult<>(getAllData(searchNode));
+    public List<DataInfo<T>> getAll() {
+        return getAllData(searchNode);
     }
 
     @Override
-    public DataResult<List<DataInfo<T>>> getAllReverse() {
+    public List<DataInfo<T>> getAllReverse() {
         List<DataInfo<T>> list = getAllData(searchNode);
         Collections.reverse(list);
-        return new SuccessDataResult<>(list);
+        return list;
     }
 
     @Override
-    public DataResult<List<DataInfo<T>>> getAllStartWith(String text) {
+    public List<DataInfo<T>> getAllStartWith(String text) {
         SearchNode<T> currentSearchNode = searchNode;
         for (int i = 0; i < text.length(); i++) {
-            DataResult<SearchNode<T>> dataResult = moveReachableNWD(currentSearchNode, getPriorityCharOfGivenChar(text.charAt(i)));
+            DataResult<SearchNode<T>> dataResult = moveReachableNWD(currentSearchNode, getPc(text.charAt(i)));
             if (dataResult.isSuccess()) {
                 currentSearchNode = dataResult.getData();
             } else {
-
-                return new ErrorDataResult<>(new ArrayList<>(), "Has not been added any text in this direction");
+                return new ArrayList<>();
             }
         }
-        return new SuccessDataResult<>(getAllData(currentSearchNode));
+        return getAllData(currentSearchNode);
 
     }
 
@@ -326,11 +317,6 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         return new StringBuilder(text.trim());
     }
 
-    private PriorityChar getPriorityCharOfGivenChar(char c) {
-        DataResult<PriorityChar> drPriorityChar = pcService.getPc(c);
-        PriorityChar pc = drPriorityChar.getData();
-        return pc;
-    }
 
     private List<DataInfo<T>> getAllData(SearchNode<T> searchNode) {
         List<DataInfo<T>> list = new ArrayList<>();
@@ -376,7 +362,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     private void movePossibilityNWD(Object value, StringBuilder stringBuilder) throws Exception {
         for (int i = 0; i < stringBuilder.length(); i++) {
-            PriorityChar pc = getPriorityCharOfGivenChar(stringBuilder.charAt(i));
+            PriorityChar pc = getPc(stringBuilder.charAt(i));
             searchNode.getpNWDQueue().createNextWayPriorityChar(pc);
         }
     }
@@ -422,17 +408,17 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<PriorityChar> getPc(char c) {
+    public PriorityChar getPc(char c) {
         return pcService.getPc(c);
     }
 
     @Override
-    public DataResult<List<PriorityChar>> getAllPc() {
+    public List<PriorityChar> getAllPc() {
         return pcService.getAllPc();
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPc(char c) {
+    public PriorityChar getNextPc(char c) {
         return pcService.getNextPc(c);
     }
 
