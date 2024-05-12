@@ -116,14 +116,13 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
         Object value = getValueOfObjectToBeProcess(t);
         StringBuilder path = getStringBuilderOfData(value);
-        NodeData<T> nodeData = searchNodeData(path.toString()).getData();
+        NodeData<T> nodeData = searchNodeData(path.toString());
         if (nodeData != null) {
             return nodeData.update(path.toString(), oldExp, newExp);
         }
         return new ErrorResult("Data \"" + t + "\" is not found");
     }
 
-    // Todo this function has bug, here will be refactored
     @Override
     public Result update(T t, String oldExp, List<String> expList) {
         System.out.println("list Size : " + expList.size());
@@ -210,8 +209,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<NodeData<T>> searchNodeData(String text) {
-
+    public NodeData<T> searchNodeData(String text) {
         movedLastSearchNodeConnection = searchNode;
         StringBuilder stringValue = new StringBuilder(text);
         for (int i = 0; i < stringValue.length(); i++) {
@@ -220,15 +218,15 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
             if (drReachablNWD.isSuccess()) {
                 DataResult<NodeData<T>> drNodeData = drReachablNWD.getData().getNodeData().search(text);
                 if (drNodeData.isSuccess()) {
-                    return new SuccessDataResult<>(drNodeData.getData(), "Data is found :" + drNodeData.getData().getLocationAddress());
+                    return drNodeData.getData();
                 }
                 movedLastSearchNodeConnection = drReachablNWD.getData();
             } else {
 
-                return new ErrorDataResult<>("Requested Data : " + text + " /1/ Data is not found");
+                return null;
             }
         }
-        return new ErrorDataResult<>("Requested Data : " + text + " /2/ Data is not found");
+        return null;
 
 
     }
@@ -247,9 +245,9 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     @Override
     public NodeDataService<T> search(String text) {
-        DataResult<NodeData<T>> dataResult = searchNodeData(text);
-        if (dataResult.isSuccess()) {
-            NodeDataService<T> nodeDataService = new NodeDataService<>(searchNodeData(text).getData());
+        NodeData<T> nodeData = searchNodeData(text);
+        if (nodeData != null) {
+            NodeDataService<T> nodeDataService = new NodeDataService<>(searchNodeData(text));
             return nodeDataService;
         }
         return null;

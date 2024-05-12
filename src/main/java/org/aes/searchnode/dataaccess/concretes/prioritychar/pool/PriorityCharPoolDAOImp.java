@@ -132,7 +132,7 @@ public class PriorityCharPoolDAOImp implements PriorityCharPoolDAO, NotifyPriori
             max++;
         }
         return searchNextPcInPool(min, max);
-}
+    }
 
     private double calculateNewPriorityCharValue(double beforeCharValue, double nextCharValue) {
         return (beforeCharValue + nextCharValue) / 2;

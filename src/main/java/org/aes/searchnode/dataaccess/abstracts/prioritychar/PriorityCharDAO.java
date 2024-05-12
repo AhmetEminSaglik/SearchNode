@@ -5,7 +5,7 @@ import org.aes.searchnode.dataaccess.abstracts.prioritychar.interfacesegmantatio
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.interfacesegmantation.PcServiceRead;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.interfacesegmantation.PcServiceUpdate;
 
-public interface PriorityCharDAO extends PcServiceCreate, PcServiceRead, PcServiceUpdate, PcServiceDelete {
-
-
-}
+//public interface PriorityCharDAO extends PcServiceCreate, PcServiceRead, PcServiceUpdate, PcServiceDelete {
+//
+//
+//}

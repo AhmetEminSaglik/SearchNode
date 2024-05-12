@@ -2,7 +2,6 @@ package org.aes.searchnode.business.concretes.searchnode;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
-import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.dataaccess.abstracts.ReachableNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
@@ -111,7 +110,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<List<T>> removeAll(List<T> list) {
+    public Result removeAll(List<T> list) {
         return searchNodeService.removeAll(list);
     }
 
@@ -137,7 +136,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
     }
 
     @Override
-    public DataResult<NodeData<T>> searchNodeData(String text) {
+    public NodeData<T> searchNodeData(String text) {
         return searchNodeService.searchNodeData(text);
     }
 

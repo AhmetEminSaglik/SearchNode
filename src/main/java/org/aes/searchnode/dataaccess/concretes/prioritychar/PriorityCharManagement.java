@@ -1,21 +1,20 @@
 package org.aes.searchnode.dataaccess.concretes.prioritychar;
 
+import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessResult;
-import org.aes.searchnode.dataaccess.abstracts.prioritychar.PriorityCharDAO;
 import org.aes.searchnode.dataaccess.abstracts.prioritychar.pool.PriorityCharPoolDAO;
 import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.List;
 
-public class PriorityCharDAOImp implements PriorityCharDAO {
+public class PriorityCharManagement implements PriorityCharService {
     PriorityCharPoolDAO priorityCharPoolDAO;
 
-    public PriorityCharDAOImp(PriorityCharPoolDAO priorityCharPoolDAO) {
+    public PriorityCharManagement(PriorityCharPoolDAO priorityCharPoolDAO) {
         this.priorityCharPoolDAO = priorityCharPoolDAO;
     }
 
-    // TODO Buraya bak belki bug olabilir
     @Override
     public PriorityChar getPc(char c) {
         PriorityChar pc = priorityCharPoolDAO.getPriorityChar(c);
