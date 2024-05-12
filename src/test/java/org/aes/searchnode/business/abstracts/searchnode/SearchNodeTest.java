@@ -1,29 +1,27 @@
-package org.aes.searchnode.dpi.controllers;
+package org.aes.searchnode.business.abstracts.searchnode;
 
-import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.entities.DataInfo;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
-class SearchNodeDPITest {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class SearchNodeTest {
 
-    //    SearchNodeDPI<String> searchNodeDPI;
     SearchNodeService<String> searchNode = new SearchNode<>();
 
     @BeforeEach
     public void initalizeSearchNodeDPI() {
-//        searchNodeDPI = new SearchNodeDPI<>();
         searchNode = new SearchNode<>();
     }
 
     @Test
+    @Order(1)
+    @DisplayName("1-) Add multi data one by one")
     public void addStringDataToSearchNodeTest() {
         searchNode.add("Ahmet");
         int expected = 1;
@@ -42,6 +40,8 @@ class SearchNodeDPITest {
     }
 
     @Test
+    @Order(2)
+    @DisplayName("2-) Add multi data with list")
     public void addStringListToSearchNodeTest() {
         List<String> list = getStringListData();
         searchNode.addAll(list);
@@ -59,6 +59,8 @@ class SearchNodeDPITest {
     }
 
     @Test
+    @Order(3)
+    @DisplayName("3-) Get all data sorted")
     public void getAllSearchNodeDataIsSorted() {
         List<String> list = getStringListData();
         searchNode.addAll(list);
@@ -67,13 +69,14 @@ class SearchNodeDPITest {
         Assertions.assertEquals(expected, actual);
 
         Collections.sort(list);
-//        List<String> listFromSearchNode =
         List<DataInfo<String>> dataInfoList = searchNode.getAll().getData();
 
         isGivenListDataSame(list, dataInfoList);
     }
 
     @Test
+    @Order(4)
+    @DisplayName("4-) Get all data in reversed sorted")
     public void getAllReverseSearchNodeDataIsSorted() {
         List<String> list = getStringListData();
         searchNode.addAll(list);
@@ -89,6 +92,8 @@ class SearchNodeDPITest {
     }
 
     @Test
+    @Order(5)
+    @DisplayName("5-) Search Item")
     public void searchItemInSearchNodeTest() {
         List<String> list = getStringListData();
         searchNode.addAll(list);
@@ -110,6 +115,8 @@ class SearchNodeDPITest {
     }
 
     @Test
+    @Order(6)
+    @DisplayName("6-) Update Priority Char")
     public void updatePriorityCharBeforeAddingItemToSearchNodeTest() {
         searchNode.updatePriorityChar('ş', 's');
         searchNode.updatePriorityChar('ç', 'c');
@@ -128,6 +135,8 @@ class SearchNodeDPITest {
 
 
     @Test
+    @Order(7)
+    @DisplayName("7-) Update Priority Char List - Before adding data")
     public void updatePriorityCharListBeforeAddingItemToSearchNodeTest() {
         List<Character> characterList = new ArrayList<>();
         characterList.add('ç');
@@ -149,6 +158,8 @@ class SearchNodeDPITest {
 
 
     @Test
+    @Order(8)
+    @DisplayName("8-) Update Priority Char - After adding data")
     public void updatePriorityCharAfterAddingItemToSearchNodeTest() {
         searchNode.add("ahmet");
         searchNode.add("can");
@@ -168,6 +179,8 @@ class SearchNodeDPITest {
 
 
     @Test
+    @Order(9)
+    @DisplayName("9-) Update Priority Char - After adding data")
     public void updatePriorityCharListAfterAddingItemToSearchNodeTest() {
         List<Character> characterList = new ArrayList<>();
         characterList.add('ç');
@@ -191,6 +204,8 @@ class SearchNodeDPITest {
 
 
     @Test
+    @Order(10)
+    @DisplayName("10-) Reset Priority Char - After adding data")
     public void resetPriorityCharAfterAddingItemToSearchNodeTest() {
         searchNode.add("ahmet");
         searchNode.add("can");
@@ -210,10 +225,12 @@ class SearchNodeDPITest {
         searchNode.resetPriorityChar('ç');
         listFromSearchNode = searchNode.getAll().getData();
         Assertions.assertEquals("şeftali", listFromSearchNode.get(3).getValue());
-//        Assertions.assertEquals("çilek", listFromSearchNode.get(4)getValue().);
+        Assertions.assertEquals("çilek", listFromSearchNode.get(4).getValue());
     }
 
     @Test
+    @Order(11)
+    @DisplayName("11-) Reset All Priority Char - After adding data")
     public void resetAllPriorityCharAfterAddingItemToSearchNodeTest() {
         searchNode.add("ahmet");
         searchNode.add("can");
@@ -237,6 +254,8 @@ class SearchNodeDPITest {
     }
 
     @Test
+    @Order(12)
+    @DisplayName("12-) Get all data start with [al] ")
     public void getAllStartWithTest() {
         searchNode.addAll(getStringListData());
         List<DataInfo<String>> list = searchNode.getAllStartWith("al").getData();
@@ -255,19 +274,6 @@ class SearchNodeDPITest {
         int actualListSize = list.size();
 
         Assertions.assertEquals(expectedListSize, actualListSize);
-    }
-
-    @Test
-    public void bugTest() {
-        SearchNode<String> sn = new SearchNode<>();
-        sn.add("Furkan", "Akgun'de calisiyor");
-        sn.add("Ahmet", "Ilk ismim");
-        sn.add("Furkan", "Soyadi Cetin");
-        sn.add("Furkan", "Soyadi Cetin");
-        sn.add("Ahmet Emin", "");
-        sn.getAll().getData().forEach(e -> {
-            System.out.println(e);
-        });
     }
 
     private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>> listActual) {

@@ -6,24 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeRead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/PrimitiveWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/PrimitiveWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ListUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ListUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/ReachableNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/ReachableNextWayDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NextWayDirectionRequiredData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NextWayDirectionRequiredData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPIRemoveFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPIRemoveFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPIRemoveFunctionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -70,7 +54,9 @@
     "JUnit.SearchNodeDPITest.bugTest.executor": "Run",
     "JUnit.SearchNodeDPITest.executor": "Run",
     "JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor": "Run",
+    "JUnit.SearchNodeTest (1).executor": "Run",
     "JUnit.SearchNodeTest.executor": "Run",
+    "JUnit.SearchNodeTest.resetPriorityCharAfterAddingItemToSearchNodeTest.executor": "Run",
     "JUnit.SearchNodeTest.testGetNextPriorityCharOfGiven.executor": "Run",
     "JUnit.SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar.executor": "Run",
     "JUnit.SearchNodeTest.testGetNextPriorityChar_UpdateChar.executor": "Run",
@@ -79,6 +65,7 @@
     "JUnit.SearchNodeTest.testUpdateCharacter.executor": "Run",
     "JUnit.SearchNodeTest.testUpdateCharacterList.executor": "Run",
     "JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar.executor": "Run",
+    "JUnit.java in SearchNode.executor": "Run",
     "Maven.SearchNode [clean].executor": "Run",
     "Maven.SearchNode [install].executor": "Run",
     "Maven.SearchNode [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
@@ -91,7 +78,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work/bug-fix/NextPriorityChar-refactored",
+    "git-widget-placeholder": "work/refactor-SearchNodeService-Interface-Segmentation",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java",
     "nodejs_package_manager_path": "npm",
@@ -110,6 +97,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.aes.searchnode.business.abstracts.searchnode" />
       <recent name="org.aes.searchnode.dpi.controllers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -120,8 +108,8 @@
       <recent name="org.aes.searchnode.entities.concretes" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SearchNodeTest">
-    <configuration name="SearchNodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.java in SearchNode">
+    <configuration name="PriorityCharTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <extension name="coverage">
         <pattern>
@@ -130,83 +118,73 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.PriorityCharTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SearchNodeRemoveFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
+          <option name="PATTERN" value="org.aes.searchnode.business.abstracts.searchnode.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
-      <option name="METHOD_NAME" value="testGetNextPriorityCharOfGivenUpdateChar" />
+      <option name="PACKAGE_NAME" value="org.aes.searchnode.business.abstracts.searchnode" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.business.abstracts.searchnode.SearchNodeRemoveFunctionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchNodeTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SearchNode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.aes.searchnode.business.abstracts.searchnode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.aes.searchnode.business.abstracts.searchnode" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.business.abstracts.searchnode.SearchNodeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchNodeTest.resetPriorityCharAfterAddingItemToSearchNodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SearchNode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.aes.searchnode.business.abstracts.searchnode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.aes.searchnode.business.abstracts.searchnode" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.business.abstracts.searchnode.SearchNodeTest" />
+      <option name="METHOD_NAME" value="resetPriorityCharAfterAddingItemToSearchNodeTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchNodeTest.testResetAllPriorityCharacterList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="java in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
-      <option name="METHOD_NAME" value="testResetAllPriorityCharacterList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SearchNodeTest.testUpdateCharacter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
-      <option name="METHOD_NAME" value="testUpdateCharacter" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SearchNodeTest.testgetNextPriorityCharUpdateChar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.dpi.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode.dpi.controllers" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.dpi.controllers.SearchNodeTest" />
-      <option name="METHOD_NAME" value="testgetNextPriorityCharUpdateChar" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SearchNodeTest" />
-        <item itemvalue="JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar" />
-        <item itemvalue="JUnit.SearchNodeTest.testUpdateCharacter" />
-        <item itemvalue="JUnit.SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar" />
-        <item itemvalue="JUnit.SearchNodeTest.testResetAllPriorityCharacterList" />
+        <item itemvalue="JUnit.java in SearchNode" />
+        <item itemvalue="JUnit.SearchNodeRemoveFunctionTest" />
+        <item itemvalue="JUnit.PriorityCharTest" />
+        <item itemvalue="JUnit.SearchNodeTest.resetPriorityCharAfterAddingItemToSearchNodeTest" />
+        <item itemvalue="JUnit.SearchNodeTest (1)" />
       </list>
     </recent_temporary>
   </component>
