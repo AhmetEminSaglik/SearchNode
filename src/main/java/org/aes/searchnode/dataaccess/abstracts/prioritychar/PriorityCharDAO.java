@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface PriorityCharDAO {
     DataResult<PriorityChar> get(char c);
+
     DataResult<List<PriorityChar>> getAll();
+
     Result add(char c, char nextToThisChar);
 
     Result add(List<Character> cList, char nextToThisChar);
@@ -18,5 +20,6 @@ public interface PriorityCharDAO {
     Result removeAll();
 
     DataResult<PriorityChar> update(char c);
+
     DataResult<PriorityChar> getNextPriorityChar(char c);
 }

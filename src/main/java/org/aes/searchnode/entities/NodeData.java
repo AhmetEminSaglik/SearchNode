@@ -13,6 +13,7 @@ public class NodeData<T> {
     private int deep;
     private int nextDirectionsTotalValueNumber; //has total value of existing data in next directions.
     private String locationAddress = "";
+
     public int getDeep() {
         return deep;
     }
@@ -126,9 +127,9 @@ public class NodeData<T> {
                     return new SuccessResult("Explanation is updated");
                 }
             }
-            return new ErrorResult("Explanation \""+oldExp+"\" is not found");
+            return new ErrorResult("Explanation \"" + oldExp + "\" is not found");
         }
-        return new ErrorResult(path+" is not equals to "+locationAddress);
+        return new ErrorResult(path + " is not equals to " + locationAddress);
     }
 
 }

@@ -10,16 +10,14 @@ import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SearchNodeTest {
+    static boolean errorOccured = false;
     SearchNode<String> searchNode = new SearchNode<>();
 
     @BeforeEach
     public void clearSearchNodeDPI() {
-        searchNode=new SearchNode<>();
+        searchNode = new SearchNode<>();
         searchNode.resetAllPriorityChars();
     }
-
-
-    static boolean errorOccured = false;
 
     @Test
     @Order(1)

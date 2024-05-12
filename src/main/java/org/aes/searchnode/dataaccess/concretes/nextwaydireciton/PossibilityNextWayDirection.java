@@ -43,7 +43,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
             searchNodeAddingProcess.getReachableNWD().addPossibilityNWDNodeToReachableNWD(pc, newSearchNode);
             searchNodeAddingProcess = newSearchNode;
         }
-        return new SuccessDataResult<>(newSearchNode, "Searchnode is created in for " +  getClass().getSimpleName());
+        return new SuccessDataResult<>(newSearchNode, "Searchnode is created in for " + getClass().getSimpleName());
     }
 
     void initializeSearchNodeFundamentals(SearchNode<T> searchNode) {
@@ -66,7 +66,7 @@ public class PossibilityNextWayDirection<T> implements IPreProcessesToCreateReac
         NodeData<T> nodeData = searchNode.getNodeData();
         nodeData.setLocationAddress(currentLocationAddress.toString());
         Result result = addDataToDataNode(nodeData);
-        if (!result.isSuccess()&& !currentLocationAddress.toString().equals(data.toString())) {
+        if (!result.isSuccess() && !currentLocationAddress.toString().equals(data.toString())) {
             nodeData.increaseNextWayDirectionTotalValue();
         }
     }

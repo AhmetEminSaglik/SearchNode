@@ -8,8 +8,7 @@ public class ListUtils {
         for (T tmp : list) {
             for (int i = 0; i < list.size(); i++) {
                 sbItem.append("\n");
-                for(int j=1;j< counter;j++)
-                {
+                for (int j = 1; j < counter; j++) {
                     sbItem.append("    ");
                 }
                 sbItem.append("[" + counter + "] NextWayDirectionList{" +
@@ -25,7 +24,7 @@ public class ListUtils {
         for (int i = 0; i < counter; i++) {
             sbItems.append(" ");
         }
-        sbItems.append(getItemListInString(counter,list));
+        sbItems.append(getItemListInString(counter, list));
         return sbItems.toString();
     }
 }

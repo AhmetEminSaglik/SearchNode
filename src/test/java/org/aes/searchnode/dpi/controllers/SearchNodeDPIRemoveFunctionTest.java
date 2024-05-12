@@ -2,7 +2,6 @@ package org.aes.searchnode.dpi.controllers;
 
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
-//import org.aes.searchnode.core.utilities.CustomLog;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //@Deprecated //Structor is changed
 public class SearchNodeDPIRemoveFunctionTest {
     SearchNodeService<String> searchNode = new SearchNode<>();

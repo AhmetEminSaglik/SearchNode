@@ -17,13 +17,12 @@ import java.util.List;
 
 public class SearchNode<T> implements SearchNodeService<T> {
 
+    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
     private ReachableNextWayDirection<T> reachableNWD = ConfigReachableNextWayDirection.getReachableNextWayDirectionObject();
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
     private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
-
-    SearchNodeService<T> searchNodeService = new SearchNodeManagement(this);
 
     @Override
     public DataResult<NodeDataService<T>> search(String text) {
@@ -104,6 +103,10 @@ public class SearchNode<T> implements SearchNodeService<T> {
         return nodeData;
     }
 
+    public void setNodeData(NodeData<T> nodeData) {
+        this.nodeData = nodeData;
+    }
+
     @Override
     public Result remove(T t) {
         return searchNodeService.remove(t);
@@ -112,10 +115,6 @@ public class SearchNode<T> implements SearchNodeService<T> {
     @Override
     public DataResult<List<T>> removeAll(List<T> list) {
         return searchNodeService.removeAll(list);
-    }
-
-    public void setNodeData(NodeData<T> nodeData) {
-        this.nodeData = nodeData;
     }
 
     public PossibilityNextWayDirection<T> getpNWDQueue() {

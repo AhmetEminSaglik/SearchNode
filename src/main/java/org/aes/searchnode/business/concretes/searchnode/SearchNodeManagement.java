@@ -18,6 +18,7 @@ import java.util.List;
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
+
     public SearchNodeManagement(SearchNode<T> searchNode) {
         this.searchNode = searchNode;
     }
@@ -104,6 +105,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         }
         return s;
     }
+
     @Override
     public Result update(T t, String oldExp, String newExp) {
         oldExp = resetNullStringTypeValue(oldExp);
@@ -112,10 +114,10 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
         Object value = getValueOfObjectToBeProcess(t);
         StringBuilder path = getStringBuilderOfData(value);
         NodeData<T> nodeData = searchNodeData(path.toString()).getData();
-        if(nodeData!=null){
-        return nodeData.update(path.toString(), oldExp, newExp);
+        if (nodeData != null) {
+            return nodeData.update(path.toString(), oldExp, newExp);
         }
-        return new ErrorResult("Data \""+t+"\" is not found");
+        return new ErrorResult("Data \"" + t + "\" is not found");
     }
 
     // Todo this function has bug, here will be refactored

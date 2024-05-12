@@ -88,7 +88,8 @@ public class Main {
         System.out.println("explanation : " + sn.getExplanationOf("ab"));
         sn.getAll().getData().forEach(System.out::println);*/
     }
-    static  void getNextPriorityChar(){
+
+    static void getNextPriorityChar() {
         SearchNode<String> sn = new SearchNode<>();
         sn.updatePriorityChar('l', 'm');
         sn.updatePriorityChar('l', 'm');
@@ -102,18 +103,19 @@ public class Main {
         printPCDao(sn);
         System.out.println(sn.getPcService().getNextPriorityChar('g').getData());
     }
-    static  void testUpdateExplanationList(){
+
+    static void testUpdateExplanationList() {
         SearchNode<String> sn = new SearchNode<>();
-        List<String> expList= new ArrayList<>();
+        List<String> expList = new ArrayList<>();
         expList.add("1");
         expList.add("2");
         expList.add("3");
         expList.add("3");
         expList.add("3");
         sn.add("a");
-        sn.add("b","a");
+        sn.add("b", "a");
         printAllValues(sn);
-        sn.update("A",expList);
+        sn.update("A", expList);
         printAllValues(sn);
     }
 

@@ -7,11 +7,22 @@
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/prioritychar/PriorityCharManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/prioritychar/PriorityCharManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/SearchNodeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeRead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/abstracts/searchnode/subservices/node/SNSNodeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/PrimitiveWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/PrimitiveWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/business/concretes/searchnode/SearchNodeManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ListUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ListUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/ReachableNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/ReachableNextWayDirection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/pool/PriorityCharPoolDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/pool/PriorityCharPoolDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/PriorityCharDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/pool/PriorityCharPoolDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/prioritychar/pool/PriorityCharPoolDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/concretes/nextwaydireciton/PossibilityNextWayDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NextWayDirectionRequiredData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NextWayDirectionRequiredData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPIRemoveFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPIRemoveFunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeDPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/SearchNodeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -80,7 +91,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work/test/update-reset-char-UNIT-test-added",
+    "git-widget-placeholder": "work/bug-fix/NextPriorityChar-refactored",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java",
     "nodejs_package_manager_path": "npm",
@@ -102,6 +113,9 @@
       <recent name="org.aes.searchnode.dpi.controllers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.aes.searchnode.business.abstracts.searchnode.subservices.data" />
+      <recent name="org.aes.searchnode.business.abstracts.searchnode.subsplitservices.data" />
+      <recent name="org.aes.searchnode.business.abstracts.searchnode" />
       <recent name="org.aes.searchnode.core.utilities" />
       <recent name="org.aes.searchnode.entities.concretes" />
     </key>
@@ -234,12 +248,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java</url>
-          <line>10</line>
+          <line>7</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/aes/searchnode/dpi/controllers/AlgorithmComplexityTest.java</url>
-          <line>8</line>
+          <line>5</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

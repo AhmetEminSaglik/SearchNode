@@ -265,7 +265,7 @@ class SearchNodeDPITest {
         sn.add("Furkan", "Soyadi Cetin");
         sn.add("Furkan", "Soyadi Cetin");
         sn.add("Ahmet Emin", "");
-        sn.getAll().getData().forEach(e->{
+        sn.getAll().getData().forEach(e -> {
             System.out.println(e);
         });
     }

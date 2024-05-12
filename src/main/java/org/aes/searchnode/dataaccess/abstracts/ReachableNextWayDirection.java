@@ -19,6 +19,8 @@ public interface ReachableNextWayDirection<T> {
      * return SearchNode Available Next Way Directions size in stored .
      */
     int size();
+
     Result clearList();
+
     Result clearPc(PriorityChar pc);
 }
