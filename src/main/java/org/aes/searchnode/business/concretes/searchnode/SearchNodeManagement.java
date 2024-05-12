@@ -1,6 +1,8 @@
 package org.aes.searchnode.business.concretes.searchnode;
 
+import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
+import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.core.utilities.*;
 import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextWayDirection;
 import org.aes.searchnode.dataaccess.concretes.priorityfield.PriorityFieldOrder;
@@ -18,14 +20,11 @@ import java.util.List;
 public class SearchNodeManagement<T> implements SearchNodeService<T> {
     SearchNode<T> searchNode;
     SearchNode<T> movedLastSearchNodeConnection = null;
+    private PriorityCharService pcService = new PriorityCharManager();
 
-    protected SearchNodeManagement(SearchNode<T> searchNode) {
+    SearchNodeManagement(SearchNode<T> searchNode) {
         this.searchNode = searchNode;
     }
-//    protected  SearchNodeManagement<T> buildSearchNodeManagement(SearchNode<T> searchNode){
-//        this.searchNode=searchNode;
-//        return  this;
-//    }
 
     @Override
     public Result addAll(List<T> list) {
@@ -52,7 +51,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
                 return new ErrorResult(msg);
             }
             char c = sbText.charAt(index);
-            pc = searchNode.getPcService().get(c).getData();
+            pc = pcService.getPc(c).getData();
             searchNodeNext = searchNode.getReachableNWD().getNextSearchNodeWayOfChar(pc).getData();
             if (searchNodeNext == null) {
                 return new ErrorDataResult<>(null, "There is not such as word");
@@ -304,22 +303,22 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     @Override
     public Result resetPriorityChar(char c) {
-        return searchNode.resetPriorityChar(c);
+        return pcService.remove(c);
     }
 
     @Override
     public Result resetAllPriorityChars() {
-        return searchNode.resetAllPriorityChars();
+        return pcService.removeAll();
     }
 
     @Override
     public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
-        return searchNode.updatePriorityChar(cList, nextToThisChar);
+        return pcService.add(cList, nextToThisChar);
     }
 
     @Override
     public Result updatePriorityChar(char c, char nextToThisChar) {
-        return searchNode.updatePriorityChar(c, nextToThisChar);
+        return pcService.add(c, nextToThisChar);
     }
 
 
@@ -328,7 +327,7 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
     }
 
     private PriorityChar getPriorityCharOfGivenChar(char c) {
-        DataResult<PriorityChar> drPriorityChar = searchNode.getPcService().get(c);
+        DataResult<PriorityChar> drPriorityChar = pcService.getPc(c);
         PriorityChar pc = drPriorityChar.getData();
         return pc;
     }
@@ -420,6 +419,21 @@ public class SearchNodeManagement<T> implements SearchNodeService<T> {
 
     private void clearNWDTVList() {
         searchNode.getsNListToIncreaseNWDTV().clear();
+    }
+
+    @Override
+    public DataResult<PriorityChar> getPc(char c) {
+        return pcService.getPc(c);
+    }
+
+    @Override
+    public DataResult<List<PriorityChar>> getAllPc() {
+        return pcService.getAllPc();
+    }
+
+    @Override
+    public DataResult<PriorityChar> getNextPc(char c) {
+        return pcService.getNextPc(c);
     }
 
     /*public List<SearchNode<T>> getsNListToIncreaseNWDTV() {

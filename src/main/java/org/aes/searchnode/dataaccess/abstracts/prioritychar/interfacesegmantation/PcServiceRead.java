@@ -6,8 +6,7 @@ import org.aes.searchnode.entities.PriorityChar;
 import java.util.List;
 
 public interface PcServiceRead {
-    DataResult<PriorityChar> get(char c);
-    DataResult<List<PriorityChar>> getAll();
-    DataResult<PriorityChar> getNextPriorityChar(char c);
-
+    DataResult<PriorityChar> getPc(char c);
+    DataResult<List<PriorityChar>> getAllPc();
+    DataResult<PriorityChar> getNextPc(char c);
 }

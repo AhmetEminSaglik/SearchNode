@@ -18,7 +18,7 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     }
 
     @Override
-    public DataResult get(char c) {
+    public DataResult getPc(char c) {
         PriorityChar pc = priorityCharPoolDAO.getPriorityChar(c);
         if (pc != null)
             return new SuccessDataResult(pc, "PriorityChar value is retrieved");
@@ -26,7 +26,7 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     }
 
     @Override
-    public DataResult<List<PriorityChar>> getAll() {
+    public DataResult<List<PriorityChar>> getAllPc() {
         return priorityCharPoolDAO.getAll();
     }
 
@@ -62,7 +62,7 @@ public class PriorityCharDAOImp implements PriorityCharDAO {
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPriorityChar(char c) {
+    public DataResult<PriorityChar> getNextPc(char c) {
         return priorityCharPoolDAO.getNextPriorityChar(c);
     }
 

@@ -13,13 +13,13 @@ public class PriorityCharManager implements PriorityCharService {
     PriorityCharDAO priorityCharDAO = ConfigPriorityChar.getPriorityCharDAO();
 
     @Override
-    public DataResult<PriorityChar> get(char c) {
-        return priorityCharDAO.get(c);
+    public DataResult<PriorityChar> getPc(char c) {
+        return priorityCharDAO.getPc(c);
     }
 
     @Override
-    public DataResult<List<PriorityChar>> getAll() {
-        return priorityCharDAO.getAll();
+    public DataResult<List<PriorityChar>> getAllPc() {
+        return priorityCharDAO.getAllPc();
     }
 
     @Override
@@ -48,8 +48,8 @@ public class PriorityCharManager implements PriorityCharService {
     }
 
     @Override
-    public DataResult<PriorityChar> getNextPriorityChar(char c) {
-        return priorityCharDAO.getNextPriorityChar(c);
+    public DataResult<PriorityChar> getNextPc(char c) {
+        return priorityCharDAO.getNextPc(c);
     }
 
 }

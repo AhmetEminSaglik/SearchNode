@@ -39,8 +39,8 @@ public class Main {
         sn.getTotalItemNumber();
         sns.getTotalItemNumber();
 
-        sn.getAll();
-        sns.getAll();
+        sn.getAllPc();
+        sns.getAllPc();
 
         sn.getAllReverse();
         sns.getAllReverse();
@@ -84,20 +84,20 @@ public class Main {
         sn.removeAll(listString);
         sns.removeAll(listString);
 
-        sn.getPcService().getAll();
+        sn.getAllPc();
     }
 
     static void printPCDao(SearchNode sn) {
         System.out.println("-----------------_");
-        sn.getPcService().getAll().getData().forEach(e -> {
-            System.out.println("char: " + e.getChar() + ":" + e.getValue());
-        });
+//        sn.getAllPc().getData().forEach(e -> {
+//            System.out.println("char: " + e.getChar() + ":" + e.getValue());
+//        });
     }
 
     static void printAllValues(SearchNode<String> sn) {
         System.out.println("--------------------------------------");
-        sn.getAll().getData().forEach(e -> {
-            System.out.println(e.getTotalSameNum() + "-) " + e.getValue() + " : " + e.getExplanation());
+        sn.getAllPc().getData().forEach(e -> {
+//            System.out.println(e.getTotalSameNum() + "-) " + e.getValue() + " : " + e.getExplanation());
         });
     }
 

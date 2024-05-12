@@ -1,8 +1,6 @@
 package org.aes.searchnode.business.concretes.searchnode;
 
-import org.aes.searchnode.business.abstracts.prioritychar.PriorityCharService;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
-import org.aes.searchnode.business.concretes.prioritychar.PriorityCharManager;
 import org.aes.searchnode.config.reachablenextwaydirection.ConfigReachableNextWayDirection;
 import org.aes.searchnode.core.utilities.DataResult;
 import org.aes.searchnode.core.utilities.Result;
@@ -11,6 +9,7 @@ import org.aes.searchnode.dataaccess.concretes.nextwaydireciton.PossibilityNextW
 import org.aes.searchnode.entities.DataInfo;
 import org.aes.searchnode.entities.NodeData;
 import org.aes.searchnode.entities.NodeDataService;
+import org.aes.searchnode.entities.PriorityChar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,6 @@ public class SearchNode<T> implements SearchNodeService<T> {
     private ReachableNextWayDirection<T> reachableNWD = new ConfigReachableNextWayDirection<T>().getReachableNextWayDirectionObject();
     private NodeData<T> nodeData = new NodeData<>();
     private PossibilityNextWayDirection<T> pNWDQueue = null;
-    private PriorityCharService pcService = new PriorityCharManager();
     private List<SearchNode<T>> sNListToIncreaseNWDTV = new ArrayList<>();
 
     @Override
@@ -125,14 +123,6 @@ public class SearchNode<T> implements SearchNodeService<T> {
         this.pNWDQueue = pNWDQueue;
     }
 
-    public PriorityCharService getPcService() {
-        return pcService;
-    }
-
-    public void setPcService(PriorityCharService pcService) {
-        this.pcService = pcService;
-    }
-
     public List<SearchNode<T>> getsNListToIncreaseNWDTV() {
         return sNListToIncreaseNWDTV;
     }
@@ -143,7 +133,7 @@ public class SearchNode<T> implements SearchNodeService<T> {
 
 
     public Result updatePriorityChar(char c, char nextToThisChar) {
-        return pcService.add(c, nextToThisChar);
+        return searchNodeService.updatePriorityChar(c, nextToThisChar);
     }
 
     @Override
@@ -158,17 +148,17 @@ public class SearchNode<T> implements SearchNodeService<T> {
 
     @Override
     public Result updatePriorityChar(List<Character> cList, char nextToThisChar) {
-        return pcService.add(cList, nextToThisChar);
+        return searchNodeService.updatePriorityChar(cList, nextToThisChar);
     }
 
     @Override
     public Result resetPriorityChar(char c) {
-        return pcService.remove(c);
+        return searchNodeService.resetPriorityChar(c);
     }
 
     @Override
     public Result resetAllPriorityChars() {
-        return pcService.removeAll();
+        return searchNodeService.resetAllPriorityChars();
     }
 
     @Override
@@ -176,5 +166,20 @@ public class SearchNode<T> implements SearchNodeService<T> {
         return "SearchNode{" +
                 "nodeData=" + nodeData +
                 '}';
+    }
+
+    @Override
+    public DataResult<PriorityChar> getPc(char c) {
+        return searchNodeService.getPc(c);
+    }
+
+    @Override
+    public DataResult<List<PriorityChar>> getAllPc() {
+        return searchNodeService.getAllPc();
+    }
+
+    @Override
+    public DataResult<PriorityChar> getNextPc(char c) {
+        return searchNodeService.getNextPc(c);
     }
 }
