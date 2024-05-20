@@ -3,11 +3,10 @@ package org.aes.searchnode;
 import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
 import org.aes.searchnode.business.concretes.searchnode.SearchNode;
 import org.aes.searchnode.entities.DataInfo;
+import org.aes.searchnode.entities.NodeData;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -275,6 +274,22 @@ class SearchNodeTest {
 
         Assertions.assertEquals(expectedListSize, actualListSize);
     }
+
+    @Test
+    @Order(13)
+    @DisplayName("13-) Search NodeData Test ")
+    public void getSearchNodeDataTest() {
+        searchNode.addAll(getStringListData());
+        Set<DataInfo<String>> snAddedItemlist = new HashSet<>();
+        searchNode.getAll().forEach(e -> snAddedItemlist.add(e));
+        snAddedItemlist.forEach(e -> {
+            NodeData<String> nodeData = searchNode.searchNodeData(e.getValue());
+            String expected = e.getValue();
+            String actual = nodeData.getLocationAddress();
+            Assertions.assertEquals(expected, actual);
+        });
+    }
+
 
     private void isGivenListDataSame(List<String> listExpected, List<DataInfo<String>> listActual) {
         for (int i = 0; i < listExpected.size(); i++) {

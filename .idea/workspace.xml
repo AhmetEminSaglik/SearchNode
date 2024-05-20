@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ListUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ListUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/core/utilities/ReadableStringFormat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/abstracts/prioritychar/PriorityCharDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/solutions/SolutionMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/exception/solutions/SolutionMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/comparator/ComparatorNextWayDirectionRequiredData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/dataaccess/comparator/ComparatorNextWayDirectionRequiredData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/SearchNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/aes/searchnode/SearchNodeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,56 +46,57 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Test.executor": "Run",
-    "JUnit.AlgorithmComplexityTest.executor": "Run",
-    "JUnit.All in SearchNode.executor": "Run",
-    "JUnit.PriorityCharTest.executor": "Run",
-    "JUnit.SearchNodeDPIRemoveFunctionTest.executor": "Run",
-    "JUnit.SearchNodeDPITest.bugTest.executor": "Run",
-    "JUnit.SearchNodeDPITest.executor": "Run",
-    "JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor": "Run",
-    "JUnit.SearchNodeRemoveFunctionTest.executor": "Run",
-    "JUnit.SearchNodeRemoveFunctionTest.remove1Data.executor": "Run",
-    "JUnit.SearchNodeTest (1).executor": "Run",
-    "JUnit.SearchNodeTest.executor": "Run",
-    "JUnit.SearchNodeTest.getAllStartWithTest.executor": "Run",
-    "JUnit.SearchNodeTest.resetPriorityCharAfterAddingItemToSearchNodeTest.executor": "Run",
-    "JUnit.SearchNodeTest.testGetNextPriorityCharOfGiven.executor": "Run",
-    "JUnit.SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar.executor": "Run",
-    "JUnit.SearchNodeTest.testGetNextPriorityChar_UpdateChar.executor": "Run",
-    "JUnit.SearchNodeTest.testResetAllPriorityCharacterList.executor": "Run",
-    "JUnit.SearchNodeTest.testResetCharacter.executor": "Run",
-    "JUnit.SearchNodeTest.testUpdateCharacter.executor": "Run",
-    "JUnit.SearchNodeTest.testUpdateCharacterList.executor": "Run",
-    "JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar.executor": "Run",
-    "JUnit.java in SearchNode.executor": "Run",
-    "JUnit.searchnode in SearchNode.executor": "Run",
-    "Maven.SearchNode [clean].executor": "Run",
-    "Maven.SearchNode [install].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy-file].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy].executor": "Run",
-    "Maven.SearchNode [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work/refactor/PCService-PcManagement-renamed",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.57701147",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "two.files.diff.last.used.file": "/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlgorithmComplexityTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in SearchNode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PriorityCharTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeDPIRemoveFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeDPITest.bugTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeDPITest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeDPITest.getAllReverseSearchNodeDataIsSorted.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeRemoveFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeRemoveFunctionTest.remove1Data.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.getAllStartWithTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.getSearchNodeDataTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.resetPriorityCharAfterAddingItemToSearchNodeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testGetNextPriorityCharOfGiven.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testGetNextPriorityCharOfGivenUpdateChar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testGetNextPriorityChar_UpdateChar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testResetAllPriorityCharacterList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testResetCharacter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testUpdateCharacter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testUpdateCharacterList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.java in SearchNode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.searchnode in SearchNode.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy-file].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-deploy-plugin:3.1.1:deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SearchNode [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;deploy/v1.2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ahmet/OneDrive/Desktop/github-test-readme/PathFinder-1&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.57701147&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;/home/ahmet-emin/Desktop/github_projects/SearchNode/src/main/java/org/aes/searchnode/entities/concretes/NodeData.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\intelijidea\SearchNode-All\SearchNode\src\main\java\org\aes\searchnode" />
@@ -120,20 +119,7 @@
       <recent name="org.aes.searchnode.business.abstracts.searchnode" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.searchnode in SearchNode">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.Main" />
-      <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.java in SearchNode">
     <configuration name="SearchNodeRemoveFunctionTest.remove1Data" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <extension name="coverage">
@@ -166,6 +152,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SearchNodeTest.getSearchNodeDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SearchNode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.aes.searchnode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.aes.searchnode" />
+      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.SearchNodeTest" />
+      <option name="METHOD_NAME" value="getSearchNodeDataTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="java in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <option name="TEST_OBJECT" value="directory" />
@@ -184,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.searchnode in SearchNode" />
         <item itemvalue="JUnit.java in SearchNode" />
+        <item itemvalue="JUnit.SearchNodeTest.getSearchNodeDataTest" />
+        <item itemvalue="JUnit.searchnode in SearchNode" />
         <item itemvalue="JUnit.SearchNodeRemoveFunctionTest.remove1Data" />
         <item itemvalue="JUnit.SearchNodeTest.getAllStartWithTest" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
