@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aes/searchnode/entities/NodeData.java" afterDir="false" />
-    </list>
+    <list default="true" id="3fc45a1c-8912-4221-ad52-2fa60e2ff5c2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +67,7 @@
     "JUnit.SearchNodeTest.testUpdateCharacterList.executor": "Run",
     "JUnit.SearchNodeTest.testgetNextPriorityCharUpdateChar.executor": "Run",
     "JUnit.java in SearchNode.executor": "Coverage",
+    "JUnit.searchnode in SearchNode (1).executor": "Run",
     "JUnit.searchnode in SearchNode.executor": "Run",
     "Maven.SearchNode [clean].executor": "Run",
     "Maven.SearchNode [install].executor": "Run",
@@ -89,7 +85,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/projects/intelijidea/SearchNode-All/SearchNode",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Facets",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.57701147",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default",
@@ -122,26 +118,10 @@
       <recent name="org.aes.searchnode.business.abstracts.searchnode" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.searchnode in SearchNode (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SearchNode" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SearchNodeRemoveFunctionTest.remove1Data" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SearchNode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.aes.searchnode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.aes.searchnode" />
-      <option name="MAIN_CLASS_NAME" value="org.aes.searchnode.SearchNodeRemoveFunctionTest" />
-      <option name="METHOD_NAME" value="remove1Data" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,6 +150,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="searchnode in SearchNode (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SearchNode" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/org/ahmeteminsaglik/searchnode" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="searchnode in SearchNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SearchNode" />
       <option name="TEST_OBJECT" value="directory" />
@@ -180,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.searchnode in SearchNode (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.java in SearchNode" />
         <item itemvalue="JUnit.SearchNodeTest.getSearchNodeDataTest" />
         <item itemvalue="JUnit.searchnode in SearchNode" />
-        <item itemvalue="JUnit.SearchNodeRemoveFunctionTest.remove1Data" />
       </list>
     </recent_temporary>
   </component>
