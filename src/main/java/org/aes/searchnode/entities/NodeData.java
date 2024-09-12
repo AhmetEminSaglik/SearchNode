@@ -101,8 +101,8 @@ public class NodeData<T> {
     public String toString() {
         return "NodeData{" +
                 "deep=" + deep +
-                ", data={" + getDataInfoListItems() + '}' +
-                ", nextDirectionsTotalValueNumber=" + nextDirectionsTotalValueNumber +
+                ", data={" + getDataInfoListItems() + "},\n" +
+                "NDTVN=" + nextDirectionsTotalValueNumber +
                 ", locationAddress='" + locationAddress + '\'' +
                 '}';
     }
@@ -111,7 +111,7 @@ public class NodeData<T> {
         StringBuilder text = new StringBuilder();
 
         for (DataInfo<T> tmp : listDataInfo) {
-            text.append(tmp + ",");
+            text.append("\n" + tmp + ",");
         }
         if (listDataInfo.size() > 1)
             text.deleteCharAt(text.length() - 1);
